@@ -7,7 +7,11 @@ public class CardAction
     public CardActionData actionData;
     public int value;
     public TargetType target;
+
+    public execute() { }; // Unit User, Target
 }
+
+
 
 public enum TargetType
 {
