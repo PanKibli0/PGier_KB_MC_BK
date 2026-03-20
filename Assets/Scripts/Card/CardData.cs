@@ -4,14 +4,14 @@ using UnityEngine;
 public class CardData : ScriptableObject
 {
     public string cardName;
-    public CardType cardType;
-    public Sprite cardImage;
+    public CardType type;
+    public Sprite image;
     public int cost;
-    public string description;
+    //public string description;
 
     public CardAction[] actions;
 
-    public CardData[] upgrades;
+    public CardData upgrade;
 
 }
 
@@ -19,5 +19,7 @@ public enum CardType
 {
     Attack,
     Skill,
-    Power
+    Power,
+    Status,
+    Curse
 }

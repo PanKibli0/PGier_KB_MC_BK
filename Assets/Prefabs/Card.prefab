@@ -148,7 +148,7 @@ GameObject:
   - component: {fileID: 5310936700148044252}
   - component: {fileID: 2891620719331911219}
   - component: {fileID: 2326691449043047023}
-  - component: {fileID: 9125742886091775966}
+  - component: {fileID: 242110526858773372}
   m_Layer: 5
   m_Name: Card
   m_TagString: Untagged
@@ -214,7 +214,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &9125742886091775966
+--- !u!114 &242110526858773372
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

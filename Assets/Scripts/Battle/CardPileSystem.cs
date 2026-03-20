@@ -1,17 +1,22 @@
 using UnityEngine;
-using TMPro;
+using System;
 using System.Collections.Generic;
+using Random = UnityEngine.Random;
+
 
 public class CardPileSystem : MonoBehaviour
 {
     public List<Card> drawPile = new List<Card>();
     public List<Card> discardPile = new List<Card>();
+    public List<Card> exhaustPile = new List<Card>();
 
     public HandSystem handSystem;
     public CardUIManager cardUIManager;
 
-    public TMP_Text drawPileCountText;
-    public TMP_Text discardPileCountText;
+    public event Action<Card> OnCardDrawn;
+    public event Action<int> OnDrawPileChanged;
+    public event Action<int> OnDiscardPileChanged;
+    public event Action<int> OnExhaustPileChanged;
 
     // DEBUG
     void Start()
@@ -25,52 +30,50 @@ public class CardPileSystem : MonoBehaviour
             drawPile.Add(new Card(data));
         }
 
-        Debug.Log($"<color=blue>Initialized draw pile with {drawPile.Count} cards.</color>");
+        OnDiscardPileChanged?.Invoke(discardPile.Count);
+        OnDrawPileChanged?.Invoke(drawPile.Count);
 
         int end = Random.Range(3, 6);
-		//end = 1;
         for (int i = 0; i < end; i++) drawCard();
-        Debug.Log("<color=blue>Initial hand drawn.</color>");
+
+
     }
     // END DEBUG
 
 
     public void drawCard()
     {
+        if (drawPile.Count == 0 && discardPile.Count == 0) return;
+
         if (drawPile.Count == 0)
         {
             drawPile = new List<Card>(discardPile);
             discardPile.Clear();
-			updateDiscardPileText();
+			OnDiscardPileChanged?.Invoke(discardPile.Count);            
         }
+
 
         int index = Random.Range(0, drawPile.Count);
         Card drawnCard = drawPile[index];
         drawPile.RemoveAt(index);
-        handSystem.addCard(drawnCard); 
-        Debug.Log($"<color=yellow>Drew {drawnCard.data.cardName} from the draw pile. Remaining cards in draw pile: {drawPile.Count}</color>");
-        updateDrawPileText();
-        updateDiscardPileText();    
+        OnCardDrawn?.Invoke(drawnCard);
+        OnDrawPileChanged?.Invoke(drawPile.Count);
 
     }
 
-    public void addToDiscard(Card card)
+    public void discardCard(Card card)
     {
+        // if (exhaust) exhaustCard(card);
+        if (card == null) return;
         discardPile.Add(card);
-        updateDiscardPileText();
+        OnDiscardPileChanged?.Invoke(discardPile.Count);
     }
 
-
-    public void updateDrawPileText()
+    public void exhaustCard(Card card)
     {
-        if (drawPileCountText != null)
-            drawPileCountText.text = $"{drawPile.Count}";
+        if (card != null) return;
+        exhaustPile.Add(card);
+        OnExhaustPileChanged?.Invoke(exhaustPile.Count);
     }
 
-
-    public void updateDiscardPileText()
-    {
-        if (discardPileCountText != null)
-            discardPileCountText.text = $"{discardPile.Count}";
-    }
 }

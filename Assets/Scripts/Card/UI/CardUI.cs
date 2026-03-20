@@ -12,6 +12,5 @@ public class CardUI : MonoBehaviour
     {
         this.card = card;
         nameText.text = card.data.cardName;
-        Debug.Log($"<color=cyan>Initialized CardUI for {card.data.name}.</color>");
     }
 }
