@@ -40,26 +40,41 @@ public class CardPileSystem : MonoBehaviour
     }
     // END DEBUG
 
+    void refillDrawPile()
+    {
+        drawPile = new List<Card>(discardPile);
+        discardPile.Clear();
+
+        shuffle(drawPile);
+
+        OnDiscardPileChanged?.Invoke(discardPile.Count);
+    }
+
+    void shuffle(List<Card> pile)
+    {
+        for (int i = 0; i < pile.Count; i++)
+        {
+            int randomIndex = Random.Range(i, pile.Count);
+            (pile[i], pile[randomIndex]) = (pile[randomIndex], pile[i]);
+        }
+    }
 
     public void drawCard()
     {
         if (drawPile.Count == 0 && discardPile.Count == 0) return;
 
         if (drawPile.Count == 0)
-        {
-            drawPile = new List<Card>(discardPile);
-            discardPile.Clear();
-			OnDiscardPileChanged?.Invoke(discardPile.Count);            
-        }
+            refillDrawPile();
 
+        Card drawnCard = drawPile[0];
+        drawPile.RemoveAt(0);
 
-        int index = Random.Range(0, drawPile.Count);
-        Card drawnCard = drawPile[index];
-        drawPile.RemoveAt(index);
         OnCardDrawn?.Invoke(drawnCard);
         OnDrawPileChanged?.Invoke(drawPile.Count);
 
     }
+
+
 
     public void discardCard(Card card)
     {
@@ -71,7 +86,7 @@ public class CardPileSystem : MonoBehaviour
 
     public void exhaustCard(Card card)
     {
-        if (card != null) return;
+        if (card == null) return;
         exhaustPile.Add(card);
         OnExhaustPileChanged?.Invoke(exhaustPile.Count);
     }

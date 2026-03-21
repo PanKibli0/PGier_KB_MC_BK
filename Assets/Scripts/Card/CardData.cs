@@ -1,15 +1,16 @@
 using UnityEngine;
+using System.Collections.Generic;
 
-[CreateAssetMenu(fileName = "CardData", menuName = "Cards/CardData")]
+[CreateAssetMenu(fileName = "CardData", menuName = "CardData")]
 public class CardData : ScriptableObject
 {
     public string cardName;
+    public int cost;
     public CardType type;
     public Sprite image;
-    public int cost;
-    //public string description;
 
-    public CardAction[] actions;
+    [SerializeReference]
+    public List<BaseAction> actions;
 
     public CardData upgrade;
 

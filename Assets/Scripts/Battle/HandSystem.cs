@@ -14,12 +14,14 @@ public class HandSystem : MonoBehaviour
 
     void OnEnable()
     {
-        cardPileSystem.OnCardDrawn += addCard;
+        if (cardPileSystem != null)
+            cardPileSystem.OnCardDrawn += addCard;
     }
 
     void OnDisable()
     {
-        cardPileSystem.OnCardDrawn -= addCard;
+        if (cardPileSystem != null)
+            cardPileSystem.OnCardDrawn -= addCard;
     }
 
     public void addCard(Card card)

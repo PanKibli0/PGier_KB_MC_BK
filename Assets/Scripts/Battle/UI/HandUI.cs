@@ -8,14 +8,20 @@ public class HandUI : MonoBehaviour
 
     void OnEnable()
     {
-        handSystem.OnCardAddedToHand += createCardUI;
-        handSystem.OnHandCleared += clearHandUI;
+        if (handSystem != null)
+        {
+            handSystem.OnCardAddedToHand += createCardUI;
+            handSystem.OnHandCleared += clearHandUI;
+        }
     }
 
     void OnDisable()
     {
-        handSystem.OnCardAddedToHand -= createCardUI;
-        handSystem.OnHandCleared -= clearHandUI;
+        if (handSystem != null)
+        {
+            handSystem.OnCardAddedToHand -= createCardUI;
+            handSystem.OnHandCleared -= clearHandUI;
+        }
     }
 
     void createCardUI(Card card)

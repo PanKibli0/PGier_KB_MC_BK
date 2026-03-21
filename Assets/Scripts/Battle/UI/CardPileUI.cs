@@ -11,16 +11,22 @@ public class CardPileUI : MonoBehaviour
 
     void OnEnable()
     {
-        cardPileSystem.OnDrawPileChanged += updateDrawPileCount;
-        cardPileSystem.OnDiscardPileChanged += updateDiscardPileCount;
-        cardPileSystem.OnExhaustPileChanged += updateExhaustedPileCount;
+        if (cardPileSystem != null)
+        {
+            cardPileSystem.OnDrawPileChanged += updateDrawPileCount;
+            cardPileSystem.OnDiscardPileChanged += updateDiscardPileCount;
+            cardPileSystem.OnExhaustPileChanged += updateExhaustedPileCount;
+        }
     }
 
     void OnDisable()
     {
-        cardPileSystem.OnDrawPileChanged -= updateDrawPileCount;
-        cardPileSystem.OnDiscardPileChanged -= updateDiscardPileCount;
-        cardPileSystem.OnExhaustPileChanged -= updateExhaustedPileCount;
+        if (cardPileSystem != null)
+        {
+            cardPileSystem.OnDrawPileChanged -= updateDrawPileCount;
+            cardPileSystem.OnDiscardPileChanged -= updateDiscardPileCount;
+            cardPileSystem.OnExhaustPileChanged -= updateExhaustedPileCount;
+        }
     }
 
     void updateDrawPileCount(int count)
