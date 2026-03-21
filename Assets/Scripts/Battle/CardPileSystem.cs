@@ -6,11 +6,12 @@ using Random = UnityEngine.Random;
 
 public class CardPileSystem : MonoBehaviour
 {
+    public static CardPileSystem Instance;
+
     public List<Card> drawPile = new List<Card>();
     public List<Card> discardPile = new List<Card>();
     public List<Card> exhaustPile = new List<Card>();
 
-    public HandSystem handSystem;
     public CardUIManager cardUIManager;
 
     public event Action<Card> OnCardDrawn;
@@ -18,24 +19,58 @@ public class CardPileSystem : MonoBehaviour
     public event Action<int> OnDiscardPileChanged;
     public event Action<int> OnExhaustPileChanged;
 
+    void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+    }
+
     // DEBUG
     void Start()
     {
-        drawPile.Clear();        
-        for (int i = 1; i <= 10; i++)
+        drawPile.Clear();
+
+        // Karty S - SelectedEnemy
+        for (int i = 1; i <= 5; i++)
         {
             CardData data = ScriptableObject.CreateInstance<CardData>();
-            data.cardName = $"Card {i}";
+            data.cardName = $"Card S{i}";
+
+            DamageAction action = new DamageAction();
+            action.targetType = TargetType.SelectedEnemy;
+            action.damageAmount = 6;
+
+            data.actions = new List<BaseAction> { action };
 
             drawPile.Add(new Card(data));
         }
+
+        // Karty A - AllEnemies
+        for (int i = 1; i <= 5; i++)
+        {
+            CardData data = ScriptableObject.CreateInstance<CardData>();
+            data.cardName = $"Card A{i}";
+
+            DamageAction action = new DamageAction();
+            action.targetType = TargetType.AllEnemies;
+            action.damageAmount = 4;
+
+            data.actions = new List<BaseAction> { action };
+
+            drawPile.Add(new Card(data));
+        }
+
+        shuffle(drawPile);
 
         OnDiscardPileChanged?.Invoke(discardPile.Count);
         OnDrawPileChanged?.Invoke(drawPile.Count);
 
         int end = Random.Range(3, 6);
         for (int i = 0; i < end; i++) drawCard();
-
 
     }
     // END DEBUG
@@ -78,7 +113,6 @@ public class CardPileSystem : MonoBehaviour
 
     public void discardCard(Card card)
     {
-        // if (exhaust) exhaustCard(card);
         if (card == null) return;
         discardPile.Add(card);
         OnDiscardPileChanged?.Invoke(discardPile.Count);

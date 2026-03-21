@@ -12,6 +12,9 @@ public class Card
         this.data = data;
         currentCost = data.cost;
         actions = new List<BaseAction>(); // buff and future things
+
+        if (data.actions == null) return;
+
         foreach (var action in data.actions)
         {
             actions.Add(action.Clone());

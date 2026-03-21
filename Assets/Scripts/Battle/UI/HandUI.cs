@@ -2,25 +2,25 @@ using UnityEngine;
 
 public class HandUI : MonoBehaviour
 {
-    public HandSystem handSystem;
+    
     public CardUIManager cardUIManager;
     public Transform handParent;
 
     void OnEnable()
     {
-        if (handSystem != null)
+        if (HandSystem.Instance != null)
         {
-            handSystem.OnCardAddedToHand += createCardUI;
-            handSystem.OnHandCleared += clearHandUI;
+            HandSystem.Instance.OnCardAddedToHand += createCardUI;
+            HandSystem.Instance.OnHandCleared += clearHandUI;
         }
     }
 
     void OnDisable()
     {
-        if (handSystem != null)
+        if (HandSystem.Instance != null)
         {
-            handSystem.OnCardAddedToHand -= createCardUI;
-            handSystem.OnHandCleared -= clearHandUI;
+            HandSystem.Instance.OnCardAddedToHand -= createCardUI;
+            HandSystem.Instance.OnHandCleared -= clearHandUI;
         }
     }
 

@@ -4,19 +4,23 @@ public class Unit : MonoBehaviour
 {
     public string unitName;
     public int health;
+    public UnitType unitType; 
 
-    public void takeDamage(int dmg)
+    public void takeDamage(int damage)
     {
-        Debug.Log($"{unitName} takes {dmg} damage");
+        health -= damage;
+        Debug.Log($"{unitName} took {damage} damage. Remaining health: {health}");
+        if (health <= 0)
+        {
+            Debug.Log($"{unitName} has been defeated!");
+            Destroy(gameObject);
+        }
     }
+}
 
-    public void heal(int amount)
-    {
-        Debug.Log($"{unitName} heals {amount}");
-    }
-
-    public void addBlock(int amount)
-    {
-        Debug.Log($"{unitName} gains {amount} block");
-    }
+public enum UnitType
+{
+    Player,
+    Ally,
+    Enemy
 }

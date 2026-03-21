@@ -8,5 +8,6 @@ public class DamageAction : BaseAction
     public override void execute(Unit target)
     {
         Debug.Log($"DamageAction -> {damageAmount}");
+        target.takeDamage(damageAmount);
     }
 }

@@ -11,7 +11,15 @@ public abstract class BaseAction
     {
         return (BaseAction)this.MemberwiseClone();
     }
+
+    public bool requiresTarget()
+    {
+        return targetType == TargetType.SelectedEnemy ||
+               targetType == TargetType.SelectedAlly ||
+               targetType == TargetType.SelectedAllyOrSelf;
+    }
 }
+
 
 
 public enum TargetType

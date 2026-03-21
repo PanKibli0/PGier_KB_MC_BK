@@ -4,19 +4,16 @@ using Random = UnityEngine.Random;
 
 public class EndTurn : MonoBehaviour
 {
-    public HandSystem handSystem;
-    public CardPileSystem cardPileSystem;
-
     public event Action OnTurnEnded;
 
     public void endTurn()
     {
-        if (handSystem) handSystem.discardAllCards();
+        HandSystem.Instance.discardAllCards();
 
         int drawCount = Random.Range(3, 6);
 
         for (int i = 0; i < drawCount; i++)
-            if (cardPileSystem) cardPileSystem.drawCard();
+            if (CardPileSystem.Instance != null) CardPileSystem.Instance.drawCard();
 
         OnTurnEnded?.Invoke();
     }
