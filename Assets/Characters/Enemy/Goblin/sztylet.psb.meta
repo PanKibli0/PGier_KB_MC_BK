@@ -1,0 +1,1038 @@
+fileFormatVersion: 2
+guid: 07c24d7c8745a4946b9ef46922e91711
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: b2a9591990af98743ba3ff7cf1000886, type: 3}
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 1
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+    swizzle: 50462976
+    isReadable: 0
+    streamingMipmaps: 0
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    ignoreMipmapLimit: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 100
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    cookieMode: 0
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  singleSpriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: dc4881b62b642474586517c3ec8089ea
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+    spritePosition: {x: 0, y: 0}
+  multiSpriteImportData: []
+  layeredSpriteImportData:
+  - name: Warstwa malowania 5
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 76
+      y: 167
+      width: 18
+      height: 42
+    spriteID: 612d2c5b1e7430e40a94e6f78fbebb24
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 76, y: 167}
+    spritePosition: {x: 895, y: 1011}
+  - name: Warstwa malowania 4
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 188
+      width: 49
+      height: 15
+    spriteID: 95c95b56ce931494198b89933f41be58
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 188}
+    spritePosition: {x: 879, y: 1050}
+  - name: Warstwa malowania 3
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 125
+      y: 135
+      width: 6
+      height: 116
+    spriteID: 46d452ece04af5a47b8fc3fd9c876e59
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 125, y: 135}
+    spritePosition: {x: 898, y: 1058}
+  - name: Warstwa malowania 2
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 125
+      y: 4
+      width: 49
+      height: 123
+    spriteID: a925e1ec776755f4d909bafffa159f7b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 125, y: 4}
+    spritePosition: {x: 877, y: 1055}
+  - name: Warstwa malowania 6
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 76
+      y: 4
+      width: 41
+      height: 155
+    spriteID: 07491c0098e002e4a87e9ee11cfb0ee3
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 76, y: 4}
+    spritePosition: {x: 883, y: 1016}
+  - name: "T\u0142o"
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 64
+      height: 176
+    spriteID: 5c9096a65ec1769439588fff2fbc881e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
+    spritePosition: {x: 872, y: 1007}
+  spriteImportData: []
+  rigSpriteImportData: []
+  sharedRigSpriteImportData: []
+  mosaicSpriteImportData: []
+  sharedRigCharacterData:
+    bones: []
+    parts: []
+    dimension: {x: 0, y: 0}
+    characterGroups: []
+    pivot: {x: 0, y: 0}
+    boneReadOnly: 0
+  characterData:
+    bones: []
+    parts: []
+    dimension: {x: 0, y: 0}
+    characterGroups: []
+    pivot: {x: 0, y: 0}
+    boneReadOnly: 0
+  platformSettings: []
+  mosaicLayers: 1
+  characterMode: 1
+  documentPivot: {x: 0, y: 0}
+  documentAlignment: 7
+  importHiddenLayers: 0
+  layerMappingOption: 2
+  generatePhysicsShape: 0
+  paperDollMode: 0
+  keepDupilcateSpriteName: 1
+  generateTileAssets: 0
+  tilePaletteCellLayout: 0
+  tilePaletteHexagonLayout: 0
+  tilePaletteCellSize: {x: 1, y: 1, z: 0}
+  tilePaletteCellSizing: 0
+  transparencySortMode: 0
+  transparencySortAxis: {x: 0, y: 0, z: 1}
+  tileTemplate: {instanceID: 0}
+  padding: 4
+  spriteSizeExpand: 0
+  skeletonAssetReferenceID: 
+  pipeline: {instanceID: 0}
+  pipelineVersion: 
+  spriteCategoryList:
+    categories: []
+  spritePackingTag: 
+  resliceFromLayer: 0
+  pSDLayerImportSetting: []
+  psdLayers:
+  - name: sztylet
+    spriteName: 
+    isGroup: 1
+    parentIndex: -1
+    spriteID: 0cab3952229f49a4fb03e04c5afcde2d
+    layerID: 0
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Warstwa malowania 5
+    spriteName: Warstwa malowania 5
+    isGroup: 0
+    parentIndex: 0
+    spriteID: 612d2c5b1e7430e40a94e6f78fbebb24
+    layerID: -1497836073
+    mosaicPosition: {x: 76, y: 167}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Warstwa malowania 4
+    spriteName: Warstwa malowania 4
+    isGroup: 0
+    parentIndex: 0
+    spriteID: 95c95b56ce931494198b89933f41be58
+    layerID: -1497836074
+    mosaicPosition: {x: 4, y: 188}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Warstwa malowania 3
+    spriteName: Warstwa malowania 3
+    isGroup: 0
+    parentIndex: 0
+    spriteID: 46d452ece04af5a47b8fc3fd9c876e59
+    layerID: -1497836067
+    mosaicPosition: {x: 125, y: 135}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Warstwa malowania 2
+    spriteName: Warstwa malowania 2
+    isGroup: 0
+    parentIndex: 0
+    spriteID: a925e1ec776755f4d909bafffa159f7b
+    layerID: -1497836068
+    mosaicPosition: {x: 125, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Warstwa malowania 6
+    spriteName: Warstwa malowania 6
+    isGroup: 0
+    parentIndex: 0
+    spriteID: 07491c0098e002e4a87e9ee11cfb0ee3
+    layerID: -1497836072
+    mosaicPosition: {x: 76, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: "T\u0142o"
+    spriteName: "T\u0142o"
+    isGroup: 0
+    parentIndex: 0
+    spriteID: 5c9096a65ec1769439588fff2fbc881e
+    layerID: -1250479711
+    mosaicPosition: {x: 4, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: mczuga
+    spriteName: 
+    isGroup: 1
+    parentIndex: -1
+    spriteID: d0ca49e59abaac245b848fc0eb5f8a03
+    layerID: 854290895
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 0
+  - name: "Kopia T\u0142o"
+    spriteName: 
+    isGroup: 0
+    parentIndex: 7
+    spriteID: a50fb2d28e6a8a34a98ef059029bf7d7
+    layerID: 470984937
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Warstwa malowania 12
+    spriteName: 
+    isGroup: 0
+    parentIndex: 7
+    spriteID: c6479cba99993024190627977c3457a6
+    layerID: 108508449
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Warstwa malowania 13
+    spriteName: 
+    isGroup: 0
+    parentIndex: 7
+    spriteID: c22fce3cfafdbf74387128159778bc01
+    layerID: 1674592390
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: "T\u0142o"
+    spriteName: 
+    isGroup: 0
+    parentIndex: 7
+    spriteID: f6aa9885faff6f6498ebfaab8cf388cc
+    layerID: -2019623569
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: goblin
+    spriteName: 
+    isGroup: 1
+    parentIndex: -1
+    spriteID: ac314c0f8c205284ea8bed80e847fc46
+    layerID: 1756429169
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 0
+  - name: "\u0142apy"
+    spriteName: 
+    isGroup: 1
+    parentIndex: 12
+    spriteID: 001574dc01d7b9949a46e9091ed2fcd0
+    layerID: -878762552
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: R_P
+    spriteName: 
+    isGroup: 1
+    parentIndex: 13
+    spriteID: 5884bdb6de8b5934b980c0cb239dd8df
+    layerID: 1764345289
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: "Kopia T\u0142o"
+    spriteName: 
+    isGroup: 0
+    parentIndex: 14
+    spriteID: ca5d46b195faef043b58cab69daff525
+    layerID: 1803977899
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: naram
+    spriteName: 
+    isGroup: 0
+    parentIndex: 14
+    spriteID: 5c25375593cdf954ba6f3e2599cb9e83
+    layerID: -1338456723
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: r1
+    spriteName: 
+    isGroup: 0
+    parentIndex: 14
+    spriteID: ea0f23cd8fd1e194bb06c7852d24fb15
+    layerID: -1461555205
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: r2
+    spriteName: 
+    isGroup: 0
+    parentIndex: 14
+    spriteID: 4de06b1e4aea2d54f9012dbbbf8557fb
+    layerID: -1058270678
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: r3
+    spriteName: 
+    isGroup: 0
+    parentIndex: 14
+    spriteID: e3b7ddbf1e7f1824d88a6755461102a2
+    layerID: 1670612677
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Warstwa malowania 19
+    spriteName: 
+    isGroup: 0
+    parentIndex: 14
+    spriteID: 504fc46c745d6224b8b933087feb29df
+    layerID: 155562616
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: "T\u0142o"
+    spriteName: 
+    isGroup: 0
+    parentIndex: 14
+    spriteID: 527d548c2a6eb4d4685064f348fb217f
+    layerID: 709259786
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: R_L
+    spriteName: 
+    isGroup: 1
+    parentIndex: 13
+    spriteID: 14a1aa1ee1f13314bbb28718127310e1
+    layerID: 1764345309
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: "Kopia T\u0142o"
+    spriteName: 
+    isGroup: 0
+    parentIndex: 22
+    spriteID: 3ddc1197cde3821498690b2ad1e84ecd
+    layerID: -2087704870
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: naram
+    spriteName: 
+    isGroup: 0
+    parentIndex: 22
+    spriteID: d33312fd9fd834544a433d45eac236bc
+    layerID: -627897649
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: r1
+    spriteName: 
+    isGroup: 0
+    parentIndex: 22
+    spriteID: 1286e90928f4d614f889aaffe0b4cf06
+    layerID: -751410723
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: r2
+    spriteName: 
+    isGroup: 0
+    parentIndex: 22
+    spriteID: 1ef1bc06ed583f54f96ea23f95d8955b
+    layerID: 270226190
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: r3
+    spriteName: 
+    isGroup: 0
+    parentIndex: 22
+    spriteID: ae0db61452756a447a4cea0e6dca95d7
+    layerID: -1033735725
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Warstwa malowania 19
+    spriteName: 
+    isGroup: 0
+    parentIndex: 22
+    spriteID: ab39ea0ca2818234b9372f2ba560937d
+    layerID: -1910487284
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: "T\u0142o"
+    spriteName: 
+    isGroup: 0
+    parentIndex: 22
+    spriteID: 77ccf30e3f25b694c8546f875bae2cac
+    layerID: -856824155
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: korpus
+    spriteName: 
+    isGroup: 1
+    parentIndex: 12
+    spriteID: 5a5197c6767b78f4a8a26ab107447567
+    layerID: 594335830
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: "Kopia T\u0142o"
+    spriteName: 
+    isGroup: 0
+    parentIndex: 30
+    spriteID: 686927b00237375468a052d247028885
+    layerID: 641178485
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: tunika
+    spriteName: 
+    isGroup: 0
+    parentIndex: 30
+    spriteID: e5ce2dcb572c5444f874153796d723bc
+    layerID: -1260047284
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Warstwa malowania 14
+    spriteName: 
+    isGroup: 0
+    parentIndex: 30
+    spriteID: 714d966afc4854b418c57cfa02a253a2
+    layerID: 1271307863
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Warstwa malowania 11
+    spriteName: 
+    isGroup: 0
+    parentIndex: 30
+    spriteID: 6ca2c890678aaae40be15c77e8ae7a3b
+    layerID: 511792976
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Warstwa malowania 10
+    spriteName: 
+    isGroup: 0
+    parentIndex: 30
+    spriteID: 0873d276368b3f345ae55f2ad22d1c20
+    layerID: -1054290965
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Warstwa malowania 9
+    spriteName: 
+    isGroup: 0
+    parentIndex: 30
+    spriteID: b5cb75009469de242afe9843c04830fd
+    layerID: -1497836077
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Warstwa malowania 16
+    spriteName: 
+    isGroup: 0
+    parentIndex: 30
+    spriteID: 6b467b9fb2dc97444be199d84dcad75e
+    layerID: -1860860019
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Warstwa malowania 17
+    spriteName: 
+    isGroup: 0
+    parentIndex: 30
+    spriteID: c628d5153213b66459365ce6ddead8b7
+    layerID: -294776078
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Warstwa malowania 15
+    spriteName: 
+    isGroup: 0
+    parentIndex: 30
+    spriteID: 24e909abbb1d6f342ac8bdd2103fbb39
+    layerID: -1457575492
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: "T\u0142o"
+    spriteName: 
+    isGroup: 0
+    parentIndex: 30
+    spriteID: aa3bb1264279e5a43a24f2854a4c605e
+    layerID: 1872059200
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: nogi
+    spriteName: 
+    isGroup: 1
+    parentIndex: 12
+    spriteID: bf02821bd423f6b4d8358f79691b7e38
+    layerID: -11334661
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: N_P
+    spriteName: 
+    isGroup: 1
+    parentIndex: 41
+    spriteID: d11fcea0720a58c43ad96402d907a27d
+    layerID: 1764344925
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: "Kopia T\u0142o"
+    spriteName: 
+    isGroup: 0
+    parentIndex: 42
+    spriteID: cd82cea53c1a3c242bf5408160307588
+    layerID: 1044463012
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: N1
+    spriteName: 
+    isGroup: 0
+    parentIndex: 42
+    spriteID: dd88ee59effbe9040bc09b7fab0e1ad7
+    layerID: -1461554481
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: N2
+    spriteName: 
+    isGroup: 0
+    parentIndex: 42
+    spriteID: 32c47a668ea8ef54793406bd60ad8f78
+    layerID: -1058269954
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: N3
+    spriteName: 
+    isGroup: 0
+    parentIndex: 42
+    spriteID: d06d6cc79bbba3a468b7d909b924c8cc
+    layerID: 1670613401
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Warstwa malowania 18
+    spriteName: 
+    isGroup: 0
+    parentIndex: 42
+    spriteID: b5f6f5e93cbee6e4790c54929d16ad44
+    layerID: -1410521325
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: "T\u0142o"
+    spriteName: 
+    isGroup: 0
+    parentIndex: 42
+    spriteID: 0d9ad4ece3246bd46b4b58a0db303257
+    layerID: 305975259
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: N_L
+    spriteName: 
+    isGroup: 1
+    parentIndex: 41
+    spriteID: d328948f7309c3542b1f3cceb66d8a3e
+    layerID: 1764344905
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: "Kopia T\u0142o"
+    spriteName: 
+    isGroup: 0
+    parentIndex: 49
+    spriteID: 5c9f51514e51bca46978419fc0771093
+    layerID: -521620929
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: N1
+    spriteName: 
+    isGroup: 0
+    parentIndex: 49
+    spriteID: 7d7a4d74d405861458f4129043d897a2
+    layerID: -751386735
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: N2
+    spriteName: 
+    isGroup: 0
+    parentIndex: 49
+    spriteID: d5f2d286d5116974b8710c07586c7105
+    layerID: 270250178
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: N3
+    spriteName: 
+    isGroup: 0
+    parentIndex: 49
+    spriteID: 739efcd1c1df0be43aefc4270c102777
+    layerID: -1033711737
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Warstwa malowania 18
+    spriteName: 
+    isGroup: 0
+    parentIndex: 49
+    spriteID: 40f9fadfe9bd6834abc5821397c1654a
+    layerID: 1080518097
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: "T\u0142o"
+    spriteName: 
+    isGroup: 0
+    parentIndex: 49
+    spriteID: 273f13489516e5a4a907fe26b499c962
+    layerID: -1260108682
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: "\u0142epetyna"
+    spriteName: 
+    isGroup: 1
+    parentIndex: 12
+    spriteID: b8f5d6d117c5c134594723a8458ee239
+    layerID: 274533918
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: "Kopia T\u0142o"
+    spriteName: 
+    isGroup: 0
+    parentIndex: 56
+    spriteID: 4e670e758bc21484bbd26a103bef73ae
+    layerID: -118336402
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: czapeczka
+    spriteName: 
+    isGroup: 0
+    parentIndex: 56
+    spriteID: 588627a0e2ac9204390cb4198a9ed2bd
+    layerID: -720854692
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: usta
+    spriteName: 
+    isGroup: 0
+    parentIndex: 56
+    spriteID: 2962005eff36c55438a31d0a021af08e
+    layerID: 1326387831
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: ucho
+    spriteName: 
+    isGroup: 0
+    parentIndex: 56
+    spriteID: 491199dfd01b4064a879ecb35a31d59c
+    layerID: -2095010939
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: nos
+    spriteName: 
+    isGroup: 0
+    parentIndex: 56
+    spriteID: faf9de6c814a5774c94f4f4759e5aafe
+    layerID: 728635626
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: brwi
+    spriteName: 
+    isGroup: 0
+    parentIndex: 56
+    spriteID: cee076c3ccbc80e4bbe57aa4a460e29b
+    layerID: 828988038
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: "ga\u0142y"
+    spriteName: 
+    isGroup: 1
+    parentIndex: 56
+    spriteID: 663b8b3a648ef484e8c70144b185eaaa
+    layerID: -878513039
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Warstwa malowania 8
+    spriteName: 
+    isGroup: 0
+    parentIndex: 63
+    spriteID: 5e9cafa4206e7a14fb4d484b56de27f1
+    layerID: -1497836078
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Warstwa malowania 7
+    spriteName: 
+    isGroup: 0
+    parentIndex: 63
+    spriteID: e9bd101b6dbefaf4384d4cbe0e70a5b1
+    layerID: -1497836071
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: oczy
+    spriteName: 
+    isGroup: 0
+    parentIndex: 63
+    spriteID: b323d82ae88004d4382fa628d5ae7540
+    layerID: -2000904981
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Warstwa malowania 21
+    spriteName: 
+    isGroup: 0
+    parentIndex: 56
+    spriteID: ce9d0e7c6deb6af4fa2759fb6d7030c0
+    layerID: 511792945
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Warstwa malowania 20
+    spriteName: 
+    isGroup: 0
+    parentIndex: 56
+    spriteID: d0040129a70949f4c8eadf4b38a502ce
+    layerID: -1054290996
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: "Kopia g\u0142owa"
+    spriteName: 
+    isGroup: 0
+    parentIndex: 56
+    spriteID: 8309114abd3e8544aa45dbdf3a58945c
+    layerID: 346643748
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: "g\u0142owa"
+    spriteName: 
+    isGroup: 0
+    parentIndex: 56
+    spriteID: 19f30e811aeee5a4e988047ad5f578a4
+    layerID: -360257476
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 0
+  - name: "T\u0142o"
+    spriteName: 
+    isGroup: 0
+    parentIndex: 56
+    spriteID: 388f7b591a5a3a247ab61643e9479ab0
+    layerID: 1468774673
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: "T\u0142o"
+    spriteName: 
+    isGroup: 0
+    parentIndex: -1
+    spriteID: f380886b77a149b49b41b52db05c2342
+    layerID: -809769988
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 0
+  - name: "Kopia T\u0142o"
+    spriteName: 
+    isGroup: 0
+    parentIndex: -1
+    spriteID: a0ec81dfabbc2bb4b8872570e958dfff
+    layerID: -1684420343
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 0
+  - name: "T\u0142o"
+    spriteName: 
+    isGroup: 0
+    parentIndex: -1
+    spriteID: b96f6bb2a437fc14680b818b87ccb626
+    layerID: 1919113367
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 0
+  mosaicPSDLayers: []
+  rigPSDLayers: []
+  sharedRigPSDLayers: []
+  importFileNodeState: 1
+  platformSettingsDirtyTick: 0
+  spriteSizeExpandChanged: 0
+  generateGOHierarchy: 0
+  textureAssetName: 
+  prefabAssetName: 
+  spriteLibAssetName: 
+  skeletonAssetName: 
+  secondarySpriteTextures: []
