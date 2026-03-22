@@ -8,6 +8,14 @@ public class EndTurn : MonoBehaviour
 
     public void endTurn()
     {
+        // DEBUG
+        Enemy[] enemies = FindObjectsByType<Enemy>(FindObjectsSortMode.None);
+        foreach (Enemy enemy in enemies)
+        {
+            enemy.takeTurn();
+        }
+        // END DEBUG
+
         HandSystem.Instance.discardAllCards();
 
         int drawCount = Random.Range(3, 6);

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class CardUIManager : MonoBehaviour
 {
-    public CardUI cardUIPrefab;
+    [SerializeField] private CardUI cardUIPrefab;
 
     public void createCardUI(Card card, Transform parent)
     {

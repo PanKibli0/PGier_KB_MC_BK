@@ -12,7 +12,7 @@ public class CardPileSystem : MonoBehaviour
     public List<Card> discardPile = new List<Card>();
     public List<Card> exhaustPile = new List<Card>();
 
-    public CardUIManager cardUIManager;
+    [SerializeField] private CardUIManager cardUIManager;
 
     public event Action<Card> OnCardDrawn;
     public event Action<int> OnDrawPileChanged;

@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class HandUI : MonoBehaviour
 {
-    
-    public CardUIManager cardUIManager;
-    public Transform handParent;
+
+    [SerializeField] private CardUIManager cardUIManager;
+    [SerializeField] private Transform handParent;
 
     void OnEnable()
     {
