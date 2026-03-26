@@ -16,7 +16,7 @@ public class Player : Unit
     }
 
 
-    void Start()
+    new void Start()
     {
         unitType = UnitType.Player;
 

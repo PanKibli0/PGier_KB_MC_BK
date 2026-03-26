@@ -43,7 +43,7 @@ public class Unit : MonoBehaviour
     {
         // TODO: rozbudować o block w przyszłości
         currentHealth -= damage;
-        Debug.Log($"{unitName} otrzymuje {damage} obrażeń. Health: {currentHealth}/{maxHealth}");
+       
 
 
         statsUI?.updateUI();

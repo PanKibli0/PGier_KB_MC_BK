@@ -17,6 +17,7 @@ public class CardUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
     private Card card;
     public TMP_Text nameText;
 
+    private bool canDrag = true;
 
     void Awake()
     {
@@ -29,13 +30,26 @@ public class CardUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
     {
         this.card = card;
 
+        // switch (card.data.type): case CardType.Attack: BACKGROUND IMAGE = attack card sprite; ITD
+        // 
+
         nameText.text = card.data.cardName;
         handArea = GetComponentInParent<HandAreaUI>();
     }
 
+    #region Drag And Drop System
 
     public void OnBeginDrag(PointerEventData eventData)
     {
+        if (EnergySystem.Instance != null && !EnergySystem.Instance.canAfford(card.currentCost))
+        {
+            canDrag = false;
+            Debug.Log($"Nie stać na kartę {card.data.cardName} (koszt: {card.currentCost})");
+
+            return;
+        }
+
+        canDrag = true;
         startParent = transform.parent;
         startSiblingIndex = transform.GetSiblingIndex();
 
@@ -44,30 +58,34 @@ public class CardUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
         transform.position = eventData.position;
     }
 
-
     public void OnDrag(PointerEventData eventData)
     {
+        if (!canDrag) return;
         transform.position = eventData.position;
     }
 
-
     public void OnEndDrag(PointerEventData eventData)
     {
+        if (!canDrag)
+        {
+            canDrag = true;
+            return;
+        }
+
         bool canPlay;
 
         if (cardRequiresTarget())
-            // FUTURE: System targetowania 
             canPlay = canPlayWithTarget(eventData);
         else
-            // FUTURE: System zagrywania kart 
             canPlay = isOverPlayArea(eventData);
 
         if (canPlay)
-            // FUTURE: System zagrywania kart 
             playCard();
         else
             returnToHand();
     }
+    #endregion
+
 
     // FUTURE: IDK -> Card 
     private bool cardRequiresTarget()
@@ -119,7 +137,11 @@ public class CardUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
     // FUTURE: System zagrywania kart
     private void playCard()
     {
-        Debug.Log($"Zagrano kartę: {card.data.cardName}");
+
+        if (EnergySystem.Instance != null)
+        
+            EnergySystem.Instance.spendEnergy(card.currentCost);
+        
 
         foreach (var action in card.actions)
         {

@@ -38,8 +38,9 @@ public class CardPileSystem : MonoBehaviour
         for (int i = 1; i <= 5; i++)
         {
             CardData data = ScriptableObject.CreateInstance<CardData>();
-            data.cardName = $"Card S{i}";
-
+            data.cost = Random.Range(1, 5);
+            data.cardName = $"Card S{i}/{data.cost}";
+            
             DamageAction action = new DamageAction();
             action.targetType = TargetType.SelectedEnemy;
             action.damageAmount = 6;
@@ -53,7 +54,8 @@ public class CardPileSystem : MonoBehaviour
         for (int i = 1; i <= 5; i++)
         {
             CardData data = ScriptableObject.CreateInstance<CardData>();
-            data.cardName = $"Card A{i}";
+            data.cost = Random.Range(1, 5);
+            data.cardName = $"Card A{i}/{data.cost}";
 
             DamageAction action = new DamageAction();
             action.targetType = TargetType.AllEnemies;

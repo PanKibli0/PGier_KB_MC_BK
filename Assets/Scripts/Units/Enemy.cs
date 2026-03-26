@@ -5,7 +5,7 @@ public class Enemy : Unit
     [SerializeField] private EnemyData data;
 
 
-    void Start()
+    new void Start()
     {
         if (data == null) return;
 

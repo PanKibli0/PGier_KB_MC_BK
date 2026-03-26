@@ -23,6 +23,11 @@ public class EndTurn : MonoBehaviour
         for (int i = 0; i < drawCount; i++)
             if (CardPileSystem.Instance != null) CardPileSystem.Instance.drawCard();
 
+
+
+        if (EnergySystem.Instance != null)
+            EnergySystem.Instance.refreshEnergy();
+
         OnTurnEnded?.Invoke();
     }
 }

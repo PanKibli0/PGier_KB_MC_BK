@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: c63d89e422d220344b5cdc431b189ea3
+guid: b7cafb3a673ba594fa2335e764408c60
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3683481869814785762
-    second: krysz_mag_0
+      213: 8495583883068613836
+    second: energia_mag_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: krysz_mag_0
+      name: energia_mag_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 255
-        height: 332
+        width: 400
+        height: 400
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e19191d51c4a1ecc0800000000000000
-      internalID: -3683481869814785762
+      spriteID: cc4a6d5b78066e570800000000000000
+      internalID: 8495583883068613836
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      krysz_mag_0: -3683481869814785762
+      energia_mag_0: 8495583883068613836
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
