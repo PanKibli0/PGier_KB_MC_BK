@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 1c36e6d4acca0cf4fb9a1fd11332ac5b
+guid: 84a63ea0f997309429eb80a83708d51d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3529397665247660421
-    second: k_atak_0
+      213: 1721568661134446361
+    second: k_A_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: k_atak_0
+      name: k_A_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 309
-        height: 464
+        width: 326
+        height: 489
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b76f1d3e58f050fc0800000000000000
-      internalID: -3529397665247660421
+      spriteID: 91f0d57739d34e710800000000000000
+      internalID: 1721568661134446361
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      k_atak_0: -3529397665247660421
+      k_A_0: 1721568661134446361
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

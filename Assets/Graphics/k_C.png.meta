@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 82c6721cc0b8c894a9e197c3f9ed98ab
+guid: 91ed8920bcb2dbb4088f6e93e5ac4a91
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3843632853589543818
-    second: k_obrona_0
+      213: -1025995993849211177
+    second: k_C_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: k_obrona_0
+      name: k_C_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 309
-        height: 463
+        width: 326
+        height: 489
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 67436cab84ca8aac0800000000000000
-      internalID: -3843632853589543818
+      spriteID: 7d6d4ad541ee2c1f0800000000000000
+      internalID: -1025995993849211177
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      k_obrona_0: -3843632853589543818
+      k_C_0: -1025995993849211177
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
