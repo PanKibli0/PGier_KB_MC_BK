@@ -35,7 +35,7 @@ public class CardPileSystem : MonoBehaviour
         drawPile.Clear();
 
         // Karty S - SelectedEnemy
-        for (int i = 1; i <= 5; i++)
+        for (int i = 1; i <= 55; i++)
         {
             CardData data = ScriptableObject.CreateInstance<CardData>();
             data.cost = Random.Range(1, 5);

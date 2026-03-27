@@ -5,9 +5,9 @@ public class EnergySystem : MonoBehaviour
 {
     public static EnergySystem Instance;
 
-    private int maxEnergy = 3;
-    private int currentMaxEnergy;
-    private int currentEnergy;
+    [SerializeField] private int maxEnergy = 3;
+    [SerializeField] private int currentMaxEnergy;
+    [SerializeField] private int currentEnergy;
 
     public event Action<int, int> OnEnergyChanged;
 
