@@ -11,7 +11,6 @@ public class Card
     {
         this.data = data;
         currentCost = data.cost;
-        //Debug.Log($"<color=cyan>Stworzono kartę: {data.cardName} z kosztem {currentCost}</color>");
         actions = new List<BaseAction>(); // buff and future things
 
         if (data.actions == null) return;

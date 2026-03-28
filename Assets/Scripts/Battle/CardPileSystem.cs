@@ -35,7 +35,7 @@ public class CardPileSystem : MonoBehaviour
         drawPile.Clear();
 
         // Karty S - SelectedEnemy
-        for (int i = 1; i <= 55; i++)
+        for (int i = 1; i <= 5; i++)
         {
             CardData data = ScriptableObject.CreateInstance<CardData>();
             data.cost = Random.Range(1, 5);
@@ -44,6 +44,23 @@ public class CardPileSystem : MonoBehaviour
             DamageAction action = new DamageAction();
             action.targetType = TargetType.SelectedEnemy;
             action.damageAmount = 6;
+
+            data.actions = new List<BaseAction> { action };
+
+            drawPile.Add(new Card(data));
+        }
+
+        // Karty AS - Special
+        for (int i = 1; i <= 5; i++)
+        {
+            CardData data = ScriptableObject.CreateInstance<CardData>();
+            data.cost = Random.Range(1, 5);
+            data.type = CardType.Skill;
+            data.cardName = $"Card SA{i}/{data.cost}";
+
+            BlockAction action = new BlockAction();
+            action.targetType = TargetType.AllEnemies;
+            action.blockAmount = 2;
 
             data.actions = new List<BaseAction> { action };
 

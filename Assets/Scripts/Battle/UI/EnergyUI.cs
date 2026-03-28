@@ -4,25 +4,30 @@ using TMPro;
 public class EnergyUI : MonoBehaviour
 {
     [SerializeField] private TMP_Text energyText;
+    private EnergySystem energySystem;
 
 
     void Start()
     {
-        if (EnergySystem.Instance != null)
-            EnergySystem.Instance.OnEnergyChanged += updateUI;
+        energySystem = EnergySystem.Instance;
+
+        if (energySystem != null)
+        {
+            energySystem.OnEnergyChanged += updateUI;
+            updateUI();
+        }
     }
 
 
     void OnDestroy()
     {
-        if (EnergySystem.Instance != null)
-            EnergySystem.Instance.OnEnergyChanged -= updateUI;
-        
+        if (energySystem != null)
+            energySystem.OnEnergyChanged -= updateUI;
     }
 
 
-    private void updateUI(int current, int max)
+    private void updateUI()
     {
-        energyText.text = $"{current}/{max}";
+        energyText.text = $"{energySystem.currentEnergy}/{energySystem.currentMaxEnergy}";
     }
 }

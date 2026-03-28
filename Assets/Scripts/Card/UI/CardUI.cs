@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 using UnityEngine.EventSystems;
 using System.Collections.Generic;
@@ -15,7 +16,18 @@ public class CardUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
 
     [Header("Card Data")]
     private Card card;
-    public TMP_Text nameText;
+
+    [Header("UI")]
+    [SerializeField] private Image frontImage;
+    [SerializeField] private Image cardArtImage;
+
+    [SerializeField] private TMP_Text nameText;
+    [SerializeField] private TMP_Text descText;
+    [SerializeField] private Image energyIcon;
+    [SerializeField] private TMP_Text costText;
+
+    [SerializeField] private Sprite[] frontSprites;
+
 
     private bool canDrag = true;
 
@@ -25,16 +37,50 @@ public class CardUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
         canvas = GetComponentInParent<Canvas>();
     }
 
+    void Start()
+    {
+        if (EnergySystem.Instance != null)
+            EnergySystem.Instance.OnEnergyChanged += updateCostColor;
+    }
+
+
+    void OnDestroy()
+    {
+        if (EnergySystem.Instance != null)
+            EnergySystem.Instance.OnEnergyChanged -= updateCostColor;
+    }
 
     public void init(Card card)
     {
         this.card = card;
 
-        // switch (card.data.type): case CardType.Attack: BACKGROUND IMAGE = attack card sprite; ITD
-        // 
+        if (card.data.image != null)
+            cardArtImage.sprite = card.data.image;
+
+        int typeIndex = (int)card.data.type;
+        if (frontSprites != null && typeIndex < frontSprites.Length)
+            frontImage.sprite = frontSprites[typeIndex];
+
+        // energyIcon.sprite = ;
 
         nameText.text = card.data.cardName;
+        descText.text = $"{card.data.cost} Energy\n{string.Join("\n", card.data.actions)}";
+        costText.text = $"{card.currentCost}";
+
+
         handArea = GetComponentInParent<HandAreaUI>();
+
+        updateCostColor();
+    }
+
+    private void updateCostColor()
+    {
+        if (costText == null) return;
+
+        if (EnergySystem.Instance != null && EnergySystem.Instance.canAfford(card.currentCost))
+            costText.color = Color.white;
+        else
+            costText.color = Color.red;
     }
 
     #region Drag And Drop System

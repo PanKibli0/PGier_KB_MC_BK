@@ -16,17 +16,15 @@ public class EndTurn : MonoBehaviour
         }
         // END DEBUG
 
-        HandSystem.Instance.discardAllCards();
-
-        int drawCount = Random.Range(3, 6);
-
-        for (int i = 0; i < drawCount; i++)
-            if (CardPileSystem.Instance != null) CardPileSystem.Instance.drawCard();
-
-
+        if (HandSystem.Instance != null)
+            HandSystem.Instance.discardAllCards();
 
         if (EnergySystem.Instance != null)
             EnergySystem.Instance.refreshEnergy();
+
+        int drawCount = Random.Range(3, 6);
+        for (int i = 0; i < drawCount; i++)
+            if (CardPileSystem.Instance != null) CardPileSystem.Instance.drawCard();
 
         OnTurnEnded?.Invoke();
     }

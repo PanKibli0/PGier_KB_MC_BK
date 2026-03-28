@@ -6,10 +6,10 @@ public class EnergySystem : MonoBehaviour
     public static EnergySystem Instance;
 
     [SerializeField] private int maxEnergy = 3;
-    [SerializeField] private int currentMaxEnergy;
-    [SerializeField] private int currentEnergy;
+    public int currentMaxEnergy;
+    public int currentEnergy;
 
-    public event Action<int, int> OnEnergyChanged;
+    public event Action OnEnergyChanged;
 
 
     void Awake()
@@ -33,14 +33,14 @@ public class EnergySystem : MonoBehaviour
     {
         currentMaxEnergy = maxEnergy;
         currentEnergy = currentMaxEnergy;
-        OnEnergyChanged?.Invoke(currentEnergy, currentMaxEnergy);
+        OnEnergyChanged?.Invoke();
     }
 
 
     public void setCurrentMaxEnergy(int newMax)
     {
         currentMaxEnergy = newMax;
-        OnEnergyChanged?.Invoke(currentEnergy, currentMaxEnergy);
+        OnEnergyChanged?.Invoke();
     }
 
 
@@ -48,7 +48,7 @@ public class EnergySystem : MonoBehaviour
     {
         maxEnergy += amount;
         currentMaxEnergy += amount;
-        OnEnergyChanged?.Invoke(currentEnergy, currentMaxEnergy);
+        OnEnergyChanged?.Invoke();
     }
 
     // przemyslec jak w playCard to ma być
@@ -61,14 +61,14 @@ public class EnergySystem : MonoBehaviour
     public void spendEnergy(int amount)
     {
         currentEnergy -= amount;
-        OnEnergyChanged?.Invoke(currentEnergy, currentMaxEnergy);
+        OnEnergyChanged?.Invoke();
     }
 
 
     public void addEnergy(int amount)
     {
         currentEnergy += amount;
-        OnEnergyChanged?.Invoke(currentEnergy, currentMaxEnergy);
+        OnEnergyChanged?.Invoke();
     }
 
 
@@ -77,6 +77,6 @@ public class EnergySystem : MonoBehaviour
         if (amount >= 0) currentEnergy = amount;
         else currentEnergy = currentMaxEnergy;
 
-        OnEnergyChanged?.Invoke(currentEnergy, currentMaxEnergy);
+        OnEnergyChanged?.Invoke();
     }
 }
