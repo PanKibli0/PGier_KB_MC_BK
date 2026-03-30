@@ -7,7 +7,7 @@ public class BlockAction : BaseAction
 
     public override void execute(Unit target)
     {
-        Debug.Log($"BlockAction -> {blockAmount}");
+        target.addBlock(blockAmount);
     }
 
 }

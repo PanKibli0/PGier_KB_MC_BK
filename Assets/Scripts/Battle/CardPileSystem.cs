@@ -61,8 +61,11 @@ public class CardPileSystem : MonoBehaviour
             BlockAction action = new BlockAction();
             action.targetType = TargetType.AllEnemies;
             action.blockAmount = 2;
+            HealAction action2 = new HealAction();
+            action2.targetType = TargetType.AllEnemies;
+            action2.healAmount = 2;
 
-            data.actions = new List<BaseAction> { action };
+            data.actions = new List<BaseAction> { action, action2};
 
             drawPile.Add(new Card(data));
         }

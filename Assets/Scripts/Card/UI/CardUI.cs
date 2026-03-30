@@ -95,6 +95,7 @@ public class CardUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
             return;
         }
 
+
         canDrag = true;
         startParent = transform.parent;
         startSiblingIndex = transform.GetSiblingIndex();
@@ -188,7 +189,6 @@ public class CardUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
         
             EnergySystem.Instance.spendEnergy(card.currentCost);
         
-
         foreach (var action in card.actions)
         {
             switch (action.targetType)

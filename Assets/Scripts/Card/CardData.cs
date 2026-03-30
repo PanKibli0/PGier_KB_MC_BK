@@ -7,7 +7,9 @@ public class CardData : ScriptableObject
     public string cardName;
     public int cost;
     public CardType type;
+    public Rarity rarity;
     public Sprite image;
+
 
     [SerializeReference]
     public List<BaseAction> actions;
@@ -22,4 +24,11 @@ public enum CardType
     Skill,
     Power,
     Curse
+}
+
+public enum Rarity
+{
+    Common,
+    Rare,
+    Legendary
 }

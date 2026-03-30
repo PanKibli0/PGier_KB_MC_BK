@@ -51,7 +51,6 @@ public class EnergySystem : MonoBehaviour
         OnEnergyChanged?.Invoke();
     }
 
-    // przemyslec jak w playCard to ma być
     public bool canAfford(int cost)
     {
         return currentEnergy >= cost;

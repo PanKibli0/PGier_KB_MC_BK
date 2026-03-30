@@ -17,19 +17,19 @@ MonoBehaviour:
   type: 0
   image: {fileID: 0}
   actions:
-  - rid: 3670040559899377733
+  - rid: 3670040761023594497
   - rid: 3670040559899377734
   upgrade: {fileID: 0}
   references:
     version: 2
     RefIds:
-    - rid: 3670040559899377733
-      type: {class: DamageAction, ns: , asm: Assembly-CSharp}
-      data:
-        targetType: 2
-        damageAmount: 20
     - rid: 3670040559899377734
       type: {class: DamageAction, ns: , asm: Assembly-CSharp}
       data:
         targetType: 0
         damageAmount: 2
+    - rid: 3670040761023594497
+      type: {class: DamageAction, ns: , asm: Assembly-CSharp}
+      data:
+        targetType: 0
+        damageAmount: 0

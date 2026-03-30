@@ -7,6 +7,6 @@ public class HealAction : BaseAction
 
     public override void execute(Unit target)
     {
-        Debug.Log($"HealAction -> {healAmount}");
+        target.heal(healAmount);
     }
 }

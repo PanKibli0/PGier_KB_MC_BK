@@ -28,9 +28,7 @@ public class CardPileViewer : MonoBehaviour
         loadCards(pileType);
 
         if (sortOrderButton != null)
-        {
             sortOrderButton.interactable = (pileType != PileType.Draw);
-        }
     }
 
 
@@ -118,8 +116,6 @@ public class CardPileViewer : MonoBehaviour
 
 
     
-
-
     public void sortOrder()
     {
         if (currentPileType == PileType.Draw) return;

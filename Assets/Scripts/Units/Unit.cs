@@ -41,18 +41,43 @@ public class Unit : MonoBehaviour
 
     public void takeDamage(int damage)
     {
-        // TODO: rozbudować o block w przyszłości
+        if (block > 0)
+        {
+            int blockUsed = Mathf.Min(block, damage);
+            block -= blockUsed;
+            damage -= blockUsed;
+        }
+
         currentHealth -= damage;
        
-
-
         statsUI?.updateUI();
 
         if (currentHealth <= 0)
-        {
-            Debug.Log($"{unitName} został pokonany!");
             Destroy(gameObject);
-        }
+    }
+
+
+    public void addBlock(int amount)
+    {
+        block += amount;
+        statsUI?.updateUI();
+    }
+
+
+    public void heal(int amount)
+    {
+        currentHealth += amount;
+        if (currentHealth > currentmaxHealth)
+           currentHealth = currentmaxHealth;
+        
+        statsUI?.updateUI();
+    }
+
+
+    public void resetBlock()
+    {
+        block = 0;
+        statsUI?.updateUI();
     }
 
 }
