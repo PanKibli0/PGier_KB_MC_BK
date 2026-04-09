@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections.Generic;
+using System.Linq;
 
 public enum UnitType
 {
@@ -17,9 +19,12 @@ public class Unit : MonoBehaviour
     public int currentHealth;
     public int block;
 
+    [SerializeReference] public List<BaseStatusEffect> effects = new List<BaseStatusEffect>();
+
     private UnitStatsUI statsUI;
 
-    protected void Start()
+
+    protected virtual void Start()
     {
 
         currentmaxHealth = maxHealth;
@@ -56,6 +61,14 @@ public class Unit : MonoBehaviour
             Destroy(gameObject);
     }
 
+    public void takeTrueDamage(int damage)
+    {
+        currentHealth -= damage;
+       
+        statsUI?.updateUI();
+        if (currentHealth <= 0)
+            Destroy(gameObject);
+    }
 
     public void addBlock(int amount)
     {
@@ -80,6 +93,52 @@ public class Unit : MonoBehaviour
         statsUI?.updateUI();
     }
 
+
+    public void addEffect(BaseStatusEffect newEffect)
+    {
+        if (newEffect.isMergeable)
+        {
+            foreach (var existing in effects)
+            {
+                if (existing.GetType() == newEffect.GetType())
+                {
+                    if (existing.merge(newEffect))
+                        effects.Remove(existing);
+                    else
+                        existing.onApply(this);
+
+                    statsUI?.updateEffectsUI();
+                    return;
+                }
+            }
+        }
+
+        effects.Add(newEffect);
+        newEffect.onApply(this);
+        statsUI?.updateEffectsUI();
+    }
+
+    public void removeEffect(BaseStatusEffect effect)
+    {
+        effects.Remove(effect);
+        statsUI?.updateEffectsUI();
+    }
+
+    public void onEffectsTurnStart()
+    {
+        foreach (var effect in effects.ToList())
+            effect.onTurnStart(this);
+
+        statsUI?.updateEffectsUI();
+    }
+
+    public void onEffectsTurnEnd()
+    {
+        foreach (var effect in effects.ToList())
+            effect.onTurnEnd(this);
+
+        statsUI?.updateEffectsUI();
+    }
 }
 
 

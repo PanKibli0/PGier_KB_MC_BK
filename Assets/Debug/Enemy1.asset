@@ -18,3 +18,196 @@ MonoBehaviour:
   moves:
   - {fileID: 11400000, guid: 6c211f7e3e4bd884ca52f03a3ae3ab63, type: 2}
   - {fileID: 11400000, guid: 6e03a0df4df44a24ba519ed16e07fd8a, type: 2}
+  startEffects:
+  - rid: 2259742880189382848
+  - rid: 2259742880189382726
+  - rid: 2259742880189382727
+  - rid: 2259742880189382728
+  - rid: 2259742880189382849
+  - rid: 2259742880189382850
+  - rid: 2259742880189382851
+  - rid: 2259742880189382876
+  - rid: 2259742880189382877
+  - rid: 2259742880189382878
+  - rid: 2259742880189382879
+  - rid: 2259742880189382880
+  - rid: 2259742880189382881
+  - rid: 2259742880189382882
+  - rid: 2259742897097933004
+  - rid: 2259742897097933005
+  - rid: 2259742897097933006
+  - rid: 2259742897097933007
+  - rid: 2259742897097933078
+  - rid: 2259742897097933079
+  - rid: 2259742897097933080
+  references:
+    version: 2
+    RefIds:
+    - rid: 2259742880189382726
+      type: {class: BleedingEffect, ns: , asm: Assembly-CSharp}
+      data:
+        effectName: Krwawienie
+        iconPath: 
+        isMergeable: 1
+        isDebuff: 1
+        stacks: 5
+    - rid: 2259742880189382727
+      type: {class: RegenerationEffect, ns: , asm: Assembly-CSharp}
+      data:
+        effectName: Regeneracja
+        iconPath: 
+        isMergeable: 1
+        isDebuff: 0
+        stacks: 5
+    - rid: 2259742880189382728
+      type: {class: StrengthEffect, ns: , asm: Assembly-CSharp}
+      data:
+        effectName: "Si\u0142a"
+        iconPath: 
+        isMergeable: 1
+        isDebuff: 0
+        value: -2
+    - rid: 2259742880189382848
+      type: {class: PoisonEffect, ns: , asm: Assembly-CSharp}
+      data:
+        effectName: Trucizna
+        iconPath: energia_mag
+        isMergeable: 1
+        isDebuff: 1
+        stacks: 1
+    - rid: 2259742880189382849
+      type: {class: PoisonEffect, ns: , asm: Assembly-CSharp}
+      data:
+        effectName: Trucizna
+        iconPath: energia_mag
+        isMergeable: 1
+        isDebuff: 1
+        stacks: 12
+    - rid: 2259742880189382850
+      type: {class: PoisonEffect, ns: , asm: Assembly-CSharp}
+      data:
+        effectName: Trucizna
+        iconPath: energia_mag
+        isMergeable: 1
+        isDebuff: 1
+        stacks: 13
+    - rid: 2259742880189382851
+      type: {class: PoisonEffect, ns: , asm: Assembly-CSharp}
+      data:
+        effectName: Trucizna
+        iconPath: energia_mag
+        isMergeable: 1
+        isDebuff: 1
+        stacks: 14
+    - rid: 2259742880189382876
+      type: {class: PoisonEffect, ns: , asm: Assembly-CSharp}
+      data:
+        effectName: Trucizna
+        iconPath: energia_mag
+        isMergeable: 0
+        isDebuff: 1
+        stacks: 15
+    - rid: 2259742880189382877
+      type: {class: PoisonEffect, ns: , asm: Assembly-CSharp}
+      data:
+        effectName: Trucizna
+        iconPath: energia_mag
+        isMergeable: 0
+        isDebuff: 1
+        stacks: 16
+    - rid: 2259742880189382878
+      type: {class: PoisonEffect, ns: , asm: Assembly-CSharp}
+      data:
+        effectName: Trucizna
+        iconPath: energia_mag
+        isMergeable: 0
+        isDebuff: 1
+        stacks: 17
+    - rid: 2259742880189382879
+      type: {class: PoisonEffect, ns: , asm: Assembly-CSharp}
+      data:
+        effectName: Trucizna
+        iconPath: energia_mag
+        isMergeable: 0
+        isDebuff: 1
+        stacks: 18
+    - rid: 2259742880189382880
+      type: {class: PoisonEffect, ns: , asm: Assembly-CSharp}
+      data:
+        effectName: Trucizna
+        iconPath: energia_mag
+        isMergeable: 0
+        isDebuff: 1
+        stacks: 19
+    - rid: 2259742880189382881
+      type: {class: PoisonEffect, ns: , asm: Assembly-CSharp}
+      data:
+        effectName: Trucizna
+        iconPath: energia_mag
+        isMergeable: 0
+        isDebuff: 1
+        stacks: 20
+    - rid: 2259742880189382882
+      type: {class: PoisonEffect, ns: , asm: Assembly-CSharp}
+      data:
+        effectName: Trucizna
+        iconPath: energia_mag
+        isMergeable: 0
+        isDebuff: 1
+        stacks: 21
+    - rid: 2259742897097933004
+      type: {class: PoisonEffect, ns: , asm: Assembly-CSharp}
+      data:
+        effectName: Trucizna
+        iconPath: energia_mag
+        isMergeable: 0
+        isDebuff: 1
+        stacks: 0
+    - rid: 2259742897097933005
+      type: {class: PoisonEffect, ns: , asm: Assembly-CSharp}
+      data:
+        effectName: Trucizna
+        iconPath: energia_mag
+        isMergeable: 0
+        isDebuff: 1
+        stacks: 22
+    - rid: 2259742897097933006
+      type: {class: PoisonEffect, ns: , asm: Assembly-CSharp}
+      data:
+        effectName: Trucizna
+        iconPath: energia_mag
+        isMergeable: 0
+        isDebuff: 1
+        stacks: 23
+    - rid: 2259742897097933007
+      type: {class: PoisonEffect, ns: , asm: Assembly-CSharp}
+      data:
+        effectName: Trucizna
+        iconPath: energia_mag
+        isMergeable: 0
+        isDebuff: 1
+        stacks: 24
+    - rid: 2259742897097933078
+      type: {class: PoisonEffect, ns: , asm: Assembly-CSharp}
+      data:
+        effectName: Trucizna
+        iconPath: energia_mag
+        isMergeable: 0
+        isDebuff: 1
+        stacks: 0
+    - rid: 2259742897097933079
+      type: {class: PoisonEffect, ns: , asm: Assembly-CSharp}
+      data:
+        effectName: Trucizna
+        iconPath: energia_mag
+        isMergeable: 0
+        isDebuff: 1
+        stacks: 0
+    - rid: 2259742897097933080
+      type: {class: PoisonEffect, ns: , asm: Assembly-CSharp}
+      data:
+        effectName: Trucizna
+        iconPath: energia_mag
+        isMergeable: 0
+        isDebuff: 1
+        stacks: 0

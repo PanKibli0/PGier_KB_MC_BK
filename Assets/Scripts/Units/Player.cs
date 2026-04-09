@@ -16,7 +16,7 @@ public class Player : Unit
     }
 
 
-    new void Start()
+    protected override void Start()
     {
         unitType = UnitType.Player;
 

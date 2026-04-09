@@ -9,6 +9,9 @@ public class EnemyData : ScriptableObject
     public int maxHealth;
 
     public List<EnemyMove> moves;
+
+    [SerializeReference] 
+    public List<BaseStatusEffect> startEffects;
 }
 
 public enum EnemyType

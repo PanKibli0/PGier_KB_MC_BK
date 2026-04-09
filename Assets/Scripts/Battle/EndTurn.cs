@@ -8,6 +8,9 @@ public class EndTurn : MonoBehaviour
 
     public void endTurn()
     {
+        Player.Instance.onEffectsTurnEnd();
+        
+
         // DEBUG
         Enemy[] enemies = FindObjectsByType<Enemy>(FindObjectsSortMode.None);
         foreach (Enemy enemy in enemies)
@@ -26,6 +29,7 @@ public class EndTurn : MonoBehaviour
         for (int i = 0; i < drawCount; i++)
             if (CardPileSystem.Instance != null) CardPileSystem.Instance.drawCard();
 
+        Player.Instance.onEffectsTurnStart();
         OnTurnEnded?.Invoke();
     }
 }

@@ -1,0 +1,34 @@
+using UnityEngine;
+
+[System.Serializable]
+public class BleedingEffect : BaseStatusEffect
+{
+    public int stacks;
+
+    public BleedingEffect()
+    {
+        effectName = "Krwawienie";
+        isMergeable = true;
+        isDebuff = true;
+    }
+
+    public override string getMainText() { return stacks.ToString(); }
+
+    public override void onTurnStart(Unit owner)
+    {
+        owner.takeTrueDamage(stacks);
+        stacks--;
+        if (stacks <= 0) owner.removeEffect(this);
+    }
+
+    public override bool merge(BaseStatusEffect other)
+    {
+        stacks += ((BleedingEffect)other).stacks;
+        return stacks <= 0;
+    }
+
+    public override string getDescription()
+    {
+        return $"Na początek tury zadaje {stacks} obrażeń. Zmniejsza się o 1.";
+    }
+}

@@ -5,7 +5,7 @@ public class Enemy : Unit
     [SerializeField] private EnemyData data;
 
 
-    new void Start()
+    protected override void Start()
     {
         if (data == null) return;
 
@@ -14,13 +14,19 @@ public class Enemy : Unit
         currentHealth = maxHealth;
         unitType = UnitType.Enemy;
 
+        foreach (var effect in data.startEffects)
+            if (effect != null) addEffect(effect.Clone());
+        
+
         base.Start();
     }
 
 
     public void takeTurn()
     {
-        
+
+        onEffectsTurnStart();
+
         if (data == null || data.moves == null || data.moves.Count == 0) return;
 
         int randomIndex = Random.Range(0, data.moves.Count);
@@ -36,5 +42,7 @@ public class Enemy : Unit
             action.execute(Player.Instance);
             // END DEBUG
         }
+
+        onEffectsTurnEnd();
     }
 }
