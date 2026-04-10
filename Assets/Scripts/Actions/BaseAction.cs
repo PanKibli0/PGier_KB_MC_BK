@@ -5,7 +5,7 @@ public abstract class BaseAction
 {
     public TargetType targetType;
 
-    public abstract void execute(Unit target);
+    public abstract void execute(Unit target, Unit source);
 
     public BaseAction Clone() // GŁĘBOKIE KOPIOWANIE
     {

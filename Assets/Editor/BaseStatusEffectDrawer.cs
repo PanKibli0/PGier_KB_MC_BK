@@ -15,7 +15,8 @@ public class BaseStatusEffectDrawer : PropertyDrawer
             typeof(PoisonEffect),
             typeof(BleedingEffect),
             typeof(RegenerationEffect),
-            typeof(StrengthEffect)
+            typeof(StrengthEffect),
+            typeof(ThornsEffect)
         };
 
         typeNames = new string[types.Length];

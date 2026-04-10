@@ -5,7 +5,7 @@ public class BlockAction : BaseAction
 {
     public int blockAmount;
 
-    public override void execute(Unit target)
+    public override void execute(Unit target, Unit source)
     {
         target.addBlock(blockAmount);
     }

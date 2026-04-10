@@ -5,9 +5,13 @@ public class DamageAction : BaseAction
 {
     public int damageAmount;
 
-    public override void execute(Unit target)
+    public override void execute(Unit target, Unit source)
     {
-        //Debug.Log($"DamageAction -> {damageAmount}");
-        target.takeDamage(damageAmount);
+        int finalDamage = damageAmount;
+
+        foreach (var effect in source.effects)
+            effect.onDealDamage(source, target, ref finalDamage);
+
+        target.takeDamage(finalDamage, DamageType.Normal, source);
     }
 }

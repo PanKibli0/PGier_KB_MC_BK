@@ -9,32 +9,75 @@ public enum UnitType
     Enemy
 }
 
+public enum DamageType
+{
+    Normal,
+    True,
+    Pure
+}
+
 public class Unit : MonoBehaviour
 {
     public string unitName;
     public UnitType unitType;
 
     public int maxHealth;
-    public int currentmaxHealth;
+    public int currentMaxHealth;
     public int currentHealth;
     public int block;
 
     [SerializeReference] public List<BaseStatusEffect> effects = new List<BaseStatusEffect>();
+    [SerializeReference] private UnitData unitData;
 
     private UnitStatsUI statsUI;
 
 
-    protected virtual void Start()
+    public void init(UnitData data, UnitType type)
     {
-
-        currentmaxHealth = maxHealth;
+        unitData = data;
+        unitType = type;
+        unitName = data.unitName;
+        maxHealth = data.maxHealth;
+        currentMaxHealth = maxHealth;
         currentHealth = maxHealth;
 
+        foreach (var effect in data.startEffects)
+            if (effect != null) addEffect(effect.Clone());
+
+        if (UnitStatsUIManager.Instance != null)
+            UnitStatsUIManager.Instance.createStatsUI(this);
+
+        if (UnitsManager.Instance != null)
+        {
+            if (type == UnitType.Player)
+                UnitsManager.Instance.player = this;
+            else if (type == UnitType.Ally)
+                UnitsManager.Instance.addAlly(this);
+            else if (type == UnitType.Enemy)
+                UnitsManager.Instance.addEnemy(this);
+        }
+    }
+
+
+    void Start()
+    {
+        currentMaxHealth = maxHealth;
+        currentHealth = maxHealth;
 
         if (UnitStatsUIManager.Instance != null)
         {
             UnitStatsUIManager.Instance.createStatsUI(this);
+        };
+
+        // DEBUG
+        if (unitData != null)
+            init(unitData, unitType);
+        else if (unitType == UnitType.Player)
+        {
+            if (UnitsManager.Instance != null)
+                UnitsManager.Instance.player = this;
         }
+        // END DEBUG
     }
 
 
@@ -44,9 +87,41 @@ public class Unit : MonoBehaviour
     }
 
 
-    public void takeDamage(int damage)
+    public void takeTurn()
     {
-        if (block > 0)
+        if (unitType == UnitType.Player) return;
+
+        onEffectsTurnStart();
+
+        if (unitData == null || unitData.moves == null || unitData.moves.Count == 0) return;
+
+        int randomIndex = Random.Range(0, unitData.moves.Count);
+        UnitMove selectedMove = unitData.moves[randomIndex];
+
+        Debug.Log($"{unitName} uses {selectedMove.moveName}");
+
+        foreach (var action in selectedMove.actions)
+        {
+            if (action == null) continue;
+
+            // DEBUG: cel - gracz (singleton)
+            action.execute(UnitsManager.Instance.player, this);
+            // END DEBUG
+        }
+
+        onEffectsTurnEnd();
+    }
+
+
+    public void takeDamage(int damage, DamageType type = DamageType.Normal, Unit source = null)
+    {
+        if (type != DamageType.Pure)
+        {
+            foreach (var effect in effects)
+                effect.onReceiveDamage(this, source, ref damage);
+        }
+
+        if (type == DamageType.Normal && block > 0)
         {
             int blockUsed = Mathf.Min(block, damage);
             block -= blockUsed;
@@ -54,21 +129,12 @@ public class Unit : MonoBehaviour
         }
 
         currentHealth -= damage;
-       
         statsUI?.updateUI();
 
         if (currentHealth <= 0)
             Destroy(gameObject);
     }
 
-    public void takeTrueDamage(int damage)
-    {
-        currentHealth -= damage;
-       
-        statsUI?.updateUI();
-        if (currentHealth <= 0)
-            Destroy(gameObject);
-    }
 
     public void addBlock(int amount)
     {
@@ -80,9 +146,9 @@ public class Unit : MonoBehaviour
     public void heal(int amount)
     {
         currentHealth += amount;
-        if (currentHealth > currentmaxHealth)
-           currentHealth = currentmaxHealth;
-        
+        if (currentHealth > currentMaxHealth)
+            currentHealth = currentMaxHealth;
+
         statsUI?.updateUI();
     }
 
@@ -96,6 +162,8 @@ public class Unit : MonoBehaviour
 
     public void addEffect(BaseStatusEffect newEffect)
     {
+        Debug.Log($"addEffect: {newEffect.effectName} (stacks: {newEffect.getMainText()}) do {unitName}");
+
         if (newEffect.isMergeable)
         {
             foreach (var existing in effects)
@@ -118,11 +186,13 @@ public class Unit : MonoBehaviour
         statsUI?.updateEffectsUI();
     }
 
+
     public void removeEffect(BaseStatusEffect effect)
     {
         effects.Remove(effect);
         statsUI?.updateEffectsUI();
     }
+
 
     public void onEffectsTurnStart()
     {
@@ -132,6 +202,7 @@ public class Unit : MonoBehaviour
         statsUI?.updateEffectsUI();
     }
 
+
     public void onEffectsTurnEnd()
     {
         foreach (var effect in effects.ToList())
@@ -140,5 +211,3 @@ public class Unit : MonoBehaviour
         statsUI?.updateEffectsUI();
     }
 }
-
-

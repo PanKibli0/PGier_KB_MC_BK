@@ -86,6 +86,53 @@ public class CardPileSystem : MonoBehaviour
             drawPile.Add(new Card(data));
         }
 
+        // Karty P - Power (efekty)
+        for (int i = 1; i <= 5; i++)
+        {
+            CardData data = ScriptableObject.CreateInstance<CardData>();
+            data.cost = Random.Range(1, 3);
+            data.type = CardType.Power;
+            data.cardName = $"Card P{i}/{data.cost}";
+
+            AddEffectAction action = new AddEffectAction();
+            action.targetType = TargetType.Self;
+
+            if (i == 1)
+            {
+                PoisonEffect effect = new PoisonEffect();
+                effect.stacks = 10;
+                action.effectToAdd = effect;
+            }
+            else if (i == 2)
+            {
+                BleedingEffect effect = new BleedingEffect();
+                effect.stacks = 20;
+                action.effectToAdd = effect;
+            }
+            else if (i == 3)
+            {
+                StrengthEffect effect = new StrengthEffect();
+                effect.value = 30;
+                action.effectToAdd = effect;
+            }
+            else if (i == 4)
+            {
+                ThornsEffect effect = new ThornsEffect();
+                effect.value = 40;
+                action.effectToAdd = effect;
+            }
+            else if (i == 5)
+            {
+                RegenerationEffect effect = new RegenerationEffect();
+                effect.stacks = 50;
+                action.effectToAdd = effect;
+            }
+
+            data.actions = new List<BaseAction> { action };
+
+            drawPile.Add(new Card(data));
+        }
+
         shuffle(drawPile);
 
         OnDiscardPileChanged?.Invoke(discardPile.Count);

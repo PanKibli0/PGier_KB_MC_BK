@@ -13,7 +13,8 @@ public class BaseActionDrawer : PropertyDrawer
         types = new Type[] { 
             typeof(DamageAction), 
             typeof(HealAction), 
-            typeof(BlockAction)
+            typeof(BlockAction),
+            typeof(AddEffectAction)
         };
         typeNames = new string[types.Length];
         for (int i = 0; i < types.Length; i++)

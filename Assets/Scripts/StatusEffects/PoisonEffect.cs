@@ -20,7 +20,7 @@ public class PoisonEffect : BaseStatusEffect
 
     public override void onTurnEnd(Unit owner)
     {
-        owner.takeTrueDamage(stacks);
+        owner.takeDamage(stacks, DamageType.Pure);
         stacks--;
         if (stacks <= 0) owner.removeEffect(this);
     }

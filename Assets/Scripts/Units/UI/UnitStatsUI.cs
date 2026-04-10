@@ -55,6 +55,8 @@ public class UnitStatsUI : MonoBehaviour
 
     public void updateEffectsUI()
     {
+        if (effectsContainer == null) return;
+
         foreach (Transform child in effectsContainer)
             Destroy(child.gameObject);
 

@@ -16,7 +16,7 @@ public class BleedingEffect : BaseStatusEffect
 
     public override void onTurnStart(Unit owner)
     {
-        owner.takeTrueDamage(stacks);
+        owner.takeDamage(stacks, DamageType.Pure);
         stacks--;
         if (stacks <= 0) owner.removeEffect(this);
     }

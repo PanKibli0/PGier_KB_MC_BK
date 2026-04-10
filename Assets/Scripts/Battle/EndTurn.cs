@@ -6,30 +6,30 @@ public class EndTurn : MonoBehaviour
 {
     public event Action OnTurnEnded;
 
+
     public void endTurn()
     {
-        Player.Instance.onEffectsTurnEnd();
-        
+        UnitsManager.Instance.player.onEffectsTurnEnd();
 
-        // DEBUG
-        Enemy[] enemies = FindObjectsByType<Enemy>(FindObjectsSortMode.None);
-        foreach (Enemy enemy in enemies)
-        {
+        foreach (Unit enemy in UnitsManager.Instance.enemies)
             enemy.takeTurn();
-        }
-        // END DEBUG
+
+
+        foreach (Unit ally in UnitsManager.Instance.allies)
+            ally.takeTurn();
+
 
         if (HandSystem.Instance != null)
             HandSystem.Instance.discardAllCards();
 
         if (EnergySystem.Instance != null)
             EnergySystem.Instance.refreshEnergy();
-        
+
         int drawCount = Random.Range(3, 6);
         for (int i = 0; i < drawCount; i++)
             if (CardPileSystem.Instance != null) CardPileSystem.Instance.drawCard();
 
-        Player.Instance.onEffectsTurnStart();
+        UnitsManager.Instance.player.onEffectsTurnStart();
         OnTurnEnded?.Invoke();
     }
 }

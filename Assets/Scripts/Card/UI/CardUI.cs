@@ -90,8 +90,6 @@ public class CardUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
         if (EnergySystem.Instance != null && !EnergySystem.Instance.canAfford(card.currentCost))
         {
             canDrag = false;
-            Debug.Log($"Nie stać na kartę {card.data.cardName} (koszt: {card.currentCost})");
-
             return;
         }
 
@@ -158,13 +156,11 @@ public class CardUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
             if (targetUnit != null)
             {
                 selectedTarget = targetUnit;
-                Debug.Log($"Trafiono w cel: {targetUnit.unitName}");
                 return true;
             }
         }
 
         selectedTarget = null;
-        Debug.Log("Nie trafiono w żaden cel");
         return false;
     }
 
@@ -184,6 +180,7 @@ public class CardUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
     // FUTURE: System zagrywania kart
     private void playCard()
     {
+        Debug.Log($"Zagrano kartę: {card.data.cardName}, ilość akcji: {card.actions.Count}");
 
         if (EnergySystem.Instance != null)
         
@@ -193,18 +190,18 @@ public class CardUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
         {
             switch (action.targetType)
             {
+                case TargetType.Self:
+                    action.execute(UnitsManager.Instance.player, UnitsManager.Instance.player);
+                    break;
+
                 case TargetType.SelectedEnemy:
                     if (selectedTarget != null && selectedTarget.unitType == UnitType.Enemy)
-                        action.execute(selectedTarget);
+                        action.execute(selectedTarget, UnitsManager.Instance.player);
                     break;
 
                 case TargetType.AllEnemies:
-                    // DEBUG
-                    Unit[] allUnits = FindObjectsByType<Unit>(FindObjectsSortMode.None);
-                    foreach (var unit in allUnits)
-                        if (unit.unitType == UnitType.Enemy)
-                            action.execute(unit);
-                    // END DEBUG
+                    foreach (var enemy in UnitsManager.Instance.enemies)
+                        action.execute(enemy, UnitsManager.Instance.player);
                     break;
             }
         }

@@ -5,7 +5,7 @@ public class HealAction : BaseAction
 {
     public int healAmount;
 
-    public override void execute(Unit target)
+    public override void execute(Unit target, Unit source)
     {
         target.heal(healAmount);
     }
