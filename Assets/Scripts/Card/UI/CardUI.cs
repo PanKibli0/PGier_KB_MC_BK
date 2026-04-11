@@ -130,20 +130,25 @@ public class CardUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
             return;
         }
 
-
         canDrag = true;
         startParent = transform.parent;
         startSiblingIndex = transform.GetSiblingIndex();
 
         transform.SetParent(canvas.transform);
         transform.SetAsLastSibling();
-        transform.position = eventData.position;
+
+        Vector3 worldPos = Camera.main.ScreenToWorldPoint(eventData.position);
+        worldPos.z = 0f;
+        transform.position = worldPos;
     }
 
     public void OnDrag(PointerEventData eventData)
     {
         if (!canDrag) return;
-        transform.position = eventData.position;
+
+        Vector3 worldPos = Camera.main.ScreenToWorldPoint(eventData.position);
+        worldPos.z = 0f;
+        transform.position = worldPos;
 
         var results = new List<RaycastResult>();
         EventSystem.current.RaycastAll(eventData, results);
@@ -161,6 +166,8 @@ public class CardUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
             updateDescription(currentHoverTarget);
         }
     }
+
+
 
     public void OnEndDrag(PointerEventData eventData)
     {
