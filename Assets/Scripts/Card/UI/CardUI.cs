@@ -105,9 +105,26 @@ public class CardUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
 
     #region Drag And Drop System
 
+    private bool canPlayCard()
+    {
+        if (EnergySystem.Instance != null && !EnergySystem.Instance.canAfford(card.currentCost)) return false;
+
+        foreach (var action in card.actions)
+        {
+            if (action is SummonAction summon)
+            {
+                UnitType summonedType = (UnitsManager.Instance.player.unitType == UnitType.Player) ? UnitType.Ally : UnitType.Enemy;
+
+                if (summonedType == UnitType.Ally && !UnitsManager.Instance.canSummonAlly()) return false;
+                if (summonedType == UnitType.Enemy && !UnitsManager.Instance.canSummonEnemy()) return false;
+            }
+        }
+        return true;
+    }
+
     public void OnBeginDrag(PointerEventData eventData)
     {
-        if (EnergySystem.Instance != null && !EnergySystem.Instance.canAfford(card.currentCost))
+        if (!canPlayCard())
         {
             canDrag = false;
             return;
@@ -219,8 +236,6 @@ public class CardUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
     // FUTURE: System zagrywania kart
     private void playCard()
     {
-        Debug.Log($"Zagrano kartę: {card.data.cardName}, ilość akcji: {card.actions.Count}");
-
         if (EnergySystem.Instance != null)
         
             EnergySystem.Instance.spendEnergy(card.currentCost);

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class UnitData : ScriptableObject
 {
     public string unitName;
+    public GameObject graphicPrefab;
     public UnitAIType aiType;
     public int maxHealth;
     public List<UnitMove> moves;

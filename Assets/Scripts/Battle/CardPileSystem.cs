@@ -133,6 +133,66 @@ public class CardPileSystem : MonoBehaviour
             drawPile.Add(new Card(data));
         }
 
+        // DEBUG: karta Power przywołująca sojusznika
+        UnitData allyData = ScriptableObject.CreateInstance<UnitData>();
+        allyData.graphicPrefab = Resources.Load<GameObject>("Characters/Player/Warrior/war");
+        allyData.unitName = "TestAlly";
+        allyData.maxHealth = 20;
+        allyData.aiType = UnitAIType.None;
+        allyData.moves = new List<UnitMove>();
+        allyData.startEffects = new List<BaseStatusEffect>();
+
+        // Ruch 1: Uleczenie 10 HP
+        UnitMove healMove = ScriptableObject.CreateInstance<UnitMove>();
+        healMove.moveName = "Heal";
+        HealAction healAction = new HealAction();
+        healAction.healAmount = 10;
+        healAction.targetType = TargetType.Self;
+        healMove.actions = new List<BaseAction> { healAction };
+        allyData.moves.Add(healMove);
+
+        // Ruch 2: Tarcza 5
+        UnitMove blockMove5 = ScriptableObject.CreateInstance<UnitMove>();
+        blockMove5.moveName = "Block 5";
+        BlockAction block5 = new BlockAction();
+        block5.blockAmount = 5;
+        block5.targetType = TargetType.Self;
+        blockMove5.actions = new List<BaseAction> { block5 };
+        allyData.moves.Add(blockMove5);
+
+        // Ruch 3: Tarcza 10
+        UnitMove blockMove10 = ScriptableObject.CreateInstance<UnitMove>();
+        blockMove10.moveName = "Block 10";
+        BlockAction block10 = new BlockAction();
+        block10.blockAmount = 10;
+        block10.targetType = TargetType.Self;
+        blockMove10.actions = new List<BaseAction> { block10 };
+        allyData.moves.Add(blockMove10);
+
+        // Ruch 4: Tarcza 15
+        UnitMove blockMove15 = ScriptableObject.CreateInstance<UnitMove>();
+        blockMove15.moveName = "Block 15";
+        BlockAction block15 = new BlockAction();
+        block15.blockAmount = 15;
+        block15.targetType = TargetType.Self;
+        blockMove15.actions = new List<BaseAction> { block15 };
+        allyData.moves.Add(blockMove15);
+
+        // Karta Summon
+        CardData summonCardData = ScriptableObject.CreateInstance<CardData>();
+        summonCardData.cardName = "Summon TestAlly";
+        summonCardData.cost = 1;
+        summonCardData.type = CardType.Power;
+
+        SummonAction summonAction = new SummonAction();
+        summonAction.targetType = TargetType.Self;
+        summonAction.unitData = allyData;
+
+        summonCardData.actions = new List<BaseAction> { summonAction };
+
+        drawPile.Add(new Card(summonCardData));
+        // END DEBUG
+
         shuffle(drawPile);
 
         OnDiscardPileChanged?.Invoke(discardPile.Count);

@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab0e520ee75d57649b2113a55bc66e80, type: 3}
   m_Name: Enemy1
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
-  unitName: 
-  aiType: 0
+  unitName: Helea
+  graphicPrefab: {fileID: 0}
+  aiType: 1
   maxHealth: 20
   moves:
   - {fileID: 11400000, guid: 6c211f7e3e4bd884ca52f03a3ae3ab63, type: 2}

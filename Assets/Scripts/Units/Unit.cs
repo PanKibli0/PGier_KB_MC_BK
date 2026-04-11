@@ -48,17 +48,6 @@ public class Unit : MonoBehaviour
 
         foreach (var effect in data.startEffects)
             if (effect != null) addEffect(effect.Clone());
-
-
-        if (UnitsManager.Instance != null)
-        {
-            if (type == UnitType.Player)
-                UnitsManager.Instance.player = this;
-            else if (type == UnitType.Ally)
-                UnitsManager.Instance.addAlly(this);
-            else if (type == UnitType.Enemy)
-                UnitsManager.Instance.addEnemy(this);
-        }
     }
 
 
@@ -92,10 +81,9 @@ public class Unit : MonoBehaviour
     {
         if (unitData == null || unitData.moves == null || unitData.moves.Count == 0) return;
 
-        Debug.Log($"calculateIntent: {unitName}, moves count: {unitData.moves.Count}");
         int randomIndex = Random.Range(0, unitData.moves.Count);
         nextMove = unitData.moves[randomIndex];
-        Debug.Log($"nextMove: {nextMove?.moveName ?? "null"}");
+        
         statsUI?.showIntent(nextMove);
     }
 
@@ -146,7 +134,12 @@ public class Unit : MonoBehaviour
         statsUI?.updateUI();
 
         if (currentHealth <= 0)
+        {
+            if (unitType != UnitType.Player && UnitsManager.Instance != null)
+                UnitsManager.Instance.removeUnit(this);
             Destroy(gameObject);
+        }
+            
     }
 
 
@@ -176,8 +169,6 @@ public class Unit : MonoBehaviour
 
     public void addEffect(BaseStatusEffect newEffect)
     {
-        Debug.Log($"addEffect: {newEffect.effectName} (stacks: {newEffect.getMainText()}) do {unitName}");
-
         if (newEffect.isMergeable)
         {
             foreach (var existing in effects)

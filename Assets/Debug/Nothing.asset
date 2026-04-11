@@ -13,7 +13,13 @@ MonoBehaviour:
   m_Name: Nothing
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMove
   moveName: Nothing
-  actions: []
+  actions:
+  - rid: 2259742944157237415
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 2259742944157237415
+      type: {class: DamageAction, ns: , asm: Assembly-CSharp}
+      data:
+        targetType: 0
+        damageAmount: 5
