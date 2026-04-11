@@ -14,4 +14,7 @@ public class BlockAction : BaseAction
     {
         return $"Otrzymaj {blockAmount} obrony.";
     }
+
+    // public override Sprite getIcon() { return Resources.Load<Sprite>("Icons/block"); }
+    public override string getValue() { return $"{blockAmount}"; }
 }

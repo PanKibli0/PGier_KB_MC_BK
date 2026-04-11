@@ -14,4 +14,7 @@ public class HealAction : BaseAction
     {
         return $"Ulecz {healAmount} punktów zdrowia.";
     }
+
+    // public override Sprite getIcon() { return Resources.Load<Sprite>("Icons/heal"); }
+    public override string getValue() { return $"{healAmount}"; }
 }

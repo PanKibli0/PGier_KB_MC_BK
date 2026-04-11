@@ -30,6 +30,7 @@ public class Unit : MonoBehaviour
 
     [SerializeReference] public List<BaseStatusEffect> effects = new List<BaseStatusEffect>();
     [SerializeReference] private UnitData unitData;
+    public UnitMove nextMove;
 
     private UnitStatsUI statsUI;
 
@@ -48,8 +49,6 @@ public class Unit : MonoBehaviour
         foreach (var effect in data.startEffects)
             if (effect != null) addEffect(effect.Clone());
 
-        if (UnitStatsUIManager.Instance != null)
-            UnitStatsUIManager.Instance.createStatsUI(this);
 
         if (UnitsManager.Instance != null)
         {
@@ -68,12 +67,6 @@ public class Unit : MonoBehaviour
         currentMaxHealth = maxHealth;
         currentHealth = maxHealth;
 
-        if (UnitStatsUIManager.Instance != null)
-        {
-            UnitStatsUIManager.Instance.createStatsUI(this);
-        }
-        ;
-
         if (unitData != null)
             init(unitData, unitType);
         else if (unitType == UnitType.Player)
@@ -81,6 +74,12 @@ public class Unit : MonoBehaviour
             if (UnitsManager.Instance != null)
                 UnitsManager.Instance.player = this;
         }
+
+        if (UnitStatsUIManager.Instance != null)
+            UnitStatsUIManager.Instance.createStatsUI(this);
+
+        if (unitType != UnitType.Player)
+            calculateIntent();
     }
 
 
@@ -89,6 +88,22 @@ public class Unit : MonoBehaviour
         statsUI = ui;
     }
 
+    public void calculateIntent()
+    {
+        if (unitData == null || unitData.moves == null || unitData.moves.Count == 0) return;
+
+        Debug.Log($"calculateIntent: {unitName}, moves count: {unitData.moves.Count}");
+        int randomIndex = Random.Range(0, unitData.moves.Count);
+        nextMove = unitData.moves[randomIndex];
+        Debug.Log($"nextMove: {nextMove?.moveName ?? "null"}");
+        statsUI?.showIntent(nextMove);
+    }
+
+    public void clearIntent()
+    {
+        nextMove = null;
+        statsUI?.hideIntent();
+    }
 
     public void takeTurn()
     {
@@ -96,19 +111,17 @@ public class Unit : MonoBehaviour
 
         onEffectsTurnStart();
 
-        if (unitData == null || unitData.moves == null || unitData.moves.Count == 0) return;
+        if (nextMove == null) return;
 
-        int randomIndex = Random.Range(0, unitData.moves.Count);
-        UnitMove selectedMove = unitData.moves[randomIndex];
-
-        Debug.Log($"{unitName} uses {selectedMove.moveName}");
-
-        foreach (var action in selectedMove.actions)
+        foreach (var action in nextMove.actions)
         {
             if (action == null) continue;
-
+            // Debug - Player jako cel
             action.execute(UnitsManager.Instance.player, this);
+            // END debug
         }
+
+        clearIntent();
 
         onEffectsTurnEnd();
     }

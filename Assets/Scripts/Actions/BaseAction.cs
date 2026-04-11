@@ -20,7 +20,9 @@ public abstract class BaseAction
     }
 
     public virtual string getCardDescription(Unit source, Unit target = null) { return ""; }
-    
+
+    public virtual Sprite getIcon() { return null; }
+    public virtual string getValue() { return ""; }
 }
 
 

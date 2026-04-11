@@ -14,9 +14,12 @@ public class UnitStatsUI : MonoBehaviour
     [SerializeField] private Transform effectsContainer;
     [SerializeField] private EffectUI effectUIPrefab;
 
+    [SerializeField] private Transform intentContainer;
+    [SerializeField] private IntentMoveIcon intentIconPrefab;
+
     [SerializeField] private Tooltip tooltip;
 
-    private Unit unit;
+    public Unit unit;
 
     void Start()
     {
@@ -90,6 +93,34 @@ public class UnitStatsUI : MonoBehaviour
 
             EffectUI moreUI = Instantiate(effectUIPrefab, effectsContainer);
             moreUI.initAsMore(hiddenEffects, tooltip);
+        };
+    }
+
+    public void showIntent(UnitMove move)
+    {
+        if (intentContainer == null) return;
+
+        if (move == null || move.actions == null || move.actions.Count == 0)
+        {
+            intentContainer.gameObject.SetActive(false);
+            return;
         }
+
+        foreach (Transform child in intentContainer)
+            Destroy(child.gameObject);
+
+        foreach (var action in move.actions)
+        {
+            IntentMoveIcon icon = Instantiate(intentIconPrefab, intentContainer);
+            icon.init(action.getIcon(), action.getValue());
+        }
+
+        intentContainer.gameObject.SetActive(true);
+    }
+
+    public void hideIntent()
+    {
+        if (intentContainer != null)
+            intentContainer.gameObject.SetActive(false);
     }
 }

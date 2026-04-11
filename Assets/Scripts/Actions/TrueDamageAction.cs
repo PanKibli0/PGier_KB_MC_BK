@@ -30,4 +30,7 @@ public class TrueDamageAction : BaseAction
 
         return $"Zadaj {finalDamage} prawdziwych obrażeń.";
     }
+
+    // public override Sprite getIcon() { return Resources.Load<Sprite>("Icons/trueDamage"); }
+    public override string getValue() { return $"{damageAmount}"; }
 }

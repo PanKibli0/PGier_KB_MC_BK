@@ -14,10 +14,8 @@ public class EndTurn : MonoBehaviour
         foreach (Unit enemy in UnitsManager.Instance.enemies)
             enemy.takeTurn();
 
-
         foreach (Unit ally in UnitsManager.Instance.allies)
             ally.takeTurn();
-
 
         if (HandSystem.Instance != null)
             HandSystem.Instance.discardAllCards();
@@ -28,6 +26,12 @@ public class EndTurn : MonoBehaviour
         int drawCount = Random.Range(3, 6);
         for (int i = 0; i < drawCount; i++)
             if (CardPileSystem.Instance != null) CardPileSystem.Instance.drawCard();
+
+        foreach (Unit enemy in UnitsManager.Instance.enemies)
+            enemy.calculateIntent();
+
+        foreach (Unit ally in UnitsManager.Instance.allies)
+            ally.calculateIntent();
 
         UnitsManager.Instance.player.onEffectsTurnStart();
         OnTurnEnded?.Invoke();

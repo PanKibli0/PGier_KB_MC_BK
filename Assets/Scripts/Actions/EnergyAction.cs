@@ -21,6 +21,8 @@ public class EnergyAction : BaseAction
             return $"Zyskaj {amount} energii.";
         else
             return $"Strac {(-amount)} energii.";
-
     }
+
+    // public override Sprite getIcon() { return Resources.Load<Sprite>("Icons/energy"); }
+    public override string getValue() { return $"{amount}"; }
 }

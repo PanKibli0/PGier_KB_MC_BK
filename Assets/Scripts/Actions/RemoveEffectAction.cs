@@ -25,4 +25,7 @@ public class RemoveEffectAction : BaseAction
         if (effectToRemove == null) return "";
         return $"Usuń {effectToRemove.effectName}.";
     }
+
+    // public override Sprite getIcon() { return effectToRemove?.icon; }
+    public override string getValue() { return "<color=red>X</color>"; }
 }

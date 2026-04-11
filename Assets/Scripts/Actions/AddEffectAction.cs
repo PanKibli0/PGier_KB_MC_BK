@@ -20,4 +20,7 @@ public class AddEffectAction : BaseAction
         if (effectToAdd == null) return "";
         return effectToAdd.getActionDescription();
     }
+
+    // public override Sprite getIcon() { return effectToAdd?.icon; }
+    public override string getValue() { return effectToAdd?.getMainText(); }
 }
