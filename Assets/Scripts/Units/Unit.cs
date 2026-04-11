@@ -53,6 +53,9 @@ public class Unit : MonoBehaviour
 
     void Start()
     {
+        if (unitType == UnitType.Player && GameManager.Instance != null)
+            maxHealth = GameManager.Instance.currentHealth;
+
         currentMaxHealth = maxHealth;
         currentHealth = maxHealth;
 

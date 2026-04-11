@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be91687817927d141b5fa4be2f12884b, type: 3}
   m_Name: Effect
   m_EditorClassIdentifier: Assembly-CSharp::CardData
-  cardName: effect
-  cost: 0
-  type: 0
-  rarity: 0
+  cardName: Mage
+  cost: 3
+  type: 1
+  rarity: 1
   image: {fileID: 0}
   actions:
   - rid: 2259742929489494167
@@ -36,4 +36,4 @@ MonoBehaviour:
         iconPath: 
         isMergeable: 1
         isDebuff: 0
-        stacks: 0
+        stacks: 5

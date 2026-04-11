@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29cd3cb9d57c1974d8ac0e61e9667b42, type: 3}
+  m_Name: woj
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterData
+  unitName: Wojownik
+  graphicPrefab: {fileID: 9112080428852268331, guid: 4f33c3ce45e16c143b28a64bdda30ec1, type: 3}
+  maxHealth: 200
+  startEffects: []
+  startCards:
+  - {fileID: 11400000, guid: 083c2c054f187f14c96620ddfa844f6c, type: 2}
+  - {fileID: 11400000, guid: 083c2c054f187f14c96620ddfa844f6c, type: 2}
+  references:
+    version: 2
+    RefIds: []

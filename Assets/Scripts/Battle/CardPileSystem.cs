@@ -34,6 +34,11 @@ public class CardPileSystem : MonoBehaviour
     {
         drawPile.Clear();
 
+        if (GameManager.Instance != null && GameManager.Instance.currentDeck != null)
+            foreach (var cardData in GameManager.Instance.currentDeck)
+                drawPile.Add(new Card(cardData));
+
+        // DEBUG
         // Karty S - SelectedEnemy
         for (int i = 1; i <= 5; i++)
         {
