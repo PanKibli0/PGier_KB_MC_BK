@@ -12,13 +12,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be91687817927d141b5fa4be2f12884b, type: 3}
   m_Name: Effect
   m_EditorClassIdentifier: Assembly-CSharp::CardData
-  cardName: 
+  cardName: effect
   cost: 0
   type: 0
   rarity: 0
   image: {fileID: 0}
-  actions: []
+  actions:
+  - rid: 2259742929489494167
   upgrade: {fileID: 0}
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 2259742929489494167
+      type: {class: AddEffectAction, ns: , asm: Assembly-CSharp}
+      data:
+        targetType: 0
+        effectToAdd:
+          rid: 2259742929489494170
+    - rid: 2259742929489494170
+      type: {class: RegenerationEffect, ns: , asm: Assembly-CSharp}
+      data:
+        effectName: Regeneracja
+        iconPath: 
+        isMergeable: 1
+        isDebuff: 0
+        stacks: 0

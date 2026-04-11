@@ -34,4 +34,11 @@ public class StrengthEffect : BaseStatusEffect
             return $"Zadajesz <color=red>{-value}</color> obrażeń mniej.";
     }
 
+    public override string getActionDescription()
+    {
+        if (value > 0)
+            return $"Nałóż Siłę ({value})";
+        else
+            return $"Usuń Siłę ({-value})";
+    }
 }

@@ -289,6 +289,7 @@ Transform:
   - {fileID: 1231105148}
   - {fileID: 1065542380}
   - {fileID: 201751517}
+  - {fileID: 863425803}
   m_Father: {fileID: 528827206}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &129242630
@@ -938,17 +939,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 421259625}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b055a8feef2910145b47001223c40398, type: 3}
+  m_Script: {fileID: 11500000, guid: d3d4647541a8037409e2fc31c12b7a46, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Enemy
+  m_EditorClassIdentifier: Assembly-CSharp::Unit
   unitName: 
-  unitType: 0
+  unitType: 2
   maxHealth: 0
-  currentmaxHealth: 0
+  currentMaxHealth: 0
   currentHealth: 0
   block: 0
   effects: []
-  data: {fileID: 11400000, guid: 575dd5d04e2f406448ef2dfc7177a771, type: 2}
+  unitData: {fileID: 11400000, guid: 575dd5d04e2f406448ef2dfc7177a771, type: 2}
   references:
     version: 2
     RefIds: []
@@ -1062,7 +1063,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -849, y: 9}
+  m_AnchoredPosition: {x: -103, y: 0}
   m_SizeDelta: {x: 178.9971, y: 184.7424}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &469903275
@@ -1112,17 +1113,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 469903272}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b055a8feef2910145b47001223c40398, type: 3}
+  m_Script: {fileID: 11500000, guid: d3d4647541a8037409e2fc31c12b7a46, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Enemy
+  m_EditorClassIdentifier: Assembly-CSharp::Unit
   unitName: 
-  unitType: 0
+  unitType: 2
   maxHealth: 0
-  currentmaxHealth: 0
+  currentMaxHealth: 0
   currentHealth: 0
   block: 0
   effects: []
-  data: {fileID: 11400000, guid: edf65b559b4f66a4b8b5fa744917e6ad, type: 2}
+  unitData: {fileID: 11400000, guid: edf65b559b4f66a4b8b5fa744917e6ad, type: 2}
   references:
     version: 2
     RefIds: []
@@ -1544,6 +1545,53 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed4ff660f46bf9c4ea2e73aaf626d954, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CardPileViewer
+--- !u!1 &863425802
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 863425803}
+  - component: {fileID: 863425804}
+  m_Layer: 0
+  m_Name: UnitsManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &863425803
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 863425802}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 421.16272, y: 232.49722, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 116762375}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &863425804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 863425802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd1b64da33a2a0544a04392b50894c5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UnitsManager
+  player: {fileID: 0}
+  allies: []
+  enemies: []
 --- !u!1 &955116550
 GameObject:
   m_ObjectHideFlags: 0
@@ -2745,16 +2793,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1748500927}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c6383aea93d46d743affff1496f09e9b, type: 3}
+  m_Script: {fileID: 11500000, guid: d3d4647541a8037409e2fc31c12b7a46, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Player
-  unitName: Player
+  m_EditorClassIdentifier: Assembly-CSharp::Unit
+  unitName: 
   unitType: 0
-  maxHealth: 20
-  currentmaxHealth: 0
+  maxHealth: 50
+  currentMaxHealth: 0
   currentHealth: 0
   block: 0
   effects: []
+  unitData: {fileID: 0}
   references:
     version: 2
     RefIds: []

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a47322801de95b348a0db7e09c294398, type: 3}
   m_Name: Heal
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMove
-  moveName: Attack2
+  moveName: Heal
   actions:
   - rid: 3670040585674162248
   references:

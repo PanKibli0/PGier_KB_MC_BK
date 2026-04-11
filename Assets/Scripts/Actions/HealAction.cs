@@ -9,4 +9,9 @@ public class HealAction : BaseAction
     {
         target.heal(healAmount);
     }
+
+    public override string getCardDescription(Unit source, Unit target = null)
+    {
+        return $"Ulecz {healAmount} punktów zdrowia.";
+    }
 }

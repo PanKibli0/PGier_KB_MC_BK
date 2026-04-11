@@ -19,4 +19,10 @@ public class RemoveEffectAction : BaseAction
             }
         }
     }
+
+    public override string getCardDescription(Unit source, Unit target = null)
+    {
+        if (effectToRemove == null) return "";
+        return $"Usuń {effectToRemove.effectName}.";
+    }
 }

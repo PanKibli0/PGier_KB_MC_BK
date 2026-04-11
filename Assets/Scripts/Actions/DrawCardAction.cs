@@ -13,4 +13,9 @@ public class DrawCardAction : BaseAction
                 CardPileSystem.Instance.drawCard();
         }
     }
+
+    public override string getCardDescription(Unit source, Unit target = null)
+    {
+        return $"Dobierz {amount} karty.";
+    }
 }

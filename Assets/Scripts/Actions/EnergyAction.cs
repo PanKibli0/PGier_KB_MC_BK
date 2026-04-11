@@ -14,4 +14,13 @@ public class EnergyAction : BaseAction
         else if (amount < 0)
             EnergySystem.Instance.spendEnergy(-amount);
     }
+
+    public override string getCardDescription(Unit source, Unit target = null)
+    {
+        if (amount > 0)
+            return $"Zyskaj {amount} energii.";
+        else
+            return $"Strac {(-amount)} energii.";
+
+    }
 }

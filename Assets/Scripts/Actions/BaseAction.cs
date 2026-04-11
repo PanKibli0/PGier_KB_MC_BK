@@ -18,6 +18,9 @@ public abstract class BaseAction
                targetType == TargetType.SelectedAlly ||
                targetType == TargetType.SelectedAllyOrSelf;
     }
+
+    public virtual string getCardDescription(Unit source, Unit target = null) { return ""; }
+    
 }
 
 

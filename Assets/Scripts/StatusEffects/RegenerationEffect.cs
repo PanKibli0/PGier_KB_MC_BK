@@ -31,4 +31,12 @@ public class RegenerationEffect : BaseStatusEffect
     {
         return $"Na początek tury leczy {stacks} HP. Zmniejsza się o 1.";
     }
+
+    public override string getActionDescription()
+    {
+        if (stacks > 0)
+            return $"Nałóż Regenerację ({stacks})";
+        else
+            return $"Usuń Regenerację ({-stacks})";
+    }
 }

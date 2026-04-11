@@ -14,4 +14,10 @@ public class AddEffectAction : BaseAction
         target.addEffect(newEffect);
 
     }
+
+    public override string getCardDescription(Unit source, Unit target = null)
+    {
+        if (effectToAdd == null) return "";
+        return effectToAdd.getActionDescription();
+    }
 }

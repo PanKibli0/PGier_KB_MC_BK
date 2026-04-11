@@ -18,11 +18,25 @@ public class UnitStatsUI : MonoBehaviour
 
     private Unit unit;
 
+    void Start()
+    {
+        if (unit != null)
+            unit.OnEffectsChanged += updateEffectsUI;
+    }
+
+    void OnDestroy()
+    {
+        if (unit != null)
+            unit.OnEffectsChanged -= updateEffectsUI;
+    }
 
     public void init(Unit unit)
     {
         this.unit = unit;
         unit.setStatsUI(this);
+
+        if (unit != null)
+            unit.OnEffectsChanged += updateEffectsUI;
 
         nameText.text = unit.unitName;
         updateUI();

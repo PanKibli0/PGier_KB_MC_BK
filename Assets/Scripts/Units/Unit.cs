@@ -1,6 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
+using System;
+using Random = UnityEngine.Random;
 
 public enum UnitType
 {
@@ -30,6 +32,8 @@ public class Unit : MonoBehaviour
     [SerializeReference] private UnitData unitData;
 
     private UnitStatsUI statsUI;
+
+    public event Action OnEffectsChanged;
 
 
     public void init(UnitData data, UnitType type)
@@ -67,9 +71,9 @@ public class Unit : MonoBehaviour
         if (UnitStatsUIManager.Instance != null)
         {
             UnitStatsUIManager.Instance.createStatsUI(this);
-        };
+        }
+        ;
 
-        // DEBUG
         if (unitData != null)
             init(unitData, unitType);
         else if (unitType == UnitType.Player)
@@ -77,7 +81,6 @@ public class Unit : MonoBehaviour
             if (UnitsManager.Instance != null)
                 UnitsManager.Instance.player = this;
         }
-        // END DEBUG
     }
 
 
@@ -104,9 +107,7 @@ public class Unit : MonoBehaviour
         {
             if (action == null) continue;
 
-            // DEBUG: cel - gracz (singleton)
             action.execute(UnitsManager.Instance.player, this);
-            // END DEBUG
         }
 
         onEffectsTurnEnd();
@@ -175,7 +176,7 @@ public class Unit : MonoBehaviour
                     else
                         existing.onApply(this);
 
-                    statsUI?.updateEffectsUI();
+                    OnEffectsChanged?.Invoke();
                     return;
                 }
             }
@@ -183,14 +184,14 @@ public class Unit : MonoBehaviour
 
         effects.Add(newEffect);
         newEffect.onApply(this);
-        statsUI?.updateEffectsUI();
+        OnEffectsChanged?.Invoke();
     }
 
 
     public void removeEffect(BaseStatusEffect effect)
     {
         effects.Remove(effect);
-        statsUI?.updateEffectsUI();
+        OnEffectsChanged?.Invoke();
     }
 
 
@@ -199,7 +200,7 @@ public class Unit : MonoBehaviour
         foreach (var effect in effects.ToList())
             effect.onTurnStart(this);
 
-        statsUI?.updateEffectsUI();
+        OnEffectsChanged?.Invoke();
     }
 
 
@@ -208,6 +209,6 @@ public class Unit : MonoBehaviour
         foreach (var effect in effects.ToList())
             effect.onTurnEnd(this);
 
-        statsUI?.updateEffectsUI();
+        OnEffectsChanged?.Invoke();
     }
 }

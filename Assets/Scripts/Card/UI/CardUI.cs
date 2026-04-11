@@ -28,7 +28,7 @@ public class CardUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
 
     [SerializeField] private Sprite[] frontSprites;
 
-
+    private Unit currentHoverTarget;
     private bool canDrag = true;
 
     void Awake()
@@ -41,14 +41,33 @@ public class CardUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
     {
         if (EnergySystem.Instance != null)
             EnergySystem.Instance.OnEnergyChanged += updateCostColor;
-    }
 
+        UnitsManager.Instance.player.OnEffectsChanged += onEffectsChanged;
+    }
 
     void OnDestroy()
     {
         if (EnergySystem.Instance != null)
             EnergySystem.Instance.OnEnergyChanged -= updateCostColor;
+
+        if (UnitsManager.Instance?.player != null)
+            UnitsManager.Instance.player.OnEffectsChanged -= onEffectsChanged;
     }
+
+    private void onEffectsChanged() { updateDescription();}
+
+    public void updateDescription(Unit target = null)
+    {
+        if (card == null || card.actions == null) return;
+
+        string description = "";
+        foreach (var action in card.actions)
+        {
+            description += action.getCardDescription(UnitsManager.Instance.player, target) + "\n";
+        }
+        descText.text = description;
+    }
+
 
     public void init(Card card)
     {
@@ -71,6 +90,7 @@ public class CardUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
         handArea = GetComponentInParent<HandAreaUI>();
 
         updateCostColor();
+        updateDescription();
     }
 
     private void updateCostColor()
@@ -107,6 +127,22 @@ public class CardUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
     {
         if (!canDrag) return;
         transform.position = eventData.position;
+
+        var results = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(eventData, results);
+
+        Unit newTarget = null;
+        foreach (var result in results)
+        {
+            newTarget = result.gameObject.GetComponent<Unit>();
+            if (newTarget != null) break;
+        }
+
+        if (currentHoverTarget != newTarget)
+        {
+            currentHoverTarget = newTarget;
+            updateDescription(currentHoverTarget);
+        }
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -118,6 +154,9 @@ public class CardUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
         }
 
         bool canPlay;
+
+        currentHoverTarget = null;
+        updateDescription(null);
 
         if (cardRequiresTarget())
             canPlay = canPlayWithTarget(eventData);

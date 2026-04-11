@@ -31,4 +31,12 @@ public class BleedingEffect : BaseStatusEffect
     {
         return $"Na początek tury zadaje {stacks} obrażeń. Zmniejsza się o 1.";
     }
+
+    public override string getActionDescription()
+    {
+        if (stacks > 0)
+            return $"Nałóż Krwawienie ({stacks})";
+        else
+            return $"Usuń Krwawienie ({-stacks})";
+    }
 }

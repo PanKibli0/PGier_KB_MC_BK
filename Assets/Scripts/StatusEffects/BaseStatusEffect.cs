@@ -21,6 +21,9 @@ public abstract class BaseStatusEffect
     public virtual string getMainText() { return ""; }
     public virtual string getSecondaryText() { return ""; }
 
+    public virtual string getActionDescription() { return effectName; }
+
+
     public BaseStatusEffect Clone()
     {
         return (BaseStatusEffect)this.MemberwiseClone();
