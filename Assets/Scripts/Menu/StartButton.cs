@@ -5,6 +5,6 @@ public class StartButton : MonoBehaviour
 {
     public void onStartButtonClick()
     {
-        SceneManager.LoadScene("BattleScene");
+        SceneManager.LoadScene("CharacterSelectScene");
     }
 }
