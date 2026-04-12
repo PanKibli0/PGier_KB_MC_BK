@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: Enemy1
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   unitName: Helea
-  graphicPrefab: {fileID: 0}
-  aiType: 1
+  graphicPrefab: {fileID: 4200463514604636877, guid: a2324800a30964343bd88756314a9bd7, type: 3}
   maxHealth: 20
+  startEffects: []
+  aiType: 1
   moves:
   - {fileID: 11400000, guid: 6c211f7e3e4bd884ca52f03a3ae3ab63, type: 2}
   - {fileID: 11400000, guid: 6e03a0df4df44a24ba519ed16e07fd8a, type: 2}
-  startEffects: []
   references:
     version: 2
     RefIds: []

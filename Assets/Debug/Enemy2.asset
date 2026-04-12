@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: Enemy2
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   unitName: Enemy
-  graphicPrefab: {fileID: 0}
-  aiType: 1
+  graphicPrefab: {fileID: 962038764683568564, guid: 7010fdafd4eb3104b825b18e6c282fd9, type: 3}
   maxHealth: 30
-  moves:
-  - {fileID: 11400000, guid: f858c69ae47ed9d48b7a9ed8700589e5, type: 2}
   startEffects:
   - rid: 2259742944157237318
+  aiType: 1
+  moves:
+  - {fileID: 11400000, guid: f858c69ae47ed9d48b7a9ed8700589e5, type: 2}
   references:
     version: 2
     RefIds:
