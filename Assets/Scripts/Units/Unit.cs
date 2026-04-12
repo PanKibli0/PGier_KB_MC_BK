@@ -37,17 +37,19 @@ public class Unit : MonoBehaviour
     public event Action OnEffectsChanged;
 
 
-    public void init(UnitData data, UnitType type)
+    public void init(BaseUnitData data, UnitType type)
     {
-        unitData = data;
-        unitType = type;
         unitName = data.unitName;
+        unitType = type;
         maxHealth = data.maxHealth;
         currentMaxHealth = maxHealth;
         currentHealth = maxHealth;
 
         foreach (var effect in data.startEffects)
             if (effect != null) addEffect(effect.Clone());
+
+        if (data is UnitData unitData)
+            this.unitData = unitData;
     }
 
 

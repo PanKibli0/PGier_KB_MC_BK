@@ -12,10 +12,10 @@ public class EndTurn : MonoBehaviour
         UnitsManager.Instance.player.onEffectsTurnEnd();
 
         foreach (Unit enemy in UnitsManager.Instance.enemies)
-            enemy.takeTurn();
+            enemy?.takeTurn();
 
         foreach (Unit ally in UnitsManager.Instance.allies)
-            ally.takeTurn();
+            ally?.takeTurn();
 
         if (HandSystem.Instance != null)
             HandSystem.Instance.discardAllCards();
@@ -28,12 +28,12 @@ public class EndTurn : MonoBehaviour
             if (CardPileSystem.Instance != null) CardPileSystem.Instance.drawCard();
 
         foreach (Unit enemy in UnitsManager.Instance.enemies)
-            enemy.calculateIntent();
+            enemy?.calculateIntent();
 
         foreach (Unit ally in UnitsManager.Instance.allies)
-            ally.calculateIntent();
+            ally?.calculateIntent();
 
-        UnitsManager.Instance.player.onEffectsTurnStart();
+        UnitsManager.Instance.player?.onEffectsTurnStart();
         OnTurnEnded?.Invoke();
     }
 }

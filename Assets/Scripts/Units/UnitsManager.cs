@@ -15,6 +15,7 @@ public class UnitsManager : MonoBehaviour
 
     public Vector3[] allySpawnPositions = new Vector3[3];
     public Vector3[] enemySpawnPositions = new Vector3[4];
+    public Vector3 playerSpawnPosition;
 
     private bool[] allySlots = new bool[3];
     private bool[] enemySlots = new bool[4];
@@ -30,6 +31,7 @@ public class UnitsManager : MonoBehaviour
             return;
         }
         Instance = this;
+        Debug.Log($"UnitsManager Awake - enemySlots: {string.Join(",", enemySlots)}");
     }
 
     private int getFreeAllySlot()
@@ -54,6 +56,9 @@ public class UnitsManager : MonoBehaviour
         if (type == UnitType.Ally) slot = getFreeAllySlot();
         else if (type == UnitType.Enemy) slot = getFreeEnemySlot();
         else return false;
+
+        Debug.Log($"spawn {data.unitName}, type: {type}, slot: {slot}");
+        Debug.Log($"enemySlots before: {string.Join(",", enemySlots)}");
 
         if (slot == -1) return false;
 
@@ -87,7 +92,24 @@ public class UnitsManager : MonoBehaviour
 
         unitSlot[newUnit] = slot;
         OnUnitsChanged?.Invoke();
+        Debug.Log($"enemySlots after: {string.Join(",", enemySlots)}");
         return true;
+    }
+
+    public void spawnPlayer(CharacterData data)
+    {
+        if (data == null || unitPrefab == null) return;
+
+        GameObject newUnitObj = Instantiate(unitPrefab, allyContainer);
+        newUnitObj.transform.localPosition = playerSpawnPosition;
+
+        if (data.graphicPrefab != null)
+            Instantiate(data.graphicPrefab, newUnitObj.transform);
+
+        Unit newUnit = newUnitObj.GetComponent<Unit>();
+        newUnit.init(data, UnitType.Player);
+
+        player = newUnit;
     }
 
     public void addUnitAtSlot(Unit unit, int slot)

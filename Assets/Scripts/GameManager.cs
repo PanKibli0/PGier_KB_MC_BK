@@ -5,6 +5,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
+    public CharacterData selectedCharacter;
+
     public int currentHealth;
     public int maxHealth;
     public List<CardData> currentDeck;
@@ -23,6 +25,7 @@ public class GameManager : MonoBehaviour
 
     public void startNewRun(CharacterData character)
     {
+        selectedCharacter = character;
         Debug.Log($"Starting new run with character: {character.unitName}");
         currentHealth = character.maxHealth;
         maxHealth = character.maxHealth;
