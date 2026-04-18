@@ -3,8 +3,8 @@ using UnityEngine.UI;
 
 public class HandAreaUI : MonoBehaviour
 {
-    public void RefreshLayout()
+    public void refreshLayout()
     {
-        LayoutRebuilder.ForceRebuildLayoutImmediate(GetComponent<RectTransform>());
+        //LayoutRebuilder.ForceRebuildLayoutImmediate(GetComponent<RectTransform>());
     }
 }

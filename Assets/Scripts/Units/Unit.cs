@@ -88,7 +88,7 @@ public class Unit : MonoBehaviour
 
         int randomIndex = Random.Range(0, unitData.moves.Count);
         nextMove = unitData.moves[randomIndex];
-        
+
         statsUI?.showIntent(nextMove);
     }
 
@@ -109,9 +109,10 @@ public class Unit : MonoBehaviour
         foreach (var action in nextMove.actions)
         {
             if (action == null) continue;
-            // Debug - Player jako cel
-            action.execute(UnitsManager.Instance.player, this);
-            // END debug
+            List<Unit> targets = TargetingSystem.getTargets(this, action.targetType);
+
+            foreach (Unit target in targets)
+                action.execute(target, this);
         }
 
         clearIntent();
@@ -144,7 +145,7 @@ public class Unit : MonoBehaviour
                 UnitsManager.Instance.removeUnit(this);
             Destroy(gameObject);
         }
-            
+
     }
 
 
@@ -219,5 +220,14 @@ public class Unit : MonoBehaviour
             effect.onTurnEnd(this);
 
         OnEffectsChanged?.Invoke();
+    }
+
+
+    public UnitAIType getAIType()
+    {
+        if (unitData == null)
+            return UnitAIType.None;
+
+        return unitData.aiType;
     }
 }

@@ -1,10 +1,8 @@
 using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
 using UnityEngine.EventSystems;
 using System.Collections.Generic;
 
-public class CardUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class CardUIPlayable : CardUIBase, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     [Header("Drag And Drop System")]
     private RectTransform rectTransform;
@@ -13,97 +11,15 @@ public class CardUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
     private int startSiblingIndex;
     private HandAreaUI handArea;
     private Unit selectedTarget;
-
-    [Header("Card Data")]
-    private Card card;
-
-    [Header("UI")]
-    [SerializeField] private Image frontImage;
-    [SerializeField] private Image cardArtImage;
-
-    [SerializeField] private TMP_Text nameText;
-    [SerializeField] private TMP_Text descText;
-    [SerializeField] private Image energyIcon;
-    [SerializeField] private TMP_Text costText;
-
-    [SerializeField] private Sprite[] frontSprites;
-
     private Unit currentHoverTarget;
     private bool canDrag = true;
 
-    void Awake()
+    protected void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
         canvas = GetComponentInParent<Canvas>();
-    }
-
-    void Start()
-    {
-        if (EnergySystem.Instance != null)
-            EnergySystem.Instance.OnEnergyChanged += updateCostColor;
-
-        UnitsManager.Instance.player.OnEffectsChanged += onEffectsChanged;
-    }
-
-    void OnDestroy()
-    {
-        if (EnergySystem.Instance != null)
-            EnergySystem.Instance.OnEnergyChanged -= updateCostColor;
-
-        if (UnitsManager.Instance?.player != null)
-            UnitsManager.Instance.player.OnEffectsChanged -= onEffectsChanged;
-    }
-
-    private void onEffectsChanged() { updateDescription();}
-
-    public void updateDescription(Unit target = null)
-    {
-        if (card == null || card.actions == null) return;
-
-        string description = "";
-        foreach (var action in card.actions)
-        {
-            description += action.getCardDescription(UnitsManager.Instance.player, target) + "\n";
-        }
-        descText.text = description;
-    }
-
-
-    public void init(Card card)
-    {
-        this.card = card;
-
-        if (card.data.image != null)
-            cardArtImage.sprite = card.data.image;
-
-        int typeIndex = (int)card.data.type;
-        if (frontSprites != null && typeIndex < frontSprites.Length)
-            frontImage.sprite = frontSprites[typeIndex];
-
-        // energyIcon.sprite = ;
-
-        nameText.text = card.data.cardName;
-        descText.text = $"{card.data.cost} Energy\n{string.Join("\n", card.data.actions)}";
-        costText.text = $"{card.currentCost}";
-
-
         handArea = GetComponentInParent<HandAreaUI>();
-
-        updateCostColor();
-        updateDescription();
     }
-
-    private void updateCostColor()
-    {
-        if (costText == null) return;
-
-        if (EnergySystem.Instance != null && EnergySystem.Instance.canAfford(card.currentCost))
-            costText.color = Color.white;
-        else
-            costText.color = Color.red;
-    }
-
-    #region Drag And Drop System
 
     private bool canPlayCard()
     {
@@ -167,8 +83,6 @@ public class CardUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
         }
     }
 
-
-
     public void OnEndDrag(PointerEventData eventData)
     {
         if (!canDrag)
@@ -177,10 +91,10 @@ public class CardUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
             return;
         }
 
-        bool canPlay;
-
         currentHoverTarget = null;
         updateDescription(null);
+
+        bool canPlay;
 
         if (cardRequiresTarget())
             canPlay = canPlayWithTarget(eventData);
@@ -192,10 +106,8 @@ public class CardUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
         else
             returnToHand();
     }
-    #endregion
 
 
-    // FUTURE: IDK -> Card 
     private bool cardRequiresTarget()
     {
         if (card == null || card.actions == null) return false;
@@ -207,7 +119,7 @@ public class CardUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
         return false;
     }
 
-    // FUTURE: System targetowania
+
     private bool canPlayWithTarget(PointerEventData eventData)
     {
         var results = new List<RaycastResult>();
@@ -227,7 +139,7 @@ public class CardUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
         return false;
     }
 
-    // FUTURE: System zagrywania kart
+
     private bool isOverPlayArea(PointerEventData eventData)
     {
         var results = new List<RaycastResult>();
@@ -239,43 +151,30 @@ public class CardUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
         }
         return false;
     }
-    
-    // FUTURE: System zagrywania kart
+
+
     private void playCard()
     {
         if (EnergySystem.Instance != null)
-        
             EnergySystem.Instance.spendEnergy(card.currentCost);
-        
+
         foreach (var action in card.actions)
         {
-            switch (action.targetType)
-            {
-                case TargetType.Self:
-                    action.execute(UnitsManager.Instance.player, UnitsManager.Instance.player);
-                    break;
+            List<Unit> targets = TargetingSystem.getTargets(UnitsManager.Instance.player, action.targetType, selectedTarget);
 
-                case TargetType.SelectedEnemy:
-                    if (selectedTarget != null && selectedTarget.unitType == UnitType.Enemy)
-                        action.execute(selectedTarget, UnitsManager.Instance.player);
-                    break;
-
-                case TargetType.AllEnemies:
-                    foreach (var enemy in UnitsManager.Instance.enemies)
-                        action.execute(enemy, UnitsManager.Instance.player);
-                    break;
-            }
+            foreach (Unit target in targets)
+                if (target != null)
+                    action.execute(target, UnitsManager.Instance.player);
         }
 
         HandSystem.Instance.removeCard(card);
         Destroy(gameObject);
     }
 
-
     private void returnToHand()
     {
         transform.SetParent(startParent);
         transform.SetSiblingIndex(startSiblingIndex);
-        handArea?.RefreshLayout();
+        handArea?.refreshLayout();
     }
 }

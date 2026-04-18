@@ -5,8 +5,8 @@ using System.Collections.Generic;
 public class CardPileViewer : MonoBehaviour
 {
     [Header("References")]
+    [SerializeField] private CardUIManager cardUIManager;
     [SerializeField] private Transform gridContainer;
-    [SerializeField] private CardUI cardUIPrefab;
     [SerializeField] private Button sortOrderButton;
 
     private List<Card> currentCards = new List<Card>();
@@ -64,16 +64,11 @@ public class CardPileViewer : MonoBehaviour
     private void displayCards(List<Card> cards)
     {
         foreach (Transform child in gridContainer)
-        {
             Destroy(child.gameObject);
-        }
+
 
         foreach (Card card in cards)
-        {
-            CardUI cardUI = Instantiate(cardUIPrefab, gridContainer);
-            cardUI.init(card);
-            cardUI.enabled = false;
-        }
+            cardUIManager.createCardUI(card, gridContainer, CardUIType.Static);
     }
 
     private void sortAndDisplay()

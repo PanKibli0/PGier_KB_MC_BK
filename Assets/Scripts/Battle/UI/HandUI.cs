@@ -26,7 +26,7 @@ public class HandUI : MonoBehaviour
 
     void createCardUI(Card card)
     {
-        cardUIManager.createCardUI(card, handParent);
+        cardUIManager.createCardUI(card, handParent, CardUIType.Playable);
     }
 
     void clearHandUI()

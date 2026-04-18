@@ -9,7 +9,12 @@ public class SummonAction : BaseAction
     {
         if (unitData == null) return;
 
-        UnitType summonedType = (source.unitType == UnitType.Player || source.unitType == UnitType.Ally) ? UnitType.Ally : UnitType.Enemy;
+        UnitType summonedType;
+
+        if (source.unitType == UnitType.Player || source.unitType == UnitType.Ally)
+            summonedType = UnitType.Ally;
+        else
+            summonedType = UnitType.Enemy;
 
         UnitsManager.Instance.spawn(unitData, summonedType);
     }

@@ -31,7 +31,7 @@ public class UnitsManager : MonoBehaviour
             return;
         }
         Instance = this;
-        Debug.Log($"UnitsManager Awake - enemySlots: {string.Join(",", enemySlots)}");
+        
     }
 
     private int getFreeAllySlot()
@@ -57,8 +57,7 @@ public class UnitsManager : MonoBehaviour
         else if (type == UnitType.Enemy) slot = getFreeEnemySlot();
         else return false;
 
-        Debug.Log($"spawn {data.unitName}, type: {type}, slot: {slot}");
-        Debug.Log($"enemySlots before: {string.Join(",", enemySlots)}");
+
 
         if (slot == -1) return false;
 
@@ -92,7 +91,7 @@ public class UnitsManager : MonoBehaviour
 
         unitSlot[newUnit] = slot;
         OnUnitsChanged?.Invoke();
-        Debug.Log($"enemySlots after: {string.Join(",", enemySlots)}");
+
         return true;
     }
 
@@ -160,5 +159,15 @@ public class UnitsManager : MonoBehaviour
     public bool canSummonEnemy()
     {
         return getFreeEnemySlot() != -1;
+    }
+
+    public List<Unit> getAllies()
+    {
+        return new List<Unit>(allies);
+    }
+
+    public List<Unit> getEnemies()
+    {
+        return new List<Unit>(enemies);
     }
 }

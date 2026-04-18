@@ -11,10 +11,10 @@ public class EndTurn : MonoBehaviour
     {
         UnitsManager.Instance.player.onEffectsTurnEnd();
 
-        foreach (Unit enemy in UnitsManager.Instance.enemies)
+        foreach (Unit enemy in UnitsManager.Instance.getEnemies())
             enemy?.takeTurn();
 
-        foreach (Unit ally in UnitsManager.Instance.allies)
+        foreach (Unit ally in UnitsManager.Instance.getAllies())
             ally?.takeTurn();
 
         if (HandSystem.Instance != null)
@@ -27,10 +27,10 @@ public class EndTurn : MonoBehaviour
         for (int i = 0; i < drawCount; i++)
             if (CardPileSystem.Instance != null) CardPileSystem.Instance.drawCard();
 
-        foreach (Unit enemy in UnitsManager.Instance.enemies)
+        foreach (Unit enemy in UnitsManager.Instance.getEnemies())
             enemy?.calculateIntent();
 
-        foreach (Unit ally in UnitsManager.Instance.allies)
+        foreach (Unit ally in UnitsManager.Instance.getAllies())
             ally?.calculateIntent();
 
         UnitsManager.Instance.player?.onEffectsTurnStart();
