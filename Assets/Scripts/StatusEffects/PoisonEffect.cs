@@ -9,7 +9,7 @@ public class PoisonEffect : BaseStatusEffect
     public PoisonEffect()
     {
         effectName = "Trucizna";
-        iconPath = "energia_mag";
+        icon = Resources.Load<Sprite>("Icons/zatrucie");
         //isMergeable = true;
         isMergeable = false;
         isDebuff = true;

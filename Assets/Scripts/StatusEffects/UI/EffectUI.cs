@@ -21,10 +21,9 @@ public class EffectUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         singleEffect = effect;
         isMoreMode = false;
 
-        Sprite sprite = Resources.Load<Sprite>(effect.iconPath);
-        if (sprite != null)
+        if (effect.icon != null)
         {
-            icon.sprite = sprite;
+            icon.sprite = effect.icon;
             icon.gameObject.SetActive(true);
         }
 
@@ -40,6 +39,7 @@ public class EffectUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
         mainText.text = "+" + effects.Count;
         secondaryText.text = "";
+
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -49,16 +49,10 @@ public class EffectUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         if (isMoreMode)
         {
             foreach (var effect in hiddenEffects)
-            {
-                Sprite sprite = Resources.Load<Sprite>(effect.iconPath);
-                entries.Add((sprite, effect.effectName, effect.getDescription()));
-            }
+                entries.Add((effect.icon, effect.effectName, effect.getDescription()));
         }
         else
-        {
-            Sprite sprite = Resources.Load<Sprite>(singleEffect.iconPath);
-            entries.Add((sprite, singleEffect.effectName, singleEffect.getDescription()));
-        }
+            entries.Add((singleEffect.icon, singleEffect.effectName, singleEffect.getDescription()));
 
         tooltip.show(entries);
     }

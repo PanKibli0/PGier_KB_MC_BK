@@ -8,6 +8,7 @@ public class ThornsEffect : BaseStatusEffect
     public ThornsEffect()
     {
         effectName = "Ciernie";
+        icon = Resources.Load<Sprite>("Icons/ciernie");
         isMergeable = true;
         isDebuff = false;
     }

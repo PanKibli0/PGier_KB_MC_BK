@@ -8,6 +8,7 @@ public class StrengthEffect : BaseStatusEffect
     public StrengthEffect()
     {
         effectName = "Siła";
+        icon = Resources.Load<Sprite>("Icons/sila");
         isMergeable = true;
         isDebuff = false;
     }

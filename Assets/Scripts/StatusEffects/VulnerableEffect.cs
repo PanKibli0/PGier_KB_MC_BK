@@ -9,6 +9,7 @@ public class VulnerableEffect : BaseStatusEffect
     public VulnerableEffect()
     {
         effectName = "Wrażliwość";
+        icon = Resources.Load<Sprite>("Icons/wrazliwosc");
         isMergeable = true;
         isDebuff = true;
     }

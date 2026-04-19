@@ -4,7 +4,7 @@ using UnityEngine;
 public abstract class BaseStatusEffect
 {
     [HideInInspector] public string effectName;
-    [HideInInspector] public string iconPath;
+    [HideInInspector] public Sprite icon;
 
     [HideInInspector] public bool isMergeable = true;
     [HideInInspector] public bool isDebuff = false;
@@ -16,7 +16,7 @@ public abstract class BaseStatusEffect
     public virtual void onApply(Unit owner) { }
     public virtual void onRemove(Unit owner) { }
     public virtual bool merge(BaseStatusEffect other) { return false; }
-    
+
     public virtual string getDescription() { return ""; }
     public virtual string getMainText() { return ""; }
     public virtual string getSecondaryText() { return ""; }

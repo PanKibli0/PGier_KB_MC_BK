@@ -8,6 +8,7 @@ public class RegenerationEffect : BaseStatusEffect
     public RegenerationEffect()
     {
         effectName = "Regeneracja";
+        icon = Resources.Load<Sprite>("Icons/regeneracja");
         isMergeable = true;
         isDebuff = false;
     }

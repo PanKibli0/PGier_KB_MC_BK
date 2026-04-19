@@ -8,6 +8,7 @@ public class BleedingEffect : BaseStatusEffect
     public BleedingEffect()
     {
         effectName = "Krwawienie";
+        icon = Resources.Load<Sprite>("Icons/krwawienie");
         isMergeable = true;
         isDebuff = true;
     }
