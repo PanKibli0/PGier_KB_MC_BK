@@ -36,15 +36,14 @@ public class PoisonEffect : BaseStatusEffect
 
     public override string getDescription()
     {
-        return $"Na koniec tury zadaje {stacks} obrażeń. Zmniejsza się o 1.";
-        //return $"Na koniec tury zadaje {stacks} <sprite name=\"damage\">obrażeń. Zmniejsza się o 1.";
+        return $"Na koniec tury zadaje {stacks} <sprite name=\"atak\"> obrażeń. Zmniejsza się o 1.";
 
     }
 
     public override string getActionDescription()
     {
         if (stacks > 0)
-            return $"Nałóż Truciznę ({stacks})";
+            return $"Nałóż Truciznę ({stacks}) <sprite name=\"zatrucie\">";
         else
             return $"Usuń Truciznę ({-stacks})";
     }

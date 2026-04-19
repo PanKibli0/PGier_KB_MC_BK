@@ -18,11 +18,12 @@ public class EnergyAction : BaseAction
     public override string getCardDescription(Unit source, Unit target = null)
     {
         if (amount > 0)
-            return $"Zyskaj {amount} energii.";
+            return $"Zyskaj {amount} <sprite name=\"obrona\"> energii.";
         else
-            return $"Strac {(-amount)} energii.";
+            return $"Strac {(-amount)} <sprite name=\"obrona\"> energii.";
     }
 
     // public override Sprite getIcon() { return Resources.Load<Sprite>("Icons/energy"); }
+    public override string getIconPath() { return "Icons/krwawienie"; }
     public override string getValue() { return $"{amount}"; }
 }

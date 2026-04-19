@@ -11,10 +11,14 @@ public class BaseActionDrawer : PropertyDrawer
     public BaseActionDrawer()
     {
         types = new Type[] { 
-            typeof(DamageAction), 
+            typeof(DamageAction),
+            typeof(TrueDamageAction),
             typeof(HealAction), 
             typeof(BlockAction),
-            typeof(AddEffectAction)
+            typeof(AddEffectAction),
+            typeof(SummonAction),
+            typeof(RemoveEffectAction),
+            typeof(EnergyAction)
         };
         typeNames = new string[types.Length];
         for (int i = 0; i < types.Length; i++)

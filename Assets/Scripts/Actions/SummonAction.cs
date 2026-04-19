@@ -13,4 +13,5 @@ public class SummonAction : BaseAction
 
         UnitsManager.Instance.spawn(unitData, summonedType);
     }
+    public override string getIconPath() { return "Icons/obrona"; }
 }

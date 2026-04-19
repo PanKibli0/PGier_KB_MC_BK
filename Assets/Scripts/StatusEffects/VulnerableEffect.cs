@@ -13,7 +13,7 @@ public class VulnerableEffect : BaseStatusEffect
         isDebuff = true;
     }
 
-    public override string getMainText() { return duration.ToString(); }
+    public override string getMainText() { return $"<color=#0fdb57>{duration}</color>"; }
     public override string getIconPath() { return "Icons/wrazliwosc"; }
 
     public override void onReceiveDamage(Unit owner, Unit source, ref int damage)
@@ -41,7 +41,7 @@ public class VulnerableEffect : BaseStatusEffect
     public override string getActionDescription()
     {
         if (duration > 0)
-            return $"Nałóż Wrażliwość ({duration})";
+            return $"Nałóż Wrażliwość ({duration}) <sprite name=\"wrazliwosc\">";
         else
             return $"Usuń Wrażliwość ({-duration})";
     }

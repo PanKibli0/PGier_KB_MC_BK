@@ -28,9 +28,10 @@ public class TrueDamageAction : BaseAction
                 effect.onDealDamage(source, target, ref finalDamage);
         }
 
-        return $"Zadaj {finalDamage} prawdziwych obrażeń.";
+        return $"Zadaj {finalDamage} prawdziwych <sprite name=\"kruchosc\"> obrażeń.";
     }
 
     // public override Sprite getIcon() { return Resources.Load<Sprite>("Icons/trueDamage"); }
+    public override string getIconPath() { return "Icons/obrona"; }
     public override string getValue() { return $"{damageAmount}"; }
 }

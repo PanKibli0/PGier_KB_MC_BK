@@ -32,11 +32,11 @@ public class DamageAction : BaseAction
         }
 
         if (finalDamage < damageAmount)
-            return $"Zadaj <color=red>{finalDamage}</color> obrażeń.";
+            return $"Zadaj <color=red>{finalDamage}</color> <sprite name=\"atak\"> obrażeń.";
         else if (finalDamage > damageAmount)
-            return $"Zadaj <color=#BFFF00>{finalDamage}</color> obrażeń.";
+            return $"Zadaj <color=#BFFF00>{finalDamage}</color> <sprite name=\"atak\"> obrażeń.";
         else
-            return $"Zadaj {finalDamage} obrażeń.";
+            return $"Zadaj {finalDamage} <sprite name=\"atak\"> obrażeń.";
     }
 
     public override string getIconPath() { return "Icons/atak"; }

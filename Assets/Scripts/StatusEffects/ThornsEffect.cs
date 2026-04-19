@@ -30,14 +30,14 @@ public class ThornsEffect : BaseStatusEffect
 
     public override string getDescription()
     {
-        return $"Zadaje {value} obrażeń z powrotem atakującemu.";
+        return $"Zadaje {value} <sprite name=\"ciernie\"> obrażeń z powrotem atakującemu.";
     }
 
     public override string getActionDescription()
     {
         if (value > 0)
-            return $"Nałóż Ciernie ({value})";
+            return $"Nałóż Ciernie ({value}) <sprite name=\"ciernie\">";
         else
-            return $"Usuń Ciernie ({-value})";
+            return $"Usuń Ciernie ({-value}) <sprite name=\"ciernie\">";
     }
 }
