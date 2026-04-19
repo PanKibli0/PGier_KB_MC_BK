@@ -33,7 +33,9 @@ public class EndTurn : MonoBehaviour
         foreach (Unit ally in UnitsManager.Instance.getAllies())
             ally?.calculateIntent();
 
+        UnitsManager.Instance.player?.resetBlock();
         UnitsManager.Instance.player?.onEffectsTurnStart();
+        
         OnTurnEnded?.Invoke();
     }
 }

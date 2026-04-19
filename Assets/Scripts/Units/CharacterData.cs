@@ -5,4 +5,7 @@ using System.Collections.Generic;
 public class CharacterData : BaseUnitData
 {
     public List<CardData> startCards;
+    public CardPool cardPool;
+    public int startGold;
+
 }

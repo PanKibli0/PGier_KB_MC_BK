@@ -5,6 +5,6 @@ public class HandAreaUI : MonoBehaviour
 {
     public void refreshLayout()
     {
-        //LayoutRebuilder.ForceRebuildLayoutImmediate(GetComponent<RectTransform>());
+        LayoutRebuilder.ForceRebuildLayoutImmediate(GetComponent<RectTransform>());
     }
 }

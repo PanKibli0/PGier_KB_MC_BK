@@ -20,6 +20,7 @@ MonoBehaviour:
   aiType: 1
   moves:
   - {fileID: 11400000, guid: f858c69ae47ed9d48b7a9ed8700589e5, type: 2}
+  - {fileID: 11400000, guid: 21a6d8b7d7ab12a4ea56fe4a9785f4c4, type: 2}
   references:
     version: 2
     RefIds:

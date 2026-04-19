@@ -97,6 +97,7 @@ public class UnitsManager : MonoBehaviour
 
     public void spawnPlayer(CharacterData data)
     {
+        // DEBUG => data ta sama
         if (data == null || unitPrefab == null) return;
 
         GameObject newUnitObj = Instantiate(unitPrefab, allyContainer);
@@ -109,6 +110,7 @@ public class UnitsManager : MonoBehaviour
         newUnit.init(data, UnitType.Player);
 
         player = newUnit;
+        // END DEBUG
     }
 
     public void addUnitAtSlot(Unit unit, int slot)

@@ -55,11 +55,15 @@ public class Unit : MonoBehaviour
 
     void Start()
     {
-        if (unitType == UnitType.Player && GameManager.Instance != null)
-            maxHealth = GameManager.Instance.currentHealth;
-
         currentMaxHealth = maxHealth;
         currentHealth = maxHealth;
+
+        if (unitType == UnitType.Player && GameManager.Instance != null)
+        {
+            currentHealth = GameManager.Instance.currentHealth;
+            maxHealth = GameManager.Instance.maxHealth;
+            currentMaxHealth = maxHealth;
+        }
 
         if (unitData != null)
             init(unitData, unitType);
@@ -102,6 +106,7 @@ public class Unit : MonoBehaviour
     {
         if (unitType == UnitType.Player) return;
 
+        resetBlock();
         onEffectsTurnStart();
 
         if (nextMove == null) return;
@@ -146,7 +151,10 @@ public class Unit : MonoBehaviour
             Destroy(gameObject);
         }
 
-    }
+        if (unitType == UnitType.Player && GameManager.Instance != null)
+            GameManager.Instance.currentHealth = currentHealth;
+
+        }
 
 
     public void addBlock(int amount)
@@ -163,6 +171,9 @@ public class Unit : MonoBehaviour
             currentHealth = currentMaxHealth;
 
         statsUI?.updateUI();
+
+        if (unitType == UnitType.Player && GameManager.Instance != null)
+            GameManager.Instance.currentHealth = currentHealth;
     }
 
 
