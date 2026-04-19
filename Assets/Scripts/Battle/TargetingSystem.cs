@@ -101,7 +101,6 @@ public static class TargetingSystem
             if (Random.Range(0, 100) < 25)
             {
                 List<Unit> otherEnemies = new List<Unit>(allies);
-                otherEnemies.Remove(source);
                 if (otherEnemies.Count > 0)
                     enemyTarget = getHighestHealthUnit(otherEnemies);
                 else
