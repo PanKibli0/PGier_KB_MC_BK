@@ -15,13 +15,18 @@ public class IntentMoveTooltip : MonoBehaviour, IPointerEnterHandler, IPointerEx
 
         BaseAction firstAction = move.actions[0];
 
+        string iconPath = firstAction.getIconPath();
+        Sprite icon = null;
+        if (!string.IsNullOrEmpty(iconPath))
+            icon = Resources.Load<Sprite>(iconPath);
+
         string description = "";
         foreach (BaseAction action in move.actions)
         {
             description += action.getCardDescription(unit, null) + "\n";
         }
 
-        tooltip.show(new List<(Sprite, string, string)> { (firstAction.getIcon(), move.moveName, description) });
+        tooltip.show(new List<(Sprite, string, string)> { (icon, move.moveName, description) });
     }
 
     public void OnPointerExit(PointerEventData eventData)

@@ -9,12 +9,12 @@ public class VulnerableEffect : BaseStatusEffect
     public VulnerableEffect()
     {
         effectName = "Wrażliwość";
-        icon = Resources.Load<Sprite>("Icons/wrazliwosc");
         isMergeable = true;
         isDebuff = true;
     }
 
     public override string getMainText() { return duration.ToString(); }
+    public override string getIconPath() { return "Icons/wrazliwosc"; }
 
     public override void onReceiveDamage(Unit owner, Unit source, ref int damage)
     {

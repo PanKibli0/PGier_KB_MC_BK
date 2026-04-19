@@ -8,12 +8,12 @@ public class RegenerationEffect : BaseStatusEffect
     public RegenerationEffect()
     {
         effectName = "Regeneracja";
-        icon = Resources.Load<Sprite>("Icons/regeneracja");
         isMergeable = true;
         isDebuff = false;
     }
 
     public override string getMainText() { return stacks.ToString(); }
+    public override string getIconPath() { return "Icons/regeneracja"; }
 
     public override void onTurnStart(Unit owner)
     {

@@ -8,12 +8,13 @@ public class ThornsEffect : BaseStatusEffect
     public ThornsEffect()
     {
         effectName = "Ciernie";
-        icon = Resources.Load<Sprite>("Icons/ciernie");
         isMergeable = true;
         isDebuff = false;
     }
 
     public override string getMainText() { return value.ToString(); }
+    public override string getIconPath() { return "Icons/ciernie"; }
+
 
     public override void onReceiveDamage(Unit owner, Unit source, ref int damage)
     {

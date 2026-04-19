@@ -8,12 +8,12 @@ public class BleedingEffect : BaseStatusEffect
     public BleedingEffect()
     {
         effectName = "Krwawienie";
-        icon = Resources.Load<Sprite>("Icons/krwawienie");
         isMergeable = true;
         isDebuff = true;
     }
 
     public override string getMainText() { return stacks.ToString(); }
+    public override string getIconPath() { return "Icons/krwawienie"; }
 
     public override void onTurnStart(Unit owner)
     {

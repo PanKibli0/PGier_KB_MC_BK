@@ -8,12 +8,12 @@ public class StrengthEffect : BaseStatusEffect
     public StrengthEffect()
     {
         effectName = "Siła";
-        icon = Resources.Load<Sprite>("Icons/sila");
         isMergeable = true;
         isDebuff = false;
     }
 
     public override string getMainText() { return value.ToString(); }
+    public override string getIconPath() { return "Icons/sila"; }
 
     public override void onDealDamage(Unit owner, Unit target, ref int damage)
     {

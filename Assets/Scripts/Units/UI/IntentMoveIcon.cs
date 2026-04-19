@@ -7,10 +7,14 @@ public class IntentMoveIcon : MonoBehaviour
     [SerializeField] private Image icon;
     [SerializeField] private TMP_Text valueText;
 
-    public void init(Sprite iconSprite, string value)
+    public void init(string iconPath, string value)
     {
-        if (icon != null)
-            icon.sprite = iconSprite;
+        if (!string.IsNullOrEmpty(iconPath))
+        {
+            Sprite sprite = Resources.Load<Sprite>(iconPath);
+            if (sprite != null)
+                icon.sprite = sprite;
+        }
 
         if (valueText != null)
             valueText.text = value;

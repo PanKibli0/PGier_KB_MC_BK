@@ -39,6 +39,6 @@ public class DamageAction : BaseAction
             return $"Zadaj {finalDamage} obrażeń.";
     }
 
-    // public override Sprite getIcon() { return Resources.Load<Sprite>("Icons/damage"); }
+    public override string getIconPath() { return "Icons/atak"; }
     public override string getValue() { return $"{damageAmount}"; }
 }

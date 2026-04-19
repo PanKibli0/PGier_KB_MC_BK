@@ -21,6 +21,6 @@ public class AddEffectAction : BaseAction
         return effectToAdd.getActionDescription();
     }
 
-    // public override Sprite getIcon() { return effectToAdd?.icon; }
+    public override string getIconPath() { return effectToAdd != null ? effectToAdd.getIconPath() : ""; }
     public override string getValue() { return effectToAdd?.getMainText(); }
 }
