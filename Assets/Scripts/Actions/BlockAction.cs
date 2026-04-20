@@ -12,9 +12,10 @@ public class BlockAction : BaseAction
 
     public override string getCardDescription(Unit source, Unit target = null)
     {
-        return $"Otrzymaj {blockAmount} obrony.";
+        return $"Otrzymaj {blockAmount} <sprite name=\"obrona\"> obrony.";
     }
 
     // public override Sprite getIcon() { return Resources.Load<Sprite>("Icons/block"); }
+    public override string getIconPath() { return "Icons/obrona"; }
     public override string getValue() { return $"{blockAmount}"; }
 }

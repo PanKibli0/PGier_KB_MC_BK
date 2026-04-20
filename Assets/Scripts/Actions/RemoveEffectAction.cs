@@ -27,5 +27,6 @@ public class RemoveEffectAction : BaseAction
     }
 
     // public override Sprite getIcon() { return effectToRemove?.icon; }
+    public override string getIconPath() { return "Icons/obrona"; }
     public override string getValue() { return "<color=red>X</color>"; }
 }

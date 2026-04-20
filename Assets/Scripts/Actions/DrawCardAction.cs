@@ -20,5 +20,6 @@ public class DrawCardAction : BaseAction
     }
 
     // public override Sprite getIcon() { return Resources.Load<Sprite>("Icons/draw"); }
+    public override string getIconPath() { return "Icons/obrona"; }
     public override string getValue() { return $"{amount}"; }
 }

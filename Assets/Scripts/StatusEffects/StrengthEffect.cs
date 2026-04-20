@@ -13,6 +13,7 @@ public class StrengthEffect : BaseStatusEffect
     }
 
     public override string getMainText() { return value.ToString(); }
+    public override string getIconPath() { return "Icons/sila"; }
 
     public override void onDealDamage(Unit owner, Unit target, ref int damage)
     {
@@ -29,7 +30,7 @@ public class StrengthEffect : BaseStatusEffect
     public override string getDescription()
     {
         if (value > 0)
-            return $"Zadajesz <color=green>{value}</color> obrażeń więcej.";
+            return $"Zadajesz <color=green>{value}</color> <sprite name=\"atak\"> obrażeń więcej.";
         else
             return $"Zadajesz <color=red>{-value}</color> obrażeń mniej.";
     }
@@ -37,7 +38,7 @@ public class StrengthEffect : BaseStatusEffect
     public override string getActionDescription()
     {
         if (value > 0)
-            return $"Nałóż Siłę ({value})";
+            return $"Nałóż Siłę <sprite name=\"sila\">({value})";
         else
             return $"Usuń Siłę ({-value})";
     }

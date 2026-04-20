@@ -13,6 +13,7 @@ public class BleedingEffect : BaseStatusEffect
     }
 
     public override string getMainText() { return stacks.ToString(); }
+    public override string getIconPath() { return "Icons/krwawienie"; }
 
     public override void onTurnStart(Unit owner)
     {
@@ -29,13 +30,13 @@ public class BleedingEffect : BaseStatusEffect
 
     public override string getDescription()
     {
-        return $"Na początek tury zadaje {stacks} obrażeń. Zmniejsza się o 1.";
+        return $"Na początek tury zadaje {stacks} <sprite name=\"atak\"> obrażeń. Zmniejsza się o 1.";
     }
 
     public override string getActionDescription()
     {
         if (stacks > 0)
-            return $"Nałóż Krwawienie ({stacks})";
+            return $"Nałóż Krwawienie ({stacks}) <sprite name=\"krwawienie\">";
         else
             return $"Usuń Krwawienie ({-stacks})";
     }

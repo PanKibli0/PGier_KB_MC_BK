@@ -112,7 +112,7 @@ public class UnitStatsUI : MonoBehaviour
         foreach (var action in move.actions)
         {
             IntentMoveIcon icon = Instantiate(intentIconPrefab, intentContainer);
-            icon.init(action.getIcon(), action.getValue());
+            icon.init(action.getIconPath(), action.getValue());
         }
 
         intentContainer.gameObject.SetActive(true);

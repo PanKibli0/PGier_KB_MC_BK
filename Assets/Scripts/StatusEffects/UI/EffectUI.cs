@@ -14,6 +14,8 @@ public class EffectUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     private BaseStatusEffect singleEffect;
     private List<BaseStatusEffect> hiddenEffects;
     private bool isMoreMode;
+    private Sprite cachedIcon;
+    private List<(Sprite sprite, string name, string description)> cachedEntries;
 
     public void init(BaseStatusEffect effect, Tooltip tooltip)
     {
@@ -21,11 +23,15 @@ public class EffectUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         singleEffect = effect;
         isMoreMode = false;
 
-        Sprite sprite = Resources.Load<Sprite>(effect.iconPath);
-        if (sprite != null)
+        string iconPath = effect.getIconPath();
+        if (!string.IsNullOrEmpty(iconPath))
         {
-            icon.sprite = sprite;
-            icon.gameObject.SetActive(true);
+            cachedIcon = Resources.Load<Sprite>(iconPath);
+            if (cachedIcon != null)
+            {
+                icon.sprite = cachedIcon;
+                icon.gameObject.SetActive(true);
+            }
         }
 
         mainText.text = effect.getMainText();
@@ -40,27 +46,30 @@ public class EffectUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
         mainText.text = "+" + effects.Count;
         secondaryText.text = "";
+
+        cachedEntries = new List<(Sprite, string, string)>();
+        foreach (var effect in effects)
+        {
+            string path = effect.getIconPath();
+            Sprite sprite = null;
+            if (!string.IsNullOrEmpty(path))
+                sprite = Resources.Load<Sprite>(path);
+            cachedEntries.Add((sprite, effect.effectName, effect.getDescription()));
+        }
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        List<(Sprite, string, string)> entries = new List<(Sprite, string, string)>();
-
         if (isMoreMode)
         {
-            foreach (var effect in hiddenEffects)
-            {
-                Sprite sprite = Resources.Load<Sprite>(effect.iconPath);
-                entries.Add((sprite, effect.effectName, effect.getDescription()));
-            }
+            tooltip.show(cachedEntries);
         }
         else
         {
-            Sprite sprite = Resources.Load<Sprite>(singleEffect.iconPath);
-            entries.Add((sprite, singleEffect.effectName, singleEffect.getDescription()));
+            List<(Sprite, string, string)> entries = new List<(Sprite, string, string)>();
+            entries.Add((cachedIcon, singleEffect.effectName, singleEffect.getDescription()));
+            tooltip.show(entries);
         }
-
-        tooltip.show(entries);
     }
 
     public void OnPointerExit(PointerEventData eventData)

@@ -13,6 +13,7 @@ public class RegenerationEffect : BaseStatusEffect
     }
 
     public override string getMainText() { return stacks.ToString(); }
+    public override string getIconPath() { return "Icons/regeneracja"; }
 
     public override void onTurnStart(Unit owner)
     {
@@ -29,13 +30,13 @@ public class RegenerationEffect : BaseStatusEffect
 
     public override string getDescription()
     {
-        return $"Na początek tury leczy {stacks} HP. Zmniejsza się o 1.";
+        return $"Na początek tury leczy {stacks} <sprite name=\"zdrowie\"> HP. Zmniejsza się o 1.";
     }
 
     public override string getActionDescription()
     {
         if (stacks > 0)
-            return $"Nałóż Regenerację ({stacks})";
+            return $"Nałóż Regenerację ({stacks}) <sprite name=\"regeneracja\">";
         else
             return $"Usuń Regenerację ({-stacks})";
     }
