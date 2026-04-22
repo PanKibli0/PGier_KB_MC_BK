@@ -15,7 +15,7 @@ public class EnergyAction : BaseAction
             EnergySystem.Instance.spendEnergy(-amount);
     }
 
-    public override string getCardDescription(Unit source, Unit target = null)
+    public override string getCardDescription(Unit source, Unit target = null, bool applyEffects = false)
     {
         if (amount > 0)
             return $"Zyskaj {amount} <sprite name=\"obrona\"> energii.";

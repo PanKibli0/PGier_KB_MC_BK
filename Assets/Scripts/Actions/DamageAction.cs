@@ -15,20 +15,23 @@ public class DamageAction : BaseAction
         target.takeDamage(finalDamage, DamageType.Normal, source);
     }
 
-    public override string getCardDescription(Unit source, Unit target = null)
+    public override string getCardDescription(Unit source, Unit target = null, bool applyEffects = false)
     {
         int finalDamage = damageAmount;
 
-        if (source != null)
+        if (applyEffects)
         {
-            foreach (var effect in source.effects)
-                effect.onDealDamage(source, target, ref finalDamage);
-        }
+            if (source != null)
+            {
+                foreach (var effect in source.effects)
+                    effect.onDealDamage(source, target, ref finalDamage);
+            }
 
-        if (target != null)
-        {
-            foreach (var effect in target.effects)
-                effect.onReceiveDamage(target, source, ref finalDamage);
+            if (target != null)
+            {
+                foreach (var effect in target.effects)
+                    effect.onReceiveDamage(target, source, ref finalDamage);
+            }
         }
 
         if (finalDamage < damageAmount)

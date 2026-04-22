@@ -18,7 +18,7 @@ public class TrueDamageAction : BaseAction
         target.takeDamage(finalDamage, DamageType.True, source);
     }
 
-    public override string getCardDescription(Unit source, Unit target = null)
+    public override string getCardDescription(Unit source, Unit target = null, bool applyEffects = false)
     {
         int finalDamage = damageAmount;
 
@@ -31,7 +31,6 @@ public class TrueDamageAction : BaseAction
         return $"Zadaj {finalDamage} prawdziwych <sprite name=\"kruchosc\"> obrażeń.";
     }
 
-    // public override Sprite getIcon() { return Resources.Load<Sprite>("Icons/trueDamage"); }
     public override string getIconPath() { return "Icons/obrona"; }
     public override string getValue() { return $"{damageAmount}"; }
 }

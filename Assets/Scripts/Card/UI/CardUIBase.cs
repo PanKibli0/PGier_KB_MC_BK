@@ -55,14 +55,16 @@ public class CardUIBase : MonoBehaviour
         updateDescription();
     }
 
-    public void updateDescription(Unit target = null)
+    public void updateDescription(Unit target = null, bool applyEffects = false)
     {
+
+
         if (card == null || card.actions == null) return;
 
         string description = "";
         foreach (var action in card.actions)
         {
-            description += action.getCardDescription(UnitsManager.Instance.player, target) + "\n";
+            description += action.getCardDescription(UnitsManager.Instance.player, target, applyEffects) + "\n";
         }
         descText.text = description;
     }

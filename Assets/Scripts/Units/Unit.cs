@@ -37,7 +37,7 @@ public class Unit : MonoBehaviour
     public event Action OnEffectsChanged;
 
 
-    public void init(BaseUnitData data, UnitType type)
+    public void init(BaseUnitData data, UnitType type, UnitStatsUIManager statsUIManager)
     {
         unitName = data.unitName;
         unitType = type;
@@ -50,34 +50,11 @@ public class Unit : MonoBehaviour
 
         if (data is UnitData unitData)
             this.unitData = unitData;
-    }
 
+        
+        statsUIManager.createStatsUI(this);
 
-    void Start()
-    {
-        currentMaxHealth = maxHealth;
-        currentHealth = maxHealth;
-
-        if (unitType == UnitType.Player && GameManager.Instance != null)
-        {
-            currentHealth = GameManager.Instance.currentHealth;
-            maxHealth = GameManager.Instance.maxHealth;
-            currentMaxHealth = maxHealth;
-        }
-
-        if (unitData != null)
-            init(unitData, unitType);
-        else if (unitType == UnitType.Player)
-        {
-            if (UnitsManager.Instance != null)
-                UnitsManager.Instance.player = this;
-        }
-
-        if (UnitStatsUIManager.Instance != null)
-            UnitStatsUIManager.Instance.createStatsUI(this);
-
-        if (unitType != UnitType.Player)
-            calculateIntent();
+        if (unitType != UnitType.Player) calculateIntent();
     }
 
 

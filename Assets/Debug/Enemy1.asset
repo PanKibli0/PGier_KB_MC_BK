@@ -15,11 +15,20 @@ MonoBehaviour:
   unitName: Helea
   graphicPrefab: {fileID: 4200463514604636877, guid: a2324800a30964343bd88756314a9bd7, type: 3}
   maxHealth: 20
-  startEffects: []
+  startEffects:
+  - rid: 2259743152694362181
   aiType: 1
   moves:
   - {fileID: 11400000, guid: 6c211f7e3e4bd884ca52f03a3ae3ab63, type: 2}
   - {fileID: 11400000, guid: 6e03a0df4df44a24ba519ed16e07fd8a, type: 2}
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 2259743152694362181
+      type: {class: VulnerableEffect, ns: , asm: Assembly-CSharp}
+      data:
+        effectName: "Wra\u017Cliwo\u015B\u0107"
+        isMergeable: 1
+        isDebuff: 1
+        duration: 10
+        multiplier: 1.5

@@ -15,7 +15,7 @@ public class AddEffectAction : BaseAction
 
     }
 
-    public override string getCardDescription(Unit source, Unit target = null)
+    public override string getCardDescription(Unit source, Unit target = null, bool applyEffects = false)
     {
         if (effectToAdd == null) return "";
         return effectToAdd.getActionDescription();

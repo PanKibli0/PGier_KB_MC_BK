@@ -21,6 +21,12 @@ public class CardUIPlayable : CardUIBase, IBeginDragHandler, IDragHandler, IEndD
         handArea = GetComponentInParent<HandAreaUI>();
     }
 
+    public override void init(Card card)
+    {
+        base.init(card);
+        updateDescription(null, true);
+    }
+
     private bool canPlayCard()
     {
         if (EnergySystem.Instance != null && !EnergySystem.Instance.canAfford(card.currentCost)) return false;
@@ -79,7 +85,7 @@ public class CardUIPlayable : CardUIBase, IBeginDragHandler, IDragHandler, IEndD
         if (currentHoverTarget != newTarget)
         {
             currentHoverTarget = newTarget;
-            updateDescription(currentHoverTarget);
+            updateDescription(currentHoverTarget, true);
         }
     }
 
@@ -92,7 +98,7 @@ public class CardUIPlayable : CardUIBase, IBeginDragHandler, IDragHandler, IEndD
         }
 
         currentHoverTarget = null;
-        updateDescription(null);
+        updateDescription(null, true);
 
         bool canPlay;
 

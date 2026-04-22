@@ -5,6 +5,8 @@ using System;
 public class UnitsManager : MonoBehaviour
 {
     public static UnitsManager Instance;
+    [SerializeField] private UnitStatsUIManager statsUIManager;
+
     [SerializeField] private Transform allyContainer;
     [SerializeField] private Transform enemyContainer;
     [SerializeField] private GameObject unitPrefab;
@@ -66,7 +68,7 @@ public class UnitsManager : MonoBehaviour
         GameObject newUnitObj = Instantiate(unitPrefab);
         newUnitObj.transform.position = spawnPos;
         Unit newUnit = newUnitObj.GetComponent<Unit>();
-        newUnit.init(data, type);
+        newUnit.init(data, type, statsUIManager);
 
         if (data.graphicPrefab != null)
         {
@@ -97,7 +99,6 @@ public class UnitsManager : MonoBehaviour
 
     public void spawnPlayer(CharacterData data)
     {
-        // DEBUG => data ta sama
         if (data == null || unitPrefab == null) return;
 
         GameObject newUnitObj = Instantiate(unitPrefab, allyContainer);
@@ -107,10 +108,16 @@ public class UnitsManager : MonoBehaviour
             Instantiate(data.graphicPrefab, newUnitObj.transform);
 
         Unit newUnit = newUnitObj.GetComponent<Unit>();
-        newUnit.init(data, UnitType.Player);
+        newUnit.init(data, UnitType.Player, statsUIManager);
+
+        if (GameManager.Instance != null)
+        {
+            newUnit.currentHealth = GameManager.Instance.currentHealth;
+            newUnit.maxHealth = GameManager.Instance.maxHealth;
+            newUnit.currentMaxHealth = GameManager.Instance.maxHealth;
+        }
 
         player = newUnit;
-        // END DEBUG
     }
 
     public void addUnitAtSlot(Unit unit, int slot)

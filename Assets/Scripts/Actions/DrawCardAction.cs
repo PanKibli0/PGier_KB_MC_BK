@@ -14,7 +14,7 @@ public class DrawCardAction : BaseAction
         }
     }
 
-    public override string getCardDescription(Unit source, Unit target = null)
+    public override string getCardDescription(Unit source, Unit target = null, bool applyEffects = false)
     {
         return $"Dobierz {amount} karty.";
     }

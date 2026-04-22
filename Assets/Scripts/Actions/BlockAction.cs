@@ -10,7 +10,7 @@ public class BlockAction : BaseAction
         target.addBlock(blockAmount);
     }
 
-    public override string getCardDescription(Unit source, Unit target = null)
+    public override string getCardDescription(Unit source, Unit target = null, bool applyEffects = false)
     {
         return $"Otrzymaj {blockAmount} <sprite name=\"obrona\"> obrony.";
     }

@@ -18,7 +18,7 @@ public abstract class BaseAction
                targetType == TargetType.SelectedAlly;
     }
 
-    public virtual string getCardDescription(Unit source, Unit target = null) { return ""; }
+    public virtual string getCardDescription(Unit source, Unit target = null, bool applyEffects = false) { return ""; }
 
     public virtual string getIconPath() { return ""; }
     public virtual string getValue() { return ""; }

@@ -18,22 +18,13 @@ MonoBehaviour:
   rarity: 1
   image: {fileID: 0}
   actions:
-  - rid: 2259742929489494167
+  - rid: 2259743152694362182
   upgrade: {fileID: 0}
   references:
     version: 2
     RefIds:
-    - rid: 2259742929489494167
-      type: {class: AddEffectAction, ns: , asm: Assembly-CSharp}
+    - rid: 2259743152694362182
+      type: {class: HealAction, ns: , asm: Assembly-CSharp}
       data:
-        targetType: 0
-        effectToAdd:
-          rid: 2259742929489494170
-    - rid: 2259742929489494170
-      type: {class: RegenerationEffect, ns: , asm: Assembly-CSharp}
-      data:
-        effectName: Regeneracja
-        iconPath: 
-        isMergeable: 1
-        isDebuff: 0
-        stacks: 5
+        targetType: 5
+        healAmount: 0
