@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using System;
 using UnityEngine.SceneManagement;
+using Unity.VisualScripting;
 
 public class GameManager : MonoBehaviour
 {
@@ -15,6 +16,9 @@ public class GameManager : MonoBehaviour
 
     public int gold;
     public event Action<int> OnGoldChanged;
+
+    public int enemiesKilled;
+    public int floorsCompleted;
 
     void Awake()
     {
@@ -35,6 +39,8 @@ public class GameManager : MonoBehaviour
         maxHealth = character.maxHealth;
         gold = character.startGold;
         currentDeck = new List<CardData>(character.startCards);
+        enemiesKilled = 0;
+        floorsCompleted = 0;
     }
 
 
@@ -51,11 +57,23 @@ public class GameManager : MonoBehaviour
         OnGoldChanged?.Invoke(gold);
     }
 
+    public void addEnemyKill()
+    {
+        enemiesKilled++;
+    }
+    public void addFloorCount()
+    {
+        floorsCompleted++;
+    }
+
     // DEBUG
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.R))
             SceneManager.LoadScene("BattleRewardScene", LoadSceneMode.Additive);
+        if (Input.GetKeyDown(KeyCode.S))
+            SceneManager.LoadScene("EndScreenScene", LoadSceneMode.Additive);
+
     }
 
     // END DEBUG

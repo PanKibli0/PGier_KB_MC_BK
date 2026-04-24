@@ -1504,6 +1504,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd1b64da33a2a0544a04392b50894c5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UnitsManager
+  statsUIManager: {fileID: 768472307}
   allyContainer: {fileID: 331161221}
   enemyContainer: {fileID: 1296363651}
   unitPrefab: {fileID: 5581497686262581658, guid: a0049b4e3ac95644a8e20cc798832b40, type: 3}
