@@ -3,9 +3,9 @@ using UnityEngine;
 
 public abstract class BaseNode
 {
-    public List<BaseNode> connections;
-    public bool isUnlocked;
-    public bool isVisited;
+    public List<BaseNode> connections = new List<BaseNode>();
+    public bool isUnlocked = false;
+    public bool isVisited = false;
     public Vector2Int gridPosition;
 
 

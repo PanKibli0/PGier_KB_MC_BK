@@ -9,25 +9,24 @@ public class NodeButton : MonoBehaviour
 
     private BaseNode node;
 
-    public void init(BaseNode node)
+
+    public void init(BaseNode node, int currentFloor)
     {
         this.node = node;
-        button.interactable = node.isUnlocked;
+
+        bool isActive = node.isUnlocked && !node.isVisited && node.gridPosition.y == currentFloor;
+        button.interactable = isActive;
         visitedOverlay.SetActive(node.isVisited);
 
-        string iconPath = node.getIconPath();
-        if (!string.IsNullOrEmpty(iconPath))
-        {
-            Sprite sprite = Resources.Load<Sprite>(iconPath);
-            if (sprite != null)
-                icon.sprite = sprite;
-        }
+        string path = node.getIconPath();
+        if (!string.IsNullOrEmpty(path))
+            icon.sprite = Resources.Load<Sprite>(path);
     }
 
 
     public void onClick()
     {
-        if (node.isUnlocked && !node.isVisited)
-            node.execute();
+        GameManager.Instance.currentMap.currentFloor = node.gridPosition.y + 1;
+        node.execute();
     }
 }

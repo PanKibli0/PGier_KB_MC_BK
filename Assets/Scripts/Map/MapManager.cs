@@ -5,9 +5,8 @@ public class MapManager : MonoBehaviour
 {
     [SerializeField] private Transform contentContainer;
     [SerializeField] private GameObject nodeButtonPrefab;
-
-    private float offsetX = 220f;
-    private float offsetY = 400f;
+    private float offsetX = 200f;
+    private float offsetY = 200f;
 
 
     void Start()
@@ -19,28 +18,38 @@ public class MapManager : MonoBehaviour
     private void displayMap()
     {
         List<BaseNode> nodes = GameManager.Instance.currentMap.nodes;
+        int currentFloor = GameManager.Instance.currentMap.currentFloor;
 
         foreach (var node in nodes)
         {
             GameObject btnObj = Instantiate(nodeButtonPrefab, contentContainer);
             RectTransform rect = btnObj.GetComponent<RectTransform>();
-            Vector2 pos = getNodePosition(node);
-            rect.anchoredPosition = pos;
-
-            Debug.Log($"Node {node.GetType().Name} at grid ({node.gridPosition.x}, {node.gridPosition.y}) -> position ({pos.x}, {pos.y})");
+            rect.anchoredPosition = getNodePosition(node);
 
             NodeButton btn = btnObj.GetComponent<NodeButton>();
-            btn.init(node);
+            btn.init(node, currentFloor);
         }
 
-        Debug.Log($"Content size: {contentContainer.GetComponent<RectTransform>().rect}");
+        adjustContentSize();
     }
 
 
     private Vector2 getNodePosition(BaseNode node)
     {
-        float x = node.gridPosition.y * offsetX;
-        float y = node.gridPosition.x * offsetY;
-        return new Vector2(x, y);
+        return new Vector2(
+            node.gridPosition.x * offsetX,
+            node.gridPosition.y * offsetY + 20f
+            );
+    }
+
+    private void adjustContentSize()
+    {
+        List<BaseNode> nodes = GameManager.Instance.currentMap.nodes;
+        float maxY = 0f;
+        foreach (var node in nodes)
+            maxY = Mathf.Max(maxY, node.gridPosition.y * offsetY);
+
+        RectTransform contentRect = contentContainer.GetComponent<RectTransform>();
+        contentRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, maxY + 120f);
     }
 }
