@@ -1504,6 +1504,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd1b64da33a2a0544a04392b50894c5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UnitsManager
+  statsUIManager: {fileID: 768472307}
   allyContainer: {fileID: 331161221}
   enemyContainer: {fileID: 1296363651}
   unitPrefab: {fileID: 5581497686262581658, guid: a0049b4e3ac95644a8e20cc798832b40, type: 3}
@@ -3046,9 +3047,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6863e649ab28dd640a7f80b3f0196169, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BattleSetup
-  enemiesData:
-  - {fileID: 11400000, guid: 575dd5d04e2f406448ef2dfc7177a771, type: 2}
-  - {fileID: 11400000, guid: edf65b559b4f66a4b8b5fa744917e6ad, type: 2}
 --- !u!1 &1893512473
 GameObject:
   m_ObjectHideFlags: 0

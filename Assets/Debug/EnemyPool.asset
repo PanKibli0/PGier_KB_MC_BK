@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43087aed2363b24438ec3c67cfe5a560, type: 3}
+  m_Name: EnemyPool
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyPool
+  normalFights:
+  - enemies:
+    - {fileID: 11400000, guid: 575dd5d04e2f406448ef2dfc7177a771, type: 2}
+  - enemies:
+    - {fileID: 11400000, guid: 575dd5d04e2f406448ef2dfc7177a771, type: 2}
+    - {fileID: 11400000, guid: 575dd5d04e2f406448ef2dfc7177a771, type: 2}
+  - enemies:
+    - {fileID: 11400000, guid: edf65b559b4f66a4b8b5fa744917e6ad, type: 2}
+    - {fileID: 11400000, guid: edf65b559b4f66a4b8b5fa744917e6ad, type: 2}
+  - enemies:
+    - {fileID: 11400000, guid: edf65b559b4f66a4b8b5fa744917e6ad, type: 2}
+    - {fileID: 11400000, guid: 575dd5d04e2f406448ef2dfc7177a771, type: 2}
+  eliteFights:
+  - enemies:
+    - {fileID: 11400000, guid: 575dd5d04e2f406448ef2dfc7177a771, type: 2}
+    - {fileID: 11400000, guid: f7e72625ef6b49e40b6079a7a0a345f0, type: 2}
+  bossFights: []

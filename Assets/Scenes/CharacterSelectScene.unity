@@ -289,6 +289,10 @@ MonoBehaviour:
   currentHealth: 0
   maxHealth: 0
   currentDeck: []
+  gold: 0
+  enemyPool: {fileID: 11400000, guid: 9b38731bdcd64d542b5d458b2dfbe824, type: 2}
+  pendingBattleEnemies: []
+  pendingBattleDifficulty: 0
 --- !u!4 &520281881
 Transform:
   m_ObjectHideFlags: 0

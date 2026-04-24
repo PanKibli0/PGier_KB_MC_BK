@@ -9,12 +9,23 @@ public class GameManager : MonoBehaviour
 
     public CharacterData selectedCharacter;
 
+    [Header("Player Stats")]
     public int currentHealth;
     public int maxHealth;
     public List<CardData> currentDeck;
 
+    [Header("Currency")]
     public int gold;
     public event Action<int> OnGoldChanged;
+
+    [Header("Map")]
+    public EnemyPool enemyPool;
+    public MapData currentMap;
+    public BaseNode currentMapNode;
+
+    public UnitData[] pendingBattleEnemies;
+    public BattleDifficulty pendingBattleDifficulty;
+
 
     void Awake()
     {
@@ -35,6 +46,11 @@ public class GameManager : MonoBehaviour
         maxHealth = character.maxHealth;
         gold = character.startGold;
         currentDeck = new List<CardData>(character.startCards);
+
+        MapData mapData = new MapData();
+        mapData.nodes = MapGenerator.generateMap(enemyPool);
+        currentMap = mapData;
+        SceneManager.LoadScene("MapScene");
     }
 
 

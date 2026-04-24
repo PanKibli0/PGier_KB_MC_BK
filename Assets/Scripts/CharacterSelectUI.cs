@@ -20,6 +20,5 @@ public class CharacterSelectUI : MonoBehaviour
     {
         if (selectedCharacter == null) return;
         GameManager.Instance.startNewRun(selectedCharacter);
-        SceneManager.LoadScene("BattleScene");
     }
 }

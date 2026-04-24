@@ -48,9 +48,8 @@ public class BattleRewardUI : MonoBehaviour
 
     public void onContinueButtonClick()
     {
-        // DEBUG
-        SceneManager.LoadScene("BattleScene");
-        // END DEBUG
+        GameManager.Instance.currentMapNode.onComplete();
+        SceneManager.LoadScene("MapScene");
     }
 
     private int getRandomGold()
