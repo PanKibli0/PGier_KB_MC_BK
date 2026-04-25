@@ -3,11 +3,19 @@ using System.Collections.Generic;
 
 public class MapManager : MonoBehaviour
 {
+    [Header("Nodes")]
     [SerializeField] private Transform contentContainer;
     [SerializeField] private GameObject nodeButtonPrefab;
-    private float offsetX = 200f;
-    private float offsetY = 200f;
 
+    [SerializeField] private float offsetX = 200f;
+    [SerializeField] private float offsetY = 200f;
+
+    [Header("Lines")]
+    [SerializeField] private LineDrawer lineDrawer;
+
+    [SerializeField] private float nodeWidth = 80f;
+    [SerializeField] private float nodeHeight = 80f;
+    [SerializeField] private float lineOffset = 15f;
 
     void Start()
     {
@@ -31,6 +39,7 @@ public class MapManager : MonoBehaviour
         }
 
         adjustContentSize();
+        drawLines();
     }
 
 
@@ -51,5 +60,27 @@ public class MapManager : MonoBehaviour
 
         RectTransform contentRect = contentContainer.GetComponent<RectTransform>();
         contentRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, maxY + 120f);
+    }
+
+    private void drawLines()
+    {
+        foreach (var node in GameManager.Instance.currentMap.nodes)
+        {
+            Vector2 startPos = getNodePosition(node);
+            Vector2 startCenter = startPos + new Vector2(nodeWidth / 2, nodeHeight / 2);
+
+            foreach (var connection in node.connections)
+            {
+                Vector2 endPos = getNodePosition(connection);
+                Vector2 endCenter = endPos + new Vector2(nodeWidth / 2, nodeHeight / 2);
+
+                Vector2 dir = (endCenter - startCenter).normalized;
+                Vector2 start = startCenter + dir * lineOffset;
+                Vector2 end = endCenter - dir * lineOffset;
+
+                Color lineColor = (connection.isVisited) ? Color.white : Color.gray;
+                lineDrawer.drawLine(start, end, lineColor);
+            }
+        }
     }
 }
