@@ -11,6 +11,7 @@ public class Tooltip : MonoBehaviour
 
     private RectTransform rectTransform;
     private float maxHeight = 600f;
+    public static Tooltip Instance;
 
     private void OnEnable()
     {
@@ -93,7 +94,11 @@ public class Tooltip : MonoBehaviour
         clearEntries();
         gameObject.SetActive(false);
     }
-
+    private void Awake()
+    {
+        Instance = this;
+        rectTransform = GetComponent<RectTransform>();
+    }
 
     private void clearEntries()
     {
