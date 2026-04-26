@@ -5,7 +5,7 @@ public class NodeButton : MonoBehaviour
 {
     [SerializeField] private Image icon;
     [SerializeField] private Button button;
-    [SerializeField] private GameObject visitedOverlay;
+    [SerializeField] private Image visitedOverlay;
 
     private BaseNode node;
 
@@ -16,11 +16,18 @@ public class NodeButton : MonoBehaviour
 
         bool isActive = node.isUnlocked && !node.isVisited && node.gridPosition.y == currentFloor;
         button.interactable = isActive;
-        visitedOverlay.SetActive(node.isVisited);
 
         string path = node.getIconPath();
         if (!string.IsNullOrEmpty(path))
             icon.sprite = Resources.Load<Sprite>(path);
+
+        if (node.isVisited && !string.IsNullOrEmpty(node.visitedIconPath))
+        {
+            Sprite visitedSprite = Resources.Load<Sprite>(node.visitedIconPath);
+            if (visitedSprite != null)
+                visitedOverlay.sprite = visitedSprite;
+            visitedOverlay.gameObject.SetActive(true);
+        }
     }
 
 

@@ -3,11 +3,8 @@ guid: 3d6b4e81dfa7479428000c90d9aca8ef
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3685044946095255099
-    second: X_2_0
-  - first:
       213: 1248761046078546590
-    second: X_2_1
+    second: X_2_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:

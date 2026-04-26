@@ -8,6 +8,7 @@ public abstract class BaseNode
     public bool isVisited = false;
     public Vector2Int gridPosition;
 
+    public string visitedIconPath;
 
     public abstract void execute();
     public abstract string getIconPath();

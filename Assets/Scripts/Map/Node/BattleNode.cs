@@ -27,9 +27,9 @@ public class BattleNode : BaseNode
     {
         switch (difficulty)
         {
-            case BattleDifficulty.Boss: return "Icons/battle_boss";
-            case BattleDifficulty.Elite: return "Icons/battle_elite";
-            default: return "Icons/battle_normal";
+            case BattleDifficulty.Boss: return "Icons_map/battle_boss";
+            case BattleDifficulty.Elite: return "Icons_map/elita";
+            default: return "Icons_map/przeciwnik";
         }
     }
 }

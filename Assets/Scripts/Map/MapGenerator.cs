@@ -54,6 +54,9 @@ public static class MapGenerator
         nodes.Add(node32);
         nodes.Add(node33);
 
+        foreach (var node in nodes)
+            //node.visitedIconPath = "Icons_map/X_" + Random.Range(1, 4);
+            node.visitedIconPath = "Icons_map/X_3";
         return nodes;
     }
 }
