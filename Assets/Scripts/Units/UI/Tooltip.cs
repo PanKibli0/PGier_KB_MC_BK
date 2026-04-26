@@ -49,6 +49,7 @@ public class Tooltip : MonoBehaviour
 
     public void show(List<(Sprite icon, string name, string description)> entries)
     {
+        
         clearEntries();
 
         foreach (var entry in entries)
@@ -88,6 +89,7 @@ public class Tooltip : MonoBehaviour
         }
     }
 
+    
 
     public void hide()
     {

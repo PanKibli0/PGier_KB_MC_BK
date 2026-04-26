@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cb2a3ffb3a2c58640922a7465226e6e6, type: 3}
-  m_Name: ItemData
+  m_Name: ItemData4
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  itemName: Mikstura Zdrowia
-  description: "Otrzymaj 5 [Regeneracja] na pocz\u0105tku tury"
-  icon: {fileID: 0}
+  itemName: "Mikstura Si\u0142y"
+  description: "Otrzymaj 5 [Si\u0142a]"
+  icon: {fileID: -294570245, guid: cb28cac4edc49aa4984523dadc4be86e, type: 3}
   targetType: 0
   effects:
-  - rid: 8998113468483108932
+  - rid: 8998113494609166336
   references:
     version: 2
     RefIds:
-    - rid: 8998113468483108932
-      type: {class: RegenerationEffect, ns: , asm: Assembly-CSharp}
+    - rid: 8998113494609166336
+      type: {class: StrengthEffect, ns: , asm: Assembly-CSharp}
       data:
-        effectName: Regeneracja
+        effectName: "Si\u0142a"
         isMergeable: 1
         isDebuff: 0
-        stacks: 5
+        value: 5

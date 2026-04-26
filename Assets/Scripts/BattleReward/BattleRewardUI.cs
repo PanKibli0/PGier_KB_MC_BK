@@ -11,7 +11,9 @@ public class BattleRewardUI : MonoBehaviour
     [SerializeField] private Button continueButton;
     [SerializeField] private TMP_Text continueButtonText;
     [SerializeField] private CardRewardPanel cardRewardPanel;
+    [SerializeField] private ItemRewardPanel itemRewardPanel;
     [SerializeField] private GameObject rewardsList;
+    [SerializeField] private ItemDatabase itemDatabase;
 
     private List<GameObject> rewardButtons = new List<GameObject>();
     private int rewardsLeft;
@@ -74,6 +76,28 @@ public class BattleRewardUI : MonoBehaviour
         return cards;
     }
 
+    private List<ItemData> getRandomItems()
+    {
+        List<ItemData> result = new List<ItemData>();
+
+        if (itemDatabase == null || itemDatabase.items == null)
+            return result;
+
+        List<ItemData> pool = new List<ItemData>(itemDatabase.items);
+
+        for (int i = 0; i < 3; i++)
+        {
+            if (pool.Count == 0)
+                break;
+
+            int index = Random.Range(0, pool.Count);
+            result.Add(pool[index]);
+            pool.RemoveAt(index);
+        }
+
+        return result;
+    }
+
     // DEBUG
     private void createDebugRewards()
     {
@@ -85,9 +109,15 @@ public class BattleRewardUI : MonoBehaviour
         card.panel = cardRewardPanel;
         card.rewardsList = rewardsList;
 
+        ItemReward item = new ItemReward();
+        item.items = getRandomItems();
+        item.panel = itemRewardPanel;
+        item.rewardsList = rewardsList;
+
         List<BaseReward> rewards = new List<BaseReward>();
         rewards.Add(gold);
         rewards.Add(card);
+        rewards.Add(item);
 
         setRewards(rewards);
     }

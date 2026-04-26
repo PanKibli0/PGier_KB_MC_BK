@@ -9,12 +9,23 @@ public class InventoryUI : MonoBehaviour
 
     private void Start()
     {
-        PlayerInventory.Instance.OnInventoryChanged += refresh;
+        Debug.Log("SUBSCRIBED UI: " + gameObject.name);
+        if (PlayerInventory.Instance != null)
+            PlayerInventory.Instance.OnInventoryChanged += refresh;
+        
         refresh();
+    }
+    private void OnDestroy()
+    {
+        if (PlayerInventory.Instance != null)
+            PlayerInventory.Instance.OnInventoryChanged -= refresh;
     }
 
     public void refresh()
     {
+        Debug.Log($"InventoryUI instance: {gameObject.name}");
+        Debug.Log($"container: {container}");
+        Debug.Log($"itemPrefab: {itemPrefab}");
         if (PlayerInventory.Instance == null)
         {
             Debug.LogError("PlayerInventory.Instance == NULL - brak obiektu w scenie!");
@@ -35,7 +46,7 @@ public class InventoryUI : MonoBehaviour
         for (int i = 0; i < PlayerInventory.Instance.items.Count; i++)
         {
             ItemData item = PlayerInventory.Instance.items[i];
-
+            
             GameObject obj = Instantiate(itemPrefab, container);
 
             ItemClickUI ui = obj.GetComponent<ItemClickUI>();

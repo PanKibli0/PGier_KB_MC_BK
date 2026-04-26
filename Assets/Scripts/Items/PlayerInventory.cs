@@ -22,6 +22,7 @@ public class PlayerInventory : MonoBehaviour
         }
 
         Instance = this;
+        DontDestroyOnLoad(gameObject);
     }
 
     public void UseItem(int index)
