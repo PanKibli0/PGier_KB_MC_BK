@@ -48,7 +48,6 @@ public class CardUIBase : MonoBehaviour
             frontImage.sprite = frontSprites[typeIndex];
 
         nameText.text = card.data.cardName;
-        descText.text = $"{card.data.cost} Energy\n{string.Join("\n", card.data.actions)}";
         costText.text = $"{card.currentCost}";
 
         updateCostColor();
@@ -57,8 +56,6 @@ public class CardUIBase : MonoBehaviour
 
     public void updateDescription(Unit target = null, bool applyEffects = false)
     {
-
-
         if (card == null || card.actions == null) return;
 
         string description = "";

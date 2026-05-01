@@ -252,18 +252,15 @@ public class Unit : MonoBehaviour
 
     public void onEffectsTurnStart()
     {
-        foreach (var effect in effects.ToList())
-            effect.onTurnStart(this);
-
+        for (int i = effects.Count - 1; i >= 0; i--)
+            effects[i].onTurnStart(this);
         OnEffectsChanged?.Invoke();
     }
 
-
     public void onEffectsTurnEnd()
     {
-        foreach (var effect in effects.ToList())
-            effect.onTurnEnd(this);
-
+        for (int i = effects.Count - 1; i >= 0; i--)
+            effects[i].onTurnEnd(this);
         OnEffectsChanged?.Invoke();
     }
 

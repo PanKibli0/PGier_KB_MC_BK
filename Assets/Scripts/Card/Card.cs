@@ -11,7 +11,8 @@ public class Card
     {
         this.data = data;
         currentCost = data.cost;
-        actions = new List<BaseAction>(); // buff and future things
+        actions = new List<BaseAction>(); 
+
 
         if (data.actions == null) return;
 

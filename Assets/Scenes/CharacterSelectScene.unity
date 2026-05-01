@@ -293,6 +293,8 @@ MonoBehaviour:
   enemyPool: {fileID: 11400000, guid: 9b38731bdcd64d542b5d458b2dfbe824, type: 2}
   pendingBattleEnemies: []
   pendingBattleDifficulty: 0
+  enemiesKilled: 0
+  floorsCompleted: 0
 --- !u!4 &520281881
 Transform:
   m_ObjectHideFlags: 0
