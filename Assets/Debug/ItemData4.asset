@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb2a3ffb3a2c58640922a7465226e6e6, type: 3}
+  m_Name: ItemData4
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemName: "Mikstura Si\u0142y"
+  description: "Otrzymaj 5 [Si\u0142a]"
+  icon: {fileID: -294570245, guid: cb28cac4edc49aa4984523dadc4be86e, type: 3}
+  targetType: 0
+  effects:
+  - rid: 8998113494609166336
+  references:
+    version: 2
+    RefIds:
+    - rid: 8998113494609166336
+      type: {class: StrengthEffect, ns: , asm: Assembly-CSharp}
+      data:
+        effectName: "Si\u0142a"
+        isMergeable: 1
+        isDebuff: 0
+        value: 5

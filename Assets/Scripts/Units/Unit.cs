@@ -1,7 +1,8 @@
-using UnityEngine;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 public enum UnitType
@@ -36,25 +37,29 @@ public class Unit : MonoBehaviour
 
     public event Action OnEffectsChanged;
 
+    private bool isDead = false; 
+
 
     public void init(BaseUnitData data, UnitType type, UnitStatsUIManager statsUIManager)
     {
         unitName = data.unitName;
         unitType = type;
+
         maxHealth = data.maxHealth;
         currentMaxHealth = maxHealth;
         currentHealth = maxHealth;
 
         foreach (var effect in data.startEffects)
-            if (effect != null) addEffect(effect.Clone());
+            if (effect != null)
+                addEffect(effect.Clone());
 
         if (data is UnitData unitData)
             this.unitData = unitData;
 
-        
         statsUIManager.createStatsUI(this);
 
-        if (unitType != UnitType.Player) calculateIntent();
+        if (unitType != UnitType.Player)
+            calculateIntent();
     }
 
 
@@ -63,9 +68,11 @@ public class Unit : MonoBehaviour
         statsUI = ui;
     }
 
+
     public void calculateIntent()
     {
-        if (unitData == null || unitData.moves == null || unitData.moves.Count == 0) return;
+        if (unitData == null || unitData.moves == null || unitData.moves.Count == 0)
+            return;
 
         int randomIndex = Random.Range(0, unitData.moves.Count);
         nextMove = unitData.moves[randomIndex];
@@ -73,24 +80,29 @@ public class Unit : MonoBehaviour
         statsUI?.showIntent(nextMove);
     }
 
+
     public void clearIntent()
     {
         nextMove = null;
         statsUI?.hideIntent();
     }
 
+
     public void takeTurn()
     {
-        if (unitType == UnitType.Player) return;
+        if (unitType == UnitType.Player || isDead)
+            return;
 
         resetBlock();
         onEffectsTurnStart();
 
-        if (nextMove == null) return;
+        if (nextMove == null)
+            return;
 
         foreach (var action in nextMove.actions)
         {
             if (action == null) continue;
+
             List<Unit> targets = TargetingSystem.getTargets(this, action.targetType);
 
             foreach (Unit target in targets)
@@ -98,13 +110,14 @@ public class Unit : MonoBehaviour
         }
 
         clearIntent();
-
         onEffectsTurnEnd();
     }
 
 
     public void takeDamage(int damage, DamageType type = DamageType.Normal, Unit source = null)
     {
+        if (isDead) return;
+
         if (type != DamageType.Pure)
         {
             foreach (var effect in effects)
@@ -121,18 +134,57 @@ public class Unit : MonoBehaviour
         currentHealth -= damage;
         statsUI?.updateUI();
 
-        if (currentHealth <= 0)
+        if (currentHealth <= 0 && !isDead)
         {
-            if (unitType != UnitType.Player && UnitsManager.Instance != null)
-                UnitsManager.Instance.removeUnit(this);
-            Destroy(gameObject);
+            Die(source);
         }
 
         if (unitType == UnitType.Player && GameManager.Instance != null)
+        {
             GameManager.Instance.currentHealth = currentHealth;
+        }
+    }
+    public bool IsDead()
+    {
+        return isDead;
+    }
 
+    private void Die(Unit source = null)
+    {
+        if (isDead) return;
+        isDead = true;
+
+        if (unitType == UnitType.Player)
+        {
+            SceneManager.LoadScene("EndScreenScene");
+            return;
         }
 
+        if (unitType == UnitType.Enemy && GameManager.Instance != null)
+        {
+            GameManager.Instance.addEnemyKill();
+        }
+
+        if (UnitsManager.Instance != null)
+        {
+            UnitsManager.Instance.removeUnit(this);
+        }
+
+        Destroy(gameObject);
+
+        CheckCombatEnd();
+    }
+
+    private void CheckCombatEnd()
+    {
+        bool enemiesLeft = UnitsManager.Instance.getEnemies().Any(e => e != null);
+
+        if (!enemiesLeft)
+        {
+            GameManager.Instance.addFloorCount();
+            SceneManager.LoadScene("BattleRewardScene", LoadSceneMode.Additive);
+        }
+    }
 
     public void addBlock(int amount)
     {
@@ -143,14 +195,19 @@ public class Unit : MonoBehaviour
 
     public void heal(int amount)
     {
+        if (isDead) return;
+
         currentHealth += amount;
+
         if (currentHealth > currentMaxHealth)
             currentHealth = currentMaxHealth;
 
         statsUI?.updateUI();
 
         if (unitType == UnitType.Player && GameManager.Instance != null)
+        {
             GameManager.Instance.currentHealth = currentHealth;
+        }
     }
 
 

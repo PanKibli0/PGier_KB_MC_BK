@@ -11,6 +11,7 @@ public class Tooltip : MonoBehaviour
 
     private RectTransform rectTransform;
     private float maxHeight = 600f;
+    public static Tooltip Instance;
 
     private void OnEnable()
     {
@@ -48,6 +49,7 @@ public class Tooltip : MonoBehaviour
 
     public void show(List<(Sprite icon, string name, string description)> entries)
     {
+        
         clearEntries();
 
         foreach (var entry in entries)
@@ -87,13 +89,18 @@ public class Tooltip : MonoBehaviour
         }
     }
 
+    
 
     public void hide()
     {
         clearEntries();
         gameObject.SetActive(false);
     }
-
+    private void Awake()
+    {
+        Instance = this;
+        rectTransform = GetComponent<RectTransform>();
+    }
 
     private void clearEntries()
     {
