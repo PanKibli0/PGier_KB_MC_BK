@@ -27,6 +27,10 @@ public class GameManager : MonoBehaviour
     public BattleDifficulty pendingBattleDifficulty;
 
 
+    public int enemiesKilled;
+    public int floorsCompleted;
+
+
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -67,11 +71,24 @@ public class GameManager : MonoBehaviour
         OnGoldChanged?.Invoke(gold);
     }
 
+    public void addEnemyKill()
+    {
+        enemiesKilled++;
+    }
+    public void addFloorCount()
+    {
+        floorsCompleted++;
+    }
+
+
     // DEBUG
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.R))
             SceneManager.LoadScene("BattleRewardScene", LoadSceneMode.Additive);
+
+        if (Input.GetKeyDown(KeyCode.S))
+            SceneManager.LoadScene("EndScreenScene", LoadSceneMode.Additive);
     }
 
     // END DEBUG
