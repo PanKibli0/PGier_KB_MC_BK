@@ -17,24 +17,8 @@ public class CardUIBase : MonoBehaviour
     [SerializeField] protected TMP_Text costText;
     [SerializeField] protected Sprite[] frontSprites;
 
-    protected virtual void Start()
-    {
-        if (EnergySystem.Instance != null)
-            EnergySystem.Instance.OnEnergyChanged += updateCostColor;
 
-        UnitsManager.Instance.player.OnEffectsChanged += onEffectsChanged;
-    }
 
-    protected virtual void OnDestroy()
-    {
-        if (EnergySystem.Instance != null)
-            EnergySystem.Instance.OnEnergyChanged -= updateCostColor;
-
-        if (UnitsManager.Instance?.player != null)
-            UnitsManager.Instance.player.OnEffectsChanged -= onEffectsChanged;
-    }
-
-    private void onEffectsChanged() { updateDescription(); }
 
     public virtual void init(Card card)
     {
@@ -59,20 +43,22 @@ public class CardUIBase : MonoBehaviour
         if (card == null || card.actions == null) return;
 
         string description = "";
+        Unit player = (UnitsManager.Instance != null) ? UnitsManager.Instance.player : null;
+
         foreach (var action in card.actions)
         {
-            description += action.getCardDescription(UnitsManager.Instance.player, target, applyEffects) + "\n";
+            description += action.getCardDescription(player, target, applyEffects) + "\n";
         }
         descText.text = description;
     }
 
-    private void updateCostColor()
+    protected void updateCostColor()
     {
         if (costText == null) return;
 
-        if (EnergySystem.Instance != null && EnergySystem.Instance.canAfford(card.currentCost))
-            costText.color = Color.white;
-        else
+        if (EnergySystem.Instance != null && !EnergySystem.Instance.canAfford(card.currentCost))
             costText.color = Color.red;
+        else
+            costText.color = Color.white;
     }
 }

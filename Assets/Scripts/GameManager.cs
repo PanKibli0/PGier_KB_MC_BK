@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
+    public static event Action OnHealthChanged;
+
     public CharacterData selectedCharacter;
 
     [Header("Player Stats")]
@@ -40,20 +42,35 @@ public class GameManager : MonoBehaviour
         }
         Instance = this;
         DontDestroyOnLoad(gameObject);
+
+        
     }
 
+    public void setHealth(int value)
+    {
+        if (value >= maxHealth)
+            value = maxHealth;
+        if (value < 0)
+            value = 0;
+
+        currentHealth = value;
+
+        OnHealthChanged?.Invoke();
+    }
 
     public void startNewRun(CharacterData character)
     {
         selectedCharacter = character;
-        currentHealth = character.maxHealth;
         maxHealth = character.maxHealth;
+        setHealth(character.maxHealth);
+        
         gold = character.startGold;
         currentDeck = new List<CardData>(character.startCards);
 
         MapData mapData = new MapData();
         mapData.nodes = MapGenerator.generateMap(enemyPool);
         currentMap = mapData;
+        
         SceneManager.LoadScene("MapScene");
     }
 

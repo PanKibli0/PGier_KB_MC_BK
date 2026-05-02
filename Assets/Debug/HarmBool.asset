@@ -20,7 +20,7 @@ MonoBehaviour:
   actions:
   - rid: 2259742944157237644
   - rid: 2259742944157237645
-  upgrade: {fileID: 0}
+  upgrade: {fileID: 11400000, guid: 552dee7d8a21c8c41a919f8524a74b86, type: 2}
   references:
     version: 2
     RefIds:

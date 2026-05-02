@@ -43,9 +43,21 @@ public static class MapGenerator
 
         //node33.gridPosition = new Vector2Int(4, 10);
 
-        node11.connections = new List<BaseNode> { node21, node22 };
+        RestNode restNode = new RestNode();
+        restNode.gridPosition = new Vector2Int(3, 1);
+        restNode.isUnlocked = false;
+  
+        RestNode restNode0 = new RestNode();
+        restNode0.gridPosition = new Vector2Int(4, 0);
+        restNode0.isUnlocked = true;
+
+
+
+        node11.connections = new List<BaseNode> { node21, node22, restNode };
         node21.connections = new List<BaseNode> { node31 };
         node22.connections = new List<BaseNode> { node32, node33 };
+        restNode.connections = new List<BaseNode> { node31, node32 };
+        restNode0.connections = new List<BaseNode> { restNode, node22 };
 
         nodes.Add(node11);
         nodes.Add(node21);
@@ -53,10 +65,12 @@ public static class MapGenerator
         nodes.Add(node31);
         nodes.Add(node32);
         nodes.Add(node33);
+        nodes.Add(restNode);
+        nodes.Add(restNode0);
 
         foreach (var node in nodes)
-            //node.visitedIconPath = "Icons_map/X_" + Random.Range(1, 4);
-            node.visitedIconPath = "Icons_map/X_3";
+            node.visitedIconPath = "Icons_map/X_" + Random.Range(1, 4);
+            
         return nodes;
     }
 }

@@ -141,7 +141,7 @@ public class Unit : MonoBehaviour
 
         if (unitType == UnitType.Player && GameManager.Instance != null)
         {
-            GameManager.Instance.currentHealth = currentHealth;
+            GameManager.Instance.setHealth(currentHealth);
         }
     }
     public bool IsDead()
@@ -206,7 +206,7 @@ public class Unit : MonoBehaviour
 
         if (unitType == UnitType.Player && GameManager.Instance != null)
         {
-            GameManager.Instance.currentHealth = currentHealth;
+            GameManager.Instance.setHealth(currentHealth);
         }
     }
 

@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
 
-public class CardPileViewer : MonoBehaviour
+public class CardPileView : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private CardUIManager cardUIManager;
@@ -11,15 +11,13 @@ public class CardPileViewer : MonoBehaviour
 
     private List<Card> currentCards = new List<Card>();
     private PileType currentPileType;
-    private SortType currentSortType = SortType.Alphabetical;
+    private CardSorter.SortMode currentSortMode = CardSorter.SortMode.Alphabetical;
     private bool sortAscending = true;
-
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape)) close();
     }
-
 
     public void open(PileType pileType)
     {
@@ -31,11 +29,9 @@ public class CardPileViewer : MonoBehaviour
             sortOrderButton.interactable = (pileType != PileType.Draw);
     }
 
-
     public void openDraw() { open(PileType.Draw); }
     public void openDiscard() { open(PileType.Discard); }
     public void openExhaust() { open(PileType.Exhaust); }
-
 
     private void loadCards(PileType pileType)
     {
@@ -45,15 +41,15 @@ public class CardPileViewer : MonoBehaviour
         {
             case PileType.Draw:
                 currentCards.AddRange(CardPileSystem.Instance.drawPile);
-                currentSortType = SortType.Alphabetical;
+                currentSortMode = CardSorter.SortMode.Alphabetical;
                 break;
             case PileType.Discard:
                 currentCards.AddRange(CardPileSystem.Instance.discardPile);
-                currentSortType = SortType.Order;
+                currentSortMode = CardSorter.SortMode.Order;
                 break;
             case PileType.Exhaust:
                 currentCards.AddRange(CardPileSystem.Instance.exhaustPile);
-                currentSortType = SortType.Order;
+                currentSortMode = CardSorter.SortMode.Order;
                 break;
         }
 
@@ -66,104 +62,65 @@ public class CardPileViewer : MonoBehaviour
         foreach (Transform child in gridContainer)
             Destroy(child.gameObject);
 
-
         foreach (Card card in cards)
             cardUIManager.createCardUI(card, gridContainer, CardUIType.Static);
     }
 
     private void sortAndDisplay()
     {
-        List<Card> sorted = new List<Card>(currentCards);
-
-        switch (currentSortType)
-        {
-            case SortType.Order:
-                if (sortAscending)
-                    sorted.Sort((a, b) => currentCards.IndexOf(a).CompareTo(currentCards.IndexOf(b)));
-                else
-                    sorted.Sort((a, b) => currentCards.IndexOf(b).CompareTo(currentCards.IndexOf(a)));
-                break;
-
-            case SortType.Type:
-                if (sortAscending)
-                    sorted.Sort((a, b) => a.data.type.CompareTo(b.data.type));
-                else
-                    sorted.Sort((a, b) => b.data.type.CompareTo(a.data.type));
-                break;
-
-            case SortType.Cost:
-                if (sortAscending)
-                    sorted.Sort((a, b) => a.currentCost.CompareTo(b.currentCost));
-                else
-                    sorted.Sort((a, b) => b.currentCost.CompareTo(a.currentCost));
-                break;
-
-            case SortType.Alphabetical:
-                if (sortAscending)
-                    sorted.Sort((a, b) => string.Compare(a.data.cardName, b.data.cardName));
-                else
-                    sorted.Sort((a, b) => string.Compare(b.data.cardName, a.data.cardName));
-                break;
-        }
-
+        List<Card> sorted = CardSorter.sortCards(currentCards, currentSortMode, sortAscending);
         displayCards(sorted);
     }
 
-
-    
     public void sortOrder()
     {
         if (currentPileType == PileType.Draw) return;
 
-        if (currentSortType == SortType.Order)
+        if (currentSortMode == CardSorter.SortMode.Order)
             sortAscending = !sortAscending;
         else
         {
-            currentSortType = SortType.Order;
+            currentSortMode = CardSorter.SortMode.Order;
             sortAscending = true;
         }
         sortAndDisplay();
     }
-
 
     public void sortType()
     {
-        if (currentSortType == SortType.Type)
+        if (currentSortMode == CardSorter.SortMode.Type)
             sortAscending = !sortAscending;
         else
         {
-            currentSortType = SortType.Type;
+            currentSortMode = CardSorter.SortMode.Type;
             sortAscending = true;
         }
         sortAndDisplay();
     }
-
 
     public void sortCost()
     {
-        if (currentSortType == SortType.Cost)
+        if (currentSortMode == CardSorter.SortMode.Cost)
             sortAscending = !sortAscending;
         else
         {
-            currentSortType = SortType.Cost;
+            currentSortMode = CardSorter.SortMode.Cost;
             sortAscending = true;
         }
         sortAndDisplay();
     }
-
 
     public void sortAlphabetical()
     {
-        if (currentSortType == SortType.Alphabetical)
+        if (currentSortMode == CardSorter.SortMode.Alphabetical)
             sortAscending = !sortAscending;
         else
         {
-            currentSortType = SortType.Alphabetical;
+            currentSortMode = CardSorter.SortMode.Alphabetical;
             sortAscending = true;
         }
         sortAndDisplay();
     }
-
 
     public void close()
     {
@@ -171,19 +128,9 @@ public class CardPileViewer : MonoBehaviour
     }
 }
 
-
 public enum PileType
 {
     Draw,
     Discard,
     Exhaust
-}
-
-
-public enum SortType
-{
-    Order,
-    Type,
-    Cost,
-    Alphabetical
 }

@@ -55,6 +55,8 @@ public class CardPileSystem : MonoBehaviour
             drawPile.Add(new Card(data));
         }
 
+
+
         // Karty AS - Special
         for (int i = 1; i <= 5; i++)
         {

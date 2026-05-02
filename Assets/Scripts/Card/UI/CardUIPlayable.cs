@@ -21,6 +21,25 @@ public class CardUIPlayable : CardUIBase, IBeginDragHandler, IDragHandler, IEndD
         handArea = GetComponentInParent<HandAreaUI>();
     }
 
+    protected virtual void Start()
+    {
+        if (EnergySystem.Instance != null)
+            EnergySystem.Instance.OnEnergyChanged += updateCostColor;
+
+        UnitsManager.Instance.player.OnEffectsChanged += onEffectsChanged;
+    }
+
+    protected virtual void OnDestroy()
+    {
+        if (EnergySystem.Instance != null)
+            EnergySystem.Instance.OnEnergyChanged -= updateCostColor;
+
+        if (UnitsManager.Instance?.player != null)
+            UnitsManager.Instance.player.OnEffectsChanged -= onEffectsChanged;
+    }
+
+    protected void onEffectsChanged() { updateDescription(); }
+
     public override void init(Card card)
     {
         base.init(card);

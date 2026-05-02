@@ -78,7 +78,7 @@ public class MapManager : MonoBehaviour
                 Vector2 start = startCenter + dir * lineOffset;
                 Vector2 end = endCenter - dir * lineOffset;
 
-                Color lineColor = (connection.isVisited) ? Color.white : Color.gray;
+                Color lineColor = (node.isVisited && connection.isVisited) ? Color.white : Color.gray;
                 lineDrawer.drawLine(start, end, lineColor);
             }
         }

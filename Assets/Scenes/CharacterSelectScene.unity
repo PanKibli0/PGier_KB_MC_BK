@@ -285,6 +285,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7f1b5b6080600c4fa713e01b055bd54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  globalHealthBarPrefab: {fileID: 5085457465902854809, guid: 93d1f42c8bfd3ea44a54639aefc65965, type: 3}
   selectedCharacter: {fileID: 0}
   currentHealth: 0
   maxHealth: 0
