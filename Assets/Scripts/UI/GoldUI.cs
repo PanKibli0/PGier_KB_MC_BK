@@ -9,7 +9,7 @@ public class GoldUI : MonoBehaviour
     {
         if (GameManager.Instance != null)
         {
-            GameManager.Instance.OnGoldChanged += updateGold;
+            GameManager.OnGoldChanged += updateGold;
             updateGold(GameManager.Instance.gold);
         }
     }
@@ -18,12 +18,14 @@ public class GoldUI : MonoBehaviour
     {
         if (GameManager.Instance != null)
         {
-            GameManager.Instance.OnGoldChanged -= updateGold;
+            GameManager.OnGoldChanged -= updateGold;
         }
     }
 
     private void updateGold(int gold)
     {
+        Debug.Log($"<color=yellow>Złoto: {gold}</color>");
+
         goldText.text = gold.ToString();
     }
 }

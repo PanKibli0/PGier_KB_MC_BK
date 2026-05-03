@@ -12,7 +12,7 @@ public static class MapGenerator
         node11.enemies = pool.normalFights[Random.Range(0, pool.normalFights.Count)].enemies;
         node11.difficulty = BattleDifficulty.Normal;
         node11.isUnlocked = true;
-        node11.gridPosition = new Vector2Int(3, 0);
+        node11.gridPosition = new Vector2Int(2, 0);
         
 
 
@@ -51,13 +51,17 @@ public static class MapGenerator
         restNode0.gridPosition = new Vector2Int(4, 0);
         restNode0.isUnlocked = true;
 
+        ShopNode shopNode = new ShopNode();
+        shopNode.gridPosition = new Vector2Int(3, 0); 
+        shopNode.isUnlocked = true;
 
 
-        node11.connections = new List<BaseNode> { node21, node22, restNode };
+        node11.connections = new List<BaseNode> { node21,  restNode };
         node21.connections = new List<BaseNode> { node31 };
         node22.connections = new List<BaseNode> { node32, node33 };
         restNode.connections = new List<BaseNode> { node31, node32 };
         restNode0.connections = new List<BaseNode> { restNode, node22 };
+        shopNode.connections = new List<BaseNode> { restNode,node22 };
 
         nodes.Add(node11);
         nodes.Add(node21);
@@ -67,6 +71,7 @@ public static class MapGenerator
         nodes.Add(node33);
         nodes.Add(restNode);
         nodes.Add(restNode0);
+        nodes.Add(shopNode);
 
         foreach (var node in nodes)
             node.visitedIconPath = "Icons_map/X_" + Random.Range(1, 4);

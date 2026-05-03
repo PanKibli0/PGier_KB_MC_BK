@@ -238,6 +238,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MainBar
       objectReference: {fileID: 0}
+    - target: {fileID: 5085457465902854809, guid: 93d1f42c8bfd3ea44a54639aefc65965, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5872771529206042618, guid: 93d1f42c8bfd3ea44a54639aefc65965, type: 3}
       propertyPath: m_Pivot.x
       value: 0

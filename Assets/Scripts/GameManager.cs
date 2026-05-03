@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Currency")]
     public int gold;
-    public event Action<int> OnGoldChanged;
+    public static event Action<int> OnGoldChanged;
 
     [Header("Map")]
     public EnemyPool enemyPool;
@@ -28,7 +28,9 @@ public class GameManager : MonoBehaviour
     public UnitData[] pendingBattleEnemies;
     public BattleDifficulty pendingBattleDifficulty;
 
+    public CardPool generalCardPool;
 
+    [Header("Run Stats")]
     public int enemiesKilled;
     public int floorsCompleted;
 
@@ -43,7 +45,7 @@ public class GameManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
 
-        
+        OnGoldChanged?.Invoke(gold);
     }
 
     public void setHealth(int value)

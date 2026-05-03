@@ -3,7 +3,7 @@ using UnityEngine;
 public class HandUI : MonoBehaviour
 {
 
-    [SerializeField] private CardUIManager cardUIManager;
+    [SerializeField] private GameObject cardUIPrefab;
     [SerializeField] private Transform handParent;
 
     void OnEnable()
@@ -26,7 +26,8 @@ public class HandUI : MonoBehaviour
 
     void createCardUI(Card card)
     {
-        cardUIManager.createCardUI(card, handParent, CardUIType.Playable);
+        GameObject cardObj = Instantiate(cardUIPrefab, handParent);
+        cardObj.GetComponent<CardUIPlayable>().init(card);
     }
 
     void clearHandUI()

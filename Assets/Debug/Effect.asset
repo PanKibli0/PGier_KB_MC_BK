@@ -17,6 +17,7 @@ MonoBehaviour:
   type: 1
   rarity: 1
   image: {fileID: 0}
+  shopPrice: 100
   actions:
   - rid: 2259743152694362182
   upgrade: {fileID: 0}

@@ -29,7 +29,7 @@ public class RestSceneUI : MonoBehaviour
         if (hasUsedAction) return;
         mainPanel.SetActive(false);
         upgradePanel.gameObject.SetActive(true);
-        upgradePanel.show(this);
+        upgradePanel.show();
     }
 
     public void onUpgradeCompleted()

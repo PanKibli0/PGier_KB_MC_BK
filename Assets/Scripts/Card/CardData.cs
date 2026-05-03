@@ -10,6 +10,7 @@ public class CardData : ScriptableObject
     public Rarity rarity;
     public Sprite image;
 
+    public int shopPrice;
 
     [SerializeReference]
     public List<BaseAction> actions;

@@ -1,49 +1,23 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class RestCardUpgradePanel : MonoBehaviour
+public abstract class BaseCardPanel : MonoBehaviour
 {
-    [SerializeField] private Transform cardContainer;
-    [SerializeField] private GameObject cardPrefab;
-    [SerializeField] private GameObject mainPanel;
-    [SerializeField] private Button backButton;
-    [SerializeField] private RestCardComparePanel comparePanel;
+    [SerializeField] protected Transform cardContainer;
+    [SerializeField] protected GameObject cardPrefab;
 
-    private List<Card> upgradableCards = new List<Card>();
-    private CardSorter.SortMode currentSortMode = CardSorter.SortMode.Order;
-    private bool sortAscending = true;
-    private RestSceneUI parentUI;
+    protected List<Card> currentCards = new List<Card>();
+    protected CardSorter.SortMode currentSortMode = CardSorter.SortMode.Order;
+    protected bool sortAscending = true;
 
-    public void show(RestSceneUI parent)
-    {
-        parentUI = parent;
-        loadUpgradableCards();
-        sortAndDisplay();
-    }
-
-    private void loadUpgradableCards()
-    {
-        upgradableCards.Clear();
-        foreach (CardData cardData in GameManager.Instance.currentDeck)
-            if (cardData.upgrade != null)
-                upgradableCards.Add(new Card(cardData));
-        sortAscending = true;
-        currentSortMode = CardSorter.SortMode.Order;
-    }
-
-    private void sortAndDisplay()
-    {
-        upgradableCards = CardSorter.sortCards(upgradableCards, currentSortMode, sortAscending);
-        displayCards();
-    }
-
-    private void displayCards()
+    protected abstract List<Card> loadCards();
+    protected abstract void onCardSelected(Card card);
+    protected virtual void displayCards()
     {
         foreach (Transform child in cardContainer)
             Destroy(child.gameObject);
 
-        foreach (Card card in upgradableCards)
+        foreach (Card card in currentCards)
         {
             GameObject cardObj = Instantiate(cardPrefab, cardContainer);
             CardUIClickable cardUI = cardObj.GetComponent<CardUIClickable>();
@@ -52,12 +26,17 @@ public class RestCardUpgradePanel : MonoBehaviour
         }
     }
 
-    private void onCardSelected(Card card)
+    protected void sortAndDisplay()
     {
-        comparePanel.show(card);
-        gameObject.SetActive(false);
+        currentCards = CardSorter.sortCards(currentCards, currentSortMode, sortAscending);
+        displayCards();
     }
 
+    public void refreshDisplay()
+    {
+        currentCards = loadCards();
+        sortAndDisplay();
+    }
 
     public void sortOrder()
     {
@@ -105,10 +84,5 @@ public class RestCardUpgradePanel : MonoBehaviour
             sortAscending = true;
         }
         sortAndDisplay();
-    }
-
-    public void onBackButton()
-    {
-        parentUI.onUpgradeCancelled();
     }
 }

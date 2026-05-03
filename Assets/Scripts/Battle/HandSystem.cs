@@ -6,8 +6,6 @@ public class HandSystem : MonoBehaviour
 {
     public static HandSystem Instance;
 
-    [SerializeField] private CardUIManager CardUIManager;
-
     public List<Card> hand = new List<Card>();
 
     public event Action<Card> OnCardAddedToHand;

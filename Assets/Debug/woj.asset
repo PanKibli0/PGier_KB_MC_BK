@@ -21,7 +21,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 083c2c054f187f14c96620ddfa844f6c, type: 2}
   - {fileID: 11400000, guid: 083c2c054f187f14c96620ddfa844f6c, type: 2}
   cardPool: {fileID: 11400000, guid: aeb5820f51882af4ebb56e443c00a0d6, type: 2}
-  startGold: 0
+  startGold: 500
   references:
     version: 2
     RefIds:
