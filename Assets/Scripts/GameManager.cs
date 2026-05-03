@@ -108,6 +108,9 @@ public class GameManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.S))
             SceneManager.LoadScene("EndScreenScene", LoadSceneMode.Additive);
+    
+        if (Input.GetKeyDown(KeyCode.P))
+            setHealth(currentHealth/2);
     }
 
     // END DEBUG

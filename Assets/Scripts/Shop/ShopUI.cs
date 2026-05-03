@@ -31,15 +31,12 @@ public class ShopUI : MonoBehaviour
 
     private void createShopCardsUI()
     {
-
         List<CardData> shopCards = new List<CardData>();
         CardPool charPool = GameManager.Instance.selectedCharacter.cardPool;
         CardPool generalPool = GameManager.Instance.generalCardPool;
 
         shopCards.AddRange(getUniqueCards(charPool.cards, 5));
         shopCards.AddRange(getUniqueCards(generalPool.cards, 2));
-
-        Debug.Log($"Shop cards ({shopCards.Count}): {string.Join(", ", shopCards)}");
 
         for (int i = 0; i < 5; i++)
         {
@@ -53,7 +50,6 @@ public class ShopUI : MonoBehaviour
             createCard(shopCards[5 + i], x, -175);
         }
     }
-
 
     private void createCard(CardData card, float x, float y)
     {
@@ -81,6 +77,7 @@ public class ShopUI : MonoBehaviour
 
     public void onRemoveClick()
     {
+        gameObject.SetActive(false);
         shopRemovePanel.show();
     }
 

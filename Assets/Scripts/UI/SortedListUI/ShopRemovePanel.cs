@@ -5,6 +5,7 @@ public class ShopRemovePanel : BaseCardPanel
 {
     [SerializeField] private RemoveConfirmPanel confirmPanel;
     [SerializeField] private ShopUI shopUI;
+    [SerializeField] private GameObject mainPanel;
 
     public void show()
     {
@@ -22,12 +23,13 @@ public class ShopRemovePanel : BaseCardPanel
 
     protected override void onCardSelected(Card card)
     {
-        confirmPanel.show(card);
         gameObject.SetActive(false);
+        confirmPanel.show(card);
     }
 
     public void onBackButton()
     {
+        mainPanel.SetActive(true);
         gameObject.SetActive(false);
     }
 

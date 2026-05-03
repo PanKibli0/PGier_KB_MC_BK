@@ -402,7 +402,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 225, y: 98}
+  m_AnchoredPosition: {x: 225, y: 175}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &497465367
@@ -2356,6 +2356,7 @@ MonoBehaviour:
   costText: {fileID: 1532305875}
   shopUI: {fileID: 1689412643}
   removePanel: {fileID: 7434743940259446168}
+  mainPanel: {fileID: 1689412639}
 --- !u!1 &2070877369
 GameObject:
   m_ObjectHideFlags: 0
@@ -4199,6 +4200,7 @@ MonoBehaviour:
   cardPrefab: {fileID: 3950604789313896660, guid: f60766c5665609b428d717e358cca06b, type: 3}
   confirmPanel: {fileID: 2058260565}
   shopUI: {fileID: 1689412643}
+  mainPanel: {fileID: 1689412639}
 --- !u!224 &7465401291617067210
 RectTransform:
   m_ObjectHideFlags: 0
