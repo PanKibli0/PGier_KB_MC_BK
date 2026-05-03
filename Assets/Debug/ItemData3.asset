@@ -13,19 +13,25 @@ MonoBehaviour:
   m_Name: ItemData3
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemName: "Mikstura Wra\u017Cliwo\u015Bci"
-  description: "Na\u0142\xF3\u017C 1 [Wra\u017Cliwo\u015B\u0107]"
+  description: "Na\u0142\xF3\u017C 2 [Wra\u017Cliwo\u015B\u0107]"
   icon: {fileID: -6998330770257627967, guid: 3a8156553d0e31a42b40ee3a24ba6b17, type: 3}
   targetType: 6
-  effects:
-  - rid: 8998113489560272964
+  actions:
+  - rid: 490815476803305543
   references:
     version: 2
     RefIds:
-    - rid: 8998113489560272964
+    - rid: 490815476803305543
+      type: {class: AddEffectAction, ns: , asm: Assembly-CSharp}
+      data:
+        targetType: 6
+        effectToAdd:
+          rid: 490815476803305544
+    - rid: 490815476803305544
       type: {class: VulnerableEffect, ns: , asm: Assembly-CSharp}
       data:
         effectName: "Wra\u017Cliwo\u015B\u0107"
         isMergeable: 1
         isDebuff: 1
-        duration: 1
-        multiplier: 1
+        duration: 2
+        multiplier: 1.5

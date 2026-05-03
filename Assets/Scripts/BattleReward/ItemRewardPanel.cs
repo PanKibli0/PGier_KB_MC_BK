@@ -19,6 +19,7 @@ public class ItemRewardPanel : MonoBehaviour
         foreach (var item in items)
         {
             Debug.Log("PANEL ITEM: " + item.itemName);
+
             GameObject obj = Instantiate(itemPrefab, container);
 
             ItemClickUI ui = obj.GetComponent<ItemClickUI>();

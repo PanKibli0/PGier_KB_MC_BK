@@ -11,24 +11,37 @@ public class ItemData : ScriptableObject
     public TargetType targetType;
 
     [SerializeReference]
-    public List<BaseStatusEffect> effects = new List<BaseStatusEffect>();
+    public List<BaseAction> actions = new List<BaseAction>();
 
     public void Use(Unit user, Unit selectedTarget = null)
     {
         if (user == null) return;
 
-        List<Unit> targets = TargetingSystem.getTargets(user, targetType, selectedTarget);
+        List<Unit> targets = TargetingSystem.getTargets(user, actions[0].targetType, selectedTarget);
 
         foreach (Unit target in targets)
         {
             if (target == null) continue;
 
-            foreach (var effect in effects)
+            foreach (var action in actions)
             {
-                if (effect == null) continue;
+                if (action == null) continue;
 
-                target.addEffect(effect.Clone());
+                action.execute(target, user);
             }
         }
+    }
+    public string getDescription(Unit source = null, Unit target = null)
+    {
+        string desc = "";
+
+        foreach (var action in actions)
+        {
+            if (action == null) continue;
+
+            desc += action.getCardDescription(source, target, true) + "\n";
+        }
+
+        return desc;
     }
 }

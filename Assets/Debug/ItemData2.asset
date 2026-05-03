@@ -16,12 +16,18 @@ MonoBehaviour:
   description: "Na\u0142\xF3\u017C 5 [Trucizna] losowemu przeciwnikowi"
   icon: {fileID: -279675765, guid: cb28cac4edc49aa4984523dadc4be86e, type: 3}
   targetType: 3
-  effects:
-  - rid: 8998113489560272963
+  actions:
+  - rid: 490815476803305541
   references:
     version: 2
     RefIds:
-    - rid: 8998113489560272963
+    - rid: 490815476803305541
+      type: {class: AddEffectAction, ns: , asm: Assembly-CSharp}
+      data:
+        targetType: 3
+        effectToAdd:
+          rid: 490815476803305542
+    - rid: 490815476803305542
       type: {class: PoisonEffect, ns: , asm: Assembly-CSharp}
       data:
         effectName: Trucizna

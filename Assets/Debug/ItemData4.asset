@@ -16,12 +16,18 @@ MonoBehaviour:
   description: "Otrzymaj 5 [Si\u0142a]"
   icon: {fileID: -294570245, guid: cb28cac4edc49aa4984523dadc4be86e, type: 3}
   targetType: 0
-  effects:
-  - rid: 8998113494609166336
+  actions:
+  - rid: 490815476803305545
   references:
     version: 2
     RefIds:
-    - rid: 8998113494609166336
+    - rid: 490815476803305545
+      type: {class: AddEffectAction, ns: , asm: Assembly-CSharp}
+      data:
+        targetType: 0
+        effectToAdd:
+          rid: 490815476803305546
+    - rid: 490815476803305546
       type: {class: StrengthEffect, ns: , asm: Assembly-CSharp}
       data:
         effectName: "Si\u0142a"

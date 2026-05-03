@@ -1,28 +1,51 @@
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
+using TMPro;
 
-public class ItemClickUI : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
+public class ItemClickUI : MonoBehaviour,
+    IPointerClickHandler,
+    IPointerEnterHandler,
+    IPointerExitHandler
 {
     private ItemData item;
-    private ItemPreviewUI previewUI;
     private ItemRewardPanel panel;
-
     private int index;
+    private ItemPreviewUI previewUI;
 
-    private ItemRewardPanel rewardPanel;
-    private bool isRewardMode = false;
+    [Header("UI")]
+    [SerializeField] private Image icon;
+    [SerializeField] private TMP_Text nameText;
+    [SerializeField] private TMP_Text descriptionText;
+
     public void setup(ItemData item, int index)
     {
         this.item = item;
         this.index = index;
-        isRewardMode = false;
+        previewUI = FindObjectOfType<ItemPreviewUI>();
+        refreshUI();
     }
 
     public void setupReward(ItemData item, ItemRewardPanel panel)
     {
         this.item = item;
         this.panel = panel;
+        previewUI = FindObjectOfType<ItemPreviewUI>();
+        refreshUI();
+    }
+
+    private void refreshUI()
+    {
+        if (item == null) return;
+
+        if (icon != null)
+            icon.sprite = item.icon;
+
+        if (nameText != null)
+            nameText.text = item.itemName;
+
+        if (descriptionText != null)
+            descriptionText.text = item.description;
     }
 
     public void OnPointerClick(PointerEventData eventData)
@@ -41,18 +64,14 @@ public class ItemClickUI : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
     {
         if (item == null) return;
 
-        if (panel != null)
-        {
-            Debug.Log("HOVER REWARD ITEM: " + item.itemName);
-        }
-        else
-        {
-            Debug.Log("HOVER INVENTORY ITEM: " + item.itemName);
-        }
+        ItemPreviewUI.Instance.show(item);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
+        if (previewUI == null)
+            previewUI = Object.FindFirstObjectByType<ItemPreviewUI>();
+
         if (previewUI != null)
             previewUI.clear();
     }

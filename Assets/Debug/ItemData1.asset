@@ -16,12 +16,18 @@ MonoBehaviour:
   description: "Otrzymaj 5 [Regeneracja] na pocz\u0105tku tury"
   icon: {fileID: -8013601583330117794, guid: 759a774faa210b14098b91ab075d8a06, type: 3}
   targetType: 0
-  effects:
-  - rid: 8998113468483108932
+  actions:
+  - rid: 490815476803305539
   references:
     version: 2
     RefIds:
-    - rid: 8998113468483108932
+    - rid: 490815476803305539
+      type: {class: AddEffectAction, ns: , asm: Assembly-CSharp}
+      data:
+        targetType: 0
+        effectToAdd:
+          rid: 490815476803305540
+    - rid: 490815476803305540
       type: {class: RegenerationEffect, ns: , asm: Assembly-CSharp}
       data:
         effectName: Regeneracja

@@ -1,6 +1,8 @@
-using UnityEngine;
-using System.Collections.Generic;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UnitsManager : MonoBehaviour
 {
@@ -144,19 +146,36 @@ public class UnitsManager : MonoBehaviour
     public void removeUnit(Unit unit)
     {
         if (unit == null) return;
-        if (!unitSlot.TryGetValue(unit, out int slot)) return;
 
-        if (unit.unitType == UnitType.Ally)
+        Debug.Log("REMOVE UNIT: " + unit.unitName);
+
+        if (unitSlot.TryGetValue(unit, out int slot))
         {
-            if (slot >= 0 && slot < allySlots.Length) allySlots[slot] = false;
-            allies.Remove(unit);
+            if (unit.unitType == UnitType.Ally)
+            {
+                if (slot >= 0 && slot < allySlots.Length)
+                    allySlots[slot] = false;
+
+                allies.RemoveAll(u => u == unit);
+            }
+            else if (unit.unitType == UnitType.Enemy)
+            {
+                if (slot >= 0 && slot < enemySlots.Length)
+                    enemySlots[slot] = false;
+
+                enemies.RemoveAll(u => u == unit);
+            }
+
+            unitSlot.Remove(unit);
         }
-        else if (unit.unitType == UnitType.Enemy)
+        else
         {
-            if (slot >= 0 && slot < enemySlots.Length) enemySlots[slot] = false;
-            enemies.Remove(unit);
+            Debug.LogWarning("Not found in unitSlot: " + unit.unitName);
+
+            allies.RemoveAll(u => u == unit);
+            enemies.RemoveAll(u => u == unit);
         }
-        unitSlot.Remove(unit);
+
         OnUnitsChanged?.Invoke();
     }
 
@@ -178,5 +197,31 @@ public class UnitsManager : MonoBehaviour
     public List<Unit> getEnemies()
     {
         return new List<Unit>(enemies);
+    }
+ 
+    public void onUnitDied(Unit unit)
+    {
+        removeUnit(unit);
+        checkCombatEnd();
+    }
+    private void checkCombatEnd()
+    {
+        bool playerAlive = player != null && player.currentHealth > 0;
+
+        enemies.RemoveAll(e => e == null || e.currentHealth <= 0);
+
+        bool enemiesAlive = enemies.Count > 0;
+
+        Debug.Log("ENEMIES COUNT: " + enemies.Count);
+
+        if (!playerAlive)
+        {
+            SceneManager.LoadScene("EndScreenScene", LoadSceneMode.Additive);
+        }
+        else if (!enemiesAlive)
+        {
+            GameManager.Instance.addFloorCount();
+            SceneManager.LoadScene("BattleRewardScene", LoadSceneMode.Additive);
+        }
     }
 }
