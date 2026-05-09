@@ -7,6 +7,7 @@ public class SummonAction : BaseAction
 
     public override void execute(Unit target, Unit source)
     {
+
         if (unitData == null) return;
 
         UnitType summonedType;
@@ -18,5 +19,6 @@ public class SummonAction : BaseAction
 
         UnitsManager.Instance.spawn(unitData, summonedType);
     }
+
     public override string getIconPath() { return "Icons/obrona"; }
 }

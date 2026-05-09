@@ -33,7 +33,7 @@ MonoBehaviour:
       type: {class: SummonAction, ns: , asm: Assembly-CSharp}
       data:
         targetType: 0
-        unitData: {fileID: 0}
+        unitData: {fileID: 11400000, guid: 2712bf96c48aa814c8bd0548cd488ac1, type: 2}
     - rid: 3376038571514527905
       type: {class: MaxUsesCondition, ns: , asm: Assembly-CSharp}
       data:

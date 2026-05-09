@@ -145,8 +145,11 @@ public class TurnManager : MonoBehaviour
 
             List<Unit> targets = TargetingSystem.getTargets(unit, action.targetType);
 
-            foreach (Unit target in targets)
-                action.execute(target, unit);
+            foreach (Unit target in targets) 
+            { 
+                if (target != null)
+                    action.execute(target, unit);
+            }
         }
 
         if (state != null)

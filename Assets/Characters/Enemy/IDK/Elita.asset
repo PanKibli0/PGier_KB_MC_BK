@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ab0e520ee75d57649b2113a55bc66e80, type: 3}
-  m_Name: NewUnit
+  m_Name: Elita
   m_EditorClassIdentifier: Assembly-CSharp::UnitData
   unitName: Elita
   graphicPrefab: {fileID: 1166939093955541677, guid: 19cbcf0b3a4d442458db422f7ae71266, type: 3}
