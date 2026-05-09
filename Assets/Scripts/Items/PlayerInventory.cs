@@ -40,6 +40,7 @@ public class PlayerInventory : MonoBehaviour
         if (item == null)
             return;
 
+        if (UnitsManager.Instance == null) return;
         Unit player = UnitsManager.Instance.player;
 
         item.Use(player, selectedTarget);

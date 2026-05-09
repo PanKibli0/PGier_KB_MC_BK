@@ -236,7 +236,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 832
-      y: 1630
+      y: 1743
       width: 147
       height: 105
     spriteID: 480debe47a9cac3429723505cebe34bb
@@ -247,8 +247,8 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 832, y: 1630}
-    spritePosition: {x: 536, y: 410}
+    uvTransform: {x: 832, y: 1743}
+    spritePosition: {x: 1186, y: 422}
   - name: 'R2 '
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -293,28 +293,6 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 444, y: 1130}
     spritePosition: {x: 518, y: 717}
-  - name: 'R1 '
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 832
-      y: 1743
-      width: 147
-      height: 105
-    spriteID: 63571d27f29e917469886a6b1a29baab
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 832, y: 1743}
-    spritePosition: {x: 1186, y: 422}
   - name: 'R2 '
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -633,11 +611,11 @@ ScriptedImporter:
     isImported: 0
     isVisible: 1
   - name: 'R1 '
-    spriteName: 'R1 '
+    spriteName: R1
     isGroup: 0
     parentIndex: 15
-    spriteID: 63571d27f29e917469886a6b1a29baab
-    layerID: 1695796603
+    spriteID: 480debe47a9cac3429723505cebe34bb
+    layerID: -1461554085
     mosaicPosition: {x: 832, y: 1743}
     flatten: 0
     isImported: 1

@@ -64,7 +64,8 @@ public class ItemClickUI : MonoBehaviour,
     {
         if (item == null) return;
 
-        ItemPreviewUI.Instance.show(item);
+        if (ItemPreviewUI.Instance != null)
+            ItemPreviewUI.Instance.show(item);
     }
 
     public void OnPointerExit(PointerEventData eventData)
