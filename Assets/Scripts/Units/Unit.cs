@@ -45,7 +45,10 @@ public class Unit : MonoBehaviour
         unitName = data.unitName;
         unitType = type;
 
-        maxHealth = data.maxHealth;
+        if (data.minHealth == 0) maxHealth = data.maxHealth;
+        else maxHealth = Random.Range(data.minHealth, data.maxHealth);
+
+
         currentMaxHealth = maxHealth;
         currentHealth = maxHealth;
 

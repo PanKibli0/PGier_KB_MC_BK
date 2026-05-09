@@ -5,6 +5,7 @@ public abstract class BaseUnitData : ScriptableObject
 {
     public string unitName;
     public GameObject graphicPrefab;
+    public int minHealth;
     public int maxHealth;
     [SerializeReference] public List<BaseStatusEffect> startEffects;
 }
