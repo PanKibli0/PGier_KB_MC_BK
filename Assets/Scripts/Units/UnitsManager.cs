@@ -24,6 +24,7 @@ public class UnitsManager : MonoBehaviour
     private bool[] allySlots = new bool[3];
     private bool[] enemySlots = new bool[4];
     private Dictionary<Unit, int> unitSlot = new Dictionary<Unit, int>();
+    private Dictionary<Unit, MoveState> moveStates = new Dictionary<Unit, MoveState>();
 
     public event Action OnUnitsChanged;
 
@@ -35,7 +36,24 @@ public class UnitsManager : MonoBehaviour
             return;
         }
         Instance = this;
-        
+    }
+
+    public MoveState getMoveState(Unit unit)
+    {
+        if (moveStates.ContainsKey(unit))
+            return moveStates[unit];
+        return null;
+    }
+
+    private void registerMoveState(Unit unit)
+    {
+        if (!moveStates.ContainsKey(unit))
+            moveStates[unit] = new MoveState();
+    }
+
+    private void unregisterMoveState(Unit unit)
+    {
+        moveStates.Remove(unit);
     }
 
     private int getFreeAllySlot()
@@ -60,8 +78,6 @@ public class UnitsManager : MonoBehaviour
         if (type == UnitType.Ally) slot = getFreeAllySlot();
         else if (type == UnitType.Enemy) slot = getFreeEnemySlot();
         else return false;
-
-
 
         if (slot == -1) return false;
 
@@ -94,6 +110,7 @@ public class UnitsManager : MonoBehaviour
         }
 
         unitSlot[newUnit] = slot;
+        registerMoveState(newUnit);
         OnUnitsChanged?.Invoke();
 
         return true;
@@ -120,6 +137,7 @@ public class UnitsManager : MonoBehaviour
         }
 
         player = newUnit;
+        registerMoveState(newUnit);
     }
 
     public void addUnitAtSlot(Unit unit, int slot)
@@ -147,8 +165,6 @@ public class UnitsManager : MonoBehaviour
     {
         if (unit == null) return;
 
-        Debug.Log("REMOVE UNIT: " + unit.unitName);
-
         if (unitSlot.TryGetValue(unit, out int slot))
         {
             if (unit.unitType == UnitType.Ally)
@@ -170,8 +186,6 @@ public class UnitsManager : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("Not found in unitSlot: " + unit.unitName);
-
             allies.RemoveAll(u => u == unit);
             enemies.RemoveAll(u => u == unit);
         }
@@ -198,12 +212,14 @@ public class UnitsManager : MonoBehaviour
     {
         return new List<Unit>(enemies);
     }
- 
+
     public void onUnitDied(Unit unit)
     {
         removeUnit(unit);
+        unregisterMoveState(unit);
         checkCombatEnd();
     }
+
     private void checkCombatEnd()
     {
         bool playerAlive = player != null && player.currentHealth > 0;
@@ -211,8 +227,6 @@ public class UnitsManager : MonoBehaviour
         enemies.RemoveAll(e => e == null || e.currentHealth <= 0);
 
         bool enemiesAlive = enemies.Count > 0;
-
-        Debug.Log("ENEMIES COUNT: " + enemies.Count);
 
         if (!playerAlive)
         {
