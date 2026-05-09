@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab0e520ee75d57649b2113a55bc66e80, type: 3}
+  m_Name: SlimeIce
+  m_EditorClassIdentifier: Assembly-CSharp::UnitData
+  unitName: Lodowy Slime
+  graphicPrefab: {fileID: -8653719598885068355, guid: 3a8156553d0e31a42b40ee3a24ba6b17, type: 3}
+  minHealth: 32
+  maxHealth: 45
+  startEffects: []
+  aiType: 1
+  moves:
+  - {fileID: 11400000, guid: efcee0923a58ac4418e9861479810fa2, type: 2}
+  - {fileID: 11400000, guid: c673d1e6ce47e9c429f278afac7d5f46, type: 2}
+  - {fileID: 11400000, guid: 2b7192cbd213ee14385271703c3878e7, type: 2}
+  - {fileID: 11400000, guid: 15073d13df1397e40ba8818c5064d3be, type: 2}
+  references:
+    version: 2
+    RefIds: []

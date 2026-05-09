@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a47322801de95b348a0db7e09c294398, type: 3}
+  m_Name: Lava
+  m_EditorClassIdentifier: Assembly-CSharp::UnitMove
+  moveName: Morze lawy
+  actions:
+  - rid: 3376038571514527903
+  - rid: 3376038571514527904
+  conditions:
+  - rid: 3376038571514527905
+  - rid: 3376038571514527906
+  - rid: 3376038571514527907
+  weight: 4
+  references:
+    version: 2
+    RefIds:
+    - rid: 3376038571514527903
+      type: {class: DamageAction, ns: , asm: Assembly-CSharp}
+      data:
+        targetType: 1
+        damageAmount: 15
+    - rid: 3376038571514527904
+      type: {class: SummonAction, ns: , asm: Assembly-CSharp}
+      data:
+        targetType: 0
+        unitData: {fileID: 0}
+    - rid: 3376038571514527905
+      type: {class: MaxUsesCondition, ns: , asm: Assembly-CSharp}
+      data:
+        mandatory: 0
+        maxUses: 3
+    - rid: 3376038571514527906
+      type: {class: CooldownCondition, ns: , asm: Assembly-CSharp}
+      data:
+        mandatory: 0
+        cooldown: 1
+    - rid: 3376038571514527907
+      type: {class: TurnCondition, ns: , asm: Assembly-CSharp}
+      data:
+        mandatory: 1
+        requiredTurn: 1

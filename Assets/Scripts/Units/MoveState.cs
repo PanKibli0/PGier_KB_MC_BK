@@ -2,9 +2,10 @@ using System.Collections.Generic;
 
 public class MoveState
 {
+    public Unit owner;
+    public int currentTurn;
     public UnitMove lastUsedMove;
     public UnitMove forcedNextMove;
-    public int currentTurn;
     private Dictionary<UnitMove, int> useCounts = new Dictionary<UnitMove, int>();
     private Dictionary<MoveCondition, int> cooldowns = new Dictionary<MoveCondition, int>();
 
@@ -13,8 +14,14 @@ public class MoveState
         if (forcedNextMove != null && move != forcedNextMove)
             return false;
 
-        if (move.condition != null && !move.condition.canUse(this, move))
-            return false;
+        if (move.conditions != null)
+        {
+            foreach (MoveCondition condition in move.conditions)
+            {
+                if (!condition.canUse(this, move))
+                    return false;
+            }
+        }
 
         return true;
     }
@@ -27,21 +34,29 @@ public class MoveState
             useCounts[move] = 0;
         useCounts[move]++;
 
-        if (move.condition != null)
-            move.condition.onUse(this, move);
+        if (move.conditions != null)
+        {
+            foreach (MoveCondition condition in move.conditions)
+            {
+                condition.onUse(this, move);
 
-        if (move.condition is ForceNextMoveCondition force)
-            forcedNextMove = force.nextMove;
-        else
-            forcedNextMove = null;
+                if (condition is ForceNextMoveCondition force)
+                    forcedNextMove = force.nextMove;
+            }
+        }
     }
 
     public void onTurnEnd(List<UnitMove> allMoves)
     {
         foreach (UnitMove move in allMoves)
         {
-            if (move.condition != null)
-                move.condition.onTurnEnd(this);
+            if (move.conditions != null)
+            {
+                foreach (MoveCondition condition in move.conditions)
+                {
+                    condition.onTurnEnd(this);
+                }
+            }
         }
     }
 

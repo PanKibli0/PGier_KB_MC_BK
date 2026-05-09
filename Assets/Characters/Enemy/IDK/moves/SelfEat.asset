@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a47322801de95b348a0db7e09c294398, type: 3}
+  m_Name: SelfEat
+  m_EditorClassIdentifier: Assembly-CSharp::UnitMove
+  moveName: Ouroboros
+  actions:
+  - rid: 3376038571514527934
+  - rid: 3376038571514527936
+  conditions: []
+  weight: 1
+  references:
+    version: 2
+    RefIds:
+    - rid: 3376038571514527934
+      type: {class: TrueDamageAction, ns: , asm: Assembly-CSharp}
+      data:
+        targetType: 0
+        damageAmount: 5
+    - rid: 3376038571514527936
+      type: {class: AddEffectAction, ns: , asm: Assembly-CSharp}
+      data:
+        targetType: 0
+        effectToAdd:
+          rid: 3376038571514527937
+    - rid: 3376038571514527937
+      type: {class: RegenerationEffect, ns: , asm: Assembly-CSharp}
+      data:
+        effectName: Regeneracja
+        isMergeable: 1
+        isDebuff: 0
+        stacks: 1

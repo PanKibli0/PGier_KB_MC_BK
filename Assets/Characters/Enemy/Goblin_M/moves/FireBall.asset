@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a47322801de95b348a0db7e09c294398, type: 3}
+  m_Name: FireBall
+  m_EditorClassIdentifier: Assembly-CSharp::UnitMove
+  moveName: "Kula \u0141ognia"
+  actions:
+  - rid: 3376038571514527927
+  - rid: 3376038571514527928
+  conditions:
+  - rid: 3376038571514527930
+  weight: 1
+  references:
+    version: 2
+    RefIds:
+    - rid: 3376038571514527927
+      type: {class: DamageAction, ns: , asm: Assembly-CSharp}
+      data:
+        targetType: 8
+        damageAmount: 12
+    - rid: 3376038571514527928
+      type: {class: AddEffectAction, ns: , asm: Assembly-CSharp}
+      data:
+        targetType: 8
+        effectToAdd:
+          rid: 3376038571514527929
+    - rid: 3376038571514527929
+      type: {class: BleedingEffect, ns: , asm: Assembly-CSharp}
+      data:
+        effectName: Krwawienie
+        isMergeable: 1
+        isDebuff: 1
+        stacks: 2
+    - rid: 3376038571514527930
+      type: {class: MaxUsesCondition, ns: , asm: Assembly-CSharp}
+      data:
+        mandatory: 0
+        maxUses: 1

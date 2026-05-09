@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab0e520ee75d57649b2113a55bc66e80, type: 3}
+  m_Name: NewUnit
+  m_EditorClassIdentifier: Assembly-CSharp::UnitData
+  unitName: Elita
+  graphicPrefab: {fileID: 1166939093955541677, guid: 19cbcf0b3a4d442458db422f7ae71266, type: 3}
+  minHealth: 40
+  maxHealth: 50
+  startEffects:
+  - rid: 3376038571514527932
+  aiType: 2
+  moves:
+  - {fileID: 11400000, guid: c9ac266124945ac4d943810e9ccc952c, type: 2}
+  - {fileID: 11400000, guid: 5aef6e8ca2846cd4a9ee2b2be403cc8a, type: 2}
+  references:
+    version: 2
+    RefIds:
+    - rid: 3376038571514527932
+      type: {class: RegenerationEffect, ns: , asm: Assembly-CSharp}
+      data:
+        effectName: Regeneracja
+        isMergeable: 1
+        isDebuff: 0
+        stacks: 3

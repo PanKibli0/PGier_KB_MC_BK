@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab0e520ee75d57649b2113a55bc66e80, type: 3}
+  m_Name: SlimeFire
+  m_EditorClassIdentifier: Assembly-CSharp::UnitData
+  unitName: "P\u0142omienny Slime"
+  graphicPrefab: {fileID: -8653719598885068355, guid: 218540777c0695b47b36b529f8e9540f, type: 3}
+  minHealth: 26
+  maxHealth: 40
+  startEffects: []
+  aiType: 1
+  moves:
+  - {fileID: 11400000, guid: 22f880f8897656b44b2cac28a4ce8fd7, type: 2}
+  - {fileID: 11400000, guid: cf528365c2281084084fe355ccc3d081, type: 2}
+  - {fileID: 11400000, guid: 0414bc61f5ee0754ab13b9bda2dcfe9d, type: 2}
+  references:
+    version: 2
+    RefIds: []

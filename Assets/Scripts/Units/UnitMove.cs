@@ -6,6 +6,6 @@ public class UnitMove : ScriptableObject
 {
     public string moveName;
     [SerializeReference] public List<BaseAction> actions;
-    [SerializeReference] public MoveCondition condition;
+    [SerializeReference] public List<MoveCondition> conditions;
     public float weight = 1f;
 }

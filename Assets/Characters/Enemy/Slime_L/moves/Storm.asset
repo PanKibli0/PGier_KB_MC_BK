@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a47322801de95b348a0db7e09c294398, type: 3}
+  m_Name: Storm
+  m_EditorClassIdentifier: Assembly-CSharp::UnitMove
+  moveName: "Burza \u015Bnie\u017Cna"
+  actions:
+  - rid: 3376038571514527915
+  conditions: []
+  weight: 15
+  references:
+    version: 2
+    RefIds:
+    - rid: 3376038571514527915
+      type: {class: DamageAction, ns: , asm: Assembly-CSharp}
+      data:
+        targetType: 6
+        damageAmount: 8

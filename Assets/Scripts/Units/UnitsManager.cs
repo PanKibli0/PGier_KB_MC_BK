@@ -48,7 +48,11 @@ public class UnitsManager : MonoBehaviour
     private void registerMoveState(Unit unit)
     {
         if (!moveStates.ContainsKey(unit))
-            moveStates[unit] = new MoveState();
+        {
+            MoveState state = new MoveState();
+            state.owner = unit;
+            moveStates[unit] = state;
+        }
     }
 
     private void unregisterMoveState(Unit unit)
@@ -88,11 +92,24 @@ public class UnitsManager : MonoBehaviour
         Unit newUnit = newUnitObj.GetComponent<Unit>();
         newUnit.init(data, type, statsUIManager);
 
+
+        // DEBUG SCALE
         if (data.graphicPrefab != null)
         {
             GameObject graphic = Instantiate(data.graphicPrefab, newUnitObj.transform);
-            graphic.transform.localPosition = Vector3.zero;
+
+            Renderer renderer = graphic.GetComponent<Renderer>();
+            float height = 1f;
+            if (renderer != null)
+                height = renderer.bounds.size.y;
+
+            float scale = 10f / height;
+            float offsetY = -height * scale * 0.5f;
+
+            graphic.transform.localScale = new Vector3(scale, scale, scale);
+            graphic.transform.localPosition = new Vector3(0f, offsetY, 0f);
         }
+        // END DEBUG
 
         if (type == UnitType.Ally)
         {

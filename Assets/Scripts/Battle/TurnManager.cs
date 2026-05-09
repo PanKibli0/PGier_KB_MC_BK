@@ -11,9 +11,9 @@ public class TurnManager : MonoBehaviour
     private void Start()
     {
         foreach (Unit enemy in UnitsManager.Instance.getEnemies())
-            calculateIntent(enemy);
+            calculateUnitIntent(enemy);
         foreach (Unit ally in UnitsManager.Instance.getAllies())
-            calculateIntent(ally);
+            calculateUnitIntent(ally);
     }
 
     public void endTurn()
@@ -37,10 +37,10 @@ public class TurnManager : MonoBehaviour
             if (CardPileSystem.Instance != null) CardPileSystem.Instance.drawCard();
 
         foreach (Unit enemy in UnitsManager.Instance.getEnemies())
-            calculateIntent(enemy);
+            calculateUnitIntent(enemy);
 
         foreach (Unit ally in UnitsManager.Instance.getAllies())
-            calculateIntent(ally);
+            calculateUnitIntent(ally);
 
         UnitsManager.Instance.player?.resetBlock();
         UnitsManager.Instance.player?.onEffectsTurnStart();
@@ -49,9 +49,10 @@ public class TurnManager : MonoBehaviour
         OnTurnEnded?.Invoke();
     }
 
-    public void calculateIntent(Unit unit)
+    public void calculateUnitIntent(Unit unit)
     {
-        if (unit == null) return;
+        if (unit == null)
+            return;
 
         MoveState state = UnitsManager.Instance.getMoveState(unit);
         if (state == null)
@@ -59,28 +60,55 @@ public class TurnManager : MonoBehaviour
 
         state.currentTurn = turnNumber;
 
-        List<UnitMove> availableMoves = new List<UnitMove>();
+        List<UnitMove> mandatoryMoves = new List<UnitMove>();
+        List<UnitMove> filterMoves = new List<UnitMove>();
+
         foreach (UnitMove move in unit.unitData.moves)
         {
-            if (state.canUse(move))
-                availableMoves.Add(move);
+            if (!state.canUse(move))
+                continue;
+
+            bool isMandatory = false;
+            if (move.conditions != null)
+            {
+                foreach (MoveCondition condition in move.conditions)
+                {
+                    if (condition.mandatory)
+                    {
+                        isMandatory = true;
+                        break;
+                    }
+                }
+            }
+
+            if (isMandatory)
+                mandatoryMoves.Add(move);
+            else
+                filterMoves.Add(move);
         }
 
-        if (availableMoves.Count == 0)
+        List<UnitMove> pool;
+
+        if (mandatoryMoves.Count > 0)
+            pool = mandatoryMoves;
+        else
+            pool = filterMoves;
+
+        if (pool.Count == 0)
         {
             unit.hideIntent();
             return;
         }
 
         float totalWeight = 0f;
-        foreach (UnitMove move in availableMoves)
+        foreach (UnitMove move in pool)
             totalWeight += move.weight;
 
         float roll = Random.Range(0f, totalWeight);
         float current = 0f;
-        UnitMove chosen = availableMoves[0];
+        UnitMove chosen = pool[0];
 
-        foreach (UnitMove move in availableMoves)
+        foreach (UnitMove move in pool)
         {
             current += move.weight;
             if (roll <= current)

@@ -14,18 +14,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyPool
   normalFights:
   - enemies:
-    - {fileID: 11400000, guid: 575dd5d04e2f406448ef2dfc7177a771, type: 2}
+    - {fileID: 11400000, guid: f8b411da9aab7454db86af1b1b23f069, type: 2}
   - enemies:
-    - {fileID: 11400000, guid: 575dd5d04e2f406448ef2dfc7177a771, type: 2}
-    - {fileID: 11400000, guid: 575dd5d04e2f406448ef2dfc7177a771, type: 2}
+    - {fileID: 11400000, guid: f8b411da9aab7454db86af1b1b23f069, type: 2}
+    - {fileID: 11400000, guid: f8b411da9aab7454db86af1b1b23f069, type: 2}
   - enemies:
-    - {fileID: 11400000, guid: edf65b559b4f66a4b8b5fa744917e6ad, type: 2}
-    - {fileID: 11400000, guid: edf65b559b4f66a4b8b5fa744917e6ad, type: 2}
+    - {fileID: 11400000, guid: bf56c4485644de14fbf17c0c5c8153b6, type: 2}
+    - {fileID: 11400000, guid: f8b411da9aab7454db86af1b1b23f069, type: 2}
   - enemies:
-    - {fileID: 11400000, guid: edf65b559b4f66a4b8b5fa744917e6ad, type: 2}
-    - {fileID: 11400000, guid: 575dd5d04e2f406448ef2dfc7177a771, type: 2}
+    - {fileID: 11400000, guid: 9a07d558caef8fb429c12e8eceb5062c, type: 2}
+    - {fileID: 11400000, guid: 5c0c3b99187fd3e41a6e2d50a06a471b, type: 2}
+  - enemies:
+    - {fileID: 11400000, guid: 2712bf96c48aa814c8bd0548cd488ac1, type: 2}
+    - {fileID: 11400000, guid: 5c0c3b99187fd3e41a6e2d50a06a471b, type: 2}
+  - enemies:
+    - {fileID: 11400000, guid: ad5c432363ce0d043bf07f6e160c8fe2, type: 2}
+    - {fileID: 11400000, guid: 5c0c3b99187fd3e41a6e2d50a06a471b, type: 2}
   eliteFights:
   - enemies:
-    - {fileID: 11400000, guid: 575dd5d04e2f406448ef2dfc7177a771, type: 2}
-    - {fileID: 11400000, guid: f7e72625ef6b49e40b6079a7a0a345f0, type: 2}
+    - {fileID: 11400000, guid: 8e5febba04f63994d86334b09bf7d4c4, type: 2}
+  - enemies:
+    - {fileID: 11400000, guid: 3e800af7a245b8a4aa016f9ae55ae595, type: 2}
+    - {fileID: 11400000, guid: ad5c432363ce0d043bf07f6e160c8fe2, type: 2}
   bossFights: []
