@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 public enum UnitType
@@ -139,7 +138,7 @@ public class Unit : MonoBehaviour
 
         if (currentHealth <= 0 && !isDead)
         {
-            Die(source);
+            die();
         }
 
         if (unitType == UnitType.Player && GameManager.Instance != null)
@@ -152,42 +151,18 @@ public class Unit : MonoBehaviour
         return isDead;
     }
 
-    private void Die(Unit source = null)
+    public void die()
     {
-        if (isDead) return;
         isDead = true;
 
-        if (unitType == UnitType.Player)
-        {
-            SceneManager.LoadScene("EndScreenScene");
-            return;
-        }
+        UnitsManager.Instance.onUnitDied(this);
 
-        if (unitType == UnitType.Enemy && GameManager.Instance != null)
-        {
-            GameManager.Instance.addEnemyKill();
-        }
-
-        if (UnitsManager.Instance != null)
-        {
-            UnitsManager.Instance.removeUnit(this);
-        }
+        Debug.Log("UNIT DIED: " + unitName);
 
         Destroy(gameObject);
-
-        CheckCombatEnd();
     }
 
-    private void CheckCombatEnd()
-    {
-        bool enemiesLeft = UnitsManager.Instance.getEnemies().Any(e => e != null);
 
-        if (!enemiesLeft)
-        {
-            GameManager.Instance.addFloorCount();
-            SceneManager.LoadScene("BattleRewardScene", LoadSceneMode.Additive);
-        }
-    }
 
     public void addBlock(int amount)
     {
