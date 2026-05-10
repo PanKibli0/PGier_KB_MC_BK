@@ -154,7 +154,6 @@ public class UnitsManager : MonoBehaviour
         }
 
         player = newUnit;
-        registerMoveState(newUnit);
     }
 
     public void addUnitAtSlot(Unit unit, int slot)
