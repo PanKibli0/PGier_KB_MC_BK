@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be91687817927d141b5fa4be2f12884b, type: 3}
+  m_Name: Ugryzienie
+  m_EditorClassIdentifier: Assembly-CSharp::CardData
+  cardName: Ugryzienie
+  cost: 1
+  type: 0
+  rarity: 1
+  image: {fileID: 1721568661134446361, guid: 84a63ea0f997309429eb80a83708d51d, type: 3}
+  shopPrice: 0
+  actions:
+  - rid: 490815630673969225
+  - rid: 490815630673969227
+  upgrade: {fileID: 11400000, guid: 1e837bbd4ff4f8440b4d48986640f718, type: 2}
+  references:
+    version: 2
+    RefIds:
+    - rid: 490815630673969225
+      type: {class: DamageAction, ns: , asm: Assembly-CSharp}
+      data:
+        targetType: 1
+        damageAmount: 5
+    - rid: 490815630673969227
+      type: {class: HealAction, ns: , asm: Assembly-CSharp}
+      data:
+        targetType: 0
+        healAmount: 2

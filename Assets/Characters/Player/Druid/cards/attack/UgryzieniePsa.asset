@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be91687817927d141b5fa4be2f12884b, type: 3}
+  m_Name: UgryzieniePsa
+  m_EditorClassIdentifier: Assembly-CSharp::CardData
+  cardName: Ugryzienie psa
+  cost: 3
+  type: 0
+  rarity: 1
+  image: {fileID: 1721568661134446361, guid: 84a63ea0f997309429eb80a83708d51d, type: 3}
+  shopPrice: 0
+  actions:
+  - rid: 490815630673969253
+  - rid: 490815630673969258
+  upgrade: {fileID: 0}
+  references:
+    version: 2
+    RefIds:
+    - rid: 490815630673969253
+      type: {class: AddEffectAction, ns: , asm: Assembly-CSharp}
+      data:
+        targetType: 2
+        effectToAdd:
+          rid: 490815630673969257
+    - rid: 490815630673969257
+      type: {class: StrengthEffect, ns: , asm: Assembly-CSharp}
+      data:
+        effectName: "Si\u0142a"
+        isMergeable: 1
+        isDebuff: 0
+        value: 3
+    - rid: 490815630673969258
+      type: {class: HealAction, ns: , asm: Assembly-CSharp}
+      data:
+        targetType: 2
+        healAmount: 6
