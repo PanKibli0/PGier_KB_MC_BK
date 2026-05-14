@@ -355,7 +355,7 @@ MonoBehaviour:
 
     a <sprite=10> a
 
-    a <sprite=10>
+    a <sprite=11>
     a
 
     a <sprite=12> a
@@ -367,7 +367,23 @@ MonoBehaviour:
     a <sprite=15>
     a
 
-'
+    a <sprite=16> a
+
+    a <sprite=17> a
+
+    a <sprite=18> a
+
+    a <sprite=19>
+    a
+
+    a <sprite=20> a
+
+    a <sprite=21> a
+
+    a <sprite=22> a
+
+    a <sprite=23>
+    a'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e8a97cf0e7552d84094a49a6d423056b, type: 2}
   m_sharedMaterial: {fileID: 8061370154561837668, guid: e8a97cf0e7552d84094a49a6d423056b, type: 2}
@@ -386,7 +402,7 @@ MonoBehaviour:
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 11400000, guid: ca45784940bfe144ea651687849b72ba, type: 2}
+  m_spriteAsset: {fileID: 11400000, guid: 8825b6112ce3dbe40acfbc89ff02fbb8, type: 2}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
   m_TextStyleHashCode: -1183493901
