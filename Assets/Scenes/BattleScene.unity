@@ -2362,7 +2362,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83c2df8909ac12248b836b78f77108a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HandSystem
-  CardUIManager: {fileID: 1581957456}
 --- !u!1 &1100081870
 GameObject:
   m_ObjectHideFlags: 0
@@ -2641,7 +2640,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbf39c4cb59b79549bbb7e8473d82228, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CardPileSystem
-  cardUIManager: {fileID: 1581957456}
 --- !u!1 &1269209979
 GameObject:
   m_ObjectHideFlags: 0
@@ -3845,7 +3843,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe8639bf25981504ba39583af11272cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HandUI
-  cardUIManager: {fileID: 1581957456}
+  cardUIPrefab: {fileID: 0}
   handParent: {fileID: 424065838}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
