@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be91687817927d141b5fa4be2f12884b, type: 3}
+  m_Name: Poswiecenie
+  m_EditorClassIdentifier: Assembly-CSharp::CardData
+  cardName: "Po\u015Bwi\u0119cenie"
+  cost: 1
+  type: 1
+  rarity: 1
+  image: {fileID: -8763310792702208652, guid: 5b7b748e0ea5ff34f909144d30b6f6e7, type: 3}
+  shopPrice: 0
+  actions:
+  - rid: 490815751144079362
+  - rid: 490815751144079363
+  upgrade: {fileID: 11400000, guid: f0703128ab75a024ba3dc05fb3e6e7a2, type: 2}
+  references:
+    version: 2
+    RefIds:
+    - rid: 490815751144079362
+      type: {class: DamageAction, ns: , asm: Assembly-CSharp}
+      data:
+        targetType: 0
+        damageAmount: 4
+    - rid: 490815751144079363
+      type: {class: AddEffectAction, ns: , asm: Assembly-CSharp}
+      data:
+        targetType: 6
+        effectToAdd:
+          rid: 490815751144079364
+    - rid: 490815751144079364
+      type: {class: VulnerableEffect, ns: , asm: Assembly-CSharp}
+      data:
+        effectName: "Wra\u017Cliwo\u015B\u0107"
+        isMergeable: 1
+        isDebuff: 1
+        duration: 1
+        multiplier: 1.5

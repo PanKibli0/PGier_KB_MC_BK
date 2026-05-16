@@ -139,28 +139,6 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 384, y: 887}
     spritePosition: {x: 1309, y: 782}
-  - name: 'R3 '
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 678
-      y: 4
-      width: 205
-      height: 205
-    spriteID: 3639a2d4edd8c1c4baca3600f0027e26
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 678, y: 4}
-    spritePosition: {x: 1220, y: 890}
   - name: R1
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -205,7 +183,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 550, y: 887}
     spritePosition: {x: 533, y: 782}
-  - name: R3
+  - name: 'R3 '
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -214,7 +192,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 678
-      y: 217
+      y: 4
       width: 205
       height: 205
     spriteID: 0f23b5d7197f57a41ac11573ba23cf75
@@ -426,8 +404,8 @@ ScriptedImporter:
     spriteName: 'R3 '
     isGroup: 0
     parentIndex: 3
-    spriteID: 3639a2d4edd8c1c4baca3600f0027e26
-    layerID: 1978121605
+    spriteID: 0f23b5d7197f57a41ac11573ba23cf75
+    layerID: 1670613797
     mosaicPosition: {x: 678, y: 4}
     flatten: 0
     isImported: 1
