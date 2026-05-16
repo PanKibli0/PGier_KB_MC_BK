@@ -11,6 +11,7 @@ public class CardData : ScriptableObject
     public Sprite image;
 
     public int shopPrice;
+    public bool exhaust;
 
     [SerializeReference]
     public List<BaseAction> actions;

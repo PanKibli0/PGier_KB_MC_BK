@@ -81,8 +81,18 @@ public class Unit : MonoBehaviour
 
         if (type != DamageType.Pure)
         {
-            foreach (var effect in effects)
-                effect.onReceiveDamage(this, source, ref damage);
+            for (int i = effects.Count - 1; i >= 0; i--)
+            {
+                var effect = effects[i];
+
+                if (type != DamageType.Pure)
+                {
+                    if (effect is DodgeEffect dodge)
+                        dodge.tryDodge(this, ref damage, type);
+                    else
+                        effect.onReceiveDamage(this, source, ref damage);
+                }
+            }
         }
 
         if (type == DamageType.Normal && block > 0)
@@ -110,6 +120,7 @@ public class Unit : MonoBehaviour
     public void die()
     {
         isDead = true;
+        GameManager.Instance?.addEnemyKill();
         UnitsManager.Instance.onUnitDied(this);
         Destroy(gameObject);
     }

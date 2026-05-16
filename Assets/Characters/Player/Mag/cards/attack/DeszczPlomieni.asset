@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: be91687817927d141b5fa4be2f12884b, type: 3}
-  m_Name: DrewnianyMiecz
+  m_Name: DeszczPlomieni
   m_EditorClassIdentifier: Assembly-CSharp::CardData
-  cardName: Drewniany miecz
+  cardName: "Deszcz p\u0142omieni"
   cost: 1
   type: 0
   rarity: 0
@@ -20,28 +20,28 @@ MonoBehaviour:
   shopPrice: 0
   exhaust: 0
   actions:
-  - rid: 490815630673969250
-  - rid: 490815630673969251
-  upgrade: {fileID: 11400000, guid: f72095ab85d700a47af548cd82bdabf0, type: 2}
+  - rid: 490815630673969234
+  - rid: 490815768443486279
+  upgrade: {fileID: 11400000, guid: 761eba1557f0ee74391f3cc019c663db, type: 2}
   references:
     version: 2
     RefIds:
-    - rid: 490815630673969250
+    - rid: 490815630673969234
       type: {class: DamageAction, ns: , asm: Assembly-CSharp}
       data:
-        targetType: 1
-        damageAmount: 4
-    - rid: 490815630673969251
+        targetType: 6
+        damageAmount: 3
+    - rid: 490815768443486279
       type: {class: AddEffectAction, ns: , asm: Assembly-CSharp}
       data:
-        targetType: 1
+        targetType: 7
         effectToAdd:
-          rid: 490815630673969252
-    - rid: 490815630673969252
-      type: {class: VulnerableEffect, ns: , asm: Assembly-CSharp}
+          rid: 490815768443486280
+    - rid: 490815768443486280
+      type: {class: FlameEffect, ns: , asm: Assembly-CSharp}
       data:
-        effectName: "Wra\u017Cliwo\u015B\u0107"
+        effectName: "P\u0142omie\u0144"
         isMergeable: 1
         isDebuff: 1
-        duration: 1
-        multiplier: 1.5
+        duration: 2
+        value: 2

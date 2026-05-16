@@ -242,7 +242,7 @@ public class UnitsManager : MonoBehaviour
 
         enemies.RemoveAll(e => e == null || e.currentHealth <= 0);
 
-        bool enemiesAlive = enemies.Count > 0;
+        bool enemiesAlive = enemies.Any(e => e != null && e.currentHealth > 0);
 
         if (!playerAlive)
         {

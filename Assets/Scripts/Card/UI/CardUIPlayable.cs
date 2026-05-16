@@ -185,11 +185,26 @@ public class CardUIPlayable : CardUIBase, IBeginDragHandler, IDragHandler, IEndD
 
         foreach (var action in card.actions)
         {
-            List<Unit> targets = TargetingSystem.getTargets(UnitsManager.Instance.player, action.targetType, selectedTarget);
+            List<Unit> targets = TargetingSystem.getTargets(
+                UnitsManager.Instance.player,
+                action.targetType,
+                selectedTarget
+            );
 
             foreach (Unit target in targets)
+            {
                 if (target != null)
                     action.execute(target, UnitsManager.Instance.player);
+            }
+        }
+
+        if (card.data.exhaust)
+        {
+            CardPileSystem.Instance.exhaustCard(card);
+        }
+        else
+        {
+            CardPileSystem.Instance.discardCard(card);
         }
 
         HandSystem.Instance.removeCard(card);

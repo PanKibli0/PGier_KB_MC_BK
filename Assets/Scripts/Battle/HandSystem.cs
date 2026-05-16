@@ -44,7 +44,10 @@ public class HandSystem : MonoBehaviour
     {
         if (hand.Remove(card))
         {
-            CardPileSystem.Instance.discardCard(card);
+            if (card.data.exhaust)
+                CardPileSystem.Instance.exhaustCard(card);
+            else
+                CardPileSystem.Instance.discardCard(card);
         }
     }
 

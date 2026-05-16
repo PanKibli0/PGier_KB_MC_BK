@@ -2060,6 +2060,14 @@ PrefabInstance:
       value: -40
       objectReference: {fileID: 0}
     - target: {fileID: 6463345354919164011, guid: 1645882c89a1fe642825a66277d5af3d, type: 3}
+      propertyPath: cardPrefab
+      value: 
+      objectReference: {fileID: 3950604789313896660, guid: f60766c5665609b428d717e358cca06b, type: 3}
+    - target: {fileID: 6463345354919164011, guid: 1645882c89a1fe642825a66277d5af3d, type: 3}
+      propertyPath: cardContainer
+      value: 
+      objectReference: {fileID: 2033689261}
+    - target: {fileID: 6463345354919164011, guid: 1645882c89a1fe642825a66277d5af3d, type: 3}
       propertyPath: cardUIManager
       value: 
       objectReference: {fileID: 0}
@@ -3752,6 +3760,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.ContentSizeFitter
   m_HorizontalFit: 0
   m_VerticalFit: 2
+--- !u!224 &2033689261 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 6536636659132620355, guid: 1645882c89a1fe642825a66277d5af3d, type: 3}
+  m_PrefabInstance: {fileID: 1025695178}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2035291442
 GameObject:
   m_ObjectHideFlags: 0

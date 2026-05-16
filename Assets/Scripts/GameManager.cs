@@ -100,7 +100,7 @@ public class GameManager : MonoBehaviour
     }
 
 
-    // DEBUG
+    // DEBUGs
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.R))

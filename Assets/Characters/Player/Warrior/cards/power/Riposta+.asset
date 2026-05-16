@@ -18,22 +18,23 @@ MonoBehaviour:
   rarity: 0
   image: {fileID: -1025995993849211177, guid: 91ed8920bcb2dbb4088f6e93e5ac4a91, type: 3}
   shopPrice: 0
+  exhaust: 0
   actions:
-  - rid: 490815751144079360
+  - rid: 490815766659596356
   upgrade: {fileID: 0}
   references:
     version: 2
     RefIds:
-    - rid: 490815751144079360
+    - rid: 490815766659596356
       type: {class: AddEffectAction, ns: , asm: Assembly-CSharp}
       data:
         targetType: 0
         effectToAdd:
-          rid: 490815751144079361
-    - rid: 490815751144079361
+          rid: 490815766659596357
+    - rid: 490815766659596357
       type: {class: ThornsEffect, ns: , asm: Assembly-CSharp}
       data:
         effectName: Ciernie
         isMergeable: 1
         isDebuff: 0
-        value: 4
+        value: 5

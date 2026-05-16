@@ -10,29 +10,38 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: be91687817927d141b5fa4be2f12884b, type: 3}
-  m_Name: Przebicie
+  m_Name: Wscieklosc+
   m_EditorClassIdentifier: Assembly-CSharp::CardData
-  cardName: Przebicie
-  cost: 2
+  cardName: "W\u015Bciek\u0142o\u015B\u0107+"
+  cost: 1
   type: 0
   rarity: 1
   image: {fileID: 1721568661134446361, guid: 84a63ea0f997309429eb80a83708d51d, type: 3}
   shopPrice: 0
-  exhaust: 1
+  exhaust: 0
   actions:
-  - rid: 490815630673969225
-  - rid: 490815630673969227
-  upgrade: {fileID: 11400000, guid: 2899b9e6b5693894ab6b0bde3da76d65, type: 2}
+  - rid: 490815768443486276
+  - rid: 490815768443486277
+  upgrade: {fileID: 0}
   references:
     version: 2
     RefIds:
-    - rid: 490815630673969225
+    - rid: 490815768443486276
       type: {class: DamageAction, ns: , asm: Assembly-CSharp}
       data:
         targetType: 1
-        damageAmount: 8
-    - rid: 490815630673969227
-      type: {class: HealAction, ns: , asm: Assembly-CSharp}
+        damageAmount: 2
+    - rid: 490815768443486277
+      type: {class: AddEffectAction, ns: , asm: Assembly-CSharp}
       data:
-        targetType: 0
-        healAmount: 3
+        targetType: 1
+        effectToAdd:
+          rid: 490815768443486278
+    - rid: 490815768443486278
+      type: {class: FlameEffect, ns: , asm: Assembly-CSharp}
+      data:
+        effectName: "P\u0142omie\u0144"
+        isMergeable: 1
+        isDebuff: 1
+        duration: 2
+        value: 4
