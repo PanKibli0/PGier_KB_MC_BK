@@ -14,23 +14,18 @@ public class DodgeEffect : BaseStatusEffect
 
     public override void onReceiveDamage(Unit owner, Unit source, ref int damage)
     {
-        if (damage <= 0)
-            return;
-    }
-
-    public void tryDodge(Unit owner, ref int damage, DamageType type)
-    {
-        if (type != DamageType.Normal)
-            return;
-
-        if (damage <= 0)
-            return;
+        if (damage <= 0) return;
 
         damage = 0;
         charges--;
 
         if (charges <= 0)
             owner.removeEffect(this);
+    }
+
+    public override void onTurnEnd(Unit owner)
+    {
+        owner.removeEffect(this);
     }
 
     public override bool merge(BaseStatusEffect other)
@@ -52,6 +47,6 @@ public class DodgeEffect : BaseStatusEffect
 
     public override string getDescription()
     {
-        return $"Neguje nastêpne {charges} ataki.";
+        return $"Neguje nastêpne {charges} ataki w tej turze.";
     }
 }

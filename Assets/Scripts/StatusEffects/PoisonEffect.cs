@@ -9,15 +9,12 @@ public class PoisonEffect : BaseStatusEffect
     public PoisonEffect()
     {
         effectName = "Trucizna";
-        //isMergeable = true;
-        isMergeable = false;
+        isMergeable = true;
         isDebuff = true;
     }
 
     public override string getMainText() { return stacks.ToString(); }
     public override string getIconPath() { return "Icons/zatrucie"; }
-
-    //public override string getSecondaryText() { return (10 * stacks).ToString(); }
 
     public override void onTurnEnd(Unit owner)
     {

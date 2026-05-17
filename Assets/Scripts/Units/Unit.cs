@@ -83,17 +83,7 @@ public class Unit : MonoBehaviour
         if (type != DamageType.Pure)
         {
             for (int i = effects.Count - 1; i >= 0; i--)
-            {
-                var effect = effects[i];
-
-                if (type != DamageType.Pure)
-                {
-                    if (effect is DodgeEffect dodge)
-                        dodge.tryDodge(this, ref damage, type);
-                    else
-                        effect.onReceiveDamage(this, source, ref damage);
-                }
-            }
+                effects[i].onReceiveDamage(this, source, ref damage);
         }
 
         if (type == DamageType.Normal && block > 0)
@@ -104,7 +94,7 @@ public class Unit : MonoBehaviour
         }
 
         currentHealth -= damage;
-        triggerPassives(PassiveTrigger.ReceiveDamage);
+        triggerPassives(PassiveTrigger.ReceiveDamage); // TO DELETE 
         statsUI?.updateUI();
 
         if (currentHealth <= 0 && !isDead)
@@ -114,6 +104,7 @@ public class Unit : MonoBehaviour
             GameManager.Instance.setHealth(currentHealth);
     }
 
+    
     public bool IsDead()
     {
         return isDead;
