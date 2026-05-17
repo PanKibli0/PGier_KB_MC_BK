@@ -38,6 +38,8 @@ public class Unit : MonoBehaviour
 
     private bool isDead = false;
 
+    private RelicManager relics = GameManager.Instance.relicManager; // TO DELETE
+
     public void init(BaseUnitData data, UnitType type, UnitStatsUIManager statsUIManager)
     {
         unitName = data.unitName;
@@ -95,6 +97,10 @@ public class Unit : MonoBehaviour
 
         currentHealth -= damage;
         triggerPassives(PassiveTrigger.ReceiveDamage); // TO DELETE 
+
+        if (unitType == UnitType.Player)
+            relics.onDamageTaken(this, source); // TO DELETE / REWORK??
+
         statsUI?.updateUI();
 
         if (currentHealth <= 0 && !isDead)

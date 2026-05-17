@@ -14,11 +14,16 @@ public class CardUIPlayable : CardUIBase, IBeginDragHandler, IDragHandler, IEndD
     private Unit currentHoverTarget;
     private bool canDrag = true;
 
+    private RelicManager relics;
+
+
     protected void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
         canvas = GetComponentInParent<Canvas>();
         handArea = GetComponentInParent<HandAreaUI>();
+
+        relics = GameManager.Instance.relicManager;
     }
 
     protected virtual void Start()
@@ -207,6 +212,8 @@ public class CardUIPlayable : CardUIBase, IBeginDragHandler, IDragHandler, IEndD
                 player.activePassiveCards.Add(card);
         }
         player.triggerPassives(PassiveTrigger.CardPlayed, card);
+
+        relics.onCardPlayed(player, card);
 
         if (card.data.exhaust)
         {

@@ -28,6 +28,8 @@ public class UnitsManager : MonoBehaviour
 
     public event Action OnUnitsChanged;
 
+    private RelicManager relics;
+
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -36,6 +38,8 @@ public class UnitsManager : MonoBehaviour
             return;
         }
         Instance = this;
+
+        relics = GameManager.Instance.relicManager;
     }
 
     public MoveState getMoveState(Unit unit)
@@ -270,6 +274,7 @@ public class UnitsManager : MonoBehaviour
         else if (!enemiesAlive)
         {
             ClearAllEffects();
+            relics.onBattleEnd(player);
             GameManager.Instance.addFloorCount();
             SceneManager.LoadScene("BattleRewardScene", LoadSceneMode.Additive);
         }

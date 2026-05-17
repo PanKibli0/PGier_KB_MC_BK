@@ -34,6 +34,10 @@ public class GameManager : MonoBehaviour
     public int enemiesKilled;
     public int floorsCompleted;
 
+    [Header("Relics")]
+    public RelicManager relicManager;
+    public RelicData[] startRelics;
+
 
     void Awake()
     {
@@ -46,6 +50,8 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         OnGoldChanged?.Invoke(gold);
+
+        relicManager = new RelicManager(new List<RelicData>(startRelics));
     }
 
     public void setHealth(int value)
