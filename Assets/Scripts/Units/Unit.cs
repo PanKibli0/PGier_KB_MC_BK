@@ -27,6 +27,7 @@ public class Unit : MonoBehaviour
     public int currentMaxHealth;
     public int currentHealth;
     public int block;
+    public List<Card> activePassiveCards = new List<Card>();
 
     [SerializeReference] public List<BaseStatusEffect> effects = new List<BaseStatusEffect>();
     public UnitMove nextMove;
@@ -103,6 +104,7 @@ public class Unit : MonoBehaviour
         }
 
         currentHealth -= damage;
+        triggerPassives(PassiveTrigger.ReceiveDamage);
         statsUI?.updateUI();
 
         if (currentHealth <= 0 && !isDead)
@@ -186,6 +188,7 @@ public class Unit : MonoBehaviour
     {
         for (int i = effects.Count - 1; i >= 0; i--)
             effects[i].onTurnStart(this);
+        triggerPassives(PassiveTrigger.TurnStart);
         OnEffectsChanged?.Invoke();
     }
 
@@ -193,6 +196,7 @@ public class Unit : MonoBehaviour
     {
         for (int i = effects.Count - 1; i >= 0; i--)
             effects[i].onTurnEnd(this);
+        triggerPassives(PassiveTrigger.TurnEnd);
         OnEffectsChanged?.Invoke();
     }
 
@@ -202,5 +206,36 @@ public class Unit : MonoBehaviour
             return UnitAIType.None;
 
         return unitData.aiType;
+    }
+
+    public void triggerPassives(PassiveTrigger trigger, Card playedCard = null)
+    {
+        foreach (var card in activePassiveCards)
+        {
+            if (card.data.passiveAbilities == null)
+                continue;
+
+            foreach (var passive in card.data.passiveAbilities)
+            {
+                if (passive.trigger != trigger)
+                    continue;
+
+                foreach (var action in passive.actions)
+                {
+                    List<Unit> targets =
+                        TargetingSystem.getTargets(
+                            this,
+                            action.targetType,
+                            this
+                        );
+
+                    foreach (var target in targets)
+                    {
+                        if (target != null)
+                            action.execute(target, this);
+                    }
+                }
+            }
+        }
     }
 }

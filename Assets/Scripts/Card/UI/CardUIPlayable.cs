@@ -180,13 +180,15 @@ public class CardUIPlayable : CardUIBase, IBeginDragHandler, IDragHandler, IEndD
 
     private void playCard()
     {
+        Unit player = UnitsManager.Instance.player;
+
         if (EnergySystem.Instance != null)
             EnergySystem.Instance.spendEnergy(card.currentCost);
 
         foreach (var action in card.actions)
         {
             List<Unit> targets = TargetingSystem.getTargets(
-                UnitsManager.Instance.player,
+                player,
                 action.targetType,
                 selectedTarget
             );
@@ -194,9 +196,17 @@ public class CardUIPlayable : CardUIBase, IBeginDragHandler, IDragHandler, IEndD
             foreach (Unit target in targets)
             {
                 if (target != null)
-                    action.execute(target, UnitsManager.Instance.player);
+                    action.execute(target, player);
             }
         }
+
+        if (card.data.passiveAbilities != null &&
+            card.data.passiveAbilities.Count > 0)
+        {
+            if (!player.activePassiveCards.Contains(card))
+                player.activePassiveCards.Add(card);
+        }
+        player.triggerPassives(PassiveTrigger.CardPlayed, card);
 
         if (card.data.exhaust)
         {
@@ -207,7 +217,8 @@ public class CardUIPlayable : CardUIBase, IBeginDragHandler, IDragHandler, IEndD
             CardPileSystem.Instance.discardCard(card);
         }
 
-        HandSystem.Instance.removeCard(card);
+        HandSystem.Instance.hand.Remove(card);
+
         Destroy(gameObject);
     }
 

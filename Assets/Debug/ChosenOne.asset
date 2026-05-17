@@ -18,9 +18,11 @@ MonoBehaviour:
   rarity: 2
   image: {fileID: 0}
   shopPrice: 125
+  exhaust: 0
   actions:
   - rid: 2259743102274633873
   - rid: 2259743102274633874
+  passiveAbilities: []
   upgrade: {fileID: 0}
   references:
     version: 2

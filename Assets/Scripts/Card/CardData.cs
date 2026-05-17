@@ -16,6 +16,8 @@ public class CardData : ScriptableObject
     [SerializeReference]
     public List<BaseAction> actions;
 
+    public List<PassiveAbility> passiveAbilities;
+
     public CardData upgrade;
 
 }

@@ -18,21 +18,24 @@ MonoBehaviour:
   rarity: 2
   image: {fileID: 0}
   shopPrice: 50
-  exhaust: 1
+  exhaust: 0
   actions:
-  - rid: 2259742944157237644
   - rid: 2259742944157237645
+  passiveAbilities:
+  - trigger: 0
+    actions:
+    - rid: 490815789389054025
   upgrade: {fileID: 11400000, guid: 552dee7d8a21c8c41a919f8524a74b86, type: 2}
   references:
     version: 2
     RefIds:
-    - rid: 2259742944157237644
-      type: {class: DamageAction, ns: , asm: Assembly-CSharp}
+    - rid: 490815789389054025
+      type: {class: HealAction, ns: , asm: Assembly-CSharp}
       data:
         targetType: 0
-        damageAmount: 10
+        healAmount: 14
     - rid: 2259742944157237645
       type: {class: BlockAction, ns: , asm: Assembly-CSharp}
       data:
         targetType: 0
-        blockAmount: 50
+        blockAmount: 5

@@ -235,6 +235,25 @@ public class UnitsManager : MonoBehaviour
         unregisterMoveState(unit);
         checkCombatEnd();
     }
+    public void ClearAllEffects()
+    {
+        if (player != null)
+            player.effects.Clear();
+
+        foreach (var ally in allies)
+        {
+            if (ally != null)
+                ally.effects.Clear();
+        }
+
+        foreach (var enemy in enemies)
+        {
+            if (enemy != null)
+                enemy.effects.Clear();
+        }
+
+        Debug.Log("All effects cleared from all units");
+    }
 
     private void checkCombatEnd()
     {
@@ -250,6 +269,7 @@ public class UnitsManager : MonoBehaviour
         }
         else if (!enemiesAlive)
         {
+            ClearAllEffects();
             GameManager.Instance.addFloorCount();
             SceneManager.LoadScene("BattleRewardScene", LoadSceneMode.Additive);
         }
