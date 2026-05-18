@@ -31,6 +31,12 @@ public class CardPileSystem : MonoBehaviour
     void Start()
     {
         drawPile.Clear();
+        discardPile.Clear();
+        exhaustPile.Clear();
+
+        OnDrawPileChanged?.Invoke(drawPile.Count);
+        OnDiscardPileChanged?.Invoke(discardPile.Count);
+        OnExhaustPileChanged?.Invoke(exhaustPile.Count);
 
         if (GameManager.Instance != null && GameManager.Instance.currentDeck != null)
             foreach (var cardData in GameManager.Instance.currentDeck)
@@ -255,6 +261,8 @@ public class CardPileSystem : MonoBehaviour
     public void exhaustCard(Card card)
     {
         if (card == null) return;
+        Debug.Log("EXHAUST ADD: " + card.data.cardName +
+             " | total: " + exhaustPile.Count);
         exhaustPile.Add(card);
         OnExhaustPileChanged?.Invoke(exhaustPile.Count);
     }

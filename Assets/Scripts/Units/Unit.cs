@@ -27,6 +27,7 @@ public class Unit : MonoBehaviour
     public int currentMaxHealth;
     public int currentHealth;
     public int block;
+    public List<Card> activePassiveCards = new List<Card>();
 
     [SerializeReference] public List<BaseStatusEffect> effects = new List<BaseStatusEffect>();
     public UnitMove nextMove;
@@ -36,6 +37,8 @@ public class Unit : MonoBehaviour
     public event Action OnEffectsChanged;
 
     private bool isDead = false;
+
+    private RelicManager relics = GameManager.Instance.relicManager; // TO DELETE
 
     public void init(BaseUnitData data, UnitType type, UnitStatsUIManager statsUIManager)
     {
@@ -81,8 +84,8 @@ public class Unit : MonoBehaviour
 
         if (type != DamageType.Pure)
         {
-            foreach (var effect in effects)
-                effect.onReceiveDamage(this, source, ref damage);
+            for (int i = effects.Count - 1; i >= 0; i--)
+                effects[i].onReceiveDamage(this, source, ref damage);
         }
 
         if (type == DamageType.Normal && block > 0)
@@ -93,6 +96,11 @@ public class Unit : MonoBehaviour
         }
 
         currentHealth -= damage;
+        triggerPassives(PassiveTrigger.ReceiveDamage); // TO DELETE 
+
+        if (unitType == UnitType.Player)
+            relics.onDamageTaken(this, source); // TO DELETE / REWORK??
+
         statsUI?.updateUI();
 
         if (currentHealth <= 0 && !isDead)
@@ -102,6 +110,7 @@ public class Unit : MonoBehaviour
             GameManager.Instance.setHealth(currentHealth);
     }
 
+    
     public bool IsDead()
     {
         return isDead;
@@ -110,6 +119,7 @@ public class Unit : MonoBehaviour
     public void die()
     {
         isDead = true;
+        GameManager.Instance?.addEnemyKill();
         UnitsManager.Instance.onUnitDied(this);
         Destroy(gameObject);
     }
@@ -175,6 +185,7 @@ public class Unit : MonoBehaviour
     {
         for (int i = effects.Count - 1; i >= 0; i--)
             effects[i].onTurnStart(this);
+        triggerPassives(PassiveTrigger.TurnStart);
         OnEffectsChanged?.Invoke();
     }
 
@@ -182,6 +193,7 @@ public class Unit : MonoBehaviour
     {
         for (int i = effects.Count - 1; i >= 0; i--)
             effects[i].onTurnEnd(this);
+        triggerPassives(PassiveTrigger.TurnEnd);
         OnEffectsChanged?.Invoke();
     }
 
@@ -191,5 +203,36 @@ public class Unit : MonoBehaviour
             return UnitAIType.None;
 
         return unitData.aiType;
+    }
+
+    public void triggerPassives(PassiveTrigger trigger, Card playedCard = null)
+    {
+        foreach (var card in activePassiveCards)
+        {
+            if (card.data.passiveAbilities == null)
+                continue;
+
+            foreach (var passive in card.data.passiveAbilities)
+            {
+                if (passive.trigger != trigger)
+                    continue;
+
+                foreach (var action in passive.actions)
+                {
+                    List<Unit> targets =
+                        TargetingSystem.getTargets(
+                            this,
+                            action.targetType,
+                            this
+                        );
+
+                    foreach (var target in targets)
+                    {
+                        if (target != null)
+                            action.execute(target, this);
+                    }
+                }
+            }
+        }
     }
 }

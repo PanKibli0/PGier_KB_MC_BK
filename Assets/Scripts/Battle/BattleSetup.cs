@@ -19,5 +19,6 @@ public class BattleSetup : MonoBehaviour
         }
 
         GameManager.Instance.pendingBattleEnemies = null;
+        GameManager.Instance.relicManager.onBattleStart(UnitsManager.Instance.player);
     }
 }

@@ -28,6 +28,8 @@ public class UnitsManager : MonoBehaviour
 
     public event Action OnUnitsChanged;
 
+    private RelicManager relics;
+
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -36,6 +38,8 @@ public class UnitsManager : MonoBehaviour
             return;
         }
         Instance = this;
+
+        relics = GameManager.Instance.relicManager;
     }
 
     public MoveState getMoveState(Unit unit)
@@ -235,6 +239,25 @@ public class UnitsManager : MonoBehaviour
         unregisterMoveState(unit);
         checkCombatEnd();
     }
+    public void ClearAllEffects()
+    {
+        if (player != null)
+            player.effects.Clear();
+
+        foreach (var ally in allies)
+        {
+            if (ally != null)
+                ally.effects.Clear();
+        }
+
+        foreach (var enemy in enemies)
+        {
+            if (enemy != null)
+                enemy.effects.Clear();
+        }
+
+        Debug.Log("All effects cleared from all units");
+    }
 
     private void checkCombatEnd()
     {
@@ -242,7 +265,7 @@ public class UnitsManager : MonoBehaviour
 
         enemies.RemoveAll(e => e == null || e.currentHealth <= 0);
 
-        bool enemiesAlive = enemies.Count > 0;
+        bool enemiesAlive = enemies.Any(e => e != null && e.currentHealth > 0);
 
         if (!playerAlive)
         {
@@ -250,6 +273,8 @@ public class UnitsManager : MonoBehaviour
         }
         else if (!enemiesAlive)
         {
+            ClearAllEffects();
+            relics.onBattleEnd(player);
             GameManager.Instance.addFloorCount();
             SceneManager.LoadScene("BattleRewardScene", LoadSceneMode.Additive);
         }

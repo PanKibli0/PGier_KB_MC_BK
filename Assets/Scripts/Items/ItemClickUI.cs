@@ -22,7 +22,7 @@ public class ItemClickUI : MonoBehaviour,
     {
         this.item = item;
         this.index = index;
-        previewUI = FindObjectOfType<ItemPreviewUI>();
+        previewUI = FindAnyObjectByType<ItemPreviewUI>();
         refreshUI();
     }
 
@@ -30,7 +30,7 @@ public class ItemClickUI : MonoBehaviour,
     {
         this.item = item;
         this.panel = panel;
-        previewUI = FindObjectOfType<ItemPreviewUI>();
+        previewUI = FindAnyObjectByType<ItemPreviewUI>();
         refreshUI();
     }
 

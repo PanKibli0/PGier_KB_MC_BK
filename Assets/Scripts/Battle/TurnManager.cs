@@ -8,6 +8,13 @@ public class TurnManager : MonoBehaviour
     public event Action OnTurnEnded;
     public int turnNumber = 1;
 
+    private RelicManager relics;
+
+    private void Awake()
+    {
+        relics = GameManager.Instance.relicManager;
+    }
+
     private void Start()
     {
         foreach (Unit enemy in UnitsManager.Instance.getEnemies())
@@ -19,6 +26,7 @@ public class TurnManager : MonoBehaviour
     public void endTurn()
     {
         UnitsManager.Instance.player.onEffectsTurnEnd();
+        relics.onTurnEnd(UnitsManager.Instance.player, turnNumber);
 
         foreach (Unit enemy in UnitsManager.Instance.getEnemies())
             executeUnitTurn(enemy);
@@ -43,9 +51,12 @@ public class TurnManager : MonoBehaviour
             calculateUnitIntent(ally);
 
         UnitsManager.Instance.player?.resetBlock();
-        UnitsManager.Instance.player?.onEffectsTurnStart();
-
         turnNumber++;
+        
+        relics.onTurnStart(UnitsManager.Instance.player, turnNumber);
+        UnitsManager.Instance.player?.onEffectsTurnStart();
+        
+
         OnTurnEnded?.Invoke();
     }
 

@@ -12,6 +12,9 @@ public class DamageAction : BaseAction
         foreach (var effect in source.effects)
             effect.onDealDamage(source, target, ref finalDamage);
 
+        if (source.unitType == UnitType.Player)
+            GameManager.Instance.relicManager.onDamageDealt(source, target);
+
         target.takeDamage(finalDamage, DamageType.Normal, source);
     }
 

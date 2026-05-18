@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CharacterData
   unitName: Wojownik
   graphicPrefab: {fileID: 9112080428852268331, guid: 4f33c3ce45e16c143b28a64bdda30ec1, type: 3}
+  minHealth: 0
   maxHealth: 200
   startEffects:
-  - rid: 2259743198765383749
+  - rid: 490815768443486281
   startCards:
   - {fileID: 11400000, guid: 083c2c054f187f14c96620ddfa844f6c, type: 2}
   - {fileID: 11400000, guid: 083c2c054f187f14c96620ddfa844f6c, type: 2}
@@ -25,10 +26,10 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 2259743198765383749
-      type: {class: StrengthEffect, ns: , asm: Assembly-CSharp}
+    - rid: 490815768443486281
+      type: {class: DodgeEffect, ns: , asm: Assembly-CSharp}
       data:
-        effectName: "Si\u0142a"
+        effectName: Unik
         isMergeable: 1
         isDebuff: 0
-        value: 5
+        charges: 3
