@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9eb029be0ed4b7545af6ac53b951eaff, type: 3}
   m_Name: NewRelic 1
   m_EditorClassIdentifier: Assembly-CSharp::RelicData
-  relicName: ALLDAMA
+  relicName: 
   icon: {fileID: 0}
-  trigger: 0
+  trigger: 2
   actions:
   - rid: 3376038759912702023
   turnsBetweenTriggers: 0
