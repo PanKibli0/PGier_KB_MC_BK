@@ -21,7 +21,17 @@ public class MapManager : MonoBehaviour
     {
         displayMap();
     }
+    public void refreshMap()
+    {
+        foreach (Transform child in contentContainer)
+            Destroy(child.gameObject);
 
+        displayMap();
+    }
+    private void OnEnable()
+    {
+        refreshMap();
+    }
 
     private void displayMap()
     {

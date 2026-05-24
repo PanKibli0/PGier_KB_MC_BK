@@ -55,6 +55,10 @@ public static class MapGenerator
         shopNode.gridPosition = new Vector2Int(3, 0); 
         shopNode.isUnlocked = true;
 
+        EventNode eventNode = new EventNode();
+        eventNode.gridPosition = new Vector2Int(3, 2);
+        eventNode.isUnlocked = true;
+        eventNode.eventData = Resources.Load<EventData>("Events/TestEvent");
 
         node11.connections = new List<BaseNode> { node21,  restNode };
         node21.connections = new List<BaseNode> { node31 };
@@ -72,6 +76,9 @@ public static class MapGenerator
         nodes.Add(restNode);
         nodes.Add(restNode0);
         nodes.Add(shopNode);
+        nodes.Add(eventNode);
+        node21.connections.Add(eventNode);
+        eventNode.connections.Add(node31);
 
         foreach (var node in nodes)
             node.visitedIconPath = "Icons_map/X_" + Random.Range(1, 4);

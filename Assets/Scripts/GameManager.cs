@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
     public RelicManager relicManager;
     public RelicData[] startRelics;
 
-
+    [HideInInspector] public EventData currentEvent;
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -117,6 +117,9 @@ public class GameManager : MonoBehaviour
     
         if (Input.GetKeyDown(KeyCode.P))
             setHealth(currentHealth/2);
+
+        if (Input.GetKeyDown(KeyCode.E))
+            SceneManager.LoadScene("EventScene");
     }
 
     // END DEBUG
