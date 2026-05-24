@@ -14,12 +14,12 @@ public class DrawCardAction : BaseAction
         }
     }
 
-    public override string getCardDescription(Unit source, Unit target = null, bool applyEffects = false)
+    public override string getCardDescription(Unit source = null, Unit target = null, bool applyEffects = false)
     {
-        return $"Dobierz {amount} karty.";
+        return $"Dobierz {amount} <sprite name=\"DrawCardAction\"> karty";
     }
 
-    // public override Sprite getIcon() { return Resources.Load<Sprite>("Icons/draw"); }
-    public override string getIconPath() { return "Icons/obrona"; }
+
+    public override string getIconPath() { return "Icons/DrawCardAction"; }
     public override string getValue() { return $"{amount}"; }
 }

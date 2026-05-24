@@ -23,7 +23,7 @@ public class IntentMoveTooltip : MonoBehaviour, IPointerEnterHandler, IPointerEx
         string description = "";
         foreach (BaseAction action in move.actions)
         {
-            description += action.getCardDescription(unit, null) + "\n";
+            description += $"{action.getCardDescription(unit, null)} {TargetingSystem.getTargetText(action.targetType)}\n";
         }
 
         tooltip.show(new List<(Sprite, string, string)> { (icon, move.moveName, description) });

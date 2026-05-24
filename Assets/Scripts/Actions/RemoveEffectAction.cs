@@ -20,13 +20,13 @@ public class RemoveEffectAction : BaseAction
         }
     }
 
-    public override string getCardDescription(Unit source, Unit target = null, bool applyEffects = false)
+    public override string getCardDescription(Unit source = null, Unit target = null, bool applyEffects = false)
     {
         if (effectToRemove == null) return "";
-        return $"Usuń {effectToRemove.effectName}.";
+        return $"Usuń {effectToRemove.effectName}";
     }
 
-    // public override Sprite getIcon() { return effectToRemove?.icon; }
-    public override string getIconPath() { return "Icons/obrona"; }
+
+    public override string getIconPath() { return effectToRemove != null ? effectToRemove.getIconPath() : ""; }
     public override string getValue() { return "<color=red>X</color>"; }
 }

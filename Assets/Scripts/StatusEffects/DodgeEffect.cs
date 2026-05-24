@@ -47,6 +47,11 @@ public class DodgeEffect : BaseStatusEffect
 
     public override string getDescription()
     {
-        return $"Neguje nastêpne {charges} ataki w tej turze.";
+        return $"Neguje nastêpne {charges} ataki w tej turze";
+    }
+
+    public override string getActionDescription()
+    {
+            return $"Na³ó¿ Unik ({charges}) <sprite name=\"dodge\">";
     }
 }

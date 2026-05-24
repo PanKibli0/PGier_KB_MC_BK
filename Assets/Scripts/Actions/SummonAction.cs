@@ -20,5 +20,10 @@ public class SummonAction : BaseAction
         UnitsManager.Instance.spawn(unitData, summonedType);
     }
 
-    public override string getIconPath() { return "Icons/obrona"; }
+    public override string getCardDescription(Unit source = null, Unit target = null, bool applyEffects = false)
+    {
+        return $"Przywołaj <sprite name=\"SummonAction\"> {unitData.unitName}";
+    }
+
+    public override string getIconPath() { return "Icons/summonAction"; }
 }

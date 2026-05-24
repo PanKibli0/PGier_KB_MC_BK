@@ -38,7 +38,7 @@ public class Unit : MonoBehaviour
 
     private bool isDead = false;
 
-    private RelicManager relics = GameManager.Instance.relicManager; // TO DELETE
+    private RelicManager relics; 
 
     public void init(BaseUnitData data, UnitType type, UnitStatsUIManager statsUIManager)
     {
@@ -59,6 +59,7 @@ public class Unit : MonoBehaviour
             unitData = uData;
 
         statsUIManager.createStatsUI(this);
+        relics = GameManager.Instance.relicManager;
     }
 
     public void setStatsUI(UnitStatsUI ui)
