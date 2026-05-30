@@ -10,19 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ab0e520ee75d57649b2113a55bc66e80, type: 3}
-  m_Name: SlimeNormal
+  m_Name: Kokon
   m_EditorClassIdentifier: Assembly-CSharp::UnitData
-  unitName: Slime
-  graphicPrefab: {fileID: 4200463514604636877, guid: a2324800a30964343bd88756314a9bd7, type: 3}
-  minHealth: 36
-  maxHealth: 42
+  unitName: Kokon
+  graphicPrefab: {fileID: -8653719598885068355, guid: cd46c7165ac61f944aedc4d71ded9bf3, type: 3}
+  minHealth: 25
+  maxHealth: 30
   startEffects: []
   aiType: 1
   moves:
-  - {fileID: 11400000, guid: 85857d05aba26794f96a95202abfd447, type: 2}
-  - {fileID: 11400000, guid: 54dbb1a045b477943b366878c371550f, type: 2}
-  - {fileID: 11400000, guid: 042610f0a973b6742aa4d494db685e4e, type: 2}
-  - {fileID: 11400000, guid: 7774ff9f1c9828044895422fa6bf784e, type: 2}
+  - {fileID: 11400000, guid: 28b8fbbfa27e2e04e98453e47943fc66, type: 2}
   references:
     version: 2
     RefIds: []

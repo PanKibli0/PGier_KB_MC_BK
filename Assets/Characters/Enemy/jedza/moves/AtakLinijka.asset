@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a47322801de95b348a0db7e09c294398, type: 3}
+  m_Name: AtakLinijka
+  m_EditorClassIdentifier: Assembly-CSharp::UnitMove
+  moveName: "Atak Linijk\u0105"
+  actions:
+  - rid: 490816083681607696
+  - rid: 490816083681607697
+  conditions: []
+  weight: 1
+  references:
+    version: 2
+    RefIds:
+    - rid: 490816083681607696
+      type: {class: DamageAction, ns: , asm: Assembly-CSharp}
+      data:
+        targetType: 1
+        damageAmount: 7
+    - rid: 490816083681607697
+      type: {class: AddEffectAction, ns: , asm: Assembly-CSharp}
+      data:
+        targetType: 1
+        effectToAdd:
+          rid: 490816083681607699
+    - rid: 490816083681607699
+      type: {class: VulnerableEffect, ns: , asm: Assembly-CSharp}
+      data:
+        effectName: "Wra\u017Cliwo\u015B\u0107"
+        isMergeable: 1
+        isDebuff: 1
+        duration: 3
+        multiplier: 1.5

@@ -10,18 +10,26 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a47322801de95b348a0db7e09c294398, type: 3}
-  m_Name: BlackBolt
+  m_Name: ChodzacyCien
   m_EditorClassIdentifier: Assembly-CSharp::UnitMove
-  moveName: Czarny oprysk
+  moveName: "Chodz\u0105cy cie\u0144"
   actions:
-  - rid: 3376038571514527927
+  - rid: 490816085691465732
   conditions: []
-  weight: 1
+  weight: 3
   references:
     version: 2
     RefIds:
-    - rid: 3376038571514527927
-      type: {class: DamageAction, ns: , asm: Assembly-CSharp}
+    - rid: 490816085691465732
+      type: {class: AddEffectAction, ns: , asm: Assembly-CSharp}
       data:
-        targetType: 1
-        damageAmount: 15
+        targetType: 0
+        effectToAdd:
+          rid: 490816085691465733
+    - rid: 490816085691465733
+      type: {class: DodgeEffect, ns: , asm: Assembly-CSharp}
+      data:
+        effectName: Unik
+        isMergeable: 1
+        isDebuff: 0
+        charges: 2

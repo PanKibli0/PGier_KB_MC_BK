@@ -10,18 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a47322801de95b348a0db7e09c294398, type: 3}
-  m_Name: BlackBolt
+  m_Name: Zaslona
   m_EditorClassIdentifier: Assembly-CSharp::UnitMove
-  moveName: Czarny oprysk
+  moveName: "Zas\u0142ona"
   actions:
-  - rid: 3376038571514527927
-  conditions: []
+  - rid: 490816085691465739
+  conditions:
+  - rid: -2
   weight: 1
   references:
     version: 2
     RefIds:
-    - rid: 3376038571514527927
-      type: {class: DamageAction, ns: , asm: Assembly-CSharp}
+    - rid: -2
+      type: {class: , ns: , asm: }
+    - rid: 490816085691465739
+      type: {class: BlockAction, ns: , asm: Assembly-CSharp}
       data:
-        targetType: 1
-        damageAmount: 15
+        targetType: 4
+        blockAmount: 7

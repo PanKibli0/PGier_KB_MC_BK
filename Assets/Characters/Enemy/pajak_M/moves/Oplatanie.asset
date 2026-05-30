@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a47322801de95b348a0db7e09c294398, type: 3}
+  m_Name: Oplatanie
+  m_EditorClassIdentifier: Assembly-CSharp::UnitMove
+  moveName: "Opl\u0105tanie"
+  actions:
+  - rid: 490816083681607685
+  - rid: 490816083681607681
+  conditions:
+  - rid: 490816083681607684
+  weight: 5
+  references:
+    version: 2
+    RefIds:
+    - rid: 490816083681607681
+      type: {class: AddEffectAction, ns: , asm: Assembly-CSharp}
+      data:
+        targetType: 1
+        effectToAdd:
+          rid: 490816083681607688
+    - rid: 490816083681607684
+      type: {class: TurnCondition, ns: , asm: Assembly-CSharp}
+      data:
+        mandatory: 0
+        requiredTurn: 1
+    - rid: 490816083681607685
+      type: {class: AddEffectAction, ns: , asm: Assembly-CSharp}
+      data:
+        targetType: 1
+        effectToAdd:
+          rid: 490816083681607686
+    - rid: 490816083681607686
+      type: {class: WeaknessEffect, ns: , asm: Assembly-CSharp}
+      data:
+        effectName: "Os\u0142abienie"
+        isMergeable: 1
+        isDebuff: 1
+        duration: 2
+        multiplier: 0.75
+    - rid: 490816083681607688
+      type: {class: VulnerableEffect, ns: , asm: Assembly-CSharp}
+      data:
+        effectName: "Wra\u017Cliwo\u015B\u0107"
+        isMergeable: 1
+        isDebuff: 1
+        duration: 2
+        multiplier: 1.5

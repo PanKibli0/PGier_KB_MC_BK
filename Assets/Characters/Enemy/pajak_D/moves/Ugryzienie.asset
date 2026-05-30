@@ -10,18 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a47322801de95b348a0db7e09c294398, type: 3}
-  m_Name: BlackBolt
+  m_Name: Ugryzienie
   m_EditorClassIdentifier: Assembly-CSharp::UnitMove
-  moveName: Czarny oprysk
+  moveName: Ugryzienie
   actions:
-  - rid: 3376038571514527927
-  conditions: []
-  weight: 1
+  - rid: 490816083681607680
+  conditions:
+  - rid: 490816083681607690
+  weight: 5
   references:
     version: 2
     RefIds:
-    - rid: 3376038571514527927
+    - rid: 490816083681607680
       type: {class: DamageAction, ns: , asm: Assembly-CSharp}
       data:
         targetType: 1
-        damageAmount: 15
+        damageAmount: 12
+    - rid: 490816083681607690
+      type: {class: TurnCondition, ns: , asm: Assembly-CSharp}
+      data:
+        mandatory: 0
+        requiredTurn: 2

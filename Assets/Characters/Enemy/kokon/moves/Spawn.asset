@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a47322801de95b348a0db7e09c294398, type: 3}
+  m_Name: Spawn
+  m_EditorClassIdentifier: Assembly-CSharp::UnitMove
+  moveName: "Spawn Paj\u0105ka"
+  actions:
+  - rid: 490816083681607695
+  conditions:
+  - rid: 490816083681607694
+  weight: 10
+  references:
+    version: 2
+    RefIds:
+    - rid: 490816083681607694
+      type: {class: HealthCondition, ns: , asm: Assembly-CSharp}
+      data:
+        mandatory: 0
+        type: 0
+        value: 1
+    - rid: 490816083681607695
+      type: {class: SummonAction, ns: , asm: Assembly-CSharp}
+      data:
+        targetType: 0
+        unitData: {fileID: 11400000, guid: baf88e19cf4403f4faa13ac5aeaa871f, type: 2}

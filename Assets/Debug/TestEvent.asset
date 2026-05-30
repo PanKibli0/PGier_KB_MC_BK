@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c279752beb98a74b8d182cbcad357e9, type: 3}
   m_Name: TestEvent
   m_EditorClassIdentifier: Assembly-CSharp::EventData
-  eventName: "Pieni\u0105dze od babci"
-  description: "Babcia wysy\u0142a ci pieni\u0105dze, otrzymujesz 67 golda"
+  eventName: Ciasteczka od babci
+  description: "Babcia wysy\u0142a ci ciasteczko, otrzymujesz 5 zdrowia"
   illustration: {fileID: 0}
   choices:
-  - buttonText: "Przyjmij pieni\u0105dze"
-    resultText: "Przyj\u0119to pieni\u0105dze"
+  - buttonText: Zjedz ciastko
+    resultText: Am am am am
     actions:
     - rid: 490815933198893123
   references:

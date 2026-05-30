@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a47322801de95b348a0db7e09c294398, type: 3}
-  m_Name: BlackBolt
+  m_Name: BurzaSniezna
   m_EditorClassIdentifier: Assembly-CSharp::UnitMove
-  moveName: Czarny oprysk
+  moveName: "Burza \u015Bnie\u017Cna"
   actions:
-  - rid: 3376038571514527927
+  - rid: 3376038571514527915
   conditions: []
-  weight: 1
+  weight: 15
   references:
     version: 2
     RefIds:
-    - rid: 3376038571514527927
+    - rid: 3376038571514527915
       type: {class: DamageAction, ns: , asm: Assembly-CSharp}
       data:
-        targetType: 1
-        damageAmount: 15
+        targetType: 6
+        damageAmount: 8

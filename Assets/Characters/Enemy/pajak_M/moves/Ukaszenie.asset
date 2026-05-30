@@ -10,39 +10,38 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a47322801de95b348a0db7e09c294398, type: 3}
-  m_Name: FireBall
+  m_Name: Ukaszenie
   m_EditorClassIdentifier: Assembly-CSharp::UnitMove
-  moveName: "Kula \u0141ognia"
+  moveName: "Uk\u0105szenie"
   actions:
-  - rid: 3376038571514527927
-  - rid: 3376038571514527928
+  - rid: 490816083681607680
+  - rid: 490816083681607681
   conditions:
-  - rid: 490816083681607719
-  weight: 3
+  - rid: 490816083681607684
+  weight: 5
   references:
     version: 2
     RefIds:
-    - rid: 490816083681607693
-      type: {class: FlameEffect, ns: , asm: Assembly-CSharp}
-      data:
-        effectName: "P\u0142omie\u0144"
-        isMergeable: 1
-        isDebuff: 1
-        value: 2
-        multiplier: 1
-    - rid: 490816083681607719
-      type: {class: CooldownCondition, ns: , asm: Assembly-CSharp}
-      data:
-        mandatory: 0
-        cooldown: 2
-    - rid: 3376038571514527927
+    - rid: 490816083681607680
       type: {class: DamageAction, ns: , asm: Assembly-CSharp}
       data:
-        targetType: 8
+        targetType: 1
         damageAmount: 5
-    - rid: 3376038571514527928
+    - rid: 490816083681607681
       type: {class: AddEffectAction, ns: , asm: Assembly-CSharp}
       data:
-        targetType: 8
+        targetType: 1
         effectToAdd:
-          rid: 490816083681607693
+          rid: 490816083681607682
+    - rid: 490816083681607682
+      type: {class: PoisonEffect, ns: , asm: Assembly-CSharp}
+      data:
+        effectName: Trucizna
+        isMergeable: 1
+        isDebuff: 1
+        stacks: 3
+    - rid: 490816083681607684
+      type: {class: TurnCondition, ns: , asm: Assembly-CSharp}
+      data:
+        mandatory: 0
+        requiredTurn: 1
