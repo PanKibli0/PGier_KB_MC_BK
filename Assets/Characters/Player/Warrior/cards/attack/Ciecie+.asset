@@ -16,11 +16,13 @@ MonoBehaviour:
   cost: 1
   type: 0
   rarity: 0
-  image: {fileID: 1721568661134446361, guid: 84a63ea0f997309429eb80a83708d51d, type: 3}
+  image: {fileID: 6832818906027779938, guid: 010df074f908772478bb77cb7a47ccd9, type: 3}
   shopPrice: 0
+  exhaust: 0
   actions:
   - rid: 490815630673969152
   - rid: 490815630673969153
+  passiveAbilities: []
   upgrade: {fileID: 0}
   references:
     version: 2
