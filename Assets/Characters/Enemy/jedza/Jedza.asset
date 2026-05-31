@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab0e520ee75d57649b2113a55bc66e80, type: 3}
+  m_Name: Jedza
+  m_EditorClassIdentifier: Assembly-CSharp::UnitData
+  unitName: "J\u0119dza od matmy"
+  graphicPrefab: {fileID: -8653719598885068355, guid: 20fc7283febd31d4c9009c0443ee81e0, type: 3}
+  minHealth: 44
+  maxHealth: 50
+  startEffects: []
+  aiType: 1
+  moves:
+  - {fileID: 11400000, guid: e72595765e418ec4b8170d96eb05b29d, type: 2}
+  - {fileID: 11400000, guid: 5f610792c454ff947a094c0b80e1916f, type: 2}
+  references:
+    version: 2
+    RefIds: []

@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a47322801de95b348a0db7e09c294398, type: 3}
+  m_Name: Ukaszenie
+  m_EditorClassIdentifier: Assembly-CSharp::UnitMove
+  moveName: "Uk\u0105szenie"
+  actions:
+  - rid: 490816083681607708
+  - rid: 490816083681607709
+  conditions:
+  - rid: 490816083681607718
+  weight: 4
+  references:
+    version: 2
+    RefIds:
+    - rid: 490816083681607708
+      type: {class: DamageAction, ns: , asm: Assembly-CSharp}
+      data:
+        targetType: 1
+        damageAmount: 7
+    - rid: 490816083681607709
+      type: {class: AddEffectAction, ns: , asm: Assembly-CSharp}
+      data:
+        targetType: 1
+        effectToAdd:
+          rid: 490816083681607710
+    - rid: 490816083681607710
+      type: {class: BleedingEffect, ns: , asm: Assembly-CSharp}
+      data:
+        effectName: Krwawienie
+        isMergeable: 1
+        isDebuff: 1
+        stacks: 3
+    - rid: 490816083681607718
+      type: {class: CooldownCondition, ns: , asm: Assembly-CSharp}
+      data:
+        mandatory: 0
+        cooldown: 2

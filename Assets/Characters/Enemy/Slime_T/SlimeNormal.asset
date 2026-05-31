@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UnitData
   unitName: Slime
   graphicPrefab: {fileID: 4200463514604636877, guid: a2324800a30964343bd88756314a9bd7, type: 3}
-  minHealth: 32
-  maxHealth: 45
+  minHealth: 36
+  maxHealth: 42
   startEffects: []
   aiType: 1
   moves:

@@ -7,7 +7,11 @@ public class HealAction : BaseAction
 
     public override void execute(Unit target, Unit source)
     {
-        target.heal(healAmount);
+        if (GameManager.Instance == null) return;
+
+        GameManager.Instance.setHealth(
+            GameManager.Instance.currentHealth + healAmount
+        );
     }
 
     public override string getCardDescription(Unit source = null, Unit target = null, bool applyEffects = false)
