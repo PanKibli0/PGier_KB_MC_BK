@@ -44,7 +44,7 @@ public class FlameEffect : BaseStatusEffect
 
     public override string getIconPath()
     {
-        return "Icons/flame";
+        return "Icons/Plomien";
     }
 
     public override string getDescription()
@@ -54,6 +54,6 @@ public class FlameEffect : BaseStatusEffect
 
     public override string getActionDescription()
     {
-        return $"Na³ó¿ P³omieñ ({duration}) <sprite name=\"flame\">";
+        return $"Na³ó¿ P³omieñ ({duration}) <sprite name=\"plomien\">";
     }
 }

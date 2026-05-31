@@ -10,9 +10,9 @@ public class BlockAction : BaseAction
         target.addBlock(blockAmount);
     }
 
-    public override string getCardDescription(Unit source, Unit target = null, bool applyEffects = false)
+    public override string getCardDescription(Unit source = null, Unit target = null, bool applyEffects = false)
     {
-        return $"Otrzymaj {blockAmount} <sprite name=\"obrona\"> obrony.";
+        return $"Otrzymaj {blockAmount} <sprite name=\"obrona\"> obrony";
     }
 
     // public override Sprite getIcon() { return Resources.Load<Sprite>("Icons/block"); }

@@ -47,7 +47,7 @@ public class CardUIBase : MonoBehaviour
 
         foreach (var action in card.actions)
         {
-            description += action.getCardDescription(player, target, applyEffects) + "\n";
+            description += $"{action.getCardDescription(player, target, applyEffects)} {TargetingSystem.getTargetText(action.targetType)}\n";
         }
         descText.text = description;
     }

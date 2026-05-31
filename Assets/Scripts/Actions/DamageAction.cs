@@ -18,7 +18,7 @@ public class DamageAction : BaseAction
         target.takeDamage(finalDamage, DamageType.Normal, source);
     }
 
-    public override string getCardDescription(Unit source, Unit target = null, bool applyEffects = false)
+    public override string getCardDescription(Unit source = null, Unit target = null, bool applyEffects = false)
     {
         int finalDamage = damageAmount;
 
@@ -38,11 +38,11 @@ public class DamageAction : BaseAction
         }
 
         if (finalDamage < damageAmount)
-            return $"Zadaj <color=red>{finalDamage}</color> <sprite name=\"atak\"> obrażeń.";
+            return $"Zadaj <color=red>{finalDamage}</color> <sprite name=\"atak\"> obrażeń";
         else if (finalDamage > damageAmount)
-            return $"Zadaj <color=#BFFF00>{finalDamage}</color> <sprite name=\"atak\"> obrażeń.";
+            return $"Zadaj <color=#BFFF00>{finalDamage}</color> <sprite name=\"atak\"> obrażeń";
         else
-            return $"Zadaj {finalDamage} <sprite name=\"atak\"> obrażeń.";
+            return $"Zadaj {finalDamage} <sprite name=\"atak\"> obrażeń";
     }
 
     public override string getIconPath() { return "Icons/atak"; }

@@ -15,12 +15,12 @@ public class EnergyAction : BaseAction
             EnergySystem.Instance.spendEnergy(-amount);
     }
 
-    public override string getCardDescription(Unit source, Unit target = null, bool applyEffects = false)
+    public override string getCardDescription(Unit source = null, Unit target = null, bool applyEffects = false)
     {
         if (amount > 0)
-            return $"Zyskaj {amount} <sprite name=\"obrona\"> energii.";
+            return $"Zyskaj {amount} <sprite name=\"obrona\"> energii";
         else
-            return $"Strac {(-amount)} <sprite name=\"obrona\"> energii.";
+            return $"Strac {(-amount)} <sprite name=\"obrona\"> energii";
     }
 
     // public override Sprite getIcon() { return Resources.Load<Sprite>("Icons/energy"); }
