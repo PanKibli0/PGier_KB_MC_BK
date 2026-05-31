@@ -37,6 +37,9 @@ public class GameManager : MonoBehaviour
     [Header("Relics")]
     public RelicManager relicManager;
     public RelicData[] startRelics;
+    public RelicData[] relicPool;
+
+    public EventData testEvent;
 
     [HideInInspector] public EventData currentEvent;
     void Awake()
@@ -104,7 +107,13 @@ public class GameManager : MonoBehaviour
     {
         floorsCompleted++;
     }
+    public RelicData getRandomRelic()
+    {
+        if (relicPool == null || relicPool.Length == 0)
+            return null;
 
+        return relicPool[UnityEngine.Random.Range(0, relicPool.Length)];
+    }
 
     // DEBUGs
     void Update()

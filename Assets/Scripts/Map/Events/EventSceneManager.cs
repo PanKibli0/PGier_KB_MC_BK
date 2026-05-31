@@ -22,7 +22,7 @@ public class EventSceneManager : MonoBehaviour
     void Start()
     {
         currentEvent = GameManager.Instance.currentEvent;
-
+       
         setupEvent();
     }
 
@@ -33,7 +33,6 @@ public class EventSceneManager : MonoBehaviour
 
         if (currentEvent.illustration != null)
             image.sprite = currentEvent.illustration;
-
         foreach (var choice in currentEvent.choices)
         {
             GameObject obj = Instantiate(choiceButtonPrefab, choicesParent);
@@ -45,12 +44,43 @@ public class EventSceneManager : MonoBehaviour
 
     public void selectChoice(EventChoice choice)
     {
-        foreach (var action in choice.actions)
+        EventContext context = new EventContext(GameManager.Instance);
+
+        foreach (var effect in choice.effects)
         {
-            action.execute(
-                UnitsManager.Instance.player,
-                UnitsManager.Instance.player
-            );
+            switch (effect.type)
+            {
+                case EventEffectType.AddGold:
+                    GameManager.Instance.addGold(effect.intValue);
+                    break;
+
+                case EventEffectType.HealPlayer:
+                    GameManager.Instance.setHealth(GameManager.Instance.currentHealth + effect.intValue);
+                    break;
+
+                case EventEffectType.TakeDamage:
+                    GameManager.Instance.setHealth(GameManager.Instance.currentHealth - effect.intValue);
+                    break;
+
+                case EventEffectType.AddRelic:
+                    GameManager.Instance.relicManager.addRelic(effect.relic);
+                    break;
+
+                case EventEffectType.StartBattle:
+                    {
+                        var pool = GameManager.Instance.enemyPool;
+
+                        var fight = pool.normalFights[UnityEngine.Random.Range(0, pool.normalFights.Count)];
+
+                        GameManager.Instance.pendingBattleEnemies = fight.enemies;
+                        GameManager.Instance.pendingBattleDifficulty = BattleDifficulty.Normal;
+
+                        GameManager.Instance.currentMapNode?.onComplete();
+                        GameManager.Instance.currentEvent = null;
+                        SceneManager.LoadScene("BattleScene");
+                        return;
+                    }
+            }
         }
 
         resultPanel.SetActive(true);
@@ -59,7 +89,6 @@ public class EventSceneManager : MonoBehaviour
 
     public void leaveEvent()
     {
-        Debug.Log("POMIÑ KLIK");
         GameManager.Instance.currentMapNode?.onComplete();
         SceneManager.LoadScene("MapScene");
     }

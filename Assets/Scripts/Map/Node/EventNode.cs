@@ -12,7 +12,7 @@ public class EventNode : BaseNode
 
     public override void execute()
     {
-        GameManager.Instance.currentEvent = eventData;
+        GameManager.Instance.currentEvent = EventManager.Instance.getRandomEvent();
         GameManager.Instance.currentMapNode = this;
         SceneManager.LoadScene("EventScene");
     }

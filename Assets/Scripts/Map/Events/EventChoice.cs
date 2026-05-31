@@ -6,5 +6,5 @@ public class EventChoice
 {
     public string buttonText;
     public string resultText;
-    [SerializeReference] public List<BaseAction> actions;
+    public List<EventEffect> effects = new List<EventEffect>();
 }

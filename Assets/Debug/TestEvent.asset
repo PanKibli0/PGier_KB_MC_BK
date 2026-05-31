@@ -13,18 +13,12 @@ MonoBehaviour:
   m_Name: TestEvent
   m_EditorClassIdentifier: Assembly-CSharp::EventData
   eventName: Ciasteczka od babci
-  description: "Babcia wysy\u0142a ci ciasteczko, otrzymujesz 5 zdrowia"
+  description: "Babcia wysy\u0142a ci ciasteczko na ci\u0119\u017Ck\u0105 podr\xF3\u017C"
   illustration: {fileID: 0}
   choices:
   - buttonText: Zjedz ciastko
-    resultText: Am am am am
-    actions:
-    - rid: 490815933198893123
-  references:
-    version: 2
-    RefIds:
-    - rid: 490815933198893123
-      type: {class: HealAction, ns: , asm: Assembly-CSharp}
-      data:
-        targetType: 0
-        healAmount: 5
+    resultText: Am am am am :3
+    effects:
+    - type: 4
+      intValue: 1
+      relic: {fileID: 0}

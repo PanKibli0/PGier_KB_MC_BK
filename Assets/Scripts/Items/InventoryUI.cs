@@ -9,7 +9,6 @@ public class InventoryUI : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log("SUBSCRIBED UI: " + gameObject.name);
         if (PlayerInventory.Instance != null)
             PlayerInventory.Instance.OnInventoryChanged += refresh;
         
@@ -23,18 +22,13 @@ public class InventoryUI : MonoBehaviour
 
     public void refresh()
     {
-        Debug.Log($"InventoryUI instance: {gameObject.name}");
-        Debug.Log($"container: {container}");
-        Debug.Log($"itemPrefab: {itemPrefab}");
         if (PlayerInventory.Instance == null)
         {
-            Debug.LogError("PlayerInventory.Instance == NULL - brak obiektu w scenie!");
             return;
         }
 
         if (container == null || itemPrefab == null)
         {
-            Debug.LogError("UI refs missing!");
             return;
         }
 
@@ -53,7 +47,6 @@ public class InventoryUI : MonoBehaviour
 
             if (ui == null)
             {
-                Debug.LogError("ItemPrefab nie ma ItemClickUI!");
                 continue;
             }
 

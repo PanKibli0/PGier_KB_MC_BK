@@ -7,13 +7,20 @@ public class DamageAction : BaseAction
 
     public override void execute(Unit target, Unit source)
     {
+        if (target == null) return;
+        if (source == null) source = target;
+
         int finalDamage = damageAmount;
 
-        foreach (var effect in source.effects)
-            effect.onDealDamage(source, target, ref finalDamage);
+        if (source.effects != null)
+        {
+            foreach (var effect in source.effects)
+                if (effect != null)
+                    effect.onDealDamage(source, target, ref finalDamage);
+        }
 
-        if (source.unitType == UnitType.Player)
-            GameManager.Instance.relicManager.onDamageDealt(source, target);
+        if (source.unitType == UnitType.Player && GameManager.Instance != null)
+            GameManager.Instance.relicManager?.onDamageDealt(source, target);
 
         target.takeDamage(finalDamage, DamageType.Normal, source);
     }
