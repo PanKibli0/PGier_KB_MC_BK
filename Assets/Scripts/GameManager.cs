@@ -76,7 +76,11 @@ public class GameManager : MonoBehaviour
         setHealth(character.maxHealth);
         
         gold = character.startGold;
-        currentDeck = new List<CardData>(character.startCards);
+        currentDeck = new List<CardData>();
+        
+        foreach (StartCardEntry entry in character.startCards)
+            for (int i = 0; i < entry.amount; i++)
+                currentDeck.Add(entry.data);
 
         MapData mapData = new MapData();
         mapData.nodes = MapGenerator.generateMap(enemyPool);

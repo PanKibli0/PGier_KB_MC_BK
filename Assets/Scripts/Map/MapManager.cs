@@ -17,10 +17,11 @@ public class MapManager : MonoBehaviour
     [SerializeField] private float nodeHeight = 80f;
     [SerializeField] private float lineOffset = 15f;
 
-    void Start()
+    private void OnEnable()
     {
-        displayMap();
+        refreshMap();
     }
+
     public void refreshMap()
     {
         foreach (Transform child in contentContainer)
@@ -28,11 +29,7 @@ public class MapManager : MonoBehaviour
 
         displayMap();
     }
-    private void OnEnable()
-    {
-        refreshMap();
-    }
-
+    
     private void displayMap()
     {
         List<BaseNode> nodes = GameManager.Instance.currentMap.nodes;
@@ -74,6 +71,8 @@ public class MapManager : MonoBehaviour
 
     private void drawLines()
     {
+        Debug.Log("Drawing lines...");
+
         foreach (var node in GameManager.Instance.currentMap.nodes)
         {
             Vector2 startPos = getNodePosition(node);

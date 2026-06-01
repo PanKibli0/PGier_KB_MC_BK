@@ -62,8 +62,8 @@ public static class MapGenerator
 
         node11.connections = new List<BaseNode> { node21,  restNode };
         node21.connections = new List<BaseNode> { node31 };
-        node22.connections = new List<BaseNode> { eventNode, node33 }; //eventNode -> node32
-        restNode.connections = new List<BaseNode> { node31, eventNode }; //eventNode -> node32
+        node22.connections = new List<BaseNode> { eventNode, node33 }; 
+        restNode.connections = new List<BaseNode> { node31, eventNode }; 
         restNode0.connections = new List<BaseNode> { restNode, node22 };
         shopNode.connections = new List<BaseNode> { restNode,node22 };
 
