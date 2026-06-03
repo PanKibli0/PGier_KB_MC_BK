@@ -10,32 +10,35 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: be91687817927d141b5fa4be2f12884b, type: 3}
-  m_Name: Pozoga+
+  m_Name: PraiseTheSun
   m_EditorClassIdentifier: Assembly-CSharp::CardData
-  cardName: "Po\u017Coga+"
-  cost: 1
-  type: 1
+  cardName: Praise the Sun
+  cost: 2
+  type: 2
   rarity: 1
-  image: {fileID: -8763310792702208652, guid: 5b7b748e0ea5ff34f909144d30b6f6e7, type: 3}
+  image: {fileID: 0}
   shopPrice: 0
-  exhaust: 0
-  actions:
-  - rid: 490815751144079365
-  passiveAbilities: []
-  upgrade: {fileID: 0}
+  exhaust: 1
+  actions: []
+  passiveAbilities:
+  - trigger: 3
+    actions:
+    - rid: 4436522908578218023
+  upgrade: {fileID: 11400000, guid: 71652dc6e664e9d4c8984e68bc40b34f, type: 2}
   references:
     version: 2
     RefIds:
-    - rid: 490815751144079365
+    - rid: 4436522908578218023
       type: {class: AddEffectAction, ns: , asm: Assembly-CSharp}
       data:
-        targetType: 1
+        targetType: 3
         effectToAdd:
-          rid: 490815751144079367
-    - rid: 490815751144079367
-      type: {class: BleedingEffect, ns: , asm: Assembly-CSharp}
+          rid: 4436522908578218024
+    - rid: 4436522908578218024
+      type: {class: VulnerableEffect, ns: , asm: Assembly-CSharp}
       data:
-        effectName: Krwawienie
+        effectName: "Wra\u017Cliwo\u015B\u0107"
         isMergeable: 1
         isDebuff: 1
-        stacks: 6
+        duration: 1
+        multiplier: 1.5

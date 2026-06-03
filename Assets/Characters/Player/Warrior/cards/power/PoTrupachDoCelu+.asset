@@ -10,26 +10,34 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: be91687817927d141b5fa4be2f12884b, type: 3}
-  m_Name: GrzybyLesnie
+  m_Name: PoTrupachDoCelu+
   m_EditorClassIdentifier: Assembly-CSharp::CardData
-  cardName: "Grzyby le\u015Bne"
-  cost: 3
+  cardName: Po trupach do celu+
+  cost: 1
   type: 2
   rarity: 1
-  image: {fileID: -1025995993849211177, guid: 91ed8920bcb2dbb4088f6e93e5ac4a91, type: 3}
+  image: {fileID: 0}
   shopPrice: 0
   exhaust: 1
   actions: []
   passiveAbilities:
-  - trigger: 0
+  - trigger: 2
     actions:
-    - rid: 4436522908578218013
-  upgrade: {fileID: 11400000, guid: 9615c1443fc8f7c44b2a73908ac9b63e, type: 2}
+    - rid: 4436522908578218015
+  upgrade: {fileID: 0}
   references:
     version: 2
     RefIds:
-    - rid: 4436522908578218013
-      type: {class: EnergyAction, ns: , asm: Assembly-CSharp}
+    - rid: 4436522908578218015
+      type: {class: AddEffectAction, ns: , asm: Assembly-CSharp}
       data:
         targetType: 0
-        amount: 1
+        effectToAdd:
+          rid: 4436522908578218016
+    - rid: 4436522908578218016
+      type: {class: StrengthEffect, ns: , asm: Assembly-CSharp}
+      data:
+        effectName: "Si\u0142a"
+        isMergeable: 1
+        isDebuff: 0
+        value: 2
