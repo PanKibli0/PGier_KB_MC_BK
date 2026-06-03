@@ -39,9 +39,15 @@ public class GameManager : MonoBehaviour
     public RelicData[] startRelics;
     public RelicData[] relicPool;
 
+    
+    [HideInInspector] public EventData currentEvent;
     public EventData testEvent;
 
-    [HideInInspector] public EventData currentEvent;
+
+    public PlayerInventory playerInventory;
+    //public List<ItemData> testItems;
+
+
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -55,6 +61,7 @@ public class GameManager : MonoBehaviour
         OnGoldChanged?.Invoke(gold);
 
         relicManager = new RelicManager(new List<RelicData>(startRelics));
+        playerInventory = new PlayerInventory();
     }
 
     public void setHealth(int value)
@@ -93,7 +100,6 @@ public class GameManager : MonoBehaviour
     public void addGold(int amount)
     {
         gold += amount;
-        Debug.Log($"<color=yellow>Zdobyto {amount} złota. Razem: {gold}</color>");
         OnGoldChanged?.Invoke(gold);
     }
 

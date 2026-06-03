@@ -7,15 +7,11 @@ public class EnergyUI : MonoBehaviour
     private EnergySystem energySystem;
 
 
-    void Start()
+    public void init(EnergySystem energySystem)
     {
-        energySystem = EnergySystem.Instance;
-
-        if (energySystem != null)
-        {
-            energySystem.OnEnergyChanged += updateUI;
-            updateUI();
-        }
+        this.energySystem = energySystem;
+        energySystem.OnEnergyChanged += updateUI;
+        updateUI();
     }
 
 

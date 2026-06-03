@@ -7,11 +7,7 @@ public class DrawCardAction : BaseAction
 
     public override void execute(Unit target, Unit source)
     {
-        for (int i = 0; i < amount; i++)
-        {
-            if (CardPileSystem.Instance != null)
-                CardPileSystem.Instance.drawCard();
-        }
+        ActionEventBus.requestDrawCards(amount);
     }
 
     public override string getCardDescription(Unit source = null, Unit target = null, bool applyEffects = false)

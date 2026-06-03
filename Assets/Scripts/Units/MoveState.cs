@@ -1,3 +1,4 @@
+using UnityEngine;
 using System.Collections.Generic;
 
 public class MoveState
@@ -11,6 +12,9 @@ public class MoveState
 
     public bool canUse(UnitMove move)
     {
+        if (move == null)
+            return false;
+
         if (forcedNextMove != null && move != forcedNextMove)
             return false;
 
@@ -50,12 +54,12 @@ public class MoveState
     {
         foreach (UnitMove move in allMoves)
         {
-            if (move.conditions != null)
+            if (move == null) continue;
+            if (move.conditions == null) continue;
+
+            foreach (MoveCondition condition in move.conditions)
             {
-                foreach (MoveCondition condition in move.conditions)
-                {
-                    condition.onTurnEnd(this);
-                }
+                condition.onTurnEnd(this);
             }
         }
     }

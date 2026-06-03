@@ -13,7 +13,7 @@ public class ItemData : ScriptableObject
     [SerializeReference]
     public List<BaseAction> actions = new List<BaseAction>();
 
-    public void Use(Unit user, Unit selectedTarget = null)
+    public void use(Unit user, Unit selectedTarget = null)
     {
         if (user == null) return;
 

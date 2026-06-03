@@ -290,7 +290,7 @@ MonoBehaviour:
   maxHealth: 0
   currentDeck: []
   gold: 0
-  enemyPool: {fileID: 11400000, guid: 9b38731bdcd64d542b5d458b2dfbe824, type: 2}
+  enemyPool: {fileID: 11400000, guid: 48271afc0a8550f408343c0be639df90, type: 2}
   pendingBattleEnemies: []
   pendingBattleDifficulty: 0
   generalCardPool: {fileID: 11400000, guid: ce2b5ccc244fc294a8337c71c073b80e, type: 2}
@@ -301,8 +301,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 39ce8a0d016335045a080feb47af0608, type: 2}
   - {fileID: 11400000, guid: d3ec6bca48174d4439a7215194015c4c, type: 2}
   relicPool: []
-  testEvent: {fileID: 0}
   currentEvent: {fileID: 0}
+  testEvent: {fileID: 0}
 --- !u!4 &520281881
 Transform:
   m_ObjectHideFlags: 0

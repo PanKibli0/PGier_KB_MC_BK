@@ -27,7 +27,6 @@ public class Unit : MonoBehaviour
     public int currentMaxHealth;
     public int currentHealth;
     public int block;
-    public List<Card> activePassiveCards = new List<Card>();
 
     [SerializeReference] public List<BaseStatusEffect> effects = new List<BaseStatusEffect>();
     public UnitMove nextMove;
@@ -38,10 +37,13 @@ public class Unit : MonoBehaviour
 
     private bool isDead = false;
 
-    private RelicManager relics; 
+    private RelicManager relics;
+    private UnitsManager unitsManager;
 
-    public void init(BaseUnitData data, UnitType type, UnitStatsUIManager statsUIManager)
+    public void init(BaseUnitData data, UnitType type, UnitStatsUIManager statsUIManager, 
+        UnitsManager unitsManager)
     {
+        this.unitsManager = unitsManager;
         unitName = data.unitName;
         unitType = type;
 
@@ -96,8 +98,6 @@ public class Unit : MonoBehaviour
             damage -= blockUsed;
         }
 
-        currentHealth -= damage;
-        triggerPassives(PassiveTrigger.ReceiveDamage); // TO DELETE 
 
         if (unitType == UnitType.Player)
             relics.onDamageTaken(this, source); // TO DELETE / REWORK??
@@ -121,7 +121,7 @@ public class Unit : MonoBehaviour
     {
         isDead = true;
         GameManager.Instance?.addEnemyKill();
-        UnitsManager.Instance.onUnitDied(this);
+        unitsManager.onUnitDied(this);
         Destroy(gameObject);
     }
 
@@ -186,7 +186,7 @@ public class Unit : MonoBehaviour
     {
         for (int i = effects.Count - 1; i >= 0; i--)
             effects[i].onTurnStart(this);
-        triggerPassives(PassiveTrigger.TurnStart);
+        
         OnEffectsChanged?.Invoke();
     }
 
@@ -194,7 +194,7 @@ public class Unit : MonoBehaviour
     {
         for (int i = effects.Count - 1; i >= 0; i--)
             effects[i].onTurnEnd(this);
-        triggerPassives(PassiveTrigger.TurnEnd);
+ 
         OnEffectsChanged?.Invoke();
     }
 
@@ -206,34 +206,4 @@ public class Unit : MonoBehaviour
         return unitData.aiType;
     }
 
-    public void triggerPassives(PassiveTrigger trigger, Card playedCard = null)
-    {
-        foreach (var card in activePassiveCards)
-        {
-            if (card.data.passiveAbilities == null)
-                continue;
-
-            foreach (var passive in card.data.passiveAbilities)
-            {
-                if (passive.trigger != trigger)
-                    continue;
-
-                foreach (var action in passive.actions)
-                {
-                    List<Unit> targets =
-                        TargetingSystem.getTargets(
-                            this,
-                            action.targetType,
-                            this
-                        );
-
-                    foreach (var target in targets)
-                    {
-                        if (target != null)
-                            action.execute(target, this);
-                    }
-                }
-            }
-        }
-    }
 }

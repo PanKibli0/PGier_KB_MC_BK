@@ -1,41 +1,22 @@
 using UnityEngine;
 using System;
 
-public class EnergySystem : MonoBehaviour
+public class EnergySystem
 {
-    public static EnergySystem Instance;
-
-    [SerializeField] private int maxEnergy = 3;
+    private int maxEnergy;
     public int currentMaxEnergy;
     public int currentEnergy;
 
     public event Action OnEnergyChanged;
 
-
-    void Awake()
+    public EnergySystem(int startMaxEnergy = 3)
     {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
-        Instance = this;
+        maxEnergy = startMaxEnergy;
+        currentMaxEnergy = startMaxEnergy;
+        currentEnergy = startMaxEnergy;
+
+        ActionEventBus.OnEnergyChange += energyChange;
     }
-
-
-    void Start()
-    {
-        resetForBattle();
-    }
-
-
-    public void resetForBattle()
-    {
-        currentMaxEnergy = maxEnergy;
-        currentEnergy = currentMaxEnergy;
-        OnEnergyChanged?.Invoke();
-    }
-
 
     public void setCurrentMaxEnergy(int newMax)
     {
@@ -51,10 +32,7 @@ public class EnergySystem : MonoBehaviour
         OnEnergyChanged?.Invoke();
     }
 
-    public bool canAfford(int cost)
-    {
-        return currentEnergy >= cost;
-    }
+    public bool canAfford(int cost) { return currentEnergy >= cost; }
 
 
     public void spendEnergy(int amount)
@@ -68,6 +46,14 @@ public class EnergySystem : MonoBehaviour
     {
         currentEnergy += amount;
         OnEnergyChanged?.Invoke();
+    }
+
+    private void energyChange(int amount)
+    {
+        if (amount > 0)
+            addEnergy(amount);
+        else
+            spendEnergy(-amount);
     }
 
 

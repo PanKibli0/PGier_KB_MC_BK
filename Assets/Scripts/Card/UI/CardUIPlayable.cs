@@ -15,54 +15,53 @@ public class CardUIPlayable : CardUIBase, IBeginDragHandler, IDragHandler, IEndD
     private bool canDrag = true;
 
     private RelicManager relics;
+    private CardPileSystem cardPileSystem;
+    private HandSystem handSystem;
 
 
-    protected void Awake()
+    public void init(Card card, EnergySystem energy, CardPileSystem cards, HandSystem hand, UnitsManager units, RelicManager relic)
     {
+        base.init(card, energy, units);
+        this.cardPileSystem = cards;
+        this.handSystem = hand;
+        this.relics = relic;
+
+        updateDescription(null, true);
+
         rectTransform = GetComponent<RectTransform>();
         canvas = GetComponentInParent<Canvas>();
         handArea = GetComponentInParent<HandAreaUI>();
 
-        relics = GameManager.Instance.relicManager;
+        this.energySystem.OnEnergyChanged += updateCostColor;
+        this.unitsManager.player.OnEffectsChanged += onEffectsChanged;
     }
 
-    protected virtual void Start()
-    {
-        if (EnergySystem.Instance != null)
-            EnergySystem.Instance.OnEnergyChanged += updateCostColor;
-
-        UnitsManager.Instance.player.OnEffectsChanged += onEffectsChanged;
-    }
 
     protected virtual void OnDestroy()
     {
-        if (EnergySystem.Instance != null)
-            EnergySystem.Instance.OnEnergyChanged -= updateCostColor;
+        if (this.energySystem != null)
+            this.energySystem.OnEnergyChanged -= updateCostColor;
 
-        if (UnitsManager.Instance?.player != null)
-            UnitsManager.Instance.player.OnEffectsChanged -= onEffectsChanged;
+        if (this.unitsManager != null && this.unitsManager.player != null)
+            this.unitsManager.player.OnEffectsChanged -= onEffectsChanged;
     }
+
 
     protected void onEffectsChanged() { updateDescription(); }
 
-    public override void init(Card card)
-    {
-        base.init(card);
-        updateDescription(null, true);
-    }
 
     private bool canPlayCard()
     {
-        if (EnergySystem.Instance != null && !EnergySystem.Instance.canAfford(card.currentCost)) return false;
+        if (!energySystem.canAfford(card.currentCost)) return false;
 
         foreach (var action in card.actions)
         {
             if (action is SummonAction summon)
             {
-                UnitType summonedType = (UnitsManager.Instance.player.unitType == UnitType.Player) ? UnitType.Ally : UnitType.Enemy;
+                UnitType summonedType = (unitsManager.player.unitType == UnitType.Player) ? UnitType.Ally : UnitType.Enemy;
 
-                if (summonedType == UnitType.Ally && !UnitsManager.Instance.canSummonAlly()) return false;
-                if (summonedType == UnitType.Enemy && !UnitsManager.Instance.canSummonEnemy()) return false;
+                if (summonedType == UnitType.Ally && !unitsManager.canSummonAlly()) return false;
+                if (summonedType == UnitType.Enemy && !unitsManager.canSummonEnemy()) return false;
             }
         }
         return true;
@@ -185,10 +184,9 @@ public class CardUIPlayable : CardUIBase, IBeginDragHandler, IDragHandler, IEndD
 
     private void playCard()
     {
-        Unit player = UnitsManager.Instance.player;
+        Unit player = unitsManager.player;
 
-        if (EnergySystem.Instance != null)
-            EnergySystem.Instance.spendEnergy(card.currentCost);
+        energySystem.spendEnergy(card.currentCost);
 
         foreach (var action in card.actions)
         {
@@ -205,26 +203,18 @@ public class CardUIPlayable : CardUIBase, IBeginDragHandler, IDragHandler, IEndD
             }
         }
 
-        if (card.data.passiveAbilities != null &&
-            card.data.passiveAbilities.Count > 0)
-        {
-            if (!player.activePassiveCards.Contains(card))
-                player.activePassiveCards.Add(card);
-        }
-        player.triggerPassives(PassiveTrigger.CardPlayed, card);
-
         relics.onCardPlayed(player, card);
 
         if (card.data.exhaust)
         {
-            CardPileSystem.Instance.exhaustCard(card);
+            cardPileSystem.exhaustCard(card);
         }
         else
         {
-            CardPileSystem.Instance.discardCard(card);
+            cardPileSystem.discardCard(card);
         }
 
-        HandSystem.Instance.hand.Remove(card);
+        handSystem.hand.Remove(card);
 
         Destroy(gameObject);
     }

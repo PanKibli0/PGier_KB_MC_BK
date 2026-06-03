@@ -17,12 +17,14 @@ public class CardUIBase : MonoBehaviour
     [SerializeField] protected TMP_Text costText;
     [SerializeField] protected Sprite[] frontSprites;
 
+    protected EnergySystem energySystem;
+    protected UnitsManager unitsManager;
 
-
-
-    public virtual void init(Card card)
+    public virtual void init(Card card, EnergySystem energy = null, UnitsManager units = null)
     {
         this.card = card;
+        this.energySystem = energy;
+        this.unitsManager = units;
 
         if (card.data.image != null)
             cardArtImage.sprite = card.data.image;
@@ -43,7 +45,7 @@ public class CardUIBase : MonoBehaviour
         if (card == null || card.actions == null) return;
 
         string description = "";
-        Unit player = (UnitsManager.Instance != null) ? UnitsManager.Instance.player : null;
+        Unit player = (unitsManager != null) ? unitsManager.player : null;
 
         foreach (var action in card.actions)
         {
@@ -56,7 +58,13 @@ public class CardUIBase : MonoBehaviour
     {
         if (costText == null) return;
 
-        if (EnergySystem.Instance != null && !EnergySystem.Instance.canAfford(card.currentCost))
+        if (energySystem == null)
+        {
+            Debug.Log("energySystem is null for card: " + card?.data?.cardName);
+            return;
+        }
+
+        if (energySystem != null && !energySystem.canAfford(card.currentCost))
             costText.color = Color.red;
         else
             costText.color = Color.white;

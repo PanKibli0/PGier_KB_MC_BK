@@ -8,6 +8,18 @@ public class ItemRewardPanel : MonoBehaviour
     [SerializeField] private GameObject rewardsList;
 
     private ItemReward reward;
+    private ItemPreviewUI previewUI;
+    private PlayerInventory inventory;
+
+    public void setItemPreview(ItemPreviewUI preview)
+    {
+        previewUI = preview;
+    }
+
+    public void setInventory(PlayerInventory inv)
+    {
+        inventory = inv;
+    }
 
     public void setItems(List<ItemData> items, ItemReward reward)
     {
@@ -18,31 +30,23 @@ public class ItemRewardPanel : MonoBehaviour
 
         foreach (var item in items)
         {
-            Debug.Log("PANEL ITEM: " + item.itemName);
-
             GameObject obj = Instantiate(itemPrefab, container);
 
             ItemClickUI ui = obj.GetComponent<ItemClickUI>();
 
             if (ui == null)
-            {
-                Debug.LogError("ItemPrefab nie ma ItemClickUI!");
                 continue;
-            }
 
-            ui.setupReward(item, this);
+            ui.setupReward(item, this, previewUI);
         }
     }
 
     public void selectItem(ItemData item)
     {
         if (item == null)
-        {
-            Debug.LogError("selectItem: item == null");
             return;
-        }
 
-        PlayerInventory.Instance.AddItem(item);
+        inventory.addItem(item);
 
         if (reward != null)
             reward.complete();

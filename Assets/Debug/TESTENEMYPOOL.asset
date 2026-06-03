@@ -17,8 +17,8 @@ MonoBehaviour:
     - {fileID: 11400000, guid: bf56c4485644de14fbf17c0c5c8153b6, type: 2}
   eliteFights:
   - enemies:
-    - {fileID: 11400000, guid: 8e5febba04f63994d86334b09bf7d4c4, type: 2}
-  - enemies:
-    - {fileID: 11400000, guid: 3e800af7a245b8a4aa016f9ae55ae595, type: 2}
     - {fileID: 11400000, guid: ad5c432363ce0d043bf07f6e160c8fe2, type: 2}
-  bossFights: []
+    - {fileID: 11400000, guid: 3e800af7a245b8a4aa016f9ae55ae595, type: 2}
+  bossFights:
+  - enemies:
+    - {fileID: 11400000, guid: 8e5febba04f63994d86334b09bf7d4c4, type: 2}

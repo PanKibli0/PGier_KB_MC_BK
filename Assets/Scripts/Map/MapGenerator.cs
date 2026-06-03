@@ -7,14 +7,17 @@ public static class MapGenerator
     {
         List<BaseNode> nodes = new List<BaseNode>();
 
-        
         BattleNode node11 = new BattleNode();
         node11.enemies = pool.normalFights[Random.Range(0, pool.normalFights.Count)].enemies;
         node11.difficulty = BattleDifficulty.Normal;
         node11.isUnlocked = true;
         node11.gridPosition = new Vector2Int(2, 0);
-        
 
+        BattleNode nodeElite = new BattleNode();
+        nodeElite.enemies = pool.eliteFights[Random.Range(0, pool.eliteFights.Count)].enemies;
+        nodeElite.difficulty = BattleDifficulty.Elite;
+        nodeElite.isUnlocked = true;
+        nodeElite.gridPosition = new Vector2Int(1, 0);
 
         BattleNode node21 = new BattleNode();
         node21.enemies = pool.normalFights[Random.Range(0, pool.normalFights.Count)].enemies;
@@ -31,28 +34,21 @@ public static class MapGenerator
         node31.difficulty = BattleDifficulty.Normal;
         node31.gridPosition = new Vector2Int(2, 2);
 
-        //BattleNode node32 = new BattleNode();
-        //node32.enemies = pool.eliteFights[0].enemies;
-        //node32.difficulty = BattleDifficulty.Elite;
-        //node32.gridPosition = new Vector2Int(3, 2);
-
         BattleNode node33 = new BattleNode();
         node33.enemies = pool.normalFights[Random.Range(0, pool.normalFights.Count)].enemies;
         node33.difficulty = BattleDifficulty.Normal;
         node33.gridPosition = new Vector2Int(4, 2);
 
-        //node33.gridPosition = new Vector2Int(4, 10);
-
         RestNode restNode = new RestNode();
         restNode.gridPosition = new Vector2Int(3, 1);
         restNode.isUnlocked = false;
-  
+
         RestNode restNode0 = new RestNode();
         restNode0.gridPosition = new Vector2Int(4, 0);
         restNode0.isUnlocked = true;
 
         ShopNode shopNode = new ShopNode();
-        shopNode.gridPosition = new Vector2Int(3, 0); 
+        shopNode.gridPosition = new Vector2Int(3, 0);
         shopNode.isUnlocked = true;
 
         EventNode eventNode = new EventNode();
@@ -60,29 +56,30 @@ public static class MapGenerator
         eventNode.isUnlocked = true;
         eventNode.eventData = GameManager.Instance.testEvent;
 
-        node11.connections = new List<BaseNode> { node21,  restNode };
+        node11.connections = new List<BaseNode> { node21, restNode, nodeElite };
+        nodeElite.connections = new List<BaseNode> { node21, restNode };
         node21.connections = new List<BaseNode> { node31 };
-        node22.connections = new List<BaseNode> { eventNode, node33 }; 
-        restNode.connections = new List<BaseNode> { node31, eventNode }; 
+        node22.connections = new List<BaseNode> { eventNode, node33 };
+        restNode.connections = new List<BaseNode> { node31, eventNode };
         restNode0.connections = new List<BaseNode> { restNode, node22 };
-        shopNode.connections = new List<BaseNode> { restNode,node22 };
+        shopNode.connections = new List<BaseNode> { restNode, node22 };
+        node21.connections.Add(eventNode);
+        eventNode.connections.Add(node31);
 
         nodes.Add(node11);
+        nodes.Add(nodeElite);
         nodes.Add(node21);
         nodes.Add(node22);
         nodes.Add(node31);
-        //nodes.Add(node32);
         nodes.Add(node33);
         nodes.Add(restNode);
         nodes.Add(restNode0);
         nodes.Add(shopNode);
         nodes.Add(eventNode);
-        node21.connections.Add(eventNode);
-        eventNode.connections.Add(node31);
 
         foreach (var node in nodes)
             node.visitedIconPath = "Icons_map/X_" + Random.Range(1, 4);
-            
+
         return nodes;
     }
 }

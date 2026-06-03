@@ -1330,7 +1330,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5870326743090624877}
   - component: {fileID: 3967009833677926698}
-  - component: {fileID: 1848780722794586196}
   m_Layer: 5
   m_Name: ItemsBar
   m_TagString: Untagged
@@ -1365,28 +1364,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7942816061596439970}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 340f7cc116745014db6b276deebb8223, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InventoryUI
   container: {fileID: 7898509603119270874}
   itemPrefab: {fileID: 6675175900440194489, guid: 814e3018082acb04ba0e51a28c7a8af1, type: 3}
-  tooltip: {fileID: 0}
---- !u!114 &1848780722794586196
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7942816061596439970}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59567050ca921d3438e6a913a1664cda, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerInventory
-  testItem: {fileID: 11400000, guid: ab0d1fd1c29d9d441ae40d1624eaf0a5, type: 2}
-  items: []
+  tooltip: {fileID: 5412580914341114790}
 --- !u!1 &9153197067909405835
 GameObject:
   m_ObjectHideFlags: 0

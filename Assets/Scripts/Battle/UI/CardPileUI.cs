@@ -9,17 +9,15 @@ public class CardPileUI : MonoBehaviour
     public TMP_Text discardPileCountText;
     public TMP_Text exhaustedPileCountText;
 
-    void OnEnable()
+    public void init(CardPileSystem cardPileSystem)
     {
-        if (cardPileSystem != null)
-        {
-            cardPileSystem.OnDrawPileChanged += updateDrawPileCount;
-            cardPileSystem.OnDiscardPileChanged += updateDiscardPileCount;
-            cardPileSystem.OnExhaustPileChanged += updateExhaustedPileCount;
-        }
+        this.cardPileSystem = cardPileSystem;
+        cardPileSystem.OnDrawPileChanged += updateDrawPileCount;
+        cardPileSystem.OnDiscardPileChanged += updateDiscardPileCount;
+        cardPileSystem.OnExhaustPileChanged += updateExhaustedPileCount;
     }
 
-    void OnDisable()
+    void OnDestroy()
     {
         if (cardPileSystem != null)
         {

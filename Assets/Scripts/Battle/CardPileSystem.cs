@@ -4,10 +4,8 @@ using System.Collections.Generic;
 using Random = UnityEngine.Random;
 
 
-public class CardPileSystem : MonoBehaviour
+public class CardPileSystem
 {
-    public static CardPileSystem Instance;
-
     public List<Card> drawPile = new List<Card>();
     public List<Card> discardPile = new List<Card>();
     public List<Card> exhaustPile = new List<Card>();
@@ -17,31 +15,20 @@ public class CardPileSystem : MonoBehaviour
     public event Action<int> OnDiscardPileChanged;
     public event Action<int> OnExhaustPileChanged;
 
-    void Awake()
-    {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
-        Instance = this;
-    }
 
-    // DEBUG
-    void Start()
+    
+    public CardPileSystem()
     {
         drawPile.Clear();
         discardPile.Clear();
         exhaustPile.Clear();
 
-        OnDrawPileChanged?.Invoke(drawPile.Count);
-        OnDiscardPileChanged?.Invoke(discardPile.Count);
-        OnExhaustPileChanged?.Invoke(exhaustPile.Count);
+        ActionEventBus.OnDrawCards += drawCards;
 
         if (GameManager.Instance != null && GameManager.Instance.currentDeck != null)
             foreach (var cardData in GameManager.Instance.currentDeck)
                 drawPile.Add(new Card(cardData));
-
+   
         // DEBUG
         // Karty S - SelectedEnemy
         for (int i = 1; i <= 5; i++)
@@ -205,15 +192,24 @@ public class CardPileSystem : MonoBehaviour
         // END DEBUG
 
         shuffle(drawPile);
-
-        OnDiscardPileChanged?.Invoke(discardPile.Count);
-        OnDrawPileChanged?.Invoke(drawPile.Count);
-
-        int end = Random.Range(3, 6);
-        for (int i = 0; i < end; i++) drawCard();
-
     }
     // END DEBUG
+
+    public void setupDeck()
+    {
+        OnDrawPileChanged?.Invoke(drawPile.Count);
+        OnDiscardPileChanged?.Invoke(discardPile.Count);
+        OnExhaustPileChanged?.Invoke(exhaustPile.Count);
+
+        int end = Random.Range(3, 6);
+        drawCards(end);
+    }
+
+    void drawCards(int amount)
+    {
+        for (int i = 0; i < amount; i++)
+            drawCard();
+    }
 
     void refillDrawPile()
     {

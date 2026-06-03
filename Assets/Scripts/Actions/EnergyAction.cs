@@ -7,12 +7,7 @@ public class EnergyAction : BaseAction
 
     public override void execute(Unit target, Unit source)
     {
-        if (EnergySystem.Instance == null) return;
-
-        if (amount > 0)
-            EnergySystem.Instance.addEnergy(amount);
-        else if (amount < 0)
-            EnergySystem.Instance.spendEnergy(-amount);
+        ActionEventBus.requestEnergyChange(amount);
     }
 
     public override string getCardDescription(Unit source = null, Unit target = null, bool applyEffects = false)

@@ -7,9 +7,6 @@ public class SummonAction : BaseAction
 
     public override void execute(Unit target, Unit source)
     {
-
-        if (unitData == null) return;
-
         UnitType summonedType;
 
         if (source.unitType == UnitType.Player || source.unitType == UnitType.Ally)
@@ -17,7 +14,7 @@ public class SummonAction : BaseAction
         else
             summonedType = UnitType.Enemy;
 
-        UnitsManager.Instance.spawn(unitData, summonedType);
+        ActionEventBus.requestSummon(unitData, summonedType);
     }
 
     public override string getCardDescription(Unit source = null, Unit target = null, bool applyEffects = false)

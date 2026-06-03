@@ -12,25 +12,29 @@ public class ItemClickUI : MonoBehaviour,
     private ItemRewardPanel panel;
     private int index;
     private ItemPreviewUI previewUI;
+    private PlayerInventory inventory;
+    private Unit playerUnit;
 
     [Header("UI")]
     [SerializeField] private Image icon;
     [SerializeField] private TMP_Text nameText;
     [SerializeField] private TMP_Text descriptionText;
 
-    public void setup(ItemData item, int index)
+    public void setup(ItemData item, int index, ItemPreviewUI previewUI, PlayerInventory inventory, Unit playerUnit)
     {
         this.item = item;
         this.index = index;
-        previewUI = FindAnyObjectByType<ItemPreviewUI>();
+        this.previewUI = previewUI;
+        this.inventory = inventory;
+        this.playerUnit = playerUnit;
         refreshUI();
     }
 
-    public void setupReward(ItemData item, ItemRewardPanel panel)
+    public void setupReward(ItemData item, ItemRewardPanel panel, ItemPreviewUI previewUI)
     {
         this.item = item;
         this.panel = panel;
-        previewUI = FindAnyObjectByType<ItemPreviewUI>();
+        this.previewUI = previewUI;
         refreshUI();
     }
 
@@ -56,23 +60,19 @@ public class ItemClickUI : MonoBehaviour,
         }
         else
         {
-            PlayerInventory.Instance.UseItem(index);
+            inventory.useItem(index, playerUnit);
         }
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
         if (item == null) return;
-
-        if (ItemPreviewUI.Instance != null)
-            ItemPreviewUI.Instance.show(item);
+        if (previewUI != null)
+            previewUI.show(item);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        if (previewUI == null)
-            previewUI = Object.FindFirstObjectByType<ItemPreviewUI>();
-
         if (previewUI != null)
             previewUI.clear();
     }
