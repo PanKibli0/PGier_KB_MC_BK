@@ -6,10 +6,8 @@ public class HealReward : BaseReward
 
     public override void collect()
     {
-        GameManager.Instance.currentHealth += amount;
-        if (GameManager.Instance.currentHealth > GameManager.Instance.maxHealth)
-            GameManager.Instance.currentHealth = GameManager.Instance.maxHealth;
-        
+        GameManager.Instance.setHealth(GameManager.Instance.currentHealth + amount);
+
         button.destroyButton();
     }
 

@@ -18,6 +18,11 @@ public class EnergySystem
         ActionEventBus.OnEnergyChange += energyChange;
     }
 
+    public void cleanup()
+    {
+        ActionEventBus.OnEnergyChange -= energyChange;
+    }
+
     public void setCurrentMaxEnergy(int newMax)
     {
         currentMaxEnergy = newMax;

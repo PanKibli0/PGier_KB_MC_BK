@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RelicData
   relicName: r3
   icon: {fileID: 7580173809993130066, guid: 018dfb0392b379543a457df8d69ddf83, type: 3}
-  trigger: 6
+  trigger: 5
   actions:
   - rid: 3376038759912702024
   turnsBetweenTriggers: 0
@@ -26,7 +26,7 @@ MonoBehaviour:
     - rid: 3376038759912702024
       type: {class: AddEffectAction, ns: , asm: Assembly-CSharp}
       data:
-        targetType: 0
+        targetType: 6
         effectToAdd:
           rid: 3376038759912702025
     - rid: 3376038759912702025

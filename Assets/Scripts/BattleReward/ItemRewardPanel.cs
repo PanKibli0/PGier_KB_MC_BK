@@ -11,13 +11,9 @@ public class ItemRewardPanel : MonoBehaviour
     private ItemPreviewUI previewUI;
     private PlayerInventory inventory;
 
-    public void setItemPreview(ItemPreviewUI preview)
+    public void init(ItemPreviewUI preview, PlayerInventory inv)
     {
         previewUI = preview;
-    }
-
-    public void setInventory(PlayerInventory inv)
-    {
         inventory = inv;
     }
 

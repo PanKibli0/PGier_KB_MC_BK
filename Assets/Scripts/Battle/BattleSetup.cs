@@ -16,37 +16,43 @@ public class BattleSetup : MonoBehaviour
 
     void Start()
     {
-        relics = GameManager.Instance.relicManager;
+        GameManager gm = GameManager.Instance;
+        CharacterData character = gm.selectedCharacter;
 
-        energySystem = new EnergySystem(3);
+        relics = gm.relicManager;
+        energySystem = new EnergySystem(character.baseMaxEnergy);
         cardPileSystem = new CardPileSystem();
 
         handSystem.init(cardPileSystem);
         unitsManager.init(energySystem, cardPileSystem, handSystem, relics);
         turnManager.init(relics, energySystem, cardPileSystem, handSystem, unitsManager);
 
-        CharacterData character = GameManager.Instance.selectedCharacter;
         if (character != null)
             unitsManager.spawnPlayer(character);
 
-        UnitData[] enemies = GameManager.Instance.pendingBattleEnemies;
-        if (enemies != null)
+        if (gm.pendingBattleEnemies != null)
         {
-            foreach (var data in enemies)
+            foreach (var data in gm.pendingBattleEnemies)
                 if (data != null)
                     unitsManager.spawn(data, UnitType.Enemy);
         }
 
-        GameManager.Instance.pendingBattleEnemies = null;
-        GameManager.Instance.relicManager.onBattleStart(unitsManager.player);
+        gm.pendingBattleEnemies = null;
+        relics.onBattleStart(unitsManager.player);
 
-        if (energyUI != null) energyUI.init(energySystem);
-        if (handUI != null) handUI.init(energySystem, cardPileSystem, handSystem, unitsManager, relics);
-        if (cardPileUI != null) cardPileUI.init(cardPileSystem);
-        if (cardPileView != null) cardPileView.setCardPileSystem(cardPileSystem);
+        energyUI?.init(energySystem);
+        handUI?.init(energySystem, cardPileSystem, handSystem, unitsManager, relics);
+        cardPileUI?.init(cardPileSystem);
+        cardPileView?.setCardPileSystem(cardPileSystem);
 
         cardPileSystem.setupDeck();
-
         turnManager.calculateAllIntents();
+
+    }
+
+    void OnDestroy()
+    {
+        cardPileSystem?.cleanup();
+        energySystem?.cleanup();
     }
 }

@@ -14,6 +14,9 @@ public class TurnManager : MonoBehaviour
     private HandSystem handSystem;
     private UnitsManager unitsManager;
 
+    private int baseDrawCount;
+    private int drawCountBonus = 0;
+
     public void init(RelicManager relics, EnergySystem energySystem, CardPileSystem cardPileSystem, HandSystem handSystem, UnitsManager unitsManager)
     {
         this.relics = relics;
@@ -21,6 +24,18 @@ public class TurnManager : MonoBehaviour
         this.cardPileSystem = cardPileSystem;
         this.handSystem = handSystem;
         this.unitsManager = unitsManager;
+        baseDrawCount = GameManager.Instance.selectedCharacter.baseDrawCount;
+        ActionEventBus.OnDrawCountChanged += onDrawCountChanged;
+    }
+
+    void OnDestroy()
+    {
+        ActionEventBus.OnDrawCountChanged -= onDrawCountChanged;
+    }
+
+    private void onDrawCountChanged(int amount)
+    {
+        drawCountBonus += amount;
     }
 
     public void calculateAllIntents()
@@ -45,7 +60,7 @@ public class TurnManager : MonoBehaviour
         handSystem.discardAllCards();
         energySystem.refreshEnergy();
 
-        int drawCount = Random.Range(3, 6);
+        int drawCount = Mathf.Max(1, baseDrawCount + drawCountBonus);
         for (int i = 0; i < drawCount; i++)
             cardPileSystem.drawCard();
 
@@ -98,12 +113,7 @@ public class TurnManager : MonoBehaviour
                 filterMoves.Add(move);
         }
 
-        List<UnitMove> pool;
-
-        if (mandatoryMoves.Count > 0)
-            pool = mandatoryMoves;
-        else
-            pool = filterMoves;
+        List<UnitMove> pool = mandatoryMoves.Count > 0 ? mandatoryMoves : filterMoves;
 
         if (pool.Count == 0)
         {

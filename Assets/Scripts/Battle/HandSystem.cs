@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class HandSystem : MonoBehaviour
 {
     public List<Card> hand = new List<Card>();
+    public int maxHandSize = 10;
 
     public event Action<Card> OnCardAddedToHand;
     public event Action OnHandCleared;
@@ -25,6 +26,11 @@ public class HandSystem : MonoBehaviour
 
     public void addCard(Card card)
     {
+        if (hand.Count >= maxHandSize)
+        {
+            cardPile.exhaustCard(card);
+            return;
+        }
         hand.Add(card);
         OnCardAddedToHand?.Invoke(card);
     }
@@ -45,9 +51,7 @@ public class HandSystem : MonoBehaviour
         if (hand.Count == 0) return;
 
         foreach (Card card in hand)
-        {
             cardPile.discardCard(card);
-        }
 
         hand.Clear();
         OnHandCleared?.Invoke();

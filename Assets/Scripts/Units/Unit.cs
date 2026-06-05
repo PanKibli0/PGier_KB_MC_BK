@@ -91,6 +91,9 @@ public class Unit : MonoBehaviour
                 effects[i].onReceiveDamage(this, source, ref damage);
         }
 
+        if (unitType == UnitType.Player)
+            relics.onDamageTaken(this, source);
+
         if (type == DamageType.Normal && block > 0)
         {
             int blockUsed = Mathf.Min(block, damage);
@@ -98,29 +101,24 @@ public class Unit : MonoBehaviour
             damage -= blockUsed;
         }
 
-
-        if (unitType == UnitType.Player)
-            relics.onDamageTaken(this, source); // TO DELETE / REWORK??
+        currentHealth -= damage;
 
         statsUI?.updateUI();
 
+        if (unitType == UnitType.Player && GameManager.Instance != null) // REWORK
+            GameManager.Instance.setHealth(currentHealth);
+
         if (currentHealth <= 0 && !isDead)
             die();
-
-        if (unitType == UnitType.Player && GameManager.Instance != null)
-            GameManager.Instance.setHealth(currentHealth);
     }
 
     
-    public bool IsDead()
-    {
-        return isDead;
-    }
 
     public void die()
     {
         isDead = true;
-        GameManager.Instance?.addEnemyKill();
+        if (unitType == UnitType.Enemy)
+            GameManager.Instance?.addEnemyKill();
         unitsManager.onUnitDied(this);
         Destroy(gameObject);
     }

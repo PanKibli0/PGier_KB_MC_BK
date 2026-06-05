@@ -24,6 +24,7 @@ public class EnergyUI : MonoBehaviour
 
     private void updateUI()
     {
+        Debug.Log($"updateUI called from:\n{System.Environment.StackTrace}");
         energyText.text = $"{energySystem.currentEnergy}/{energySystem.currentMaxEnergy}";
     }
 }

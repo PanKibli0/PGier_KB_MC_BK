@@ -43,6 +43,11 @@ public class UnitsManager : MonoBehaviour
         ActionEventBus.OnSummon += onSummonRequested;
     }
 
+    void OnDestroy()
+    {
+        ActionEventBus.OnSummon -= onSummonRequested;
+    }
+
     private void onSummonRequested(UnitData data, UnitType type)
     {
         spawn(data, type);

@@ -33,7 +33,6 @@ public class NodeButton : MonoBehaviour
 
     public void onClick()
     {
-        GameManager.Instance.currentMapNode = node;
         GameManager.Instance.currentMap.currentFloor = node.gridPosition.y + 1;
         node.execute();
     }

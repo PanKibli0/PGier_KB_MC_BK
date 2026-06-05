@@ -92,7 +92,10 @@ public class GameManager : MonoBehaviour
         MapData mapData = new MapData();
         mapData.nodes = MapGenerator.generateMap(enemyPool);
         currentMap = mapData;
-        
+
+        enemiesKilled = 0;
+        floorsCompleted = 0;
+
         SceneManager.LoadScene("MapScene");
     }
 

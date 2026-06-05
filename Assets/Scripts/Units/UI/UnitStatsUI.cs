@@ -21,18 +21,6 @@ public class UnitStatsUI : MonoBehaviour
 
     public Unit unit;
 
-    void Start()
-    {
-        if (unit != null)
-            unit.OnEffectsChanged += updateEffectsUI;
-    }
-
-    void OnDestroy()
-    {
-        if (unit != null)
-            unit.OnEffectsChanged -= updateEffectsUI;
-    }
-
     public void init(Unit unit)
     {
         this.unit = unit;
@@ -49,6 +37,11 @@ public class UnitStatsUI : MonoBehaviour
         tooltip.setPositionSide(isRight);
     }
 
+    void OnDestroy()
+    {
+        if (unit != null)
+            unit.OnEffectsChanged -= updateEffectsUI;
+    }
 
     public void updateUI()
     {

@@ -7,6 +7,8 @@ public class CharacterData : BaseUnitData
     public List<StartCardEntry> startCards;
     public CardPool cardPool;
     public int startGold;
+    public int baseDrawCount = 5;
+    public int baseMaxEnergy = 3;
 }
 
 [System.Serializable]

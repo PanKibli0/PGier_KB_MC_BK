@@ -33,6 +33,7 @@ public class CardUIPlayable : CardUIBase, IBeginDragHandler, IDragHandler, IEndD
         handArea = GetComponentInParent<HandAreaUI>();
 
         this.energySystem.OnEnergyChanged += updateCostColor;
+        this.unitsManager.OnUnitsChanged += updateCostColor;
         this.unitsManager.player.OnEffectsChanged += onEffectsChanged;
     }
 
@@ -224,5 +225,11 @@ public class CardUIPlayable : CardUIBase, IBeginDragHandler, IDragHandler, IEndD
         transform.SetParent(startParent);
         transform.SetSiblingIndex(startSiblingIndex);
         handArea?.refreshLayout();
+    }
+
+    protected new void updateCostColor()
+    {
+        if (costText == null) return;
+        costText.color = canPlayCard() ? Color.white : Color.red;
     }
 }

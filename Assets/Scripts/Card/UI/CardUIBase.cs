@@ -58,12 +58,6 @@ public class CardUIBase : MonoBehaviour
     {
         if (costText == null) return;
 
-        if (energySystem == null)
-        {
-            Debug.Log("energySystem is null for card: " + card?.data?.cardName);
-            return;
-        }
-
         if (energySystem != null && !energySystem.canAfford(card.currentCost))
             costText.color = Color.red;
         else

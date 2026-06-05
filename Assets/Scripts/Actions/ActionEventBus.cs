@@ -5,6 +5,7 @@ public static class ActionEventBus
     public static event Action<int> OnDrawCards;
     public static event Action<int> OnEnergyChange;
     public static event Action<UnitData, UnitType> OnSummon;
+    public static event Action<int> OnDrawCountChanged;
 
     public static void requestDrawCards(int amount)
     {
@@ -19,5 +20,10 @@ public static class ActionEventBus
     public static void requestSummon(UnitData data, UnitType type)
     {
         OnSummon?.Invoke(data, type);
+    }
+
+    public static void requestDrawCountChange(int amount)
+    {
+        OnDrawCountChanged?.Invoke(amount);
     }
 }

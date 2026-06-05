@@ -1,17 +1,17 @@
 using UnityEngine;
 using TMPro;
 
-public class GlobalHealthBar : MonoBehaviour
+public class HealthUI : MonoBehaviour
 {
     [SerializeField] private TMP_Text healthText;
 
-    private void OnEnable()
+    private void Start()
     {
         GameManager.OnHealthChanged += updateHealth;
         updateHealth();
     }
 
-    private void OnDisable()
+    private void OnDestroy()
     {
         GameManager.OnHealthChanged -= updateHealth;
     }
