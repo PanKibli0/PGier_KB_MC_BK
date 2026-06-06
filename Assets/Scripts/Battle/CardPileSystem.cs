@@ -185,6 +185,7 @@ public class CardPileSystem
             summonAction.unitData = allyData;
 
             summonCardData.actions = new List<BaseAction> { summonAction };
+            summonCardData.exhaust = true;
 
             for (int i = 0; i < 10; i++)
                 drawPile.Add(new Card(summonCardData));

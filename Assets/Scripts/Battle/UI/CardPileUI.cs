@@ -3,11 +3,12 @@ using TMPro;
 
 public class CardPileUI : MonoBehaviour
 {
-    public CardPileSystem cardPileSystem;
+    private CardPileSystem cardPileSystem;
 
-    public TMP_Text drawPileCountText;
-    public TMP_Text discardPileCountText;
-    public TMP_Text exhaustedPileCountText;
+    [SerializeField] private TMP_Text drawPileCountText;
+    [SerializeField] private TMP_Text discardPileCountText;
+    [SerializeField] private TMP_Text exhaustedPileCountText;
+    [SerializeField] private GameObject exhaustPanel;
 
     public void init(CardPileSystem cardPileSystem)
     {
@@ -15,6 +16,8 @@ public class CardPileUI : MonoBehaviour
         cardPileSystem.OnDrawPileChanged += updateDrawPileCount;
         cardPileSystem.OnDiscardPileChanged += updateDiscardPileCount;
         cardPileSystem.OnExhaustPileChanged += updateExhaustedPileCount;
+
+        exhaustPanel.SetActive(false);
     }
 
     void OnDestroy()
@@ -32,13 +35,14 @@ public class CardPileUI : MonoBehaviour
         drawPileCountText.text = $"{count}";
     }
 
-    void updateDiscardPileCount(int count) {
+    void updateDiscardPileCount(int count)
+    {
         discardPileCountText.text = $"{count}";
     }
 
-    void updateExhaustedPileCount(int count) {
+    void updateExhaustedPileCount(int count)
+    {
         exhaustedPileCountText.text = $"{count}";
+        exhaustPanel.SetActive(count > 0);
     }
 }
-
-
