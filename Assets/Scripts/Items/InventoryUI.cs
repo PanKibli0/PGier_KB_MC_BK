@@ -1,19 +1,19 @@
 using UnityEngine;
+using TMPro;
 
 public class InventoryUI : MonoBehaviour
 {
-    public Transform container;
-    public GameObject itemPrefab;
-    public Tooltip tooltip;
+    [SerializeField] private Transform container;
+    [SerializeField] private GameObject itemPrefab;
+    [SerializeField] private Tooltip tooltip;
+    [SerializeField] private TMP_Text countText;
 
     private PlayerInventory inventory;
     private Unit playerUnit;
 
-    public void init(PlayerInventory inventory, Unit playerUnit)
+    private void Start()
     {
-        this.inventory = inventory;
-        this.playerUnit = playerUnit;
-
+        inventory = GameManager.Instance.playerInventory;
         inventory.onInventoryChanged += refresh;
         refresh();
     }
@@ -24,22 +24,28 @@ public class InventoryUI : MonoBehaviour
             inventory.onInventoryChanged -= refresh;
     }
 
+    public void setPlayerUnit(Unit unit)
+    {
+        playerUnit = unit;
+        refresh();
+    }
+
     public void refresh()
     {
-        if (inventory == null) return;
-        if (container == null || itemPrefab == null) return;
+        if (inventory == null || container == null || itemPrefab == null) return;
 
         foreach (Transform child in container)
             Destroy(child.gameObject);
 
         for (int i = 0; i < inventory.items.Count; i++)
         {
-            ItemData item = inventory.items[i];
             GameObject obj = Instantiate(itemPrefab, container);
-            ItemClickUI ui = obj.GetComponent<ItemClickUI>();
+            ItemSlotUI ui = obj.GetComponent<ItemSlotUI>();
             if (ui == null) continue;
-
-            ui.setup(item, i, null, inventory, playerUnit);
+            ui.setup(inventory.items[i], i, tooltip, inventory, playerUnit);
         }
+
+        if (countText != null)
+            countText.text = $"{inventory.items.Count}/{inventory.maxItems}";
     }
 }

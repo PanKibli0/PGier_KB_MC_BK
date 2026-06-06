@@ -13,9 +13,7 @@ MonoBehaviour:
   m_Name: ItemData3
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemName: "Mikstura Wra\u017Cliwo\u015Bci"
-  description: "Na\u0142\xF3\u017C 2 [Wra\u017Cliwo\u015B\u0107]"
   icon: {fileID: -6998330770257627967, guid: 3a8156553d0e31a42b40ee3a24ba6b17, type: 3}
-  targetType: 6
   actions:
   - rid: 490815476803305543
   references:
@@ -24,7 +22,7 @@ MonoBehaviour:
     - rid: 490815476803305543
       type: {class: AddEffectAction, ns: , asm: Assembly-CSharp}
       data:
-        targetType: 6
+        targetType: 1
         effectToAdd:
           rid: 490815476803305544
     - rid: 490815476803305544

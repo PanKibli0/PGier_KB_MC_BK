@@ -17,6 +17,7 @@ public class CardUIBase : MonoBehaviour
     [SerializeField] protected TMP_Text costText;
     [SerializeField] protected Sprite[] frontSprites;
 
+
     protected EnergySystem energySystem;
     protected UnitsManager unitsManager;
 
@@ -32,6 +33,10 @@ public class CardUIBase : MonoBehaviour
         int typeIndex = (int)card.data.type;
         if (frontSprites != null && typeIndex < frontSprites.Length)
             frontImage.sprite = frontSprites[typeIndex];
+
+        Sprite icon = GameManager.Instance?.selectedCharacter?.energyIcon;
+        if (energyIcon != null && icon != null)
+            energyIcon.sprite = icon;
 
         nameText.text = card.data.cardName;
         costText.text = $"{card.currentCost}";

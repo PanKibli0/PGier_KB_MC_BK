@@ -1,5 +1,3 @@
-using UnityEngine;
-
 [System.Serializable]
 public class DrawCountEffect : BaseStatusEffect
 {
@@ -17,9 +15,10 @@ public class DrawCountEffect : BaseStatusEffect
         ActionEventBus.requestDrawCountChange(bonus);
     }
 
-    public override void onRemove(Unit owner)
+    public override void onTurnEnd(Unit owner)
     {
         ActionEventBus.requestDrawCountChange(-bonus);
+        owner.removeEffect(this);
     }
 
     public override bool merge(BaseStatusEffect other)
@@ -36,14 +35,14 @@ public class DrawCountEffect : BaseStatusEffect
     public override string getDescription()
     {
         return bonus > 0
-            ? $"Dobierasz o {bonus} więcej kart na początku tury."
-            : $"Dobierasz o {-bonus} mniej kart na początku tury.";
+            ? $"W następnej turze dobierzesz o {bonus} więcej kart."
+            : $"W następnej turze dobierzesz o {-bonus} mniej kart.";
     }
 
     public override string getActionDescription()
     {
         return bonus > 0
-            ? $"Dobieraj +{bonus} kart <sprite name=\"draw\">"
-            : $"Dobieraj {bonus} kart <sprite name=\"draw\">";
+            ? $"W następnej turze dobierz +{bonus} kart <sprite name=\"draw\">"
+            : $"W następnej turze dobierz {bonus} kart <sprite name=\"draw\">";
     }
 }

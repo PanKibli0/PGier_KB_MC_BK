@@ -13,9 +13,7 @@ MonoBehaviour:
   m_Name: ItemData1
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemName: Mikstura Zdrowia
-  description: "Otrzymaj 5 [Regeneracja] na pocz\u0105tku tury"
   icon: {fileID: -8013601583330117794, guid: 759a774faa210b14098b91ab075d8a06, type: 3}
-  targetType: 0
   actions:
   - rid: 490815476803305539
   references:

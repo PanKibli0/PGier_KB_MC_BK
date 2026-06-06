@@ -9,6 +9,9 @@ public class CharacterData : BaseUnitData
     public int startGold;
     public int baseDrawCount = 5;
     public int baseMaxEnergy = 3;
+
+    public Sprite energyIcon;
+    public string energySpriteName;
 }
 
 [System.Serializable]

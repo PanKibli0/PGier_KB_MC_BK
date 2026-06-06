@@ -303,6 +303,11 @@ MonoBehaviour:
   relicPool: []
   currentEvent: {fileID: 0}
   testEvent: {fileID: 0}
+  testItems:
+  - {fileID: 11400000, guid: ab0d1fd1c29d9d441ae40d1624eaf0a5, type: 2}
+  - {fileID: 11400000, guid: 1bd374bafebf28549a9b0328b5509377, type: 2}
+  - {fileID: 11400000, guid: 750b461a8ce69dd41bbcce128b2b4ba6, type: 2}
+  - {fileID: 11400000, guid: a6423d98df107114d99420eefa0d76cd, type: 2}
 --- !u!4 &520281881
 Transform:
   m_ObjectHideFlags: 0
@@ -2183,5 +2188,5 @@ SceneRoots:
   - {fileID: 1158462237}
   - {fileID: 1566650911}
   - {fileID: 1092174811}
-  - {fileID: 520281881}
   - {fileID: 1816406408}
+  - {fileID: 520281881}

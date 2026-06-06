@@ -1,20 +1,22 @@
-using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class ItemRewardPanel : MonoBehaviour
 {
-    public Transform container;
-    public GameObject itemPrefab;
+    [SerializeField] private Transform container;
+    [SerializeField] private GameObject itemPrefab;
     [SerializeField] private GameObject rewardsList;
+    [SerializeField] private float itemScale = 2.5f;
+    [SerializeField] private Sprite fullInventoryIcon;
 
     private ItemReward reward;
-    private ItemPreviewUI previewUI;
+    private Tooltip tooltip;
     private PlayerInventory inventory;
 
-    public void init(ItemPreviewUI preview, PlayerInventory inv)
+    public void init(Tooltip tooltip, PlayerInventory inventory)
     {
-        previewUI = preview;
-        inventory = inv;
+        this.tooltip = tooltip;
+        this.inventory = inventory;
     }
 
     public void setItems(List<ItemData> items, ItemReward reward)
@@ -27,32 +29,38 @@ public class ItemRewardPanel : MonoBehaviour
         foreach (var item in items)
         {
             GameObject obj = Instantiate(itemPrefab, container);
-
-            ItemClickUI ui = obj.GetComponent<ItemClickUI>();
-
-            if (ui == null)
-                continue;
-
-            ui.setupReward(item, this, previewUI);
+            obj.transform.localScale = Vector3.one * itemScale;
+            ItemSlotUI ui = obj.GetComponent<ItemSlotUI>();
+            if (ui == null) continue;
+            ui.setupReward(item, this, tooltip);
         }
     }
 
     public void selectItem(ItemData item)
     {
-        if (item == null)
+        if (item == null) return;
+
+        if (!inventory.addItem(item))
+        {
+            Vector3 savedPos = tooltip.transform.position;
+            //tooltip.hide();
+            tooltip.show(new List<(Sprite, string, string)>
+            {
+                (fullInventoryIcon, "Ekwipunek pełny", $"Masz już {inventory.maxItems}/{inventory.maxItems} przedmiotów.\nWyrzuć coś (PPM) żeby zrobić miejsce.")
+            });
+            tooltip.transform.position = savedPos;
             return;
+        }
 
-        inventory.addItem(item);
-
-        if (reward != null)
-            reward.complete();
-
+        tooltip?.hide();
+        reward?.complete();
         gameObject.SetActive(false);
         rewardsList.SetActive(true);
     }
 
     public void onCloseButtonClick()
     {
+        tooltip?.hide();
         rewardsList.SetActive(true);
         gameObject.SetActive(false);
     }

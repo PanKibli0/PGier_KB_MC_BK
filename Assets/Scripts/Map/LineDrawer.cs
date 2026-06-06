@@ -9,6 +9,8 @@ public class LineDrawer : MonoBehaviour
 
     public void drawLine(Vector2 start, Vector2 end, Color color)
     {
+        Debug.Log($"<color=yellow>Drawing line from {start} to {end} with color {color}</color>");
+
         GameObject lineObj = new GameObject("Line");
         lineObj.transform.SetParent(transform);
 

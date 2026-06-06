@@ -1,7 +1,7 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 
 public class BattleRewardUI : MonoBehaviour
@@ -14,16 +14,19 @@ public class BattleRewardUI : MonoBehaviour
     [SerializeField] private ItemRewardPanel itemRewardPanel;
     [SerializeField] private GameObject rewardsList;
     [SerializeField] private ItemDatabase itemDatabase;
+    [SerializeField] private Tooltip tooltip;
 
     private List<GameObject> rewardButtons = new List<GameObject>();
     private int rewardsLeft;
 
-    // DEBUG
     void Start()
     {
+        itemRewardPanel.init(tooltip, GameManager.Instance.playerInventory);
+
+        // DEBUG
         createDebugRewards();
+        // END DEBUG
     }
-    // END DEBUG
 
     public void setRewards(List<BaseReward> rewards)
     {
@@ -43,9 +46,7 @@ public class BattleRewardUI : MonoBehaviour
     {
         rewardsLeft--;
         if (rewardsLeft == 0)
-        {
             continueButtonText.text = "KONTYNUUJ";
-        }
     }
 
     public void onContinueButtonClick()
@@ -54,46 +55,30 @@ public class BattleRewardUI : MonoBehaviour
         SceneManager.LoadScene("MapScene");
     }
 
-    private int getRandomGold()
-    {
-        return Random.Range(50, 100);
-    }
+    private int getRandomGold() => Random.Range(50, 100);
 
     private List<CardData> getRandomCards()
     {
         List<CardData> cards = new List<CardData>();
         CardPool pool = GameManager.Instance.selectedCharacter.cardPool;
-
         if (pool == null || pool.cards.Count == 0) return cards;
-
         for (int i = 0; i < 3; i++)
-        {
-            CardData card = pool.cards[Random.Range(0, pool.cards.Count)];
-            cards.Add(card);
-        }
-
+            cards.Add(pool.cards[Random.Range(0, pool.cards.Count)]);
         return cards;
     }
 
     private List<ItemData> getRandomItems()
     {
         List<ItemData> result = new List<ItemData>();
-
-        if (itemDatabase == null || itemDatabase.items == null)
-            return result;
+        if (itemDatabase == null || itemDatabase.items == null) return result;
 
         List<ItemData> pool = new List<ItemData>(itemDatabase.items);
-
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 3 && pool.Count > 0; i++)
         {
-            if (pool.Count == 0)
-                break;
-
-            int index = Random.Range(0, pool.Count);
-            result.Add(pool[index]);
-            pool.RemoveAt(index);
+            int idx = Random.Range(0, pool.Count);
+            result.Add(pool[idx]);
+            pool.RemoveAt(idx);
         }
-
         return result;
     }
 
@@ -113,12 +98,7 @@ public class BattleRewardUI : MonoBehaviour
         item.panel = itemRewardPanel;
         item.rewardsList = rewardsList;
 
-        List<BaseReward> rewards = new List<BaseReward>();
-        rewards.Add(gold);
-        rewards.Add(card);
-        rewards.Add(item);
-
-        setRewards(rewards);
+        setRewards(new List<BaseReward> { gold, card, item });
     }
     // END DEBUG
 }

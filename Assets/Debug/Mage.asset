@@ -14,13 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CharacterData
   unitName: Mage
   graphicPrefab: {fileID: 0}
+  minHealth: 0
   maxHealth: 20
   startEffects: []
-  startCards:
-  - {fileID: 11400000, guid: 12b5582c99af3b04bad56d157b770a92, type: 2}
-  - {fileID: 11400000, guid: 12b5582c99af3b04bad56d157b770a92, type: 2}
+  startCards: []
   cardPool: {fileID: 11400000, guid: aeb5820f51882af4ebb56e443c00a0d6, type: 2}
   startGold: 0
+  baseDrawCount: 5
+  baseMaxEnergy: 3
+  energyIcon: {fileID: 8495583883068613836, guid: b7cafb3a673ba594fa2335e764408c60, type: 3}
+  energySpriteName: energia_mag
   references:
     version: 2
     RefIds: []

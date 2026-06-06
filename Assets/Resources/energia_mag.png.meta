@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 8fb7558204ad24d458b39981ae13babf
+guid: fcefb93139d0a2341a6b7b521f0d27a7
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1557174049649518563
-    second: energia_wojownik_0
+      213: 8495583883068613836
+    second: energia_mag_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: energia_wojownik_0
+      name: energia_mag_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 400
-        height: 478
+        height: 400
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3e7e0d24c813c9510800000000000000
-      internalID: 1557174049649518563
+      spriteID: cc4a6d5b78066e570800000000000000
+      internalID: 8495583883068613836
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      energia_wojownik_0: 1557174049649518563
+      energia_mag_0: 8495583883068613836
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

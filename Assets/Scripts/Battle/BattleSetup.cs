@@ -48,11 +48,13 @@ public class BattleSetup : MonoBehaviour
         cardPileSystem.setupDeck();
         turnManager.calculateAllIntents();
 
+        MainBar.Instance?.setPlayerUnit(unitsManager.player);
     }
 
     void OnDestroy()
     {
         cardPileSystem?.cleanup();
         energySystem?.cleanup();
+        MainBar.Instance?.setPlayerUnit(null);
     }
 }

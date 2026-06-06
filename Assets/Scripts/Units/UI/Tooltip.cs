@@ -91,6 +91,9 @@ public class Tooltip : MonoBehaviour
             rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, totalHeight);
             rectTransform.anchoredPosition = new Vector2(rectTransform.anchoredPosition.x, 0f);
         }
+
+        Debug.Log($"refreshLayout: totalHeight={totalHeight}");
+        Debug.Log($"refreshLayout: totalHeight={totalHeight}\n{System.Environment.StackTrace}");
     }
 
     
@@ -104,6 +107,10 @@ public class Tooltip : MonoBehaviour
     private void clearEntries()
     {
         foreach (Transform child in contentContainer)
+        {
+            child.SetParent(null);
             Destroy(child.gameObject);
+        }
+            
     }
 }

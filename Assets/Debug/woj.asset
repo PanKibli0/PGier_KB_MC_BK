@@ -25,6 +25,10 @@ MonoBehaviour:
     amount: 1
   cardPool: {fileID: 11400000, guid: aeb5820f51882af4ebb56e443c00a0d6, type: 2}
   startGold: 500
+  baseDrawCount: 5
+  baseMaxEnergy: 3
+  energyIcon: {fileID: 1557174049649518563, guid: 61e9fec5ce1285c4b9e951e347cf4066, type: 3}
+  energySpriteName: energia_woj
   references:
     version: 2
     RefIds:

@@ -1,16 +1,23 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class EnergyUI : MonoBehaviour
 {
     [SerializeField] private TMP_Text energyText;
-    private EnergySystem energySystem;
+    [SerializeField] private Image energyIconImage;
 
+    private EnergySystem energySystem;
 
     public void init(EnergySystem energySystem)
     {
         this.energySystem = energySystem;
         energySystem.OnEnergyChanged += updateUI;
+
+        Sprite icon = GameManager.Instance?.selectedCharacter?.energyIcon;
+        if (energyIconImage != null && icon != null)
+            energyIconImage.sprite = icon;
+
         updateUI();
     }
 
@@ -24,7 +31,6 @@ public class EnergyUI : MonoBehaviour
 
     private void updateUI()
     {
-        Debug.Log($"updateUI called from:\n{System.Environment.StackTrace}");
         energyText.text = $"{energySystem.currentEnergy}/{energySystem.currentMaxEnergy}";
     }
 }

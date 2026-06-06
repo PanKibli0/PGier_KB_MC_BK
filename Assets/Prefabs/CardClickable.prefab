@@ -415,6 +415,7 @@ MonoBehaviour:
   cardArtImage: {fileID: 4992012679308062041}
   nameText: {fileID: 8698183694532461245}
   descText: {fileID: 2451845510108889752}
+  energyIconImage: {fileID: 3624200206918711302}
   energyIcon: {fileID: 3624200206918711302}
   costText: {fileID: 2001041503762519481}
   frontSprites:

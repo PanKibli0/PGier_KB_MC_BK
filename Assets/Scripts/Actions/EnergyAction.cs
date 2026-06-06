@@ -12,13 +12,17 @@ public class EnergyAction : BaseAction
 
     public override string getCardDescription(Unit source = null, Unit target = null, bool applyEffects = false)
     {
+        string sprite = GameManager.Instance?.selectedCharacter?.energySpriteName ?? "";
         if (amount > 0)
-            return $"Zyskaj {amount} <sprite name=\"obrona\"> energii";
+            return $"Zyskaj {amount} <sprite name=\"{sprite}\"> energii";
         else
-            return $"Strac {(-amount)} <sprite name=\"obrona\"> energii";
+            return $"Strac {(-amount)} <sprite name=\"{sprite}\"> energii";
     }
 
-    // public override Sprite getIcon() { return Resources.Load<Sprite>("Icons/energy"); }
-    public override string getIconPath() { return "Icons/krwawienie"; }
+
+    public override string getIconPath()
+    {
+        return GameManager.Instance?.selectedCharacter?.energySpriteName ?? "";
+    }
     public override string getValue() { return $"{amount}"; }
 }

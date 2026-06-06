@@ -42,7 +42,7 @@ public class EnergySystem
 
     public void spendEnergy(int amount)
     {
-        currentEnergy -= amount;
+        currentEnergy = Mathf.Max(0, currentEnergy - amount);
         OnEnergyChanged?.Invoke();
     }
 
