@@ -17,19 +17,12 @@ public class MapManager : MonoBehaviour
     [SerializeField] private float nodeHeight = 80f;
     [SerializeField] private float lineOffset = 15f;
 
-    private void OnEnable()
+    void Start()
     {
-        refreshMap();
-    }
-
-    public void refreshMap()
-    {
-        foreach (Transform child in contentContainer)
-            Destroy(child.gameObject);
-
         displayMap();
     }
-    
+
+
     private void displayMap()
     {
         List<BaseNode> nodes = GameManager.Instance.currentMap.nodes;
