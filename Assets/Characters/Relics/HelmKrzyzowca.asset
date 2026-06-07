@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: HelmKrzyzowca
   m_EditorClassIdentifier: Assembly-CSharp::RelicData
   relicName: "He\u0142m Krzy\u017Cowca"
-  icon: {fileID: 0}
+  icon: {fileID: 2301663269990282410, guid: 6110ea4c89fb6d24d89903a2455b2545, type: 3}
   trigger: 3
   actions:
   - rid: 4436522896542138381

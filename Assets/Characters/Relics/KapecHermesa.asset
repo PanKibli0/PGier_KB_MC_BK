@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: KapecHermesa
   m_EditorClassIdentifier: Assembly-CSharp::RelicData
   relicName: "Kape\u0107 Hermesa"
-  icon: {fileID: 0}
+  icon: {fileID: -8197150717486776357, guid: 3f549953757e7764faa4c4121708ac78, type: 3}
   trigger: 0
   actions:
   - rid: 4436522896542138371

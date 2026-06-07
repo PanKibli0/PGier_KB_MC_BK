@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ZlotyGraal
   m_EditorClassIdentifier: Assembly-CSharp::RelicData
   relicName: "Z\u0142oty Graal"
-  icon: {fileID: 0}
+  icon: {fileID: 2993830683049066220, guid: 310da07a53a1f5449b6a3f98da0b8d99, type: 3}
   trigger: 1
   actions:
   - rid: -2

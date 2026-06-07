@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: AmuletZycia
   m_EditorClassIdentifier: Assembly-CSharp::RelicData
   relicName: "Amulet \u017Bycia"
-  icon: {fileID: 0}
+  icon: {fileID: -8570083266329791282, guid: fbbb8a070be9afb4395d6302abc1a53c, type: 3}
   trigger: 0
   actions:
   - rid: 4436522896542138371

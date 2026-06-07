@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Winogron
   m_EditorClassIdentifier: Assembly-CSharp::RelicData
   relicName: "Ki\u015B\u0107 winogron"
-  icon: {fileID: 0}
+  icon: {fileID: 8717543998670761114, guid: 5d50ff7c41875654fad245837ac926ef, type: 3}
   trigger: 1
   actions:
   - rid: 4436522896542138370

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Excalibur
   m_EditorClassIdentifier: Assembly-CSharp::RelicData
   relicName: Excalibur
-  icon: {fileID: 0}
+  icon: {fileID: -4197993261303023462, guid: e3679e3c0dffeca4fa9d4d9b7323cc71, type: 3}
   trigger: 6
   actions:
   - rid: 4436522896542138368

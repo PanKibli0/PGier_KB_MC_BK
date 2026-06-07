@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: AsKier
   m_EditorClassIdentifier: Assembly-CSharp::RelicData
   relicName: As Kier
-  icon: {fileID: 0}
+  icon: {fileID: -992347170343996119, guid: 6f502f35d6247de43ab7f4dc87605599, type: 3}
   trigger: 4
   actions:
   - rid: 4436522896542138379

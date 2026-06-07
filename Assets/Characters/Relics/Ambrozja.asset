@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Ambrozja
   m_EditorClassIdentifier: Assembly-CSharp::RelicData
   relicName: Ambrozja
-  icon: {fileID: 0}
+  icon: {fileID: 89670033480113977, guid: 5eed12d102291c44a8f2615cbc020a8a, type: 3}
   trigger: 0
   actions:
   - rid: 4436522896542138374

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PierscienMocy
   m_EditorClassIdentifier: Assembly-CSharp::RelicData
   relicName: "Pier\u015Bcie\u0144 mocy"
-  icon: {fileID: 0}
+  icon: {fileID: -4375542869647560041, guid: f2170fbae860c614091435e9984a60fd, type: 3}
   trigger: 0
   actions:
   - rid: 4436522896542138374
