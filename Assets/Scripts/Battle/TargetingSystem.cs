@@ -186,6 +186,19 @@ public static class TargetingSystem
 
     #region POMOC
 
+    public static bool isValidTarget(Unit source, TargetType targetType, Unit target)
+    {
+        switch (targetType)
+        {
+            case TargetType.SelectedEnemy:
+                return getEnemies(source.unitType).Contains(target);
+            case TargetType.SelectedAlly:
+                return getAllies(source.unitType, source).Contains(target);
+            default:
+                return false;
+        }
+    }
+
     private static Unit getLowestHealthUnit(List<Unit> units, bool prioritizePlayer)
     {
         if (units == null || units.Count == 0)

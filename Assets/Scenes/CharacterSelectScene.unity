@@ -296,11 +296,10 @@ MonoBehaviour:
   generalCardPool: {fileID: 11400000, guid: ce2b5ccc244fc294a8337c71c073b80e, type: 2}
   enemiesKilled: 0
   floorsCompleted: 0
-  startRelics:
+  relicPool:
   - {fileID: 11400000, guid: 3579e65d7b8c90e4b853e090549ade21, type: 2}
   - {fileID: 11400000, guid: 39ce8a0d016335045a080feb47af0608, type: 2}
   - {fileID: 11400000, guid: d3ec6bca48174d4439a7215194015c4c, type: 2}
-  relicPool: []
   currentEvent: {fileID: 0}
   testEvent: {fileID: 0}
   testItems:

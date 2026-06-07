@@ -158,7 +158,20 @@ public class CardUIPlayable : CardUIBase, IBeginDragHandler, IDragHandler, IEndD
         foreach (var result in results)
         {
             Unit targetUnit = result.gameObject.GetComponent<Unit>();
-            if (targetUnit != null)
+            if (targetUnit == null) continue;
+
+            bool valid = true;
+            foreach (var action in card.actions)
+            {
+                if (!action.requiresTarget()) continue;
+                if (!TargetingSystem.isValidTarget(unitsManager.player, action.targetType, targetUnit))
+                {
+                    valid = false;
+                    break;
+                }
+            }
+
+            if (valid)
             {
                 selectedTarget = targetUnit;
                 return true;

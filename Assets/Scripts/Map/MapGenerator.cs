@@ -56,6 +56,15 @@ public static class MapGenerator
         eventNode.isUnlocked = true;
         eventNode.eventData = GameManager.Instance.testEvent;
 
+        RelicNode relicNode = new RelicNode();
+        relicNode.gridPosition = new Vector2Int(5, 0);
+        relicNode.isUnlocked = true;
+
+        node33.connections = new List<BaseNode> { relicNode };
+        relicNode.connections = new List<BaseNode> { };
+
+        nodes.Add(relicNode);
+
         node11.connections = new List<BaseNode> { node21, restNode, nodeElite };
         nodeElite.connections = new List<BaseNode> { node21, restNode };
         node21.connections = new List<BaseNode> { node31 };
@@ -65,6 +74,9 @@ public static class MapGenerator
         shopNode.connections = new List<BaseNode> { restNode, node22 };
         node21.connections.Add(eventNode);
         eventNode.connections.Add(node31);
+
+
+
 
         nodes.Add(node11);
         nodes.Add(nodeElite);

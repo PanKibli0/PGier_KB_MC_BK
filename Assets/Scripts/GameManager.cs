@@ -37,8 +37,8 @@ public class GameManager : MonoBehaviour
 
     [Header("Relics")]
     public RelicManager relicManager;
-    public RelicData[] startRelics;
     public RelicData[] relicPool;
+
 
     [HideInInspector] public EventData currentEvent;
     public EventData testEvent;
@@ -61,7 +61,7 @@ public class GameManager : MonoBehaviour
 
         OnGoldChanged?.Invoke(gold);
 
-        relicManager = new RelicManager(new List<RelicData>(startRelics));
+        relicManager = new RelicManager(new List<RelicData>(relicPool));
         playerInventory = new PlayerInventory();
 
         // DEBUG

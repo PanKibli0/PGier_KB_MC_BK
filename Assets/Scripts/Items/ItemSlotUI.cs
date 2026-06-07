@@ -152,7 +152,20 @@ public class ItemSlotUI : MonoBehaviour,
             Unit target = result.gameObject.GetComponent<Unit>();
             if (target == null)
                 target = result.gameObject.GetComponentInParent<Unit>();
-            if (target != null)
+            if (target == null) continue;
+
+            bool valid = true;
+            foreach (var action in item.actions)
+            {
+                if (!action.requiresTarget()) continue;
+                if (!TargetingSystem.isValidTarget(playerUnit, action.targetType, target))
+                {
+                    valid = false;
+                    break;
+                }
+            }
+
+            if (valid)
             {
                 selectedTarget = target;
                 return true;

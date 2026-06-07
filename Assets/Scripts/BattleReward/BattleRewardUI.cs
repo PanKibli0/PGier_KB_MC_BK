@@ -12,6 +12,7 @@ public class BattleRewardUI : MonoBehaviour
     [SerializeField] private TMP_Text continueButtonText;
     [SerializeField] private CardRewardPanel cardRewardPanel;
     [SerializeField] private ItemRewardPanel itemRewardPanel;
+    [SerializeField] private RelicRewardPanel relicRewardPanel;
     [SerializeField] private GameObject rewardsList;
     [SerializeField] private ItemDatabase itemDatabase;
     [SerializeField] private Tooltip tooltip;
@@ -55,7 +56,7 @@ public class BattleRewardUI : MonoBehaviour
         SceneManager.LoadScene("MapScene");
     }
 
-    private int getRandomGold() => Random.Range(50, 100);
+    private int getRandomGold() { return Random.Range(50, 100); }
 
     private List<CardData> getRandomCards()
     {
@@ -82,6 +83,21 @@ public class BattleRewardUI : MonoBehaviour
         return result;
     }
 
+    private List<RelicData> getRandomRelics()
+    {
+        List<RelicData> pool = new List<RelicData>(GameManager.Instance.relicPool);
+
+        List<RelicData> result = new List<RelicData>();
+        int count = Mathf.Min(3, pool.Count);
+        for (int i = 0; i < count; i++)
+        {
+            int idx = Random.Range(0, pool.Count);
+            result.Add(pool[idx]);
+            pool.RemoveAt(idx);
+        }
+        return result;
+    }
+
     // DEBUG
     private void createDebugRewards()
     {
@@ -98,7 +114,12 @@ public class BattleRewardUI : MonoBehaviour
         item.panel = itemRewardPanel;
         item.rewardsList = rewardsList;
 
-        setRewards(new List<BaseReward> { gold, card, item });
+        RelicReward relic = new RelicReward();
+        relic.relics = getRandomRelics();
+        relic.panel = relicRewardPanel;
+        relic.rewardsList = rewardsList;
+
+        setRewards(new List<BaseReward> { gold, card, item, relic });
     }
     // END DEBUG
 }
