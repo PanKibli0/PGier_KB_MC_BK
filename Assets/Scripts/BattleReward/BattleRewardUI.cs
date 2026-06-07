@@ -19,14 +19,25 @@ public class BattleRewardUI : MonoBehaviour
 
     private List<GameObject> rewardButtons = new List<GameObject>();
     private int rewardsLeft;
+    private GameManager gameManager;
 
-    void Start()
+    private void Awake()
     {
-        itemRewardPanel.init(tooltip, GameManager.Instance.playerInventory);
+        gameManager = GameManager.Instance;
+    }
 
-        // DEBUG
-        createDebugRewards();
-        // END DEBUG
+    private void Start()
+    {
+        itemRewardPanel.init(tooltip, gameManager.playerInventory);
+
+        BattleDifficulty difficulty = gameManager != null
+            ? gameManager.pendingBattleDifficulty
+            : BattleDifficulty.Normal;
+
+        RewardGenerator rewardGenerator = new RewardGenerator(
+            cardRewardPanel, itemRewardPanel, relicRewardPanel, rewardsList, itemDatabase);
+
+        setRewards(rewardGenerator.generate(difficulty));
     }
 
     public void setRewards(List<BaseReward> rewards)
@@ -35,11 +46,11 @@ public class BattleRewardUI : MonoBehaviour
 
         foreach (var reward in rewards)
         {
-            GameObject btnObj = Instantiate(rewardButtonPrefab, rewardsContainer);
-            RewardButton btn = btnObj.GetComponent<RewardButton>();
-            btn.init(reward);
-            btn.OnRewardCollected += onRewardCollected;
-            rewardButtons.Add(btnObj);
+            GameObject buttonObj = Instantiate(rewardButtonPrefab, rewardsContainer);
+            RewardButton rewardButton = buttonObj.GetComponent<RewardButton>();
+            rewardButton.init(reward);
+            rewardButton.OnRewardCollected += onRewardCollected;
+            rewardButtons.Add(buttonObj);
         }
     }
 
@@ -52,74 +63,7 @@ public class BattleRewardUI : MonoBehaviour
 
     public void onContinueButtonClick()
     {
-        GameManager.Instance.currentMapNode.onComplete();
+        gameManager.currentMapNode.onComplete();
         SceneManager.LoadScene("MapScene");
     }
-
-    private int getRandomGold() { return Random.Range(50, 100); }
-
-    private List<CardData> getRandomCards()
-    {
-        List<CardData> cards = new List<CardData>();
-        CardPool pool = GameManager.Instance.selectedCharacter.cardPool;
-        if (pool == null || pool.cards.Count == 0) return cards;
-        for (int i = 0; i < 3; i++)
-            cards.Add(pool.cards[Random.Range(0, pool.cards.Count)]);
-        return cards;
-    }
-
-    private List<ItemData> getRandomItems()
-    {
-        List<ItemData> result = new List<ItemData>();
-        if (itemDatabase == null || itemDatabase.items == null) return result;
-
-        List<ItemData> pool = new List<ItemData>(itemDatabase.items);
-        for (int i = 0; i < 3 && pool.Count > 0; i++)
-        {
-            int idx = Random.Range(0, pool.Count);
-            result.Add(pool[idx]);
-            pool.RemoveAt(idx);
-        }
-        return result;
-    }
-
-    private List<RelicData> getRandomRelics()
-    {
-        List<RelicData> pool = new List<RelicData>(GameManager.Instance.relicPool);
-
-        List<RelicData> result = new List<RelicData>();
-        int count = Mathf.Min(3, pool.Count);
-        for (int i = 0; i < count; i++)
-        {
-            int idx = Random.Range(0, pool.Count);
-            result.Add(pool[idx]);
-            pool.RemoveAt(idx);
-        }
-        return result;
-    }
-
-    // DEBUG
-    private void createDebugRewards()
-    {
-        GoldReward gold = new GoldReward();
-        gold.amount = getRandomGold();
-
-        CardReward card = new CardReward();
-        card.cards = getRandomCards();
-        card.panel = cardRewardPanel;
-        card.rewardsList = rewardsList;
-
-        ItemReward item = new ItemReward();
-        item.items = getRandomItems();
-        item.panel = itemRewardPanel;
-        item.rewardsList = rewardsList;
-
-        RelicReward relic = new RelicReward();
-        relic.relics = getRandomRelics();
-        relic.panel = relicRewardPanel;
-        relic.rewardsList = rewardsList;
-
-        setRewards(new List<BaseReward> { gold, card, item, relic });
-    }
-    // END DEBUG
 }

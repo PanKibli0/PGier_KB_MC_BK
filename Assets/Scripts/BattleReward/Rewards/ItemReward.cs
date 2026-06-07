@@ -3,9 +3,16 @@ using System.Collections.Generic;
 
 public class ItemReward : BaseReward
 {
-    public List<ItemData> items;
-    public ItemRewardPanel panel;
-    public GameObject rewardsList;
+    private List<ItemData> items;
+    private ItemRewardPanel panel;
+    private GameObject rewardsList;
+
+    public void init(List<ItemData> items, ItemRewardPanel panel, GameObject rewardsList)
+    {
+        this.items = items;
+        this.panel = panel;
+        this.rewardsList = rewardsList;
+    }
 
     public override void collect()
     {
@@ -22,11 +29,11 @@ public class ItemReward : BaseReward
 
     public override string getDescription()
     {
-        return "Zdobπdü przedmiot";
+        return "Zdobadz przedmiot";
     }
 
     public override Sprite getIcon()
     {
-        return null;
+        return Resources.Load<Sprite>("Icons_map/sklep");
     }
 }

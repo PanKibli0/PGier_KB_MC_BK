@@ -92,7 +92,7 @@ public class GameManager : MonoBehaviour
                 currentDeck.Add(entry.data);
 
         MapData mapData = new MapData();
-        mapData.nodes = MapGenerator.generateMap(enemyPool);
+        mapData.nodes = new MapGenerator().generateMap(enemyPool);
         currentMap = mapData;
 
         enemiesKilled = 0;

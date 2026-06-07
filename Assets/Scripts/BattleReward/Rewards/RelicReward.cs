@@ -3,9 +3,16 @@ using System.Collections.Generic;
 
 public class RelicReward : BaseReward
 {
-    public List<RelicData> relics;
-    public RelicRewardPanel panel;
-    public GameObject rewardsList;
+    private List<RelicData> relics;
+    private RelicRewardPanel panel;
+    private GameObject rewardsList;
+
+    public void init(List<RelicData> relics, RelicRewardPanel panel, GameObject rewardsList)
+    {
+        this.relics = relics;
+        this.panel = panel;
+        this.rewardsList = rewardsList;
+    }
 
     public override void collect()
     {
@@ -27,6 +34,6 @@ public class RelicReward : BaseReward
 
     public override Sprite getIcon()
     {
-        return Resources.Load<Sprite>("Icons/skarb");
+        return Resources.Load<Sprite>("Icons_map/skarb");
     }
 }
