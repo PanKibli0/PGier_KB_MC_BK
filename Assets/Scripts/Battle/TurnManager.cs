@@ -26,11 +26,13 @@ public class TurnManager : MonoBehaviour
         this.unitsManager = unitsManager;
         baseDrawCount = GameManager.Instance.selectedCharacter.baseDrawCount;
         ActionEventBus.OnDrawCountChanged += onDrawCountChanged;
+        ActionEventBus.OnTakeTurn += onTakeTurnRequested;
     }
 
     void OnDestroy()
     {
         ActionEventBus.OnDrawCountChanged -= onDrawCountChanged;
+        ActionEventBus.OnTakeTurn -= onTakeTurnRequested;
     }
 
     private void onDrawCountChanged(int amount)
@@ -142,7 +144,7 @@ public class TurnManager : MonoBehaviour
         unit.showIntent(chosen);
     }
 
-    public void executeUnitTurn(Unit unit)
+    public void executeUnitTurn(Unit unit, bool activateEffects = true)
     {
         if (unit == null)
             return;
@@ -177,9 +179,15 @@ public class TurnManager : MonoBehaviour
             state.recordUse(unit.nextMove);
 
         unit.hideIntent();
-        unit.onEffectsTurnEnd();
+        if (activateEffects) unit.onEffectsTurnEnd();
 
         if (state != null)
             state.onTurnEnd(unit.unitData.moves);
+    }
+
+    private void onTakeTurnRequested(Unit unit)
+    {
+        executeUnitTurn(unit, false);
+        calculateUnitIntent(unit);
     }
 }

@@ -18,9 +18,9 @@ public class CardPileSystem
 
     private void createDebugCards()
     {
-        const bool ADD_DAMAGE_CARDS = true;
+        const bool ADD_DAMAGE_CARDS = false;
         const bool ADD_SKILL_CARDS = false;
-        const bool ADD_AOE_CARDS = true;
+        const bool ADD_AOE_CARDS = false;
         const bool ADD_POWER_CARDS = false;
         const bool ADD_SUMMON_CARD = true;
 

@@ -6,6 +6,7 @@ public static class ActionEventBus
     public static event Action<int> OnEnergyChange;
     public static event Action<UnitData, UnitType> OnSummon;
     public static event Action<int> OnDrawCountChanged;
+    public static event Action<Unit> OnTakeTurn;
 
     public static void requestDrawCards(int amount)
     {
@@ -25,5 +26,10 @@ public static class ActionEventBus
     public static void requestDrawCountChange(int amount)
     {
         OnDrawCountChanged?.Invoke(amount);
+    }
+
+    public static void requestTakeTurn(Unit unit)
+    {
+        OnTakeTurn?.Invoke(unit);
     }
 }
