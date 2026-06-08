@@ -30,9 +30,9 @@ public class MapGenerator
         connections = new List<int>[COLUMNS, FLOORS];
         types = new NodeType[COLUMNS, FLOORS];
 
-        for (int c = 0; c < COLUMNS; c++)
-            for (int f = 0; f < FLOORS; f++)
-                connections[c, f] = new List<int>();
+        for (int col = 0; col < COLUMNS; col++)
+            for (int floor = 0; floor < FLOORS; floor++)
+                connections[col, floor] = new List<int>();
 
         generatePaths();
         assignTypes();
@@ -41,9 +41,9 @@ public class MapGenerator
 
     private void generatePaths()
     {
-        HashSet<int> usedStarts = new HashSet<int>();
+        HashSet<int> usedStartColumns = new HashSet<int>();
 
-        for (int p = 0; p < PATH_COUNT; p++)
+        for (int pathIndex = 0; pathIndex < PATH_COUNT; pathIndex++)
         {
             int startCol;
             int attempts = 0;
@@ -52,24 +52,24 @@ public class MapGenerator
                 startCol = Random.Range(0, COLUMNS);
                 attempts++;
             }
-            while (usedStarts.Count < 2 && usedStarts.Contains(startCol) && attempts < 20);
+            while (usedStartColumns.Count < 2 && usedStartColumns.Contains(startCol) && attempts < 20);
 
-            usedStarts.Add(startCol);
+            usedStartColumns.Add(startCol);
 
             int currentCol = startCol;
             grid[currentCol, 0] = true;
 
-            for (int f = 0; f < FLOORS - 2; f++)
+            for (int floor = 0; floor < FLOORS - 2; floor++)
             {
-                int nextCol = pickNextColumn(currentCol, f);
-                grid[nextCol, f + 1] = true;
+                int nextCol = pickNextColumn(currentCol, floor);
+                grid[nextCol, floor + 1] = true;
 
-                if (!wouldCross(currentCol, nextCol, f))
-                    connections[currentCol, f].Add(nextCol);
+                if (!wouldCross(currentCol, nextCol, floor))
+                    connections[currentCol, floor].Add(nextCol);
                 else
                 {
-                    grid[currentCol, f + 1] = true;
-                    connections[currentCol, f].Add(currentCol);
+                    grid[currentCol, floor + 1] = true;
+                    connections[currentCol, floor].Add(currentCol);
                     nextCol = currentCol;
                 }
 
@@ -77,48 +77,48 @@ public class MapGenerator
             }
         }
 
-        for (int c = 0; c < COLUMNS; c++)
+        for (int col = 0; col < COLUMNS; col++)
         {
-            for (int f = 0; f < FLOORS; f++)
+            for (int floor = 0; floor < FLOORS; floor++)
             {
-                List<int> unique = new List<int>();
-                foreach (int x in connections[c, f])
-                    if (!unique.Contains(x))
-                        unique.Add(x);
-                connections[c, f] = unique;
+                List<int> uniqueConnections = new List<int>();
+                foreach (int connectedCol in connections[col, floor])
+                    if (!uniqueConnections.Contains(connectedCol))
+                        uniqueConnections.Add(connectedCol);
+                connections[col, floor] = uniqueConnections;
             }
         }
     }
 
-    private int pickNextColumn(int current, int floor)
+    private int pickNextColumn(int currentCol, int floor)
     {
-        List<int> candidates = new List<int>();
-        for (int dc = -1; dc <= 1; dc++)
+        List<int> candidateCols = new List<int>();
+        for (int offset = -1; offset <= 1; offset++)
         {
-            int nc = current + dc;
-            if (nc >= 0 && nc < COLUMNS)
-                candidates.Add(nc);
+            int neighborCol = currentCol + offset;
+            if (neighborCol >= 0 && neighborCol < COLUMNS)
+                candidateCols.Add(neighborCol);
         }
 
-        List<int> safe = new List<int>();
-        foreach (int nc in candidates)
-            if (!wouldCross(current, nc, floor))
-                safe.Add(nc);
+        List<int> safeCols = new List<int>();
+        foreach (int neighborCol in candidateCols)
+            if (!wouldCross(currentCol, neighborCol, floor))
+                safeCols.Add(neighborCol);
 
-        if (safe.Count > 0)
-            return safe[Random.Range(0, safe.Count)];
+        if (safeCols.Count > 0)
+            return safeCols[Random.Range(0, safeCols.Count)];
 
-        return candidates[Random.Range(0, candidates.Count)];
+        return candidateCols[Random.Range(0, candidateCols.Count)];
     }
 
     private bool wouldCross(int fromCol, int toCol, int floor)
     {
-        for (int c = 0; c < COLUMNS; c++)
+        for (int col = 0; col < COLUMNS; col++)
         {
-            foreach (int nc in connections[c, floor])
+            foreach (int existingTarget in connections[col, floor])
             {
-                if (c < fromCol && nc > toCol) return true;
-                if (c > fromCol && nc < toCol) return true;
+                if (col < fromCol && existingTarget > toCol) return true;
+                if (col > fromCol && existingTarget < toCol) return true;
             }
         }
         return false;
@@ -126,40 +126,40 @@ public class MapGenerator
 
     private void assignTypes()
     {
-        for (int c = 0; c < COLUMNS; c++)
+        for (int col = 0; col < COLUMNS; col++)
         {
-            for (int f = 0; f < FLOORS; f++)
+            for (int floor = 0; floor < FLOORS; floor++)
             {
-                if (!grid[c, f]) continue;
+                if (!grid[col, floor]) continue;
 
-                int floor1 = f + 1;
+                int floorNumber = floor + 1;
 
-                if (floor1 == FLOOR_BATTLE) { types[c, f] = NodeType.Battle; continue; }
-                if (floor1 == FLOOR_RELIC) { types[c, f] = NodeType.Relic; continue; }
-                if (floor1 == FLOOR_REST) { types[c, f] = NodeType.Rest; continue; }
-                if (floor1 == FLOOR_BOSS) { types[c, f] = NodeType.Boss; continue; }
+                if (floorNumber == FLOOR_BATTLE) { types[col, floor] = NodeType.Battle; continue; }
+                if (floorNumber == FLOOR_RELIC) { types[col, floor] = NodeType.Relic; continue; }
+                if (floorNumber == FLOOR_REST) { types[col, floor] = NodeType.Rest; continue; }
+                if (floorNumber == FLOOR_BOSS) { types[col, floor] = NodeType.Boss; continue; }
 
-                types[c, f] = rollType(getZoneWeights(floor1));
+                types[col, floor] = rollType(getZoneWeights(floorNumber));
             }
         }
 
         applyExclusionRules();
     }
 
-    private float[] getZoneWeights(int floor1)
+    private float[] getZoneWeights(int floorNumber)
     {
-        if (floor1 >= 2 && floor1 <= 4) return zone1Weights;
-        if (floor1 >= 6 && floor1 <= 8) return zone2Weights;
-        if (floor1 >= 9 && floor1 <= 11) return zone3Weights;
+        if (floorNumber >= 2 && floorNumber <= 4) return zone1Weights;
+        if (floorNumber >= 6 && floorNumber <= 8) return zone2Weights;
+        if (floorNumber >= 9 && floorNumber <= 11) return zone3Weights;
         return zone2Weights;
     }
 
     private NodeType rollType(float[] weights)
     {
-        float total = 0f;
-        foreach (float w in weights) total += w;
+        float totalWeight = 0f;
+        foreach (float weight in weights) totalWeight += weight;
 
-        float roll = Random.Range(0f, total);
+        float roll = Random.Range(0f, totalWeight);
         float cumulative = 0f;
 
         for (int i = 0; i < weights.Length; i++)
@@ -174,35 +174,35 @@ public class MapGenerator
 
     private void applyExclusionRules()
     {
-        HashSet<NodeType> noConsecutive = new HashSet<NodeType>
-    {
-        NodeType.Rest, NodeType.Elite, NodeType.Shop
-    };
+        HashSet<NodeType> noConsecutiveTypes = new HashSet<NodeType>
+        {
+            NodeType.Rest, NodeType.Elite, NodeType.Shop
+        };
 
         for (int pass = 0; pass < 3; pass++)
         {
-            for (int c = 0; c < COLUMNS; c++)
+            for (int col = 0; col < COLUMNS; col++)
             {
-                for (int f = 0; f < FLOORS - 1; f++)
+                for (int floor = 0; floor < FLOORS - 1; floor++)
                 {
-                    if (!grid[c, f]) continue;
-                    NodeType currentType = types[c, f];
+                    if (!grid[col, floor]) continue;
+                    NodeType currentType = types[col, floor];
 
-                    for (int nc = 0; nc < COLUMNS; nc++)
+                    for (int neighborCol = 0; neighborCol < COLUMNS; neighborCol++)
                     {
-                        if (!grid[nc, f + 1]) continue;
-                        if (Mathf.Abs(nc - c) > 1) continue;
-                        if (types[nc, f + 1] != currentType) continue;
+                        if (!grid[neighborCol, floor + 1]) continue;
+                        if (Mathf.Abs(neighborCol - col) > 1) continue;
+                        if (types[neighborCol, floor + 1] != currentType) continue;
 
-                        bool shouldReroll = noConsecutive.Contains(currentType);
+                        bool shouldReroll = noConsecutiveTypes.Contains(currentType);
 
-                        if (!shouldReroll && currentType == NodeType.Event && f >= 1)
+                        if (!shouldReroll && currentType == NodeType.Event && floor >= 1)
                         {
-                            for (int pc = 0; pc < COLUMNS; pc++)
+                            for (int prevCol = 0; prevCol < COLUMNS; prevCol++)
                             {
-                                if (!grid[pc, f - 1]) continue;
-                                if (Mathf.Abs(pc - c) > 1) continue;
-                                if (types[pc, f - 1] == NodeType.Event)
+                                if (!grid[prevCol, floor - 1]) continue;
+                                if (Mathf.Abs(prevCol - col) > 1) continue;
+                                if (types[prevCol, floor - 1] == NodeType.Event)
                                 {
                                     shouldReroll = true;
                                     break;
@@ -212,7 +212,7 @@ public class MapGenerator
 
                         if (!shouldReroll) continue;
 
-                        float[] weights = getZoneWeights(f + 2);
+                        float[] weights = getZoneWeights(floor + 2);
                         NodeType newType;
                         int tries = 0;
                         do
@@ -222,7 +222,7 @@ public class MapGenerator
                         }
                         while (newType == currentType && tries < 10);
 
-                        types[nc, f + 1] = newType;
+                        types[neighborCol, floor + 1] = newType;
                     }
                 }
             }
@@ -234,18 +234,18 @@ public class MapGenerator
         BaseNode[,] nodeMap = new BaseNode[COLUMNS, FLOORS];
         List<BaseNode> allNodes = new List<BaseNode>();
 
-        for (int f = 0; f < FLOORS - 1; f++)
+        for (int floor = 0; floor < FLOORS - 1; floor++)
         {
-            for (int c = 0; c < COLUMNS; c++)
+            for (int col = 0; col < COLUMNS; col++)
             {
-                if (!grid[c, f]) continue;
+                if (!grid[col, floor]) continue;
 
-                BaseNode node = createNode(types[c, f]);
-                node.gridPosition = new Vector2Int(c, f);
-                node.isUnlocked = (f == 0);
+                BaseNode node = createNode(types[col, floor]);
+                node.gridPosition = new Vector2Int(col, floor);
+                node.isUnlocked = (floor == 0);
                 node.visitedIconPath = $"Icons_map/X_{Random.Range(1, 4)}";
 
-                nodeMap[c, f] = node;
+                nodeMap[col, floor] = node;
                 allNodes.Add(node);
             }
         }
@@ -256,32 +256,32 @@ public class MapGenerator
         bossNode.visitedIconPath = $"Icons_map/X_{Random.Range(1, 4)}";
         allNodes.Add(bossNode);
 
-        for (int f = 0; f < FLOORS - 2; f++)
+        for (int floor = 0; floor < FLOORS - 2; floor++)
         {
-            for (int c = 0; c < COLUMNS; c++)
+            for (int col = 0; col < COLUMNS; col++)
             {
-                if (nodeMap[c, f] == null) continue;
+                if (nodeMap[col, floor] == null) continue;
 
-                foreach (int nc in connections[c, f])
+                foreach (int targetCol in connections[col, floor])
                 {
-                    if (nodeMap[nc, f + 1] != null)
-                        nodeMap[c, f].connections.Add(nodeMap[nc, f + 1]);
+                    if (nodeMap[targetCol, floor + 1] != null)
+                        nodeMap[col, floor].connections.Add(nodeMap[targetCol, floor + 1]);
                 }
 
-                if (nodeMap[c, f].connections.Count == 0)
+                if (nodeMap[col, floor].connections.Count == 0)
                 {
-                    for (int dc = 0; dc <= COLUMNS; dc++)
+                    for (int distance = 0; distance <= COLUMNS; distance++)
                     {
                         bool found = false;
 
-                        if (c - dc >= 0 && nodeMap[c - dc, f + 1] != null)
+                        if (col - distance >= 0 && nodeMap[col - distance, floor + 1] != null)
                         {
-                            nodeMap[c, f].connections.Add(nodeMap[c - dc, f + 1]);
+                            nodeMap[col, floor].connections.Add(nodeMap[col - distance, floor + 1]);
                             found = true;
                         }
-                        else if (c + dc < COLUMNS && nodeMap[c + dc, f + 1] != null)
+                        else if (col + distance < COLUMNS && nodeMap[col + distance, floor + 1] != null)
                         {
-                            nodeMap[c, f].connections.Add(nodeMap[c + dc, f + 1]);
+                            nodeMap[col, floor].connections.Add(nodeMap[col + distance, floor + 1]);
                             found = true;
                         }
 
@@ -291,29 +291,29 @@ public class MapGenerator
             }
         }
 
-        int restIdx = FLOOR_REST - 1;
+        int restFloorIndex = FLOOR_REST - 1;
 
-        for (int c = 0; c < COLUMNS; c++)
+        for (int col = 0; col < COLUMNS; col++)
         {
-            if (nodeMap[c, restIdx - 1] == null) continue;
-            if (nodeMap[c, restIdx] != null)
+            if (nodeMap[col, restFloorIndex - 1] == null) continue;
+            if (nodeMap[col, restFloorIndex] != null)
             {
-                nodeMap[c, restIdx - 1].connections.Add(nodeMap[c, restIdx]);
+                nodeMap[col, restFloorIndex - 1].connections.Add(nodeMap[col, restFloorIndex]);
                 continue;
             }
 
-            for (int dc = 1; dc < COLUMNS; dc++)
+            for (int distance = 1; distance < COLUMNS; distance++)
             {
                 bool found = false;
 
-                if (c - dc >= 0 && nodeMap[c - dc, restIdx] != null)
+                if (col - distance >= 0 && nodeMap[col - distance, restFloorIndex] != null)
                 {
-                    nodeMap[c, restIdx - 1].connections.Add(nodeMap[c - dc, restIdx]);
+                    nodeMap[col, restFloorIndex - 1].connections.Add(nodeMap[col - distance, restFloorIndex]);
                     found = true;
                 }
-                else if (c + dc < COLUMNS && nodeMap[c + dc, restIdx] != null)
+                else if (col + distance < COLUMNS && nodeMap[col + distance, restFloorIndex] != null)
                 {
-                    nodeMap[c, restIdx - 1].connections.Add(nodeMap[c + dc, restIdx]);
+                    nodeMap[col, restFloorIndex - 1].connections.Add(nodeMap[col + distance, restFloorIndex]);
                     found = true;
                 }
 
@@ -321,10 +321,10 @@ public class MapGenerator
             }
         }
 
-        for (int c = 0; c < COLUMNS; c++)
+        for (int col = 0; col < COLUMNS; col++)
         {
-            if (nodeMap[c, restIdx] != null)
-                nodeMap[c, restIdx].connections.Add(bossNode);
+            if (nodeMap[col, restFloorIndex] != null)
+                nodeMap[col, restFloorIndex].connections.Add(bossNode);
         }
 
         return allNodes;

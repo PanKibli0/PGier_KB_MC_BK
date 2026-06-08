@@ -7,6 +7,6 @@ public class StartupScene
 {
     static StartupScene()
     {
-        EditorSceneManager.playModeStartScene = AssetDatabase.LoadAssetAtPath<SceneAsset>("Assets/Scenes/CharacterSelectScene.unity");
+        //EditorSceneManager.playModeStartScene = AssetDatabase.LoadAssetAtPath<SceneAsset>("Assets/Scenes/CharacterSelectScene.unity");
     }
 }
