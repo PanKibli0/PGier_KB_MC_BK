@@ -420,7 +420,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1639619500741539686}
   m_Layer: 0
-  m_Name: odnosnik
+  m_Name: mag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
