@@ -290,7 +290,7 @@ MonoBehaviour:
   maxHealth: 0
   currentDeck: []
   gold: 0
-  enemyPool: {fileID: 11400000, guid: 48271afc0a8550f408343c0be639df90, type: 2}
+  enemyPool: {fileID: 11400000, guid: 9b38731bdcd64d542b5d458b2dfbe824, type: 2}
   pendingBattleEnemies: []
   pendingBattleDifficulty: 0
   generalCardPool: {fileID: 11400000, guid: ce2b5ccc244fc294a8337c71c073b80e, type: 2}

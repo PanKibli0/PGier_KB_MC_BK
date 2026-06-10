@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be91687817927d141b5fa4be2f12884b, type: 3}
   m_Name: CardData
   m_EditorClassIdentifier: Assembly-CSharp::CardData
-  cardName: 
+  cardName: SUMMON RUCH
   cost: 0
-  type: 0
-  rarity: 0
+  type: 2
+  rarity: 2
   image: {fileID: 0}
   shopPrice: 0
   exhaust: 0
