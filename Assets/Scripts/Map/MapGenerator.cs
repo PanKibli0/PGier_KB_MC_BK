@@ -58,9 +58,14 @@ public static class MapGenerator
         EventNode eventNode = new EventNode();
         eventNode.gridPosition = new Vector2Int(3, 2);
         eventNode.isUnlocked = true;
-        eventNode.eventData = GameManager.Instance.testEvent;
+        if (eventNode.eventData == null)
+        {
+            eventNode.eventData = GameManager.Instance.eventsPool.GetRandomEvent();
+        }
 
-        node11.connections = new List<BaseNode> { node21,  restNode };
+        GameManager.Instance.currentEvent = eventNode.eventData;
+
+        node11.connections = new List<BaseNode> { node21,  restNode }; 
         node21.connections = new List<BaseNode> { node31 };
         node22.connections = new List<BaseNode> { eventNode, node33 }; //eventNode -> node32
         restNode.connections = new List<BaseNode> { node31, eventNode }; //eventNode -> node32

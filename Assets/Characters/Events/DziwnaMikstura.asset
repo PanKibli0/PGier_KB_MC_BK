@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c279752beb98a74b8d182cbcad357e9, type: 3}
+  m_Name: DziwnaMikstura
+  m_EditorClassIdentifier: Assembly-CSharp::EventData
+  eventName: Dziwna mikstura
+  description: "Znalaz\u0142e\u015B nieznajomego, kt\xF3ry oferuje dziwn\u0105 mikstur\u0119
+    o nienaturalnym kolorze, a po wypiciu nagrod\u0119."
+  illustration: {fileID: 0}
+  choices:
+  - buttonText: "Wypij mikstur\u0119."
+    resultText: "Mikstura okaza\u0142a si\u0119 przeterminowana, straci\u0142e\u015B
+      25 zdrowia. W nagrod\u0119 otrzyma\u0142e\u015B relikt."
+    effects:
+    - type: 2
+      intValue: 25
+      relic: {fileID: 0}
+    - type: 3
+      intValue: 0
+      relic: {fileID: 11400000, guid: 11ddc455f1b8f034588d19bc65ec7236, type: 2}
+    nextEvent: {fileID: 0}
+  - buttonText: "Zostaw mikstur\u0119."
+    resultText: "Odszed\u0142e\u015B."
+    effects: []
+    nextEvent: {fileID: 0}

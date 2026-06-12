@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
     public RelicData[] startRelics;
     public RelicData[] relicPool;
 
-    public EventData testEvent;
+    public EventsPool eventsPool;
 
     [HideInInspector] public EventData currentEvent;
     void Awake()
