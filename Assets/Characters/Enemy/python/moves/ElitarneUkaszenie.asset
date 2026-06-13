@@ -10,33 +10,38 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a47322801de95b348a0db7e09c294398, type: 3}
-  m_Name: AtakLinijka
+  m_Name: ElitarneUkaszenie
   m_EditorClassIdentifier: Assembly-CSharp::UnitMove
-  moveName: "Atak Linijk\u0105"
+  moveName: "Uk\u0105szenie"
   actions:
-  - rid: 490816083681607696
-  - rid: 490816083681607697
-  conditions: []
+  - rid: 490816083681607708
+  - rid: 490816083681607709
+  conditions:
+  - rid: 490816083681607718
   weight: 4
   references:
     version: 2
     RefIds:
-    - rid: 490816083681607696
+    - rid: 490816083681607708
       type: {class: DamageAction, ns: , asm: Assembly-CSharp}
       data:
         targetType: 1
-        damageAmount: 4
-    - rid: 490816083681607697
+        damageAmount: 10
+    - rid: 490816083681607709
       type: {class: AddEffectAction, ns: , asm: Assembly-CSharp}
       data:
         targetType: 1
         effectToAdd:
-          rid: 490816083681607699
-    - rid: 490816083681607699
-      type: {class: VulnerableEffect, ns: , asm: Assembly-CSharp}
+          rid: 490816083681607710
+    - rid: 490816083681607710
+      type: {class: BleedingEffect, ns: , asm: Assembly-CSharp}
       data:
-        effectName: "Wra\u017Cliwo\u015B\u0107"
+        effectName: Krwawienie
         isMergeable: 1
         isDebuff: 1
-        duration: 2
-        multiplier: 1.5
+        stacks: 2
+    - rid: 490816083681607718
+      type: {class: CooldownCondition, ns: , asm: Assembly-CSharp}
+      data:
+        mandatory: 0
+        cooldown: 2

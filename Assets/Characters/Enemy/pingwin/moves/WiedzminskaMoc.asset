@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a47322801de95b348a0db7e09c294398, type: 3}
+  m_Name: WiedzminskaMoc
+  m_EditorClassIdentifier: Assembly-CSharp::UnitMove
+  moveName: "Wied\u017Ami\u0144ska Moc"
+  actions:
+  - rid: 4436523131265876041
+  - rid: 4436523131265876042
+  conditions:
+  - rid: 4436523131265876044
+  weight: 1
+  references:
+    version: 2
+    RefIds:
+    - rid: 4436523131265876041
+      type: {class: BlockAction, ns: , asm: Assembly-CSharp}
+      data:
+        targetType: 0
+        blockAmount: 7
+    - rid: 4436523131265876042
+      type: {class: AddEffectAction, ns: , asm: Assembly-CSharp}
+      data:
+        targetType: 0
+        effectToAdd:
+          rid: 4436523131265876043
+    - rid: 4436523131265876043
+      type: {class: StrengthEffect, ns: , asm: Assembly-CSharp}
+      data:
+        effectName: "Si\u0142a"
+        isMergeable: 1
+        isDebuff: 0
+        value: 2
+    - rid: 4436523131265876044
+      type: {class: ForceNextMoveCondition, ns: , asm: Assembly-CSharp}
+      data:
+        mandatory: 1
+        nextMove: {fileID: 11400000, guid: 29bc9ae99d46e4a47b34b4f41f8689ac, type: 2}

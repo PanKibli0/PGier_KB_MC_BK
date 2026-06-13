@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c279752beb98a74b8d182cbcad357e9, type: 3}
+  m_Name: "SforaPs\xF3w"
+  m_EditorClassIdentifier: Assembly-CSharp::EventData
+  eventName: "Sfora ps\xF3w"
+  description: "Napad\u0142a ci\u0119 sfora ps\xF3w."
+  illustration: {fileID: 0}
+  choices:
+  - buttonText: Walcz.
+    resultText: "Uda\u0142o ci si\u0119 pokona\u0107 sfor\u0119, ale odnios\u0142e\u015B
+      du\u017Ce obra\u017Cenia. Tracisz 15 zdrowia."
+    effects:
+    - type: 2
+      intValue: 10
+      relic: {fileID: 0}
+    nextEvent: {fileID: 0}
+  - buttonText: Wystrasz.
+    resultText: "Wystraszy\u0142e\u015B po\u0142ow\u0119 ps\xF3w. Utraci\u0142e\u015B
+      w walce 10 zdrowia w walce."
+    effects:
+    - type: 2
+      intValue: 5
+      relic: {fileID: 0}
+    nextEvent: {fileID: 0}
+  - buttonText: Uciekaj.
+    resultText: "Podczas ucieczki wypad\u0142o ci 50 z\u0142ota."
+    effects:
+    - type: 0
+      intValue: -50
+      relic: {fileID: 0}
+    nextEvent: {fileID: 0}

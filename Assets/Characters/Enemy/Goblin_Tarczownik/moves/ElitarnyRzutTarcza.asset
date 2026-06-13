@@ -10,29 +10,30 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a47322801de95b348a0db7e09c294398, type: 3}
-  m_Name: AtakLinijka
+  m_Name: ElitarnyRzutTarcza
   m_EditorClassIdentifier: Assembly-CSharp::UnitMove
-  moveName: "Atak Linijk\u0105"
+  moveName: "Rzut tarcz\u0105"
   actions:
-  - rid: 490816083681607696
-  - rid: 490816083681607697
-  conditions: []
-  weight: 4
+  - rid: 490816085691465735
+  - rid: 490816085691465736
+  conditions:
+  - rid: 490816085691465740
+  weight: 1
   references:
     version: 2
     RefIds:
-    - rid: 490816083681607696
+    - rid: 490816085691465735
       type: {class: DamageAction, ns: , asm: Assembly-CSharp}
       data:
-        targetType: 1
+        targetType: 6
         damageAmount: 4
-    - rid: 490816083681607697
+    - rid: 490816085691465736
       type: {class: AddEffectAction, ns: , asm: Assembly-CSharp}
       data:
-        targetType: 1
+        targetType: 6
         effectToAdd:
-          rid: 490816083681607699
-    - rid: 490816083681607699
+          rid: 490816085691465737
+    - rid: 490816085691465737
       type: {class: VulnerableEffect, ns: , asm: Assembly-CSharp}
       data:
         effectName: "Wra\u017Cliwo\u015B\u0107"
@@ -40,3 +41,8 @@ MonoBehaviour:
         isDebuff: 1
         duration: 2
         multiplier: 1.5
+    - rid: 490816085691465740
+      type: {class: TurnCondition, ns: , asm: Assembly-CSharp}
+      data:
+        mandatory: 1
+        requiredTurn: 1

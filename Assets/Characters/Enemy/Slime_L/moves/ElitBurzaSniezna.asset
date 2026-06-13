@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a47322801de95b348a0db7e09c294398, type: 3}
-  m_Name: BurzaSniezna
+  m_Name: ElitBurzaSniezna
   m_EditorClassIdentifier: Assembly-CSharp::UnitMove
   moveName: "Burza \u015Bnie\u017Cna"
   actions:
@@ -24,4 +24,4 @@ MonoBehaviour:
       type: {class: DamageAction, ns: , asm: Assembly-CSharp}
       data:
         targetType: 6
-        damageAmount: 6
+        damageAmount: 9

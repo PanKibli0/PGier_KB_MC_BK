@@ -10,26 +10,25 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ab0e520ee75d57649b2113a55bc66e80, type: 3}
-  m_Name: PajakDuzy
+  m_Name: Pingwin
   m_EditorClassIdentifier: Assembly-CSharp::UnitData
-  unitName: "Du\u017Cy Paj\u0105k"
-  graphicPrefab: {fileID: -8653719598885068355, guid: 515304e7189839245925ae8e0dec3189, type: 3}
-  minHealth: 38
-  maxHealth: 45
+  unitName: Pingwin
+  graphicPrefab: {fileID: 0}
+  minHealth: 30
+  maxHealth: 36
   startEffects:
-  - rid: 490816083681607691
+  - rid: 4436523131265876045
   aiType: 1
   moves:
-  - {fileID: 11400000, guid: 079fb2482021a4349b8c2e3e9dfff756, type: 2}
-  - {fileID: 11400000, guid: ca3225379e8672f4784e16f00eb89ca8, type: 2}
-  - {fileID: 11400000, guid: 7705b10c6dcc8f9408b766c8f75be83f, type: 2}
+  - {fileID: 11400000, guid: b07807fe4a7a3ce4db63cbd62cea1a94, type: 2}
+  - {fileID: 11400000, guid: 29bc9ae99d46e4a47b34b4f41f8689ac, type: 2}
   references:
     version: 2
     RefIds:
-    - rid: 490816083681607691
+    - rid: 4436523131265876045
       type: {class: DodgeEffect, ns: , asm: Assembly-CSharp}
       data:
         effectName: Unik
         isMergeable: 1
         isDebuff: 0
-        charges: 2
+        charges: 1

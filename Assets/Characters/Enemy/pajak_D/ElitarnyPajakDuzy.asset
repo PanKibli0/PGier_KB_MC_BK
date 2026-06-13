@@ -10,15 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ab0e520ee75d57649b2113a55bc66e80, type: 3}
-  m_Name: PajakDuzy
+  m_Name: ElitarnyPajakDuzy
   m_EditorClassIdentifier: Assembly-CSharp::UnitData
-  unitName: "Du\u017Cy Paj\u0105k"
+  unitName: "Elitrany Du\u017Cy Paj\u0105k"
   graphicPrefab: {fileID: -8653719598885068355, guid: 515304e7189839245925ae8e0dec3189, type: 3}
-  minHealth: 38
-  maxHealth: 45
+  minHealth: 44
+  maxHealth: 50
   startEffects:
   - rid: 490816083681607691
-  aiType: 1
+  - rid: 4436523131265876049
+  aiType: 2
   moves:
   - {fileID: 11400000, guid: 079fb2482021a4349b8c2e3e9dfff756, type: 2}
   - {fileID: 11400000, guid: ca3225379e8672f4784e16f00eb89ca8, type: 2}
@@ -33,3 +34,10 @@ MonoBehaviour:
         isMergeable: 1
         isDebuff: 0
         charges: 2
+    - rid: 4436523131265876049
+      type: {class: StrengthEffect, ns: , asm: Assembly-CSharp}
+      data:
+        effectName: "Si\u0142a"
+        isMergeable: 1
+        isDebuff: 0
+        value: 2
