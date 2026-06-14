@@ -24,7 +24,7 @@ public class RemoveEffectAction : BaseAction
             target.removeEffect(toRemove);
     }
 
-    public override string getCardDescription(Unit source, Unit target = null, bool applyEffects = false)
+    public override string getCardDescription(Unit source = null, Unit target = null, bool applyEffects = false)
     {
         if (effectToRemove == null) return "";
         return $"Usuń {effectToRemove.effectName}.";

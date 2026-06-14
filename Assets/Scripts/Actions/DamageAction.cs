@@ -18,7 +18,7 @@ public class DamageAction : BaseAction
         target.takeDamage(finalDamage, DamageType.Normal, source);
     }
 
-    public override string getCardDescription(Unit source, Unit target = null, bool applyEffects = false)
+    public override string getCardDescription(Unit source = null, Unit target = null, bool applyEffects = false)
     {
         int finalDamage = damageAmount;
 

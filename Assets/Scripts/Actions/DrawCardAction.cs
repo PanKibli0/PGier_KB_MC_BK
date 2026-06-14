@@ -10,7 +10,7 @@ public class DrawCardAction : BaseAction
         ActionEventBus.requestDrawCards(amount);
     }
 
-    public override string getCardDescription(Unit source, Unit target = null, bool applyEffects = false)
+    public override string getCardDescription(Unit source = null, Unit target = null, bool applyEffects = false)
     {
         return $"Dobierz {amount} karty.";
     }
