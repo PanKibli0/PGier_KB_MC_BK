@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a47322801de95b348a0db7e09c294398, type: 3}
+  m_Name: Toxic
+  m_EditorClassIdentifier: Assembly-CSharp::UnitMove
+  moveName: "Spluni\u0119cie toksyn"
+  actions:
+  - rid: 3376038571514527890
+  - rid: 3376038571514527891
+  conditions:
+  - rid: 3376038571514527899
+  weight: 1
+  references:
+    version: 2
+    RefIds:
+    - rid: 3376038571514527890
+      type: {class: DamageAction, ns: , asm: Assembly-CSharp}
+      data:
+        targetType: 1
+        damageAmount: 6
+    - rid: 3376038571514527891
+      type: {class: AddEffectAction, ns: , asm: Assembly-CSharp}
+      data:
+        targetType: 1
+        effectToAdd:
+          rid: 3376038571514527892
+    - rid: 3376038571514527892
+      type: {class: PoisonEffect, ns: , asm: Assembly-CSharp}
+      data:
+        effectName: Trucizna
+        isMergeable: 0
+        isDebuff: 1
+        stacks: 2
+    - rid: 3376038571514527899
+      type: {class: CooldownCondition, ns: , asm: Assembly-CSharp}
+      data:
+        mandatory: 0
+        cooldown: 1

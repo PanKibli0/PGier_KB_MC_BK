@@ -256,23 +256,4 @@ public static class TargetingSystem
     }
 
     #endregion
-
-    #region Text
-    public static string getTargetText(TargetType targetType)
-    {
-        switch (targetType)
-        {
-            case TargetType.Self: return "(na siebie)";
-            case TargetType.SelectedEnemy: return "(na wybranego wroga)";
-            case TargetType.SelectedAlly: return "(na wybranego sojusznika)";
-            case TargetType.RandomEnemy: return "(na losowego wroga)";
-            case TargetType.RandomAlly: return "(na losowego sojusznika)";
-            case TargetType.RandomUnit: return "(na losową jednostkę)";
-            case TargetType.AllEnemies: return "(na wszystkich wrogów)";
-            case TargetType.AllAllies: return "(na wszystkich sojuszników)";
-            case TargetType.AllUnits: return "(na wszystkie jednostki)";
-            default: return "";
-        }
-    }
-    #endregion
 }

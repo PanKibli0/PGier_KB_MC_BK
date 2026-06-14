@@ -38,7 +38,7 @@ public class UnitsManager : MonoBehaviour
             return;
         }
         Instance = this;
-        DontDestroyOnLoad(gameObject);
+
         relics = GameManager.Instance.relicManager;
     }
 
@@ -278,17 +278,5 @@ public class UnitsManager : MonoBehaviour
             GameManager.Instance.addFloorCount();
             SceneManager.LoadScene("BattleRewardScene", LoadSceneMode.Additive);
         }
-    }
-    public static bool HasPlayer()
-    {
-        return Instance != null && Instance.player != null;
-    }
-
-    public static Unit GetPlayer()
-    {
-        if (HasPlayer())
-            return Instance.player;
-
-        return null;
     }
 }

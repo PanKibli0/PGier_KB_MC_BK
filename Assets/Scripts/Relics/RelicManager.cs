@@ -1,27 +1,17 @@
-using System;
 using System.Collections.Generic;
 
 public class RelicManager
 {
     private List<RelicData> relics;
 
-    public event Action onRelicsChanged;
-
     public RelicManager(List<RelicData> initialRelics)
     {
         relics = new List<RelicData>(initialRelics);
-        onRelicsChanged?.Invoke();
     }
 
     public void addRelic(RelicData relic)
     {
         relics.Add(relic);
-        onRelicsChanged?.Invoke();
-    }
-
-    public List<RelicData> getRelics()
-    {
-        return relics;
     }
 
     public void onBattleStart(Unit source)

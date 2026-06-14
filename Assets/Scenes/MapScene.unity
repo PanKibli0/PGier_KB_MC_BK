@@ -723,7 +723,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1575800877}
   - component: {fileID: 1575800876}
-  - component: {fileID: 1575800878}
   m_Layer: 0
   m_Name: MapManager
   m_TagString: Untagged
@@ -766,20 +765,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1575800878
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1575800875}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf07d6fc778d88b4986e44abda0a6bc1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EventManager
-  eventPool:
-  - {fileID: 11400000, guid: c858aa29c73b6e642a8b41ce73cb1150, type: 2}
 --- !u!1 &1670847214
 GameObject:
   m_ObjectHideFlags: 0

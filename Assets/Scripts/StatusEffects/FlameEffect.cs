@@ -3,8 +3,8 @@ using UnityEngine;
 [System.Serializable]
 public class FlameEffect : BaseStatusEffect
 {
+    public int duration;
     public int value;
-    public int multiplier = 1;
 
     public FlameEffect()
     {
@@ -15,14 +15,15 @@ public class FlameEffect : BaseStatusEffect
 
     public override void onDealDamage(Unit owner, Unit target, ref int damage)
     {
-        damage += value * multiplier;
+        damage += value * 2;
     }
 
     public override void onTurnEnd(Unit owner)
     {
-        value -= 2;
+        duration--;
+        value /= 2;
 
-        if (value <= 0)
+        if (duration <= 0 || value <= 0)
             owner.removeEffect(this);
     }
 
@@ -30,15 +31,15 @@ public class FlameEffect : BaseStatusEffect
     {
         FlameEffect o = (FlameEffect)other;
 
+        duration += o.duration;
         value += o.value;
-        multiplier++;
 
         return false;
     }
 
     public override string getMainText()
     {
-        return $"<color=#ff7a18>{value}</color>";
+        return $"<color=#ff7a18>{duration}</color>";
     }
 
     public override string getIconPath()
@@ -48,11 +49,11 @@ public class FlameEffect : BaseStatusEffect
 
     public override string getDescription()
     {
-        return $"Zadaje +{value * multiplier} obra¿eñ. Si³a: {multiplier}. Traci 2 stacki na turê.";
+        return $"Zadaje +{value * 2} obra¿eñ. S³abnie co turê.";
     }
 
     public override string getActionDescription()
     {
-        return $"Na³ó¿ {value} P³omien <sprite name=\"flame\">";
+        return $"Na³ó¿ P³omieñ ({duration}) <sprite name=\"flame\">";
     }
 }

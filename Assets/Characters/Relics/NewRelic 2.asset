@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9eb029be0ed4b7545af6ac53b951eaff, type: 3}
   m_Name: NewRelic 2
   m_EditorClassIdentifier: Assembly-CSharp::RelicData
-  relicName: r3
-  icon: {fileID: 7580173809993130066, guid: 018dfb0392b379543a457df8d69ddf83, type: 3}
+  relicName: 
+  icon: {fileID: 0}
   trigger: 6
   actions:
   - rid: 3376038759912702024

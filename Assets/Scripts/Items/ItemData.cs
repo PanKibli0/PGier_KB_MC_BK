@@ -35,10 +35,11 @@ public class ItemData : ScriptableObject
     {
         string desc = "";
 
-        foreach(var action in actions)
-{
+        foreach (var action in actions)
+        {
             if (action == null) continue;
-            desc += $"{action.getCardDescription(source, target, true)} {TargetingSystem.getTargetText(action.targetType)}\n";
+
+            desc += action.getCardDescription(source, target, true) + "\n";
         }
 
         return desc;

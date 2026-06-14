@@ -17,32 +17,31 @@ MonoBehaviour:
   - rid: 3376038571514527927
   - rid: 3376038571514527928
   conditions:
-  - rid: 490816083681607719
-  weight: 3
+  - rid: 3376038571514527930
+  weight: 1
   references:
     version: 2
     RefIds:
-    - rid: 490816083681607693
-      type: {class: FlameEffect, ns: , asm: Assembly-CSharp}
-      data:
-        effectName: "P\u0142omie\u0144"
-        isMergeable: 1
-        isDebuff: 1
-        value: 2
-        multiplier: 1
-    - rid: 490816083681607719
-      type: {class: CooldownCondition, ns: , asm: Assembly-CSharp}
-      data:
-        mandatory: 0
-        cooldown: 2
     - rid: 3376038571514527927
       type: {class: DamageAction, ns: , asm: Assembly-CSharp}
       data:
         targetType: 8
-        damageAmount: 5
+        damageAmount: 12
     - rid: 3376038571514527928
       type: {class: AddEffectAction, ns: , asm: Assembly-CSharp}
       data:
         targetType: 8
         effectToAdd:
-          rid: 490816083681607693
+          rid: 3376038571514527929
+    - rid: 3376038571514527929
+      type: {class: BleedingEffect, ns: , asm: Assembly-CSharp}
+      data:
+        effectName: Krwawienie
+        isMergeable: 1
+        isDebuff: 1
+        stacks: 2
+    - rid: 3376038571514527930
+      type: {class: MaxUsesCondition, ns: , asm: Assembly-CSharp}
+      data:
+        mandatory: 0
+        maxUses: 1
