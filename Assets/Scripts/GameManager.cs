@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour
     public RelicManager relicManager;
     public RelicData[] relicPool;
 
+    public EventsPool eventsPool;
 
     [HideInInspector] public EventData currentEvent;
     public EventData testEvent;
