@@ -9,53 +9,70 @@ public class TurnManager : MonoBehaviour
     public int turnNumber = 1;
 
     private RelicManager relics;
+    private EnergySystem energySystem;
+    private CardPileSystem cardPileSystem;
+    private HandSystem handSystem;
+    private UnitsManager unitsManager;
 
-    private void Awake()
+    private int baseDrawCount;
+    private int drawCountBonus = 0;
+
+    public void init(RelicManager relics, EnergySystem energySystem, CardPileSystem cardPileSystem, HandSystem handSystem, UnitsManager unitsManager)
     {
-        relics = GameManager.Instance.relicManager;
+        this.relics = relics;
+        this.energySystem = energySystem;
+        this.cardPileSystem = cardPileSystem;
+        this.handSystem = handSystem;
+        this.unitsManager = unitsManager;
+        baseDrawCount = GameManager.Instance.selectedCharacter.baseDrawCount;
+        ActionEventBus.OnDrawCountChanged += onDrawCountChanged;
+        ActionEventBus.OnTakeTurn += onTakeTurnRequested;
     }
 
-    private void Start()
+    void OnDestroy()
     {
-        foreach (Unit enemy in UnitsManager.Instance.getEnemies())
+        ActionEventBus.OnDrawCountChanged -= onDrawCountChanged;
+        ActionEventBus.OnTakeTurn -= onTakeTurnRequested;
+    }
+
+    private void onDrawCountChanged(int amount)
+    {
+        drawCountBonus += amount;
+    }
+
+    public void calculateAllIntents()
+    {
+        foreach (Unit enemy in unitsManager.getEnemies())
             calculateUnitIntent(enemy);
-        foreach (Unit ally in UnitsManager.Instance.getAllies())
+        foreach (Unit ally in unitsManager.getAllies())
             calculateUnitIntent(ally);
     }
 
     public void endTurn()
     {
-        UnitsManager.Instance.player.onEffectsTurnEnd();
-        relics.onTurnEnd(UnitsManager.Instance.player, turnNumber);
+        unitsManager.player.onEffectsTurnEnd();
+        relics.onTurnEnd(unitsManager.player, turnNumber);
 
-        foreach (Unit enemy in UnitsManager.Instance.getEnemies())
+        foreach (Unit enemy in unitsManager.getEnemies())
             executeUnitTurn(enemy);
 
-        foreach (Unit ally in UnitsManager.Instance.getAllies())
+        foreach (Unit ally in unitsManager.getAllies())
             executeUnitTurn(ally);
 
-        if (HandSystem.Instance != null)
-            HandSystem.Instance.discardAllCards();
+        handSystem.discardAllCards();
+        energySystem.refreshEnergy();
 
-        if (EnergySystem.Instance != null)
-            EnergySystem.Instance.refreshEnergy();
-
-        int drawCount = Random.Range(3, 6);
+        int drawCount = Mathf.Max(1, baseDrawCount + drawCountBonus);
         for (int i = 0; i < drawCount; i++)
-            if (CardPileSystem.Instance != null) CardPileSystem.Instance.drawCard();
+            cardPileSystem.drawCard();
 
-        foreach (Unit enemy in UnitsManager.Instance.getEnemies())
-            calculateUnitIntent(enemy);
+        calculateAllIntents();
 
-        foreach (Unit ally in UnitsManager.Instance.getAllies())
-            calculateUnitIntent(ally);
-
-        UnitsManager.Instance.player?.resetBlock();
+        unitsManager.player?.resetBlock();
         turnNumber++;
-        
-        relics.onTurnStart(UnitsManager.Instance.player, turnNumber);
-        UnitsManager.Instance.player?.onEffectsTurnStart();
-        
+
+        relics.onTurnStart(unitsManager.player, turnNumber);
+        unitsManager.player?.onEffectsTurnStart();
 
         OnTurnEnded?.Invoke();
     }
@@ -65,7 +82,7 @@ public class TurnManager : MonoBehaviour
         if (unit == null)
             return;
 
-        MoveState state = UnitsManager.Instance.getMoveState(unit);
+        MoveState state = unitsManager.getMoveState(unit);
         if (state == null)
             return;
 
@@ -76,8 +93,8 @@ public class TurnManager : MonoBehaviour
 
         foreach (UnitMove move in unit.unitData.moves)
         {
-            if (!state.canUse(move))
-                continue;
+            if (move == null) continue;
+            if (!state.canUse(move)) continue;
 
             bool isMandatory = false;
             if (move.conditions != null)
@@ -98,12 +115,7 @@ public class TurnManager : MonoBehaviour
                 filterMoves.Add(move);
         }
 
-        List<UnitMove> pool;
-
-        if (mandatoryMoves.Count > 0)
-            pool = mandatoryMoves;
-        else
-            pool = filterMoves;
+        List<UnitMove> pool = mandatoryMoves.Count > 0 ? mandatoryMoves : filterMoves;
 
         if (pool.Count == 0)
         {
@@ -132,19 +144,19 @@ public class TurnManager : MonoBehaviour
         unit.showIntent(chosen);
     }
 
-    public void executeUnitTurn(Unit unit)
+    public void executeUnitTurn(Unit unit, bool activateEffects = true)
     {
         if (unit == null)
             return;
 
-        MoveState state = UnitsManager.Instance.getMoveState(unit);
+        MoveState state = unitsManager.getMoveState(unit);
 
         unit.resetBlock();
         unit.onEffectsTurnStart();
 
         if (unit.nextMove == null)
         {
-            if (state != null)
+            if (state != null && unit.unitData.moves != null)
                 state.onTurnEnd(unit.unitData.moves);
             unit.onEffectsTurnEnd();
             return;
@@ -156,8 +168,8 @@ public class TurnManager : MonoBehaviour
 
             List<Unit> targets = TargetingSystem.getTargets(unit, action.targetType);
 
-            foreach (Unit target in targets) 
-            { 
+            foreach (Unit target in targets)
+            {
                 if (target != null)
                     action.execute(target, unit);
             }
@@ -167,9 +179,15 @@ public class TurnManager : MonoBehaviour
             state.recordUse(unit.nextMove);
 
         unit.hideIntent();
-        unit.onEffectsTurnEnd();
+        if (activateEffects) unit.onEffectsTurnEnd();
 
         if (state != null)
             state.onTurnEnd(unit.unitData.moves);
+    }
+
+    private void onTakeTurnRequested(Unit unit)
+    {
+        executeUnitTurn(unit, false);
+        calculateUnitIntent(unit);
     }
 }

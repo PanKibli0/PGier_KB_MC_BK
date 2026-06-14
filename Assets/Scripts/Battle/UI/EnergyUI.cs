@@ -1,21 +1,24 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class EnergyUI : MonoBehaviour
 {
     [SerializeField] private TMP_Text energyText;
+    [SerializeField] private Image energyIconImage;
+
     private EnergySystem energySystem;
 
-
-    void Start()
+    public void init(EnergySystem energySystem)
     {
-        energySystem = EnergySystem.Instance;
+        this.energySystem = energySystem;
+        energySystem.OnEnergyChanged += updateUI;
 
-        if (energySystem != null)
-        {
-            energySystem.OnEnergyChanged += updateUI;
-            updateUI();
-        }
+        Sprite icon = GameManager.Instance?.selectedCharacter?.energyIcon;
+        if (energyIconImage != null && icon != null)
+            energyIconImage.sprite = icon;
+
+        updateUI();
     }
 
 

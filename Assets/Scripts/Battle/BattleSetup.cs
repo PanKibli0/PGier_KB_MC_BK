@@ -2,23 +2,59 @@ using UnityEngine;
 
 public class BattleSetup : MonoBehaviour
 {
+    [SerializeField] private UnitsManager unitsManager;
+    [SerializeField] private HandSystem handSystem;
+    [SerializeField] private TurnManager turnManager;
+    [SerializeField] private EnergyUI energyUI;
+    [SerializeField] private HandUI handUI;
+    [SerializeField] private CardPileUI cardPileUI;
+    [SerializeField] private CardPileView cardPileView;
+
+    private EnergySystem energySystem;
+    private CardPileSystem cardPileSystem;
+    private RelicManager relics;
+
     void Start()
     {
-        CharacterData character = GameManager.Instance.selectedCharacter;
-        if (character != null)
-            UnitsManager.Instance.spawnPlayer(character);
+        GameManager gm = GameManager.Instance;
+        CharacterData character = gm.selectedCharacter;
 
-        UnitData[] enemies = GameManager.Instance.pendingBattleEnemies;
-        if (enemies != null)
+        relics = gm.relicManager;
+        energySystem = new EnergySystem(character.baseMaxEnergy);
+        cardPileSystem = new CardPileSystem();
+
+        handSystem.init(cardPileSystem);
+        unitsManager.init(energySystem, cardPileSystem, handSystem, relics);
+        turnManager.init(relics, energySystem, cardPileSystem, handSystem, unitsManager);
+
+        if (character != null)
+            unitsManager.spawnPlayer(character);
+
+        if (gm.pendingBattleEnemies != null)
         {
-            foreach (var data in enemies)
-            {
+            foreach (var data in gm.pendingBattleEnemies)
                 if (data != null)
-                    UnitsManager.Instance.spawn(data, UnitType.Enemy);
-            }
+                    unitsManager.spawn(data, UnitType.Enemy);
         }
 
-        GameManager.Instance.pendingBattleEnemies = null;
-        GameManager.Instance.relicManager.onBattleStart(UnitsManager.Instance.player);
+        gm.pendingBattleEnemies = null;
+        relics.onBattleStart(unitsManager.player);
+
+        energyUI?.init(energySystem);
+        handUI?.init(energySystem, cardPileSystem, handSystem, unitsManager, relics);
+        cardPileUI?.init(cardPileSystem);
+        cardPileView?.setCardPileSystem(cardPileSystem);
+
+        cardPileSystem.setupDeck();
+        turnManager.calculateAllIntents();
+
+        MainBar.Instance?.setPlayerUnit(unitsManager.player);
+    }
+
+    void OnDestroy()
+    {
+        cardPileSystem?.cleanup();
+        energySystem?.cleanup();
+        MainBar.Instance?.setPlayerUnit(null);
     }
 }

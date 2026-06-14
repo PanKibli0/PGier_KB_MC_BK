@@ -31,24 +31,15 @@ public class ShopUI : MonoBehaviour
 
     private void createShopCardsUI()
     {
-        List<CardData> shopCards = new List<CardData>();
-        CardPool charPool = GameManager.Instance.selectedCharacter.cardPool;
-        CardPool generalPool = GameManager.Instance.generalCardPool;
+        GameManager gm = GameManager.Instance;
+        List<CardData> charCards = getUniqueCards(gm.selectedCharacter.cardPool.cards, 5);
+        List<CardData> generalCards = getUniqueCards(gm.generalCardPool.cards, 2);
 
-        shopCards.AddRange(getUniqueCards(charPool.cards, 5));
-        shopCards.AddRange(getUniqueCards(generalPool.cards, 2));
+        for (int i = 0; i < charCards.Count; i++)
+            createCard(charCards[i], -730 + i * 365, 250);
 
-        for (int i = 0; i < 5; i++)
-        {
-            float x = -730 + i * 365;
-            createCard(shopCards[i], x, 250);
-        }
-
-        for (int i = 0; i < 2; i++)
-        {
-            float x = -730 + i * 365;
-            createCard(shopCards[5 + i], x, -175);
-        }
+        for (int i = 0; i < generalCards.Count; i++)
+            createCard(generalCards[i], -730 + i * 365, -175);
     }
 
     private void createCard(CardData card, float x, float y)

@@ -2,16 +2,29 @@ using UnityEngine;
 
 public class MainBar : MonoBehaviour
 {
-    private static bool created = false;
+    public static MainBar Instance;
+
+    [SerializeField] private InventoryUI inventoryUI;
 
     private void Awake()
     {
-        if (created)
+        if (Instance != null)
         {
             Destroy(gameObject);
             return;
         }
-        created = true;
+        Instance = this;
         DontDestroyOnLoad(gameObject);
+    }
+
+    private void OnDestroy()
+    {
+        if (Instance == this)
+            Instance = null;
+    }
+
+    public void setPlayerUnit(Unit unit)
+    {
+        inventoryUI?.setPlayerUnit(unit);
     }
 }

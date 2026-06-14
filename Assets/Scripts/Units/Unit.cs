@@ -27,7 +27,6 @@ public class Unit : MonoBehaviour
     public int currentMaxHealth;
     public int currentHealth;
     public int block;
-    public List<Card> activePassiveCards = new List<Card>();
 
     [SerializeReference] public List<BaseStatusEffect> effects = new List<BaseStatusEffect>();
     public UnitMove nextMove;
@@ -38,10 +37,13 @@ public class Unit : MonoBehaviour
 
     private bool isDead = false;
 
-    private RelicManager relics = GameManager.Instance.relicManager; // TO DELETE
+    private RelicManager relics;
+    private UnitsManager unitsManager;
 
-    public void init(BaseUnitData data, UnitType type, UnitStatsUIManager statsUIManager)
+    public void init(BaseUnitData data, UnitType type, UnitStatsUIManager statsUIManager, 
+        UnitsManager unitsManager)
     {
+        this.unitsManager = unitsManager;
         unitName = data.unitName;
         unitType = type;
 
@@ -59,6 +61,7 @@ public class Unit : MonoBehaviour
             unitData = uData;
 
         statsUIManager.createStatsUI(this);
+        relics = GameManager.Instance.relicManager;
     }
 
     public void setStatsUI(UnitStatsUI ui)
@@ -88,6 +91,9 @@ public class Unit : MonoBehaviour
                 effects[i].onReceiveDamage(this, source, ref damage);
         }
 
+        if (unitType == UnitType.Player)
+            relics.onDamageTaken(this, source);
+
         if (type == DamageType.Normal && block > 0)
         {
             int blockUsed = Mathf.Min(block, damage);
@@ -96,31 +102,24 @@ public class Unit : MonoBehaviour
         }
 
         currentHealth -= damage;
-        triggerPassives(PassiveTrigger.ReceiveDamage); // TO DELETE 
-
-        if (unitType == UnitType.Player)
-            relics.onDamageTaken(this, source); // TO DELETE / REWORK??
 
         statsUI?.updateUI();
 
+        if (unitType == UnitType.Player && GameManager.Instance != null) // REWORK
+            GameManager.Instance.setHealth(currentHealth);
+
         if (currentHealth <= 0 && !isDead)
             die();
-
-        if (unitType == UnitType.Player && GameManager.Instance != null)
-            GameManager.Instance.setHealth(currentHealth);
     }
 
     
-    public bool IsDead()
-    {
-        return isDead;
-    }
 
     public void die()
     {
         isDead = true;
-        GameManager.Instance?.addEnemyKill();
-        UnitsManager.Instance.onUnitDied(this);
+        if (unitType == UnitType.Enemy)
+            GameManager.Instance?.addEnemyKill();
+        unitsManager.onUnitDied(this);
         Destroy(gameObject);
     }
 
@@ -185,7 +184,7 @@ public class Unit : MonoBehaviour
     {
         for (int i = effects.Count - 1; i >= 0; i--)
             effects[i].onTurnStart(this);
-        triggerPassives(PassiveTrigger.TurnStart);
+        
         OnEffectsChanged?.Invoke();
     }
 
@@ -193,7 +192,7 @@ public class Unit : MonoBehaviour
     {
         for (int i = effects.Count - 1; i >= 0; i--)
             effects[i].onTurnEnd(this);
-        triggerPassives(PassiveTrigger.TurnEnd);
+ 
         OnEffectsChanged?.Invoke();
     }
 
@@ -205,34 +204,4 @@ public class Unit : MonoBehaviour
         return unitData.aiType;
     }
 
-    public void triggerPassives(PassiveTrigger trigger, Card playedCard = null)
-    {
-        foreach (var card in activePassiveCards)
-        {
-            if (card.data.passiveAbilities == null)
-                continue;
-
-            foreach (var passive in card.data.passiveAbilities)
-            {
-                if (passive.trigger != trigger)
-                    continue;
-
-                foreach (var action in passive.actions)
-                {
-                    List<Unit> targets =
-                        TargetingSystem.getTargets(
-                            this,
-                            action.targetType,
-                            this
-                        );
-
-                    foreach (var target in targets)
-                    {
-                        if (target != null)
-                            action.execute(target, this);
-                    }
-                }
-            }
-        }
-    }
 }

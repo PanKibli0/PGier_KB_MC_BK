@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class UnitsManager : MonoBehaviour
 {
-    public static UnitsManager Instance;
     [SerializeField] private UnitStatsUIManager statsUIManager;
 
     [SerializeField] private Transform allyContainer;
@@ -29,17 +28,29 @@ public class UnitsManager : MonoBehaviour
     public event Action OnUnitsChanged;
 
     private RelicManager relics;
+    private EnergySystem energySystem;
+    private CardPileSystem cardPileSystem;
+    private HandSystem handSystem;
 
-    void Awake()
+    public void init(EnergySystem energySystem, CardPileSystem cardPileSystem, HandSystem handSystem, RelicManager relics)
     {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
-        Instance = this;
+        this.energySystem = energySystem;
+        this.cardPileSystem = cardPileSystem;
+        this.handSystem = handSystem;
+        this.relics = relics;
+        TargetingSystem.registerUnitsManager(this);
 
-        relics = GameManager.Instance.relicManager;
+        ActionEventBus.OnSummon += onSummonRequested;
+    }
+
+    void OnDestroy()
+    {
+        ActionEventBus.OnSummon -= onSummonRequested;
+    }
+
+    private void onSummonRequested(UnitData data, UnitType type)
+    {
+        spawn(data, type);
     }
 
     public MoveState getMoveState(Unit unit)
@@ -94,22 +105,18 @@ public class UnitsManager : MonoBehaviour
         GameObject newUnitObj = Instantiate(unitPrefab);
         newUnitObj.transform.position = spawnPos;
         Unit newUnit = newUnitObj.GetComponent<Unit>();
-        newUnit.init(data, type, statsUIManager);
-
+        newUnit.init(data, type, statsUIManager, this);
 
         // DEBUG SCALE
         if (data.graphicPrefab != null)
         {
             GameObject graphic = Instantiate(data.graphicPrefab, newUnitObj.transform);
-
             Renderer renderer = graphic.GetComponent<Renderer>();
             float height = 1f;
             if (renderer != null)
                 height = renderer.bounds.size.y;
-
             float scale = 10f / height;
             float offsetY = -height * scale * 0.5f;
-
             graphic.transform.localScale = new Vector3(scale, scale, scale);
             graphic.transform.localPosition = new Vector3(0f, offsetY, 0f);
         }
@@ -148,7 +155,7 @@ public class UnitsManager : MonoBehaviour
             Instantiate(data.graphicPrefab, newUnitObj.transform);
 
         Unit newUnit = newUnitObj.GetComponent<Unit>();
-        newUnit.init(data, UnitType.Player, statsUIManager);
+        newUnit.init(data, UnitType.Player, statsUIManager, this);
 
         if (GameManager.Instance != null)
         {
@@ -239,7 +246,8 @@ public class UnitsManager : MonoBehaviour
         unregisterMoveState(unit);
         checkCombatEnd();
     }
-    public void ClearAllEffects()
+
+    public void clearAllEffects()
     {
         if (player != null)
             player.effects.Clear();
@@ -273,7 +281,7 @@ public class UnitsManager : MonoBehaviour
         }
         else if (!enemiesAlive)
         {
-            ClearAllEffects();
+            clearAllEffects();
             relics.onBattleEnd(player);
             GameManager.Instance.addFloorCount();
             SceneManager.LoadScene("BattleRewardScene", LoadSceneMode.Additive);

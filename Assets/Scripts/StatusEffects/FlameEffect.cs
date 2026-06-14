@@ -10,7 +10,7 @@ public class FlameEffect : BaseStatusEffect
     {
         effectName = "P³omieñ";
         isMergeable = true;
-        isDebuff = true;
+        isDebuff = false;
     }
 
     public override void onDealDamage(Unit owner, Unit target, ref int damage)

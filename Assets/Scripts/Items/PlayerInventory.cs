@@ -1,74 +1,45 @@
+using System;
 using System.Collections.Generic;
-using UnityEngine;
 
-public class PlayerInventory : MonoBehaviour
+public class PlayerInventory
 {
-    public static PlayerInventory Instance;
-    public ItemData testItem;
     public List<ItemData> items = new List<ItemData>();
+    public int maxItems = 3;
 
-    public event System.Action OnInventoryChanged;
+    public event Action onInventoryChanged;
 
-    void Start()
+    public bool addItem(ItemData item)
     {
-        AddItem(testItem);
-    }
-    private void Awake()
-    {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
-
-        Instance = this;
-        DontDestroyOnLoad(gameObject);
-    }
-
-    public void UseItem(int index)
-    {
-        UseItem(index, null);
-    }
-
-    public void UseItem(int index, Unit selectedTarget)
-    {
-        if (index < 0 || index >= items.Count)
-            return;
-
-        ItemData item = items[index];
-
-        if (item == null)
-            return;
-
-        if (UnitsManager.Instance == null) return;
-        Unit player = UnitsManager.Instance.player;
-
-        item.Use(player, selectedTarget);
-
-        items.RemoveAt(index);
-        OnInventoryChanged?.Invoke();
-    }
-    public void AddItem(ItemData item)
-    {
-        if (item == null) return;
+        if (item == null) return false;
+        if (items.Count >= maxItems) return false;
 
         items.Add(item);
-        OnInventoryChanged?.Invoke();
+        onInventoryChanged?.Invoke();
+        return true;
     }
-    public void RemoveItem(ItemData item)
+
+    public void removeItem(ItemData item)
     {
         if (item == null) return;
-
         items.Remove(item);
-        OnInventoryChanged?.Invoke();
+        onInventoryChanged?.Invoke();
     }
 
-    public void RemoveItemAt(int index)
+    public void removeItemAt(int index)
     {
-        if (index < 0 || index >= items.Count)
-            return;
-
+        if (index < 0 || index >= items.Count) return;
         items.RemoveAt(index);
-        OnInventoryChanged?.Invoke();
+        onInventoryChanged?.Invoke();
+    }
+
+    public void useItem(int index, Unit player, Unit selectedTarget = null)
+    {
+        if (index < 0 || index >= items.Count) return;
+        ItemData item = items[index];
+        if (item == null || player == null) return;
+
+        item.use(player, selectedTarget);
+        items.RemoveAt(index);
+        onInventoryChanged?.Invoke();
     }
 }

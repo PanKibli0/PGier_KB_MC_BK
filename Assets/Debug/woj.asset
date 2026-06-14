@@ -19,10 +19,16 @@ MonoBehaviour:
   startEffects:
   - rid: 490815768443486281
   startCards:
-  - {fileID: 11400000, guid: 083c2c054f187f14c96620ddfa844f6c, type: 2}
-  - {fileID: 11400000, guid: 083c2c054f187f14c96620ddfa844f6c, type: 2}
+  - data: {fileID: 11400000, guid: 68e665cabc71bb74f8c406a678369461, type: 2}
+    amount: 2
+  - data: {fileID: 11400000, guid: 552dee7d8a21c8c41a919f8524a74b86, type: 2}
+    amount: 1
   cardPool: {fileID: 11400000, guid: aeb5820f51882af4ebb56e443c00a0d6, type: 2}
   startGold: 500
+  baseDrawCount: 5
+  baseMaxEnergy: 3
+  energyIcon: {fileID: 1557174049649518563, guid: 61e9fec5ce1285c4b9e951e347cf4066, type: 3}
+  energySpriteName: energia_woj
   references:
     version: 2
     RefIds:

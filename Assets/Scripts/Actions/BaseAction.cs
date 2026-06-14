@@ -7,10 +7,8 @@ public abstract class BaseAction
 
     public abstract void execute(Unit target, Unit source);
 
-    public BaseAction Clone() // GŁĘBOKIE KOPIOWANIE
-    {
-        return (BaseAction)this.MemberwiseClone();
-    }
+    public BaseAction Clone() { return (BaseAction)this.MemberwiseClone(); }
+
 
     public bool requiresTarget()
     {

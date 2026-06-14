@@ -10,14 +10,18 @@ public class RemoveEffectAction : BaseAction
     {
         if (effectToRemove == null) return;
 
+        BaseStatusEffect toRemove = null;
         foreach (var effect in target.effects)
         {
             if (effect.GetType() == effectToRemove.GetType())
             {
-                target.removeEffect(effect);
-                return;
+                toRemove = effect;
+                break;
             }
         }
+
+        if (toRemove != null)
+            target.removeEffect(toRemove);
     }
 
     public override string getCardDescription(Unit source, Unit target = null, bool applyEffects = false)

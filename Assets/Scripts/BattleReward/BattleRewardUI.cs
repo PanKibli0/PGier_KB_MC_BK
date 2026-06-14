@@ -1,7 +1,7 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 
 public class BattleRewardUI : MonoBehaviour
@@ -12,18 +12,33 @@ public class BattleRewardUI : MonoBehaviour
     [SerializeField] private TMP_Text continueButtonText;
     [SerializeField] private CardRewardPanel cardRewardPanel;
     [SerializeField] private ItemRewardPanel itemRewardPanel;
+    [SerializeField] private RelicRewardPanel relicRewardPanel;
     [SerializeField] private GameObject rewardsList;
     [SerializeField] private ItemDatabase itemDatabase;
+    [SerializeField] private Tooltip tooltip;
 
     private List<GameObject> rewardButtons = new List<GameObject>();
     private int rewardsLeft;
+    private GameManager gameManager;
 
-    // DEBUG
-    void Start()
+    private void Awake()
     {
-        createDebugRewards();
+        gameManager = GameManager.Instance;
     }
-    // END DEBUG
+
+    private void Start()
+    {
+        itemRewardPanel.init(tooltip, gameManager.playerInventory);
+
+        BattleDifficulty difficulty = gameManager != null
+            ? gameManager.pendingBattleDifficulty
+            : BattleDifficulty.Normal;
+
+        RewardGenerator rewardGenerator = new RewardGenerator(
+            cardRewardPanel, itemRewardPanel, relicRewardPanel, rewardsList, itemDatabase);
+
+        setRewards(rewardGenerator.generate(difficulty));
+    }
 
     public void setRewards(List<BaseReward> rewards)
     {
@@ -31,11 +46,11 @@ public class BattleRewardUI : MonoBehaviour
 
         foreach (var reward in rewards)
         {
-            GameObject btnObj = Instantiate(rewardButtonPrefab, rewardsContainer);
-            RewardButton btn = btnObj.GetComponent<RewardButton>();
-            btn.init(reward);
-            btn.OnRewardCollected += onRewardCollected;
-            rewardButtons.Add(btnObj);
+            GameObject buttonObj = Instantiate(rewardButtonPrefab, rewardsContainer);
+            RewardButton rewardButton = buttonObj.GetComponent<RewardButton>();
+            rewardButton.init(reward);
+            rewardButton.OnRewardCollected += onRewardCollected;
+            rewardButtons.Add(buttonObj);
         }
     }
 
@@ -43,82 +58,12 @@ public class BattleRewardUI : MonoBehaviour
     {
         rewardsLeft--;
         if (rewardsLeft == 0)
-        {
             continueButtonText.text = "KONTYNUUJ";
-        }
     }
 
     public void onContinueButtonClick()
     {
-        GameManager.Instance.currentMapNode.onComplete();
+        gameManager.currentMapNode.onComplete();
         SceneManager.LoadScene("MapScene");
     }
-
-    private int getRandomGold()
-    {
-        return Random.Range(50, 100);
-    }
-
-    private List<CardData> getRandomCards()
-    {
-        List<CardData> cards = new List<CardData>();
-        CardPool pool = GameManager.Instance.selectedCharacter.cardPool;
-
-        if (pool == null || pool.cards.Count == 0) return cards;
-
-        for (int i = 0; i < 3; i++)
-        {
-            CardData card = pool.cards[Random.Range(0, pool.cards.Count)];
-            cards.Add(card);
-        }
-
-        return cards;
-    }
-
-    private List<ItemData> getRandomItems()
-    {
-        List<ItemData> result = new List<ItemData>();
-
-        if (itemDatabase == null || itemDatabase.items == null)
-            return result;
-
-        List<ItemData> pool = new List<ItemData>(itemDatabase.items);
-
-        for (int i = 0; i < 3; i++)
-        {
-            if (pool.Count == 0)
-                break;
-
-            int index = Random.Range(0, pool.Count);
-            result.Add(pool[index]);
-            pool.RemoveAt(index);
-        }
-
-        return result;
-    }
-
-    // DEBUG
-    private void createDebugRewards()
-    {
-        GoldReward gold = new GoldReward();
-        gold.amount = getRandomGold();
-
-        CardReward card = new CardReward();
-        card.cards = getRandomCards();
-        card.panel = cardRewardPanel;
-        card.rewardsList = rewardsList;
-
-        ItemReward item = new ItemReward();
-        item.items = getRandomItems();
-        item.panel = itemRewardPanel;
-        item.rewardsList = rewardsList;
-
-        List<BaseReward> rewards = new List<BaseReward>();
-        rewards.Add(gold);
-        rewards.Add(card);
-        rewards.Add(item);
-
-        setRewards(rewards);
-    }
-    // END DEBUG
 }

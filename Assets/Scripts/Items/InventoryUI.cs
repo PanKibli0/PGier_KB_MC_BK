@@ -1,63 +1,51 @@
 using UnityEngine;
+using TMPro;
 
 public class InventoryUI : MonoBehaviour
 {
-    public Transform container;
-    public GameObject itemPrefab;
-    public Tooltip tooltip;
+    [SerializeField] private Transform container;
+    [SerializeField] private GameObject itemPrefab;
+    [SerializeField] private Tooltip tooltip;
+    [SerializeField] private TMP_Text countText;
 
+    private PlayerInventory inventory;
+    private Unit playerUnit;
 
     private void Start()
     {
-        Debug.Log("SUBSCRIBED UI: " + gameObject.name);
-        if (PlayerInventory.Instance != null)
-            PlayerInventory.Instance.OnInventoryChanged += refresh;
-        
+        inventory = GameManager.Instance.playerInventory;
+        inventory.onInventoryChanged += refresh;
         refresh();
     }
+
     private void OnDestroy()
     {
-        if (PlayerInventory.Instance != null)
-            PlayerInventory.Instance.OnInventoryChanged -= refresh;
+        if (inventory != null)
+            inventory.onInventoryChanged -= refresh;
+    }
+
+    public void setPlayerUnit(Unit unit)
+    {
+        playerUnit = unit;
+        refresh();
     }
 
     public void refresh()
     {
-        Debug.Log($"InventoryUI instance: {gameObject.name}");
-        Debug.Log($"container: {container}");
-        Debug.Log($"itemPrefab: {itemPrefab}");
-        if (PlayerInventory.Instance == null)
-        {
-            Debug.LogError("PlayerInventory.Instance == NULL - brak obiektu w scenie!");
-            return;
-        }
-
-        if (container == null || itemPrefab == null)
-        {
-            Debug.LogError("UI refs missing!");
-            return;
-        }
+        if (inventory == null || container == null || itemPrefab == null) return;
 
         foreach (Transform child in container)
-        {
             Destroy(child.gameObject);
-        }
 
-        for (int i = 0; i < PlayerInventory.Instance.items.Count; i++)
+        for (int i = 0; i < inventory.items.Count; i++)
         {
-            ItemData item = PlayerInventory.Instance.items[i];
-            
             GameObject obj = Instantiate(itemPrefab, container);
-
-            ItemClickUI ui = obj.GetComponent<ItemClickUI>();
-
-            if (ui == null)
-            {
-                Debug.LogError("ItemPrefab nie ma ItemClickUI!");
-                continue;
-            }
-
-            ui.setup(item, i);
+            ItemSlotUI ui = obj.GetComponent<ItemSlotUI>();
+            if (ui == null) continue;
+            ui.setup(inventory.items[i], i, tooltip, inventory, playerUnit);
         }
+
+        if (countText != null)
+            countText.text = $"{inventory.items.Count}/{inventory.maxItems}";
     }
 }

@@ -354,6 +354,7 @@ MonoBehaviour:
   cardArtImage: {fileID: 2302723315265311147}
   nameText: {fileID: 3572802343976055949}
   descText: {fileID: 9185093519471520641}
+  energyIconImage: {fileID: 6956997271231626050}
   energyIcon: {fileID: 6956997271231626050}
   costText: {fileID: 3511288340443095377}
   frontSprites:
@@ -528,7 +529,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 28.75
+  m_fontSize: 28.8
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -669,7 +670,7 @@ MonoBehaviour:
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 18
+  m_fontSizeMin: 0
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 2

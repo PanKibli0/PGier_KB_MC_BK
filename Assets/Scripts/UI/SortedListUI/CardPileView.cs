@@ -7,14 +7,17 @@ public class CardPileView : BaseCardPanel
     [SerializeField] private Button sortOrderButton;
 
     private PileType currentPileType;
+    private CardPileSystem cardPileSystem;
 
-    void Update()
+    public void setCardPileSystem(CardPileSystem cards)
     {
-        if (Input.GetKeyDown(KeyCode.Escape)) close();
+        cardPileSystem = cards;
     }
 
     public void open(PileType pileType)
     {
+        if (cardPileSystem == null) return;
+
         currentPileType = pileType;
         gameObject.SetActive(true);
         loadCardsByPileType(pileType);
@@ -32,15 +35,15 @@ public class CardPileView : BaseCardPanel
         switch (pileType)
         {
             case PileType.Draw:
-                currentCards = new List<Card>(CardPileSystem.Instance.drawPile);
+                currentCards = new List<Card>(cardPileSystem.drawPile);
                 currentSortMode = CardSorter.SortMode.Alphabetical;
                 break;
             case PileType.Discard:
-                currentCards = new List<Card>(CardPileSystem.Instance.discardPile);
+                currentCards = new List<Card>(cardPileSystem.discardPile);
                 currentSortMode = CardSorter.SortMode.Order;
                 break;
             case PileType.Exhaust:
-                currentCards = new List<Card>(CardPileSystem.Instance.exhaustPile);
+                currentCards = new List<Card>(cardPileSystem.exhaustPile);
                 currentSortMode = CardSorter.SortMode.Order;
                 break;
         }

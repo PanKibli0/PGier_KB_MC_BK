@@ -4,6 +4,14 @@ using UnityEngine;
 
 public static class TargetingSystem
 {
+    private static UnitsManager unitsManager;
+
+    public static void registerUnitsManager(UnitsManager manager)
+    {
+        unitsManager = manager;
+    }
+
+
     public static List<Unit> getTargets(Unit source, TargetType targetType, Unit selectedTarget = null)
     {
         UnitType sourceType = source.unitType;
@@ -82,14 +90,14 @@ public static class TargetingSystem
             if (Random.Range(0, 100) < 25)
             {
                 List<Unit> otherAllies = new List<Unit>(allies);
-                otherAllies.Remove(UnitsManager.Instance.player);
+                otherAllies.Remove(unitsManager.player);
                 if (otherAllies.Count > 0)
                     target = getHighestHealthUnit(otherAllies);
                 else
-                    target = UnitsManager.Instance.player;
+                    target = unitsManager.player;
             }
             else
-                target = UnitsManager.Instance.player;
+                target = unitsManager.player;
 
             return new List<Unit> { target };
         }
@@ -123,10 +131,10 @@ public static class TargetingSystem
     private static List<Unit> getEnemies(UnitType sourceType)
     {
         if (sourceType == UnitType.Player || sourceType == UnitType.Ally)
-            return UnitsManager.Instance.getEnemies();
+            return unitsManager.getEnemies();
 
-        List<Unit> enemies = new List<Unit> { UnitsManager.Instance.player };
-        enemies.AddRange(UnitsManager.Instance.getAllies());
+        List<Unit> enemies = new List<Unit> { unitsManager.player };
+        enemies.AddRange(unitsManager.getAllies());
         return enemies;
     }
 
@@ -136,14 +144,14 @@ public static class TargetingSystem
         List<Unit> allies;
 
         if (sourceType == UnitType.Player)
-            allies = UnitsManager.Instance.getAllies();
+            allies = unitsManager.getAllies();
         else if (sourceType == UnitType.Ally)
         {
-            allies = new List<Unit> { UnitsManager.Instance.player };
-            allies.AddRange(UnitsManager.Instance.getAllies());
+            allies = new List<Unit> { unitsManager.player };
+            allies.AddRange(unitsManager.getAllies());
         }
         else
-            allies = UnitsManager.Instance.getEnemies();
+            allies = unitsManager.getEnemies();
 
         if (!allies.Contains(source))
             allies.Add(source);
@@ -154,9 +162,9 @@ public static class TargetingSystem
 
     private static List<Unit> getAllUnits()
     {
-        List<Unit> all = new List<Unit> { UnitsManager.Instance.player };
-        all.AddRange(UnitsManager.Instance.getAllies());
-        all.AddRange(UnitsManager.Instance.getEnemies());
+        List<Unit> all = new List<Unit> { unitsManager.player };
+        all.AddRange(unitsManager.getAllies());
+        all.AddRange(unitsManager.getEnemies());
         return all;
     }
 
@@ -177,6 +185,19 @@ public static class TargetingSystem
 
 
     #region POMOC
+
+    public static bool isValidTarget(Unit source, TargetType targetType, Unit target)
+    {
+        switch (targetType)
+        {
+            case TargetType.SelectedEnemy:
+                return getEnemies(source.unitType).Contains(target);
+            case TargetType.SelectedAlly:
+                return getAllies(source.unitType, source).Contains(target);
+            default:
+                return false;
+        }
+    }
 
     private static Unit getLowestHealthUnit(List<Unit> units, bool prioritizePlayer)
     {

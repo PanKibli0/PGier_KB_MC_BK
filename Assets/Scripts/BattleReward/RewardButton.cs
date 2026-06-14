@@ -15,7 +15,7 @@ public class RewardButton : MonoBehaviour
     {
         this.reward = reward;
         reward.setButton(this);
-        //icon.sprite = reward.getIcon();
+        icon.sprite = reward.getIcon();
         descriptionText.text = reward.getDescription();
     }
 

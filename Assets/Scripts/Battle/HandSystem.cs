@@ -4,38 +4,33 @@ using System.Collections.Generic;
 
 public class HandSystem : MonoBehaviour
 {
-    public static HandSystem Instance;
-
     public List<Card> hand = new List<Card>();
+    public int maxHandSize = 10;
 
     public event Action<Card> OnCardAddedToHand;
     public event Action OnHandCleared;
 
-    void Awake()
+    private CardPileSystem cardPile;
+
+    public void init(CardPileSystem cardPile)
     {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
-        Instance = this;
+        this.cardPile = cardPile;
+        cardPile.OnCardDrawn += addCard;
     }
 
-    void OnEnable()
+    void OnDestroy()
     {
-        if (CardPileSystem.Instance != null)
-            CardPileSystem.Instance.OnCardDrawn += addCard;
-        
-    }
-
-    void OnDisable()
-    {
-        if (CardPileSystem.Instance != null)
-            CardPileSystem.Instance.OnCardDrawn -= addCard;
+        if (cardPile != null)
+            cardPile.OnCardDrawn -= addCard;
     }
 
     public void addCard(Card card)
     {
+        if (hand.Count >= maxHandSize)
+        {
+            cardPile.exhaustCard(card);
+            return;
+        }
         hand.Add(card);
         OnCardAddedToHand?.Invoke(card);
     }
@@ -45,9 +40,9 @@ public class HandSystem : MonoBehaviour
         if (hand.Remove(card))
         {
             if (card.data.exhaust)
-                CardPileSystem.Instance.exhaustCard(card);
+                cardPile.exhaustCard(card);
             else
-                CardPileSystem.Instance.discardCard(card);
+                cardPile.discardCard(card);
         }
     }
 
@@ -56,9 +51,7 @@ public class HandSystem : MonoBehaviour
         if (hand.Count == 0) return;
 
         foreach (Card card in hand)
-        {
-            CardPileSystem.Instance.discardCard(card);
-        }
+            cardPile.discardCard(card);
 
         hand.Clear();
         OnHandCleared?.Invoke();

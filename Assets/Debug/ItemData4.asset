@@ -13,9 +13,7 @@ MonoBehaviour:
   m_Name: ItemData4
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemName: "Mikstura Si\u0142y"
-  description: "Otrzymaj 5 [Si\u0142a]"
   icon: {fileID: -294570245, guid: cb28cac4edc49aa4984523dadc4be86e, type: 3}
-  targetType: 0
   actions:
   - rid: 490815476803305545
   references:
@@ -24,7 +22,7 @@ MonoBehaviour:
     - rid: 490815476803305545
       type: {class: AddEffectAction, ns: , asm: Assembly-CSharp}
       data:
-        targetType: 0
+        targetType: 1
         effectToAdd:
           rid: 490815476803305546
     - rid: 490815476803305546

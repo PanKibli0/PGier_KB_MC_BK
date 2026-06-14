@@ -2,39 +2,47 @@ using UnityEngine;
 
 public class HandUI : MonoBehaviour
 {
-
     [SerializeField] private GameObject cardUIPrefab;
     [SerializeField] private Transform handParent;
 
-    void OnEnable()
+    
+    private EnergySystem energySystem;
+    private CardPileSystem cardPileSystem;
+    private HandSystem handSystem;
+    private UnitsManager unitsManager;
+    private RelicManager relics;
+
+    public void init(EnergySystem energySystem, CardPileSystem cardPileSystem, HandSystem handSystem, UnitsManager unitsManager, RelicManager relics)
     {
-        if (HandSystem.Instance != null)
-        {
-            HandSystem.Instance.OnCardAddedToHand += createCardUI;
-            HandSystem.Instance.OnHandCleared += clearHandUI;
-        }
+        this.energySystem = energySystem;
+        this.cardPileSystem = cardPileSystem;
+        this.handSystem = handSystem;
+        this.unitsManager = unitsManager;
+        this.relics = relics;
+
+        handSystem.OnCardAddedToHand += createCardUI;
+        handSystem.OnHandCleared += clearHandUI;
     }
 
-    void OnDisable()
+    void OnDestroy()
     {
-        if (HandSystem.Instance != null)
+        if (handSystem != null)
         {
-            HandSystem.Instance.OnCardAddedToHand -= createCardUI;
-            HandSystem.Instance.OnHandCleared -= clearHandUI;
+            handSystem.OnCardAddedToHand -= createCardUI;
+            handSystem.OnHandCleared -= clearHandUI;
         }
     }
 
     void createCardUI(Card card)
     {
         GameObject cardObj = Instantiate(cardUIPrefab, handParent);
-        cardObj.GetComponent<CardUIPlayable>().init(card);
+        cardObj.GetComponent<CardUIPlayable>()
+            .init(card, energySystem, cardPileSystem, handSystem, unitsManager, relics);
     }
 
     void clearHandUI()
     {
         foreach (Transform child in handParent)
-        {
             Destroy(child.gameObject);
-        }
     }
 }

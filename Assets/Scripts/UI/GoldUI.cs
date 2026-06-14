@@ -24,8 +24,6 @@ public class GoldUI : MonoBehaviour
 
     private void updateGold(int gold)
     {
-        Debug.Log($"<color=yellow>Złoto: {gold}</color>");
-
         goldText.text = gold.ToString();
     }
 }

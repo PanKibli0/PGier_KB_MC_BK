@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class RestCardComparePanel : MonoBehaviour
 {
@@ -29,10 +30,15 @@ public class RestCardComparePanel : MonoBehaviour
 
     public void onConfirm()
     {
-        int index = GameManager.Instance.currentDeck.IndexOf(originalCard.data);
-        if (index != -1)
-            GameManager.Instance.currentDeck[index] = upgradedCard.data;
-
+        List<CardData> deck = GameManager.Instance.currentDeck;
+        for (int i = 0; i < deck.Count; i++)
+        {
+            if (ReferenceEquals(deck[i], originalCard.data))
+            {
+                deck[i] = upgradedCard.data;
+                break;
+            }
+        }
         restSceneUI.onUpgradeCompleted();
         gameObject.SetActive(false);
     }

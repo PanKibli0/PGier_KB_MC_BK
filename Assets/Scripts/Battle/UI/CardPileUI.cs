@@ -3,23 +3,24 @@ using TMPro;
 
 public class CardPileUI : MonoBehaviour
 {
-    public CardPileSystem cardPileSystem;
+    private CardPileSystem cardPileSystem;
 
-    public TMP_Text drawPileCountText;
-    public TMP_Text discardPileCountText;
-    public TMP_Text exhaustedPileCountText;
+    [SerializeField] private TMP_Text drawPileCountText;
+    [SerializeField] private TMP_Text discardPileCountText;
+    [SerializeField] private TMP_Text exhaustedPileCountText;
+    [SerializeField] private GameObject exhaustPanel;
 
-    void OnEnable()
+    public void init(CardPileSystem cardPileSystem)
     {
-        if (cardPileSystem != null)
-        {
-            cardPileSystem.OnDrawPileChanged += updateDrawPileCount;
-            cardPileSystem.OnDiscardPileChanged += updateDiscardPileCount;
-            cardPileSystem.OnExhaustPileChanged += updateExhaustedPileCount;
-        }
+        this.cardPileSystem = cardPileSystem;
+        cardPileSystem.OnDrawPileChanged += updateDrawPileCount;
+        cardPileSystem.OnDiscardPileChanged += updateDiscardPileCount;
+        cardPileSystem.OnExhaustPileChanged += updateExhaustedPileCount;
+
+        exhaustPanel.SetActive(false);
     }
 
-    void OnDisable()
+    void OnDestroy()
     {
         if (cardPileSystem != null)
         {
@@ -34,13 +35,14 @@ public class CardPileUI : MonoBehaviour
         drawPileCountText.text = $"{count}";
     }
 
-    void updateDiscardPileCount(int count) {
+    void updateDiscardPileCount(int count)
+    {
         discardPileCountText.text = $"{count}";
     }
 
-    void updateExhaustedPileCount(int count) {
+    void updateExhaustedPileCount(int count)
+    {
         exhaustedPileCountText.text = $"{count}";
+        exhaustPanel.SetActive(count > 0);
     }
 }
-
-

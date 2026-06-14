@@ -3,9 +3,16 @@ using System.Collections.Generic;
 
 public class CardReward : BaseReward
 {
-    public List<CardData> cards;
-    public CardRewardPanel panel;
-    public GameObject rewardsList;
+    private List<CardData> cards;
+    private CardRewardPanel panel;
+    private GameObject rewardsList;
+
+    public void init(List<CardData> cards, CardRewardPanel panel, GameObject rewardsList)
+    {
+        this.cards = cards;
+        this.panel = panel;
+        this.rewardsList = rewardsList;
+    }
 
     public override void collect()
     {
@@ -22,11 +29,11 @@ public class CardReward : BaseReward
 
     public override string getDescription()
     {
-        return "Zdobądź kartę";
+        return "Zdobadz kartę";
     }
 
     public override Sprite getIcon()
     {
-        return null;
+        return Resources.Load<Sprite>("Icons/DrawCardAction");
     }
 }
