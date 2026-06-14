@@ -200,38 +200,54 @@ public class CardUIPlayable : CardUIBase, IBeginDragHandler, IDragHandler, IEndD
     {
         Unit player = unitsManager.player;
 
+        // Wybór animacji na podstawie akcji karty
+        foreach (var action in card.actions)
+        {
+            if (action is DamageAction || action is TrueDamageAction)
+                player.PlayAnimation("Attack");
+
+            else if (action is BlockAction)
+                player.PlayAnimation("Defence");
+
+            else if (action is HealAction)
+                player.PlayAnimation("Special");
+
+            else if (action is SummonAction)
+                player.PlayAnimation("Special");
+
+            else if (action is RemoveEffectAction)
+                player.PlayAnimation("Special");
+        }
+
+        // Dalej zostawiasz istniej¹cy kod
         energySystem.spendEnergy(card.currentCost);
 
         foreach (var action in card.actions)
         {
-            List<Unit> targets = TargetingSystem.getTargets(
-                player,
-                action.targetType,
-                selectedTarget
-            );
+            List<Unit> targets = TargetingSystem.getTargets(player, action.targetType, selectedTarget);
 
             foreach (Unit target in targets)
             {
                 if (target != null)
+                {
+                    target.PlayAnimation("HURT");
                     action.execute(target, player);
+                }
             }
         }
 
         relics.onCardPlayed(player, card);
 
         if (card.data.exhaust)
-        {
             cardPileSystem.exhaustCard(card);
-        }
         else
-        {
             cardPileSystem.discardCard(card);
-        }
 
         handSystem.hand.Remove(card);
 
         Destroy(gameObject);
     }
+
 
     private void returnToHand()
     {

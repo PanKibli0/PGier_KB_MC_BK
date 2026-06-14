@@ -28,6 +28,8 @@ public class Unit : MonoBehaviour
     public int currentHealth;
     public int block;
 
+    public Animator animator;
+
     [SerializeReference] public List<BaseStatusEffect> effects = new List<BaseStatusEffect>();
     public UnitMove nextMove;
 
@@ -39,6 +41,13 @@ public class Unit : MonoBehaviour
 
     private RelicManager relics;
     private UnitsManager unitsManager;
+
+    public void PlayAnimation(string triggerName)
+    {
+        if (animator == null) return;
+        animator.SetTrigger(triggerName);
+    }
+
 
     public void init(BaseUnitData data, UnitType type, UnitStatsUIManager statsUIManager, 
         UnitsManager unitsManager)
@@ -62,6 +71,10 @@ public class Unit : MonoBehaviour
 
         statsUIManager.createStatsUI(this);
         relics = GameManager.Instance.relicManager;
+
+        animator = GetComponentInChildren<Animator>();
+        if (animator != null)
+            animator.Play("Idle"); // domyœlnie idle
     }
 
     public void setStatsUI(UnitStatsUI ui)
@@ -105,6 +118,8 @@ public class Unit : MonoBehaviour
 
         statsUI?.updateUI();
 
+        PlayAnimation("Hurt");
+
         if (unitType == UnitType.Player && GameManager.Instance != null) // REWORK
             GameManager.Instance.setHealth(currentHealth);
 
@@ -116,6 +131,7 @@ public class Unit : MonoBehaviour
 
     public void die()
     {
+        PlayAnimation("Death");
         isDead = true;
         if (unitType == UnitType.Enemy)
             GameManager.Instance?.addEnemyKill();
