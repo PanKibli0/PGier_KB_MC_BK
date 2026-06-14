@@ -15,7 +15,6 @@ public class DrawCardAction : BaseAction
         return $"Dobierz {amount} karty.";
     }
 
-    // public override Sprite getIcon() { return Resources.Load<Sprite>("Icons/draw"); }
-    public override string getIconPath() { return "Icons/obrona"; }
+    public override string getIconPath() { return "Icons/DrawCardAction"; }
     public override string getValue() { return $"{amount}"; }
 }

@@ -20,8 +20,7 @@ public class WeaknessEffect : BaseStatusEffect
 
     public override string getIconPath()
     {
-        return "Icons/wrazliwosc";
-        //zmienic na odpowiednia ikone
+        return "Icons/oslabienie";
     }
 
     public override void onDealDamage(Unit owner, Unit target, ref int damage)

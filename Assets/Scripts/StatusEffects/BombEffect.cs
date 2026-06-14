@@ -29,10 +29,9 @@ public class BombEffect : BaseStatusEffect
 
     public override string getDescription()
     {
-        if (turns == 1 ) return $"Na koniec tury zadaje {damage} <sprite name=\"atak\"> obrażeń.";
+        if (turns == 1) return $"Na koniec tury zadaje {damage} <sprite name=\"atak\"> obrażeń.";
 
         return $"Po {turns} turach zada {damage} <sprite name=\"atak\"> obrażeń.";
-
     }
 
     public override string getActionDescription()

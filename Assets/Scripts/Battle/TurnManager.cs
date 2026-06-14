@@ -1,4 +1,5 @@
 using UnityEngine;
+using TMPro;
 using System;
 using System.Collections.Generic;
 using Random = UnityEngine.Random;
@@ -7,6 +8,7 @@ public class TurnManager : MonoBehaviour
 {
     public event Action OnTurnEnded;
     public int turnNumber = 1;
+    [SerializeField] private TMP_Text turnLabel;
 
     private RelicManager relics;
     private EnergySystem energySystem;
@@ -27,6 +29,8 @@ public class TurnManager : MonoBehaviour
         baseDrawCount = GameManager.Instance.selectedCharacter.baseDrawCount;
         ActionEventBus.OnDrawCountChanged += onDrawCountChanged;
         ActionEventBus.OnTakeTurn += onTakeTurnRequested;
+
+        updateTurnLabel();
     }
 
     void OnDestroy()
@@ -38,6 +42,12 @@ public class TurnManager : MonoBehaviour
     private void onDrawCountChanged(int amount)
     {
         drawCountBonus += amount;
+    }
+
+    private void updateTurnLabel()
+    {
+        if (turnLabel != null)
+            turnLabel.text = $"Zakończ {turnNumber} turę";
     }
 
     public void calculateAllIntents()
@@ -73,6 +83,8 @@ public class TurnManager : MonoBehaviour
 
         relics.onTurnStart(unitsManager.player, turnNumber);
         unitsManager.player?.onEffectsTurnStart();
+
+        updateTurnLabel();
 
         OnTurnEnded?.Invoke();
     }

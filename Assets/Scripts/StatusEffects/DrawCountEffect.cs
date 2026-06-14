@@ -30,7 +30,7 @@ public class DrawCountEffect : BaseStatusEffect
     }
 
     public override string getMainText() { return bonus > 0 ? $"+{bonus}" : $"{bonus}"; }
-    public override string getIconPath() { return "Icons/draw"; }
+    public override string getIconPath() { return "Icons/DrawCardAction"; }
 
     public override string getDescription()
     {
@@ -42,7 +42,7 @@ public class DrawCountEffect : BaseStatusEffect
     public override string getActionDescription()
     {
         return bonus > 0
-            ? $"W następnej turze dobierz +{bonus} kart <sprite name=\"draw\">"
-            : $"W następnej turze dobierz {bonus} kart <sprite name=\"draw\">";
+            ? $"W następnej turze dobierz +{bonus} kart <sprite name=\"DrawCardAction\">"
+            : $"W następnej turze dobierz {bonus} kart <sprite name=\"DrawCardAction\">";
     }
 }

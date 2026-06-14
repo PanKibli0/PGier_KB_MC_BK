@@ -20,20 +20,19 @@ MonoBehaviour:
   shopPrice: 0
   exhaust: 1
   actions:
-  - rid: 490815630673969152
+  - rid: 2694950610379997186
   - rid: 490815630673969226
-  passiveAbilities: []
   upgrade: {fileID: 11400000, guid: 1373cd87ee73da145a2c24616238d4a5, type: 2}
   references:
     version: 2
     RefIds:
-    - rid: 490815630673969152
-      type: {class: DamageAction, ns: , asm: Assembly-CSharp}
-      data:
-        targetType: 0
-        damageAmount: 5
     - rid: 490815630673969226
       type: {class: DamageAction, ns: , asm: Assembly-CSharp}
       data:
         targetType: 1
         damageAmount: 15
+    - rid: 2694950610379997186
+      type: {class: PureDamageAction, ns: , asm: Assembly-CSharp}
+      data:
+        targetType: 0
+        damageAmount: 5

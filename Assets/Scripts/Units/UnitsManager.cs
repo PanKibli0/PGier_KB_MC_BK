@@ -277,6 +277,7 @@ public class UnitsManager : MonoBehaviour
 
         if (!playerAlive)
         {
+            SaveSystem.deleteSave();
             SceneManager.LoadScene("EndScreenScene", LoadSceneMode.Additive);
         }
         else if (!enemiesAlive)

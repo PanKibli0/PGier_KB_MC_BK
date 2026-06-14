@@ -21,8 +21,7 @@ MonoBehaviour:
   exhaust: 0
   actions:
   - rid: 490815630673969152
-  - rid: 490815630673969155
-  passiveAbilities: []
+  - rid: 2694950610379997185
   upgrade: {fileID: 0}
   references:
     version: 2
@@ -32,17 +31,7 @@ MonoBehaviour:
       data:
         targetType: 1
         damageAmount: 5
-    - rid: 490815630673969155
-      type: {class: AddEffectAction, ns: , asm: Assembly-CSharp}
+    - rid: 2694950610379997185
+      type: {class: StunAction, ns: , asm: Assembly-CSharp}
       data:
         targetType: 1
-        effectToAdd:
-          rid: 490815630673969224
-    - rid: 490815630673969224
-      type: {class: WeaknessEffect, ns: , asm: Assembly-CSharp}
-      data:
-        effectName: "Os\u0142abienie"
-        isMergeable: 1
-        isDebuff: 1
-        duration: 2
-        multiplier: 0.75

@@ -3,7 +3,6 @@ using UnityEngine;
 [System.Serializable]
 public class PoisonEffect : BaseStatusEffect
 {
-    // DEBUG
     public int stacks;
 
     public PoisonEffect()
