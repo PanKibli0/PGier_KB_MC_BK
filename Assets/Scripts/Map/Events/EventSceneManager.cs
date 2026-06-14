@@ -41,6 +41,17 @@ public class EventSceneManager : MonoBehaviour
             btn.init(choice, this);
         }
     }
+    private void loadEvent(EventData newEvent)
+    {
+        currentEvent = newEvent;
+
+        foreach (Transform child in choicesParent)
+            Destroy(child.gameObject);
+
+        resultPanel.SetActive(false);
+
+        setupEvent();
+    }
 
     public void selectChoice(EventChoice choice)
     {
@@ -81,6 +92,11 @@ public class EventSceneManager : MonoBehaviour
                         return;
                     }
             }
+        }
+        if (choice.nextEvent != null)
+        {
+            loadEvent(choice.nextEvent);
+            return;
         }
 
         resultPanel.SetActive(true);

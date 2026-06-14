@@ -15,7 +15,7 @@ MonoBehaviour:
   unitName: Lodowy Slime
   graphicPrefab: {fileID: -8653719598885068355, guid: 3a8156553d0e31a42b40ee3a24ba6b17, type: 3}
   minHealth: 32
-  maxHealth: 45
+  maxHealth: 41
   startEffects: []
   aiType: 1
   moves:

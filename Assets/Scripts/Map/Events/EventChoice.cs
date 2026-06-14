@@ -7,4 +7,5 @@ public class EventChoice
     public string buttonText;
     public string resultText;
     public List<EventEffect> effects = new List<EventEffect>();
+    public EventData nextEvent;
 }

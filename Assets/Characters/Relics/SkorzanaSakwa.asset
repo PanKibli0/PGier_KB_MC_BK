@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9eb029be0ed4b7545af6ac53b951eaff, type: 3}
+  m_Name: SkorzanaSakwa
+  m_EditorClassIdentifier: Assembly-CSharp::RelicData
+  relicName: "Sk\xF3rzana sakwa"
+  icon: {fileID: 8918262245919441485, guid: 5e0ed39bfb00ae8429844e10f32ab759, type: 3}
+  trigger: 4
+  actions:
+  - rid: 4436522896542138380
+  turnsBetweenTriggers: 0
+  requiredCardType: 1
+  anyCardType: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: 4436522896542138380
+      type: {class: BlockAction, ns: , asm: Assembly-CSharp}
+      data:
+        targetType: 0
+        blockAmount: 3

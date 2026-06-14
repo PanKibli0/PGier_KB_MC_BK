@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9eb029be0ed4b7545af6ac53b951eaff, type: 3}
+  m_Name: HelmKrzyzowca
+  m_EditorClassIdentifier: Assembly-CSharp::RelicData
+  relicName: "He\u0142m Krzy\u017Cowca"
+  icon: {fileID: 2301663269990282410, guid: 6110ea4c89fb6d24d89903a2455b2545, type: 3}
+  trigger: 3
+  actions:
+  - rid: 4436522896542138381
+  turnsBetweenTriggers: 0
+  requiredCardType: 0
+  anyCardType: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: 4436522896542138381
+      type: {class: BlockAction, ns: , asm: Assembly-CSharp}
+      data:
+        targetType: 0
+        blockAmount: 3

@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c279752beb98a74b8d182cbcad357e9, type: 3}
+  m_Name: CiemneLochy2
+  m_EditorClassIdentifier: Assembly-CSharp::EventData
+  eventName: Ciemne Lochy
+  description: "Poparzy\u0142e\u015B si\u0119 przy odpalaniu, ale odpali\u0142e\u015B
+    pochodni\u0119. "
+  illustration: {fileID: 0}
+  choices:
+  - buttonText: "Id\u017A w lewo."
+    resultText: "Napotka\u0142e\u015B przeciwnik\xF3w."
+    effects:
+    - type: 4
+      intValue: 0
+      relic: {fileID: 0}
+    nextEvent: {fileID: 0}
+  - buttonText: "Id\u017A w prawo."
+    resultText: "Znalaz\u0142e\u015B ukryty relikt."
+    effects:
+    - type: 3
+      intValue: 0
+      relic: {fileID: 11400000, guid: a8986e169db8ef846802780e9065720a, type: 2}
+    nextEvent: {fileID: 0}

@@ -17,7 +17,7 @@ MonoBehaviour:
   - rid: 490816083681607696
   - rid: 490816083681607697
   conditions: []
-  weight: 1
+  weight: 4
   references:
     version: 2
     RefIds:
@@ -25,7 +25,7 @@ MonoBehaviour:
       type: {class: DamageAction, ns: , asm: Assembly-CSharp}
       data:
         targetType: 1
-        damageAmount: 7
+        damageAmount: 4
     - rid: 490816083681607697
       type: {class: AddEffectAction, ns: , asm: Assembly-CSharp}
       data:
@@ -38,5 +38,5 @@ MonoBehaviour:
         effectName: "Wra\u017Cliwo\u015B\u0107"
         isMergeable: 1
         isDebuff: 1
-        duration: 3
+        duration: 2
         multiplier: 1.5

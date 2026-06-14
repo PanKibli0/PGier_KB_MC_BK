@@ -2370,7 +2370,11 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 832
+<<<<<<< HEAD:Assets/Characters/Player/Summons/wiewior/sprite/wiew.psb.meta
       y: 1630
+=======
+      y: 1969
+>>>>>>> origin/S11-Michal:Assets/Characters/Player/Summons/wiewior/sprite/wiewior.psb.meta
       width: 147
       height: 105
     spriteID: 25c84010b62fbd54b9e01d32ca7f2fba

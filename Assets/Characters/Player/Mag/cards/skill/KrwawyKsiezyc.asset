@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be91687817927d141b5fa4be2f12884b, type: 3}
+  m_Name: KrwawyKsiezyc
+  m_EditorClassIdentifier: Assembly-CSharp::CardData
+  cardName: "Krwawy Ksi\u0119\u017Cyc"
+  cost: 2
+  type: 1
+  rarity: 1
+  image: {fileID: -8763310792702208652, guid: 5b7b748e0ea5ff34f909144d30b6f6e7, type: 3}
+  shopPrice: 0
+  exhaust: 0
+  actions:
+  - rid: 490815751144079365
+  - rid: 4436522908578218007
+  - rid: 4436522908578218009
+  passiveAbilities: []
+  upgrade: {fileID: 11400000, guid: 6478aae60a578a84aa061bb789241b24, type: 2}
+  references:
+    version: 2
+    RefIds:
+    - rid: 490815751144079365
+      type: {class: AddEffectAction, ns: , asm: Assembly-CSharp}
+      data:
+        targetType: 3
+        effectToAdd:
+          rid: 490815751144079367
+    - rid: 490815751144079367
+      type: {class: BleedingEffect, ns: , asm: Assembly-CSharp}
+      data:
+        effectName: Krwawienie
+        isMergeable: 1
+        isDebuff: 1
+        stacks: 2
+    - rid: 4436522908578218007
+      type: {class: AddEffectAction, ns: , asm: Assembly-CSharp}
+      data:
+        targetType: 0
+        effectToAdd:
+          rid: 4436522908578218008
+    - rid: 4436522908578218008
+      type: {class: StrengthEffect, ns: , asm: Assembly-CSharp}
+      data:
+        effectName: "Si\u0142a"
+        isMergeable: 1
+        isDebuff: 0
+        value: 2
+    - rid: 4436522908578218009
+      type: {class: BlockAction, ns: , asm: Assembly-CSharp}
+      data:
+        targetType: 0
+        blockAmount: 2

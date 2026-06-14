@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab0e520ee75d57649b2113a55bc66e80, type: 3}
+  m_Name: Wiewior
+  m_EditorClassIdentifier: Assembly-CSharp::UnitData
+  unitName: "Wiewi\xF3r"
+  graphicPrefab: {fileID: -8653719598885068355, guid: db3dc1ec67b341d44b2bf0b806a389c1, type: 3}
+  minHealth: 11
+  maxHealth: 16
+  startEffects:
+  - rid: 4436523131265876052
+  aiType: 1
+  moves:
+  - {fileID: 11400000, guid: ec567193445a17c4abff60675cd719ff, type: 2}
+  references:
+    version: 2
+    RefIds:
+    - rid: 4436523131265876052
+      type: {class: StrengthEffect, ns: , asm: Assembly-CSharp}
+      data:
+        effectName: "Si\u0142a"
+        isMergeable: 1
+        isDebuff: 0
+        value: 1

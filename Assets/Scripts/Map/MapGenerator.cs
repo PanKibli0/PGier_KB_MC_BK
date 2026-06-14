@@ -31,10 +31,10 @@ public static class MapGenerator
         node31.difficulty = BattleDifficulty.Normal;
         node31.gridPosition = new Vector2Int(2, 2);
 
-        BattleNode node32 = new BattleNode();
-        node32.enemies = pool.eliteFights[0].enemies;
-        node32.difficulty = BattleDifficulty.Elite;
-        node32.gridPosition = new Vector2Int(3, 2);
+        //BattleNode node32 = new BattleNode();
+        //node32.enemies = pool.eliteFights[0].enemies;
+        //node32.difficulty = BattleDifficulty.Elite;
+        //node32.gridPosition = new Vector2Int(3, 2);
 
         BattleNode node33 = new BattleNode();
         node33.enemies = pool.normalFights[Random.Range(0, pool.normalFights.Count)].enemies;
@@ -55,11 +55,20 @@ public static class MapGenerator
         shopNode.gridPosition = new Vector2Int(3, 0); 
         shopNode.isUnlocked = true;
 
+        EventNode eventNode = new EventNode();
+        eventNode.gridPosition = new Vector2Int(3, 2);
+        eventNode.isUnlocked = true;
+        if (eventNode.eventData == null)
+        {
+            eventNode.eventData = GameManager.Instance.eventsPool.GetRandomEvent();
+        }
 
-        node11.connections = new List<BaseNode> { node21,  restNode };
+        GameManager.Instance.currentEvent = eventNode.eventData;
+
+        node11.connections = new List<BaseNode> { node21,  restNode }; 
         node21.connections = new List<BaseNode> { node31 };
-        node22.connections = new List<BaseNode> { node32, node33 };
-        restNode.connections = new List<BaseNode> { node31, node32 };
+        node22.connections = new List<BaseNode> { eventNode, node33 }; //eventNode -> node32
+        restNode.connections = new List<BaseNode> { node31, eventNode }; //eventNode -> node32
         restNode0.connections = new List<BaseNode> { restNode, node22 };
         shopNode.connections = new List<BaseNode> { restNode,node22 };
 
@@ -67,11 +76,14 @@ public static class MapGenerator
         nodes.Add(node21);
         nodes.Add(node22);
         nodes.Add(node31);
-        nodes.Add(node32);
+        //nodes.Add(node32);
         nodes.Add(node33);
         nodes.Add(restNode);
         nodes.Add(restNode0);
         nodes.Add(shopNode);
+        nodes.Add(eventNode);
+        node21.connections.Add(eventNode);
+        eventNode.connections.Add(node31);
 
         foreach (var node in nodes)
             node.visitedIconPath = "Icons_map/X_" + Random.Range(1, 4);

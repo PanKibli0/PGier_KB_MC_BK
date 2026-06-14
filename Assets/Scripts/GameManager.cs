@@ -37,8 +37,11 @@ public class GameManager : MonoBehaviour
     [Header("Relics")]
     public RelicManager relicManager;
     public RelicData[] startRelics;
+    public RelicData[] relicPool;
 
+    public EventsPool eventsPool;
 
+    [HideInInspector] public EventData currentEvent;
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -104,7 +107,13 @@ public class GameManager : MonoBehaviour
     {
         floorsCompleted++;
     }
+    public RelicData getRandomRelic()
+    {
+        if (relicPool == null || relicPool.Length == 0)
+            return null;
 
+        return relicPool[UnityEngine.Random.Range(0, relicPool.Length)];
+    }
 
     // DEBUGs
     void Update()
@@ -117,6 +126,9 @@ public class GameManager : MonoBehaviour
     
         if (Input.GetKeyDown(KeyCode.P))
             setHealth(currentHealth/2);
+
+        if (Input.GetKeyDown(KeyCode.E))
+            SceneManager.LoadScene("EventScene");
     }
 
     // END DEBUG

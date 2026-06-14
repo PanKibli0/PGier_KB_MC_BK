@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab0e520ee75d57649b2113a55bc66e80, type: 3}
+  m_Name: Szczuroslaw
+  m_EditorClassIdentifier: Assembly-CSharp::UnitData
+  unitName: "Szczuros\u0142aw"
+  graphicPrefab: {fileID: -8653719598885068355, guid: 5e5bcefa59223bc4a8e7518e591f69fe, type: 3}
+  minHealth: 14
+  maxHealth: 18
+  startEffects: []
+  aiType: 1
+  moves:
+  - {fileID: 11400000, guid: d6b7d32ffeb33cd4e96458ca41278bd1, type: 2}
+  - {fileID: 11400000, guid: 86555a00a8f409741855eaf57d8b93de, type: 2}
+  references:
+    version: 2
+    RefIds: []

@@ -15,16 +15,13 @@ MonoBehaviour:
   moveName: Atak
   actions:
   - rid: 3376038571514527895
-  condition:
-    rid: -2
+  conditions: []
   weight: 2
   references:
     version: 2
     RefIds:
-    - rid: -2
-      type: {class: , ns: , asm: }
     - rid: 3376038571514527895
       type: {class: DamageAction, ns: , asm: Assembly-CSharp}
       data:
         targetType: 1
-        damageAmount: 6
+        damageAmount: 7

@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be91687817927d141b5fa4be2f12884b, type: 3}
+  m_Name: Uzdrowienie
+  m_EditorClassIdentifier: Assembly-CSharp::CardData
+  cardName: Uzdrowienie
+  cost: 2
+  type: 1
+  rarity: 1
+  image: {fileID: 0}
+  shopPrice: 0
+  exhaust: 0
+  actions:
+  - rid: 4436522908578218025
+  passiveAbilities: []
+  upgrade: {fileID: 11400000, guid: c933fdf981dcd344fb4ebf75da09052f, type: 2}
+  references:
+    version: 2
+    RefIds:
+    - rid: 4436522908578218025
+      type: {class: AddEffectAction, ns: , asm: Assembly-CSharp}
+      data:
+        targetType: 2
+        effectToAdd:
+          rid: 4436522908578218026
+    - rid: 4436522908578218026
+      type: {class: RegenerationEffect, ns: , asm: Assembly-CSharp}
+      data:
+        effectName: Regeneracja
+        isMergeable: 1
+        isDebuff: 0
+        stacks: 4

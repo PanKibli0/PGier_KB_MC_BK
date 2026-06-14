@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a47322801de95b348a0db7e09c294398, type: 3}
+  m_Name: Ciecie
+  m_EditorClassIdentifier: Assembly-CSharp::UnitMove
+  moveName: "Ci\u0119cie"
+  actions:
+  - rid: 4436523131265876036
+  - rid: 4436523131265876037
+  conditions:
+  - rid: 4436523131265876039
+  weight: 1
+  references:
+    version: 2
+    RefIds:
+    - rid: 4436523131265876036
+      type: {class: DamageAction, ns: , asm: Assembly-CSharp}
+      data:
+        targetType: 1
+        damageAmount: 6
+    - rid: 4436523131265876037
+      type: {class: AddEffectAction, ns: , asm: Assembly-CSharp}
+      data:
+        targetType: 1
+        effectToAdd:
+          rid: 4436523131265876038
+    - rid: 4436523131265876038
+      type: {class: BleedingEffect, ns: , asm: Assembly-CSharp}
+      data:
+        effectName: Krwawienie
+        isMergeable: 1
+        isDebuff: 1
+        stacks: 2
+    - rid: 4436523131265876039
+      type: {class: ForceNextMoveCondition, ns: , asm: Assembly-CSharp}
+      data:
+        mandatory: 1
+        nextMove: {fileID: 11400000, guid: b07807fe4a7a3ce4db63cbd62cea1a94, type: 2}

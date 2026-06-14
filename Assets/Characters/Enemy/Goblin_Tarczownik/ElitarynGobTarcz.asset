@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ab0e520ee75d57649b2113a55bc66e80, type: 3}
-  m_Name: Goblin
+  m_Name: ElitarynGobTarcz
   m_EditorClassIdentifier: Assembly-CSharp::UnitData
-  unitName: Goblin Wojownik
+  unitName: Elitarny Goblin Tarczownik
   graphicPrefab: {fileID: 962038764683568564, guid: 7010fdafd4eb3104b825b18e6c282fd9, type: 3}
-  minHealth: 34
-  maxHealth: 40
+  minHealth: 22
+  maxHealth: 30
   startEffects: []
-  aiType: 1
+  aiType: 2
   moves:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 1d577bc738737504fafaa6f462d9bc3f, type: 2}
+  - {fileID: 11400000, guid: 74e53fccc08dd25409f2305eaab93ef1, type: 2}
   references:
     version: 2
     RefIds: []

@@ -14,13 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UnitData
   unitName: "J\u0119dza od matmy"
   graphicPrefab: {fileID: -8653719598885068355, guid: 20fc7283febd31d4c9009c0443ee81e0, type: 3}
-  minHealth: 44
-  maxHealth: 50
+  minHealth: 40
+  maxHealth: 45
   startEffects: []
   aiType: 1
   moves:
   - {fileID: 11400000, guid: e72595765e418ec4b8170d96eb05b29d, type: 2}
   - {fileID: 11400000, guid: 5f610792c454ff947a094c0b80e1916f, type: 2}
+  - {fileID: 11400000, guid: d009ab6fb77159a48bfceb91ed440415, type: 2}
   references:
     version: 2
     RefIds: []

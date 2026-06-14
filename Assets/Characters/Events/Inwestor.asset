@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c279752beb98a74b8d182cbcad357e9, type: 3}
+  m_Name: Inwestor
+  m_EditorClassIdentifier: Assembly-CSharp::EventData
+  eventName: Nieznajomy
+  description: "Nieznajomy przedstawia si\u0119 jako 'b\xF3g rynku' i powiedzia\u0142,
+    \u017Ce za zapomoga 100 z\u0142ota"
+  illustration: {fileID: 0}
+  choices:
+  - buttonText: "Daj 100 z\u0142ota."
+    resultText: 
+    effects:
+    - type: 0
+      intValue: -100
+      relic: {fileID: 0}
+    nextEvent: {fileID: 11400000, guid: 220247f61e9ec9a468415caa924bcc70, type: 2}
+  - buttonText: "Odejd\u017A."
+    resultText: "Odszed\u0142e\u015B bez po\u017Cegnania."
+    effects: []
+    nextEvent: {fileID: 0}

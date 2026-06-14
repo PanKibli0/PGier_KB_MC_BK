@@ -1,0 +1,95 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb2a3ffb3a2c58640922a7465226e6e6, type: 3}
+  m_Name: MaskaZlodzieja
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemName: "Maska Z\u0142odzieja"
+  description: "Oczy\u015B\u0107 siebie i sojusznik\xF3w ze wszystkich efekt\xF3w"
+  icon: {fileID: -6894775185251086373, guid: 05f9059ee551bd54a882fb7015ebad79, type: 3}
+  targetType: 7
+  actions:
+  - rid: 4436522908578217991
+  - rid: 4436522908578217992
+  - rid: 4436522908578217995
+  - rid: 4436522908578217998
+  - rid: 4436522908578218000
+  references:
+    version: 2
+    RefIds:
+    - rid: 4436522908578217991
+      type: {class: RemoveEffectAction, ns: , asm: Assembly-CSharp}
+      data:
+        targetType: 7
+        effectToRemove:
+          rid: 4436522908578217993
+    - rid: 4436522908578217992
+      type: {class: RemoveEffectAction, ns: , asm: Assembly-CSharp}
+      data:
+        targetType: 7
+        effectToRemove:
+          rid: 4436522908578217994
+    - rid: 4436522908578217993
+      type: {class: WeaknessEffect, ns: , asm: Assembly-CSharp}
+      data:
+        effectName: "Os\u0142abienie"
+        isMergeable: 1
+        isDebuff: 1
+        duration: 0
+        multiplier: 0.75
+    - rid: 4436522908578217994
+      type: {class: VulnerableEffect, ns: , asm: Assembly-CSharp}
+      data:
+        effectName: "Wra\u017Cliwo\u015B\u0107"
+        isMergeable: 1
+        isDebuff: 1
+        duration: 0
+        multiplier: 1.5
+    - rid: 4436522908578217995
+      type: {class: RemoveEffectAction, ns: , asm: Assembly-CSharp}
+      data:
+        targetType: 7
+        effectToRemove:
+          rid: 4436522908578217997
+    - rid: 4436522908578217997
+      type: {class: BleedingEffect, ns: , asm: Assembly-CSharp}
+      data:
+        effectName: Krwawienie
+        isMergeable: 1
+        isDebuff: 1
+        stacks: 0
+    - rid: 4436522908578217998
+      type: {class: RemoveEffectAction, ns: , asm: Assembly-CSharp}
+      data:
+        targetType: 7
+        effectToRemove:
+          rid: 4436522908578217999
+    - rid: 4436522908578217999
+      type: {class: PoisonEffect, ns: , asm: Assembly-CSharp}
+      data:
+        effectName: Trucizna
+        isMergeable: 1
+        isDebuff: 1
+        stacks: 0
+    - rid: 4436522908578218000
+      type: {class: RemoveEffectAction, ns: , asm: Assembly-CSharp}
+      data:
+        targetType: 7
+        effectToRemove:
+          rid: 4436522908578218002
+    - rid: 4436522908578218002
+      type: {class: FlameEffect, ns: , asm: Assembly-CSharp}
+      data:
+        effectName: "P\u0142omie\u0144"
+        isMergeable: 1
+        isDebuff: 1
+        value: 0
+        multiplier: 1

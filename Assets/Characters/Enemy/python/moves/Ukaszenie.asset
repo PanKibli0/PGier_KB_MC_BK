@@ -39,7 +39,7 @@ MonoBehaviour:
         effectName: Krwawienie
         isMergeable: 1
         isDebuff: 1
-        stacks: 3
+        stacks: 2
     - rid: 490816083681607718
       type: {class: CooldownCondition, ns: , asm: Assembly-CSharp}
       data:

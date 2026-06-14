@@ -18,9 +18,11 @@ MonoBehaviour:
   rarity: 1
   image: {fileID: -8763310792702208652, guid: 5b7b748e0ea5ff34f909144d30b6f6e7, type: 3}
   shopPrice: 0
+  exhaust: 0
   actions:
   - rid: 490815751144079365
   - rid: 490815751144079368
+  passiveAbilities: []
   upgrade: {fileID: 11400000, guid: 562bde3dfe5c54f43835396fea7a702f, type: 2}
   references:
     version: 2
@@ -37,7 +39,7 @@ MonoBehaviour:
         effectName: Krwawienie
         isMergeable: 1
         isDebuff: 1
-        stacks: 4
+        stacks: 6
     - rid: 490815751144079368
       type: {class: AddEffectAction, ns: , asm: Assembly-CSharp}
       data:

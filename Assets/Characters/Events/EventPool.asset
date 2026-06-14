@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 588b008c631f9fc4fad333bcaeaa030a, type: 3}
+  m_Name: EventPool
+  m_EditorClassIdentifier: Assembly-CSharp::EventsPool
+  events:
+  - {fileID: 11400000, guid: 02bcf42d254d3ea4596df1a765e52810, type: 2}
+  - {fileID: 11400000, guid: 32606b0bb360699478b2e0fa7226627f, type: 2}
+  - {fileID: 11400000, guid: e4bdc4e2da5399143bb1b9626facae70, type: 2}
+  - {fileID: 11400000, guid: 3c808622e717e33428c4901301e2e9c9, type: 2}
+  - {fileID: 11400000, guid: c338a29cdec499e4f835a1b13a85c8f1, type: 2}
+  - {fileID: 11400000, guid: bb9fa6d62038919429e80f51569eb799, type: 2}
+  - {fileID: 11400000, guid: 244878d3cef9226449ae32591bcc7544, type: 2}
+  - {fileID: 11400000, guid: 65f20fdfa254cd54cb8b7999f6d1bf2f, type: 2}
+  - {fileID: 11400000, guid: 598cf34d76476b34abc931f9bf489980, type: 2}
