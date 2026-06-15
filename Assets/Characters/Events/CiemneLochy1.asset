@@ -26,10 +26,7 @@ MonoBehaviour:
     nextEvent: {fileID: 11400000, guid: da7d0d8ad1ac7124dbe17115ee81086c, type: 2}
   - buttonText: "Id\u017A w lewo."
     resultText: "Napotka\u0142e\u015B przeciwnik\xF3w"
-    effects:
-    - type: 4
-      intValue: 0
-      relic: {fileID: 0}
+    effects: []
     nextEvent: {fileID: 0}
   - buttonText: "Id\u017A w prawo."
     resultText: "Wyszed\u0142e\u015B z loch\xF3w."

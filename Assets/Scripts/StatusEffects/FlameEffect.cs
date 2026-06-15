@@ -30,22 +30,13 @@ public class FlameEffect : BaseStatusEffect
     public override bool merge(BaseStatusEffect other)
     {
         FlameEffect o = (FlameEffect)other;
-
         duration += o.duration;
         value += o.value;
-
         return false;
     }
 
-    public override string getMainText()
-    {
-        return $"<color=#ff7a18>{duration}</color>";
-    }
-
-    public override string getIconPath()
-    {
-        return "Icons/flame";
-    }
+    public override string getMainText() { return $"<color=#ff7a18>{duration}</color>"; }
+    public override string getIconPath() { return "Icons/plomien"; }
 
     public override string getDescription()
     {
@@ -54,6 +45,6 @@ public class FlameEffect : BaseStatusEffect
 
     public override string getActionDescription()
     {
-        return $"Na³ó¿ P³omieñ ({duration}) <sprite name=\"flame\">";
+        return $"Na³ó¿ P³omieñ ({duration}) <sprite name=\"plomien\">";
     }
 }

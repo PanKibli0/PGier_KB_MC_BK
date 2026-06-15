@@ -238,6 +238,9 @@ public class CardUIPlayable : CardUIBase, IBeginDragHandler, IDragHandler, IEndD
 
         relics.onCardPlayed(player, card);
 
+        for (int i = player.effects.Count - 1; i >= 0; i--)
+            player.effects[i].onCardPlayed(player);
+
         if (card.data.exhaust)
             cardPileSystem.exhaustCard(card);
         else

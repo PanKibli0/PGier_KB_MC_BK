@@ -22,7 +22,6 @@ MonoBehaviour:
   actions:
   - rid: 490815768443486276
   - rid: 490815768443486277
-  passiveAbilities: []
   upgrade: {fileID: 0}
   references:
     version: 2
@@ -35,7 +34,7 @@ MonoBehaviour:
     - rid: 490815768443486277
       type: {class: AddEffectAction, ns: , asm: Assembly-CSharp}
       data:
-        targetType: 1
+        targetType: 0
         effectToAdd:
           rid: 490815768443486278
     - rid: 490815768443486278

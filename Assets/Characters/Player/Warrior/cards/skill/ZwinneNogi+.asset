@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be91687817927d141b5fa4be2f12884b, type: 3}
   m_Name: ZwinneNogi+
   m_EditorClassIdentifier: Assembly-CSharp::CardData
-  cardName: Zwinne nogi
+  cardName: Zwinne nogi+
   cost: 1
   type: 1
   rarity: 1

@@ -35,15 +35,8 @@ public class DodgeEffect : BaseStatusEffect
         return false;
     }
 
-    public override string getMainText()
-    {
-        return charges.ToString();
-    }
-
-    public override string getIconPath()
-    {
-        return "Icons/dodge";
-    }
+    public override string getMainText() { return charges.ToString(); }
+    public override string getIconPath() { return "Icons/unik"; }
 
     public override string getDescription()
     {

@@ -12,14 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be91687817927d141b5fa4be2f12884b, type: 3}
   m_Name: Szal+
   m_EditorClassIdentifier: Assembly-CSharp::CardData
-  cardName: "Sza\u0142"
+  cardName: "Sza\u0142+"
   cost: 1
   type: 1
   rarity: 1
   image: {fileID: -8763310792702208652, guid: 5b7b748e0ea5ff34f909144d30b6f6e7, type: 3}
   shopPrice: 0
+  exhaust: 0
   actions:
-  - rid: 490815630673969233
+  - rid: 2694950610379997189
   - rid: 490815630673969231
   upgrade: {fileID: 0}
   references:
@@ -38,8 +39,8 @@ MonoBehaviour:
         isMergeable: 1
         isDebuff: 0
         value: 3
-    - rid: 490815630673969233
-      type: {class: DamageAction, ns: , asm: Assembly-CSharp}
+    - rid: 2694950610379997189
+      type: {class: PureDamageAction, ns: , asm: Assembly-CSharp}
       data:
         targetType: 0
-        damageAmount: 5
+        damageAmount: 3

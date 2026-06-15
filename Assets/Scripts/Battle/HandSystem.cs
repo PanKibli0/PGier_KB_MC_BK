@@ -28,7 +28,7 @@ public class HandSystem : MonoBehaviour
     {
         if (hand.Count >= maxHandSize)
         {
-            cardPile.exhaustCard(card);
+            cardPile.discardCard(card);
             return;
         }
         hand.Add(card);

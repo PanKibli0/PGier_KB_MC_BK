@@ -12,6 +12,8 @@ public abstract class BaseStatusEffect
     public virtual void onTurnEnd(Unit owner) { }
     public virtual void onDealDamage(Unit owner, Unit target, ref int damage) { }
     public virtual void onReceiveDamage(Unit owner, Unit source, ref int damage) { }
+    public virtual void onCardPlayed(Unit owner) { }
+    public virtual void onHealthLost(Unit owner, int damageTaken) { }
     public virtual void onApply(Unit owner) { }
     public virtual void onRemove(Unit owner) { }
     public virtual bool merge(BaseStatusEffect other) { return false; }

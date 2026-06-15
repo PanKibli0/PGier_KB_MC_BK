@@ -50,6 +50,8 @@ public class GameManager : MonoBehaviour
     public List<ItemData> testItems;
     // END DEBUG
 
+    public SaveDatabase saveDatabase;
+
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -81,6 +83,8 @@ public class GameManager : MonoBehaviour
 
     public void startNewRun(CharacterData character)
     {
+        SaveSystem.deleteSave();
+
         selectedCharacter = character;
         maxHealth = character.maxHealth;
         setHealth(character.maxHealth);
@@ -137,6 +141,19 @@ public class GameManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E))
             SceneManager.LoadScene("EventScene");
+
+
+        if (Input.GetKeyDown(KeyCode.N) || Input.GetKeyDown(KeyCode.Escape))
+            SaveSystem.save(this);
+
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            if (SaveSystem.load(this))
+                UnityEngine.SceneManagement.SceneManager.LoadScene("MapScene");
+        }
+
+        if (Input.GetKeyDown(KeyCode.B))
+            SaveSystem.deleteSave();
     }
     // END DEBUG
 }

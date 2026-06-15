@@ -411,6 +411,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EndTurn
   turnNumber: 1
+  turnLabel: {fileID: 283278031}
 --- !u!1 &283278029
 GameObject:
   m_ObjectHideFlags: 0

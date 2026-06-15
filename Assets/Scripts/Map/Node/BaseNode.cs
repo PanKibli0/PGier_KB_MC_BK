@@ -18,5 +18,7 @@ public abstract class BaseNode
         isVisited = true;
         foreach (var connection in connections)
             connection.isUnlocked = true;
+
+        SaveSystem.save(GameManager.Instance);
     }
 }

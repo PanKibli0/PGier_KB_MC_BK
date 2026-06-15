@@ -18,8 +18,9 @@ MonoBehaviour:
   rarity: 1
   image: {fileID: -8763310792702208652, guid: 5b7b748e0ea5ff34f909144d30b6f6e7, type: 3}
   shopPrice: 0
+  exhaust: 0
   actions:
-  - rid: 490815630673969233
+  - rid: 2694950610379997188
   - rid: 490815630673969231
   upgrade: {fileID: 11400000, guid: 17352a3173ac83e43b91de98e3ff7df9, type: 2}
   references:
@@ -38,8 +39,8 @@ MonoBehaviour:
         isMergeable: 1
         isDebuff: 0
         value: 2
-    - rid: 490815630673969233
-      type: {class: DamageAction, ns: , asm: Assembly-CSharp}
+    - rid: 2694950610379997188
+      type: {class: PureDamageAction, ns: , asm: Assembly-CSharp}
       data:
         targetType: 0
         damageAmount: 5

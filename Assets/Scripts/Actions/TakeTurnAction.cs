@@ -12,6 +12,6 @@ public class TakeTurnAction : BaseAction
     {
         return $"Wykonaj natychmiastowo akcje sojusznika.";
     }
-    public override string getIconPath() { return "Icons/SummonAction"; }
-    public override string getValue() { return "<sprite name=\"zrecznosc\">"; }
+    public override string getIconPath() { return "Icons/TakeTurn"; }
+    public override string getValue() { return "<sprite name=\"TakeTurn\">"; }
 }
