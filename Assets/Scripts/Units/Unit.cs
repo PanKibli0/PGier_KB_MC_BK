@@ -114,13 +114,17 @@ public class Unit : MonoBehaviour
             damage -= blockUsed;
         }
 
+        if (damage > 0)
+            for (int i = effects.Count - 1; i >= 0; i--)
+                effects[i].onHealthLost(this, damage);
+
         currentHealth -= damage;
 
         statsUI?.updateUI();
 
         PlayAnimation("Hurt");
 
-        if (unitType == UnitType.Player && GameManager.Instance != null) // REWORK
+        if (unitType == UnitType.Player && GameManager.Instance != null) 
             GameManager.Instance.setHealth(currentHealth);
 
         if (currentHealth <= 0 && !isDead)
