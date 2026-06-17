@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3b0489177c50bd41b73d0bf57566df2, type: 3}
+  m_Name: MagCardPool
+  m_EditorClassIdentifier: Assembly-CSharp::CardPool
+  folderPath: Assets/Characters/Cards
+  cards:
+  - {fileID: 11400000, guid: 52bbb1c827050764cb2ea1b434dd69bb, type: 2}
+  - {fileID: 11400000, guid: 4002d223482461f4e91ae7fcea7c05fb, type: 2}
+  - {fileID: 11400000, guid: 1490d2304273d374c92adc36fffb15b1, type: 2}
+  - {fileID: 11400000, guid: 1918ad90550bc12499cecbe6feb2f445, type: 2}
+  - {fileID: 11400000, guid: 80399e9a22102d1429fb6ae35d7be383, type: 2}
+  - {fileID: 11400000, guid: 6efc5ee914a8406468c71f103beb7309, type: 2}
+  - {fileID: 11400000, guid: 203f68f0004a24643a60139412a6afab, type: 2}
+  - {fileID: 11400000, guid: 28190feabfc2ff647b6681d0c0a73c7d, type: 2}
+  - {fileID: 11400000, guid: b893d319d6bde3f4a93990fb428884a9, type: 2}
+  - {fileID: 11400000, guid: 20b45a2395980ee4dbb04f2717eb30c6, type: 2}
+  - {fileID: 11400000, guid: 9f3f0b1c13b58b7478dab807ddb6c792, type: 2}
+  - {fileID: 11400000, guid: 9a81813b7d0033343a2b78f41ebc4668, type: 2}
+  - {fileID: 11400000, guid: 5ac7a5a25faa0aa4387a391726f3b514, type: 2}
+  - {fileID: 11400000, guid: 340eb846c15125740a01c06290136f1a, type: 2}
+  - {fileID: 11400000, guid: 54c297f9698de7a4baf37beb899d5d07, type: 2}
+  - {fileID: 11400000, guid: 9f87964217365d2479d087a1c57af2c8, type: 2}
+  - {fileID: 11400000, guid: 21e04e2621b50a040b885031435bf8f0, type: 2}
+  - {fileID: 11400000, guid: 23939d36361759a4fb55d94cc73b33b0, type: 2}
+  - {fileID: 11400000, guid: 3aa4af9ce391b334aaec1b68d3aa547d, type: 2}
+  - {fileID: 11400000, guid: 53c0422aa30529743a1e8aedd1da0c3d, type: 2}

@@ -74,7 +74,7 @@ public class EventSceneManager : MonoBehaviour
                     break;
 
                 case EventEffectType.AddRelic:
-                    GameManager.Instance.relicManager.addRelic(effect.relic);
+                    GameManager.Instance.relicManager.addRelic(GameManager.Instance.relicPool.GetRandomRelic());
                     break;
 
                 case EventEffectType.StartBattle:

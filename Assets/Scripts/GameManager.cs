@@ -2,7 +2,6 @@ using UnityEngine;
 using System.Collections.Generic;
 using System;
 using UnityEngine.SceneManagement;
-using Random = UnityEngine.Random;
 
 public class GameManager : MonoBehaviour
 {
@@ -37,7 +36,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Relics")]
     public RelicManager relicManager;
-    public RelicData[] relicPool;
+    public RelicPool relicPool;
 
     public EventsPool eventsPool;
 
@@ -64,7 +63,7 @@ public class GameManager : MonoBehaviour
 
         OnGoldChanged?.Invoke(gold);
 
-        relicManager = new RelicManager(new List<RelicData>(relicPool));
+        relicManager = new RelicManager(new List<RelicData>());
         playerInventory = new PlayerInventory();
 
         // DEBUG
@@ -123,8 +122,10 @@ public class GameManager : MonoBehaviour
 
     public RelicData getRandomRelic()
     {
-        if (relicPool == null || relicPool.Length == 0) return null;
-        return relicPool[Random.Range(0, relicPool.Length)];
+        if (relicPool == null)
+            return null;
+
+        return relicPool.GetRandomRelic();
     }
 
     // DEBUG

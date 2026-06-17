@@ -14,17 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RelicData
   relicName: 
   icon: {fileID: 0}
-  trigger: 2
+  trigger: 0
   actions:
-  - rid: 3376038759912702023
+  - rid: 4436523213531381828
   turnsBetweenTriggers: 0
   requiredCardType: 0
   anyCardType: 0
   references:
     version: 2
     RefIds:
-    - rid: 3376038759912702023
-      type: {class: BlockAction, ns: , asm: Assembly-CSharp}
+    - rid: 4436523213531381828
+      type: {class: EnergyAction, ns: , asm: Assembly-CSharp}
       data:
         targetType: 0
-        blockAmount: 3
+        amount: 0

@@ -10,40 +10,37 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: be91687817927d141b5fa4be2f12884b, type: 3}
-  m_Name: FormaBersakera+
+  m_Name: Szarza
   m_EditorClassIdentifier: Assembly-CSharp::CardData
-  cardName: Forma Bersakera+
-  cost: 1
-  type: 2
+  cardName: "Szar\u017Ca"
+  cost: 2
+  type: 0
   rarity: 1
-  image: {fileID: 0}
+  image: {fileID: -3954523145434921236, guid: 1d02ba7aabc5d5e4d97d6dfcc6faa653, type: 3}
   shopPrice: 0
-  exhaust: 1
-  actions: []
-  passiveAbilities:
-  - trigger: 0
-    actions:
-    - rid: 4436522908578218017
-    - rid: 4436522908578218020
+  exhaust: 0
+  actions:
+  - rid: 4436523213531381867
+  - rid: 4436523213531381870
   upgrade: {fileID: 0}
   references:
     version: 2
     RefIds:
-    - rid: 4436522908578218017
-      type: {class: DamageAction, ns: , asm: Assembly-CSharp}
+    - rid: 4436523213531381867
+      type: {class: SummonAction, ns: , asm: Assembly-CSharp}
       data:
-        targetType: 0
-        damageAmount: 3
-    - rid: 4436522908578218020
+        targetType: 1
+        unitData: {fileID: 11400000, guid: b18ac83350bd3d54e823745f343d7656, type: 2}
+    - rid: 4436523213531381870
       type: {class: AddEffectAction, ns: , asm: Assembly-CSharp}
       data:
-        targetType: 0
+        targetType: 7
         effectToAdd:
-          rid: 4436522908578218021
-    - rid: 4436522908578218021
+          rid: 4436523213531381872
+    - rid: 4436523213531381872
       type: {class: StrengthEffect, ns: , asm: Assembly-CSharp}
       data:
         effectName: "Si\u0142a"
         isMergeable: 1
         isDebuff: 0
-        value: 2
+        value: 1

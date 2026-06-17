@@ -10,29 +10,32 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: be91687817927d141b5fa4be2f12884b, type: 3}
-  m_Name: WycieWilka+
+  m_Name: Gwiazda+
   m_EditorClassIdentifier: Assembly-CSharp::CardData
-  cardName: Wycie Wilka+
-  cost: 1
-  type: 1
+  cardName: Gwiazda
+  cost: 2
+  type: 2
   rarity: 1
-  image: {fileID: 6331438324986113740, guid: 9209989cef359f44da2081d3260bf5b4, type: 3}
+  image: {fileID: -5844326165879334303, guid: f7e6599dff6e5034f810e0f827dbd0d1, type: 3}
   shopPrice: 0
   exhaust: 1
   actions:
-  - rid: 2694950610379997270
-  - rid: 2694950610379997271
+  - rid: 4436523213531381843
   upgrade: {fileID: 0}
   references:
     version: 2
     RefIds:
-    - rid: 2694950610379997270
-      type: {class: DrawCardAction, ns: , asm: Assembly-CSharp}
+    - rid: 4436523213531381843
+      type: {class: AddEffectAction, ns: , asm: Assembly-CSharp}
       data:
         targetType: 0
-        amount: 1
-    - rid: 2694950610379997271
-      type: {class: EnergyAction, ns: , asm: Assembly-CSharp}
+        effectToAdd:
+          rid: 4436523213531381846
+    - rid: 4436523213531381846
+      type: {class: EnergyOnDamageEffect, ns: , asm: Assembly-CSharp}
       data:
-        targetType: 0
-        amount: 2
+        effectName: Gwiazda
+        isMergeable: 1
+        isDebuff: 0
+        damageThreshold: 5
+        energyPerTrigger: 1

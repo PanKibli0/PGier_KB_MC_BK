@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be91687817927d141b5fa4be2f12884b, type: 3}
+  m_Name: ZmasowanyAtak+
+  m_EditorClassIdentifier: Assembly-CSharp::CardData
+  cardName: Zmasowany Atak+
+  cost: 2
+  type: 0
+  rarity: 2
+  image: {fileID: -11828822044514671, guid: 0acc19ed07be60b458b0ccdbdd5cc4cc, type: 3}
+  shopPrice: 0
+  exhaust: 1
+  actions:
+  - rid: 4436523213531381864
+  - rid: 4436523213531381865
+  - rid: 4436523213531381866
+  upgrade: {fileID: 0}
+  references:
+    version: 2
+    RefIds:
+    - rid: 4436523213531381864
+      type: {class: SummonAction, ns: , asm: Assembly-CSharp}
+      data:
+        targetType: 1
+        unitData: {fileID: 11400000, guid: 97cabd8d51c38454aab4162b6011442a, type: 2}
+    - rid: 4436523213531381865
+      type: {class: SummonAction, ns: , asm: Assembly-CSharp}
+      data:
+        targetType: 1
+        unitData: {fileID: 11400000, guid: 95c127b718e9de94aac7422f843a8b5d, type: 2}
+    - rid: 4436523213531381866
+      type: {class: SummonAction, ns: , asm: Assembly-CSharp}
+      data:
+        targetType: 1
+        unitData: {fileID: 11400000, guid: b18ac83350bd3d54e823745f343d7656, type: 2}

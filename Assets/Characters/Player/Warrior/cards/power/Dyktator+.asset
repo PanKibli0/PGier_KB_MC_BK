@@ -10,29 +10,29 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: be91687817927d141b5fa4be2f12884b, type: 3}
-  m_Name: WycieWilka
+  m_Name: Dyktator+
   m_EditorClassIdentifier: Assembly-CSharp::CardData
-  cardName: Wycie Wilka
+  cardName: Dyktator+
   cost: 1
-  type: 1
+  type: 2
   rarity: 1
-  image: {fileID: 6331438324986113740, guid: 9209989cef359f44da2081d3260bf5b4, type: 3}
-  shopPrice: 0
-  exhaust: 1
+  image: {fileID: -6371630791810287055, guid: 141d85935ac08a14a9c46f7a80104afe, type: 3}
+  shopPrice: 120
+  exhaust: 0
   actions:
-  - rid: 2694950610379997270
-  - rid: 4436523213531381849
-  upgrade: {fileID: 11400000, guid: a068d780a1a239849a9bb120cb0f23b4, type: 2}
+  - rid: 4436523213531381830
+  - rid: 4436523213531381831
+  upgrade: {fileID: 0}
   references:
     version: 2
     RefIds:
-    - rid: 2694950610379997270
+    - rid: 4436523213531381830
       type: {class: DrawCardAction, ns: , asm: Assembly-CSharp}
       data:
         targetType: 0
-        amount: 1
-    - rid: 4436523213531381849
+        amount: 2
+    - rid: 4436523213531381831
       type: {class: EnergyAction, ns: , asm: Assembly-CSharp}
       data:
         targetType: 0
-        amount: 1
+        amount: 2

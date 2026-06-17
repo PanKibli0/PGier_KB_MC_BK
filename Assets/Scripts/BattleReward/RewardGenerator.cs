@@ -239,7 +239,7 @@ public class RewardGenerator
         List<RelicData> result = new List<RelicData>();
         if (gameManager == null || gameManager.relicPool == null) return result;
 
-        List<RelicData> available = new List<RelicData>(gameManager.relicPool);
+        List<RelicData> available = new List<RelicData>(gameManager.relicPool.relics);
         for (int i = 0; i < count && available.Count > 0; i++)
         {
             int idx = Random.Range(0, available.Count);

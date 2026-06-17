@@ -10,18 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: be91687817927d141b5fa4be2f12884b, type: 3}
-  m_Name: Dzuma
+  m_Name: CoDwieGlowy
   m_EditorClassIdentifier: Assembly-CSharp::CardData
-  cardName: "D\u017Cuma"
-  cost: 1
+  cardName: "Co Dwie G\u0142owy..."
+  cost: 2
   type: 1
-  rarity: 0
-  image: {fileID: 1629923110148142737, guid: 4f28616296fcaef4c972ffc91ba8206e, type: 3}
+  rarity: 1
+  image: {fileID: 6260830368751993089, guid: 0743547eb1e84c04ca1ad50710fabe4c, type: 3}
   shopPrice: 0
   exhaust: 1
   actions:
   - rid: 490815634552389632
-  upgrade: {fileID: 11400000, guid: d3ce1d230b79c474bb551cbf89f752a9, type: 2}
+  - rid: 4436523213531381848
+  upgrade: {fileID: 11400000, guid: efa59822292be964c9052f18ad5be95b, type: 2}
   references:
     version: 2
     RefIds:
@@ -29,4 +30,9 @@ MonoBehaviour:
       type: {class: SummonAction, ns: , asm: Assembly-CSharp}
       data:
         targetType: 0
-        unitData: {fileID: 11400000, guid: b18ac83350bd3d54e823745f343d7656, type: 2}
+        unitData: {fileID: 11400000, guid: 95c127b718e9de94aac7422f843a8b5d, type: 2}
+    - rid: 4436523213531381848
+      type: {class: SummonAction, ns: , asm: Assembly-CSharp}
+      data:
+        targetType: 0
+        unitData: {fileID: 11400000, guid: 97cabd8d51c38454aab4162b6011442a, type: 2}

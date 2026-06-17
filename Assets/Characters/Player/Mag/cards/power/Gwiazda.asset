@@ -10,37 +10,32 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: be91687817927d141b5fa4be2f12884b, type: 3}
-  m_Name: FormaBersakera
+  m_Name: Gwiazda
   m_EditorClassIdentifier: Assembly-CSharp::CardData
-  cardName: Forma Bersakera
-  cost: 1
+  cardName: Gwiazda
+  cost: 2
   type: 2
   rarity: 1
-  image: {fileID: 0}
-  shopPrice: 0
+  image: {fileID: -5844326165879334303, guid: f7e6599dff6e5034f810e0f827dbd0d1, type: 3}
+  shopPrice: 150
   exhaust: 1
   actions:
-  - rid: 4436523213531381832
-  - rid: 4436523213531381833
-  upgrade: {fileID: 11400000, guid: b32caeb48b0dd9a4c91d2ca6106b49fe, type: 2}
+  - rid: 4436523213531381843
+  upgrade: {fileID: 11400000, guid: 19e5fc23bc860ec4a9a6bd7a114eeb75, type: 2}
   references:
     version: 2
     RefIds:
-    - rid: 4436523213531381832
-      type: {class: DamageAction, ns: , asm: Assembly-CSharp}
-      data:
-        targetType: 0
-        damageAmount: 10
-    - rid: 4436523213531381833
+    - rid: 4436523213531381843
       type: {class: AddEffectAction, ns: , asm: Assembly-CSharp}
       data:
         targetType: 0
         effectToAdd:
-          rid: 4436523213531381834
-    - rid: 4436523213531381834
-      type: {class: StrengthEffect, ns: , asm: Assembly-CSharp}
+          rid: 4436523213531381846
+    - rid: 4436523213531381846
+      type: {class: EnergyOnDamageEffect, ns: , asm: Assembly-CSharp}
       data:
-        effectName: "Si\u0142a"
+        effectName: Gwiazda
         isMergeable: 1
         isDebuff: 0
-        value: 5
+        damageThreshold: 7
+        energyPerTrigger: 1

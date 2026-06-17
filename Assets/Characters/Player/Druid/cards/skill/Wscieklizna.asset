@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be91687817927d141b5fa4be2f12884b, type: 3}
+  m_Name: Wscieklizna
+  m_EditorClassIdentifier: Assembly-CSharp::CardData
+  cardName: "W\u015Bcieklizna"
+  cost: 1
+  type: 1
+  rarity: 1
+  image: {fileID: 7761462361162551521, guid: 913a9db9748d85547965012f0cd11d82, type: 3}
+  shopPrice: 150
+  exhaust: 1
+  actions:
+  - rid: 4436523213531381850
+  - rid: 4436523213531381851
+  - rid: 4436523213531381853
+  upgrade: {fileID: 11400000, guid: 792f2167799c49149b3c46e75042b333, type: 2}
+  references:
+    version: 2
+    RefIds:
+    - rid: 4436523213531381850
+      type: {class: SummonAction, ns: , asm: Assembly-CSharp}
+      data:
+        targetType: 0
+        unitData: {fileID: 11400000, guid: b18ac83350bd3d54e823745f343d7656, type: 2}
+    - rid: 4436523213531381851
+      type: {class: AddEffectAction, ns: , asm: Assembly-CSharp}
+      data:
+        targetType: 7
+        effectToAdd:
+          rid: 4436523213531381852
+    - rid: 4436523213531381852
+      type: {class: StrengthEffect, ns: , asm: Assembly-CSharp}
+      data:
+        effectName: "Si\u0142a"
+        isMergeable: 1
+        isDebuff: 0
+        value: 2
+    - rid: 4436523213531381853
+      type: {class: RemoveEffectAction, ns: , asm: Assembly-CSharp}
+      data:
+        targetType: 0
+        effectToRemove:
+          rid: 4436523213531381854
+    - rid: 4436523213531381854
+      type: {class: StrengthEffect, ns: , asm: Assembly-CSharp}
+      data:
+        effectName: "Si\u0142a"
+        isMergeable: 1
+        isDebuff: 0
+        value: 2

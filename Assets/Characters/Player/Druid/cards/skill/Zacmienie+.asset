@@ -10,37 +10,43 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: be91687817927d141b5fa4be2f12884b, type: 3}
-  m_Name: FormaBersakera
+  m_Name: Zacmienie+
   m_EditorClassIdentifier: Assembly-CSharp::CardData
-  cardName: Forma Bersakera
+  cardName: "Za\u0107mienie+"
   cost: 1
-  type: 2
+  type: 1
   rarity: 1
-  image: {fileID: 0}
-  shopPrice: 0
-  exhaust: 1
+  image: {fileID: 5523701174298596627, guid: 6cdb0a7430808f8469075b8d3d134873, type: 3}
+  shopPrice: 150
+  exhaust: 0
   actions:
-  - rid: 4436523213531381832
-  - rid: 4436523213531381833
-  upgrade: {fileID: 11400000, guid: b32caeb48b0dd9a4c91d2ca6106b49fe, type: 2}
+  - rid: 4436523213531381857
+  - rid: 4436523213531381859
+  - rid: 4436523213531381860
+  upgrade: {fileID: 0}
   references:
     version: 2
     RefIds:
-    - rid: 4436523213531381832
-      type: {class: DamageAction, ns: , asm: Assembly-CSharp}
-      data:
-        targetType: 0
-        damageAmount: 10
-    - rid: 4436523213531381833
+    - rid: 4436523213531381857
       type: {class: AddEffectAction, ns: , asm: Assembly-CSharp}
       data:
         targetType: 0
         effectToAdd:
-          rid: 4436523213531381834
-    - rid: 4436523213531381834
+          rid: 4436523213531381858
+    - rid: 4436523213531381858
       type: {class: StrengthEffect, ns: , asm: Assembly-CSharp}
       data:
         effectName: "Si\u0142a"
         isMergeable: 1
         isDebuff: 0
-        value: 5
+        value: 2
+    - rid: 4436523213531381859
+      type: {class: BlockAction, ns: , asm: Assembly-CSharp}
+      data:
+        targetType: 0
+        blockAmount: 2
+    - rid: 4436523213531381860
+      type: {class: DrawCardAction, ns: , asm: Assembly-CSharp}
+      data:
+        targetType: 0
+        amount: 1

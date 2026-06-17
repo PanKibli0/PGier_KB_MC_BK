@@ -11,7 +11,7 @@ public class RelicSceneManager : MonoBehaviour
 
     private void Start()
     {
-        List<RelicData> pool = new List<RelicData>(GameManager.Instance.relicPool);
+        List<RelicData> pool = new List<RelicData>(GameManager.Instance.relicPool.relics);
 
         List<RelicData> chosen = new List<RelicData>();
         int count = Mathf.Min(3, pool.Count);

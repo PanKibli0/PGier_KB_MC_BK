@@ -10,29 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: be91687817927d141b5fa4be2f12884b, type: 3}
-  m_Name: WycieWilka+
+  m_Name: Gniazdo
   m_EditorClassIdentifier: Assembly-CSharp::CardData
-  cardName: Wycie Wilka+
+  cardName: Gniazdo
   cost: 1
   type: 1
-  rarity: 1
-  image: {fileID: 6331438324986113740, guid: 9209989cef359f44da2081d3260bf5b4, type: 3}
+  rarity: 0
+  image: {fileID: 5795552713929186042, guid: 22e41013be231984d8e9aee07310fa91, type: 3}
   shopPrice: 0
   exhaust: 1
   actions:
-  - rid: 2694950610379997270
-  - rid: 2694950610379997271
-  upgrade: {fileID: 0}
+  - rid: 490815634552389632
+  upgrade: {fileID: 11400000, guid: 669ba95f6aef2e74692a00b9405bcef4, type: 2}
   references:
     version: 2
     RefIds:
-    - rid: 2694950610379997270
-      type: {class: DrawCardAction, ns: , asm: Assembly-CSharp}
+    - rid: 490815634552389632
+      type: {class: SummonAction, ns: , asm: Assembly-CSharp}
       data:
         targetType: 0
-        amount: 1
-    - rid: 2694950610379997271
-      type: {class: EnergyAction, ns: , asm: Assembly-CSharp}
-      data:
-        targetType: 0
-        amount: 2
+        unitData: {fileID: 11400000, guid: 95c127b718e9de94aac7422f843a8b5d, type: 2}
