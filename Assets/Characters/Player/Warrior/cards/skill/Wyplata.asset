@@ -16,7 +16,7 @@ MonoBehaviour:
   cost: 2
   type: 1
   rarity: 1
-  image: {fileID: -8763310792702208652, guid: 5b7b748e0ea5ff34f909144d30b6f6e7, type: 3}
+  image: {fileID: 7761462361162551521, guid: aa820ab1ce8f9334a8943ca451dff76e, type: 3}
   shopPrice: 0
   exhaust: 0
   actions:

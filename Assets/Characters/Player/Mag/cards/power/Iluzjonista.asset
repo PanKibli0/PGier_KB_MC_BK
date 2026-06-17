@@ -16,20 +16,11 @@ MonoBehaviour:
   cost: 0
   type: 2
   rarity: 1
-  image: {fileID: 0}
+  image: {fileID: 2431129243960888385, guid: 1d61471feb22e71448cc75c8e7dc9c2b, type: 3}
   shopPrice: 0
   exhaust: 1
   actions: []
-  passiveAbilities:
-  - trigger: 2
-    actions:
-    - rid: 4436522908578218022
   upgrade: {fileID: 11400000, guid: af35e7c83f25bd24da7fa8a42b82d979, type: 2}
   references:
     version: 2
-    RefIds:
-    - rid: 4436522908578218022
-      type: {class: BlockAction, ns: , asm: Assembly-CSharp}
-      data:
-        targetType: 0
-        blockAmount: 3
+    RefIds: []

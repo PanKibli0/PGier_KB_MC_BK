@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be91687817927d141b5fa4be2f12884b, type: 3}
   m_Name: Szarza+
   m_EditorClassIdentifier: Assembly-CSharp::CardData
-  cardName: "Szar\u017Ca"
+  cardName: "Szczurza Szar\u017Ca+ "
   cost: 2
   type: 0
   rarity: 1
@@ -43,4 +43,4 @@ MonoBehaviour:
         effectName: "Si\u0142a"
         isMergeable: 1
         isDebuff: 0
-        value: 1
+        value: 2

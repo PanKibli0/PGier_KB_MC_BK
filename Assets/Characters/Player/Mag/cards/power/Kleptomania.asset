@@ -15,21 +15,27 @@ MonoBehaviour:
   cardName: Kleptomania
   cost: 3
   type: 2
-  rarity: 1
-  image: {fileID: -1025995993849211177, guid: 91ed8920bcb2dbb4088f6e93e5ac4a91, type: 3}
-  shopPrice: 0
+  rarity: 2
+  image: {fileID: 1889365484363608782, guid: 3926cb36b909b02478f40d582b2ee817, type: 3}
+  shopPrice: 300
   exhaust: 1
-  actions: []
-  passiveAbilities:
-  - trigger: 0
-    actions:
-    - rid: 4436522908578218010
+  actions:
+  - rid: 4436523213531381873
   upgrade: {fileID: 11400000, guid: 3961930ebf50ba74793a136fcb78d648, type: 2}
   references:
     version: 2
     RefIds:
-    - rid: 4436522908578218010
-      type: {class: EnergyAction, ns: , asm: Assembly-CSharp}
+    - rid: 4436523213531381873
+      type: {class: AddEffectAction, ns: , asm: Assembly-CSharp}
       data:
         targetType: 0
-        amount: 1
+        effectToAdd:
+          rid: 4436523213531381874
+    - rid: 4436523213531381874
+      type: {class: EnergyRegenEffect, ns: , asm: Assembly-CSharp}
+      data:
+        effectName: Regeneracja energii
+        isMergeable: 1
+        isDebuff: 0
+        turns: 20
+        energyPerTurn: 1
