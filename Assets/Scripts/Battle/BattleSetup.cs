@@ -18,7 +18,8 @@ public class BattleSetup : MonoBehaviour
     {
         GameManager gm = GameManager.Instance;
         CharacterData character = gm.selectedCharacter;
-
+        AudioManager.Instance.StopMusic();
+        AudioManager.Instance.PlayMusic(AudioManager.Instance.battleMusic);
         relics = gm.relicManager;
         energySystem = new EnergySystem(character.baseMaxEnergy);
         cardPileSystem = new CardPileSystem();

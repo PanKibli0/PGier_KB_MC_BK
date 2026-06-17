@@ -37,6 +37,7 @@ public class CharacterSelectUI : MonoBehaviour
 
     public void selectCharacter(int index)
     {
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.buttonClick);
         if (selectedIndex >= 0)
         {
             characterTransforms[selectedIndex].localScale = originalScales[selectedIndex];
@@ -55,6 +56,7 @@ public class CharacterSelectUI : MonoBehaviour
     public void startGame()
     {
         if (selectedIndex < 0) return;
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.buttonClick);
         GameManager.Instance.startNewRun(characters[selectedIndex]);
     }
 }

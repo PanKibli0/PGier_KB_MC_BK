@@ -135,12 +135,21 @@ public class Unit : MonoBehaviour
 
     public void die()
     {
+        
         PlayAnimation("Death");
         isDead = true;
         if (unitType == UnitType.Enemy)
+        {
             GameManager.Instance?.addEnemyKill();
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.deathOther);
+        }
         unitsManager.onUnitDied(this);
         Destroy(gameObject);
+        if (unitType == UnitType.Player)
+        {
+            AudioManager.Instance.StopMusic();
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.death);
+        }
     }
 
     public void addBlock(int amount)
@@ -151,6 +160,7 @@ public class Unit : MonoBehaviour
 
     public void heal(int amount)
     {
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.healing);
         if (isDead) return;
 
         currentHealth += amount;

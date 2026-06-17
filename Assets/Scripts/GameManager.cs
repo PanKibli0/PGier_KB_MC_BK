@@ -53,6 +53,7 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
+        AudioManager.Instance.PlayMusic(AudioManager.Instance.menuMusic);
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);

@@ -12,6 +12,7 @@ public class ContinueButton : MonoBehaviour
 
     public void onContinueButtonClick()
     {
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.buttonClick);
         if (SaveSystem.load(GameManager.Instance))
             SceneManager.LoadScene("MapScene");
     }
