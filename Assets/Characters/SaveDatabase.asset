@@ -42,6 +42,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3d0b81d1b0be5254587be864bfe1a410, type: 2}
   - {fileID: 11400000, guid: c933fdf981dcd344fb4ebf75da09052f, type: 2}
   - {fileID: 11400000, guid: 60b24955898173b489373cde2d9ff8b4, type: 2}
+  - {fileID: 11400000, guid: a068d780a1a239849a9bb120cb0f23b4, type: 2}
+  - {fileID: 11400000, guid: 18668a93626743f4692c0877ad6e0556, type: 2}
   - {fileID: 11400000, guid: 761eba1557f0ee74391f3cc019c663db, type: 2}
   - {fileID: 11400000, guid: 52bbb1c827050764cb2ea1b434dd69bb, type: 2}
   - {fileID: 11400000, guid: de8e2f55a3a17004fadf51869fd37c80, type: 2}
@@ -110,10 +112,16 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8e27a4e59189b1044a1c2c1c642ecc25, type: 2}
   - {fileID: 11400000, guid: b4901d2d45a9085429023fba4181f714, type: 2}
   - {fileID: 11400000, guid: 012f0951fa4c0d74b908ae5c701e4bd1, type: 2}
+  - {fileID: 11400000, guid: c3201efdcc9ea5e43b8167d3fc1d3092, type: 2}
+  - {fileID: 11400000, guid: d4be5567864ad4b448a4933c267f7ba2, type: 2}
   - {fileID: 11400000, guid: 17352a3173ac83e43b91de98e3ff7df9, type: 2}
   - {fileID: 11400000, guid: a49e3f23196337148934eb4099cd768a, type: 2}
   - {fileID: 11400000, guid: d5ad34f0f14be4e42acf5add50f90cb0, type: 2}
   - {fileID: 11400000, guid: 75c9ec8d16054a24a86637286f75d625, type: 2}
+  - {fileID: 11400000, guid: 4cfd7548faea35e4eadff577e47a828e, type: 2}
+  - {fileID: 11400000, guid: 536387afecd5f2f479945697ecf4c368, type: 2}
+  - {fileID: 11400000, guid: be50ed8686830764db2094622c917d3f, type: 2}
+  - {fileID: 11400000, guid: ae9e459109e59954c83687b0baf4101c, type: 2}
   - {fileID: 11400000, guid: 628880774eb52c14b9dd22afb207b2c9, type: 2}
   - {fileID: 11400000, guid: 4494146a5ccd20c4ea436fe8396404a8, type: 2}
   allRelics:
@@ -186,4 +194,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 244878d3cef9226449ae32591bcc7544, type: 2}
   - {fileID: 11400000, guid: 367aaf104dbe092498a3c2344edd59dc, type: 2}
   - {fileID: 11400000, guid: 598cf34d76476b34abc931f9bf489980, type: 2}
-  allCharacters: []
+  allCharacters:
+  - {fileID: 11400000, guid: 0df7b8c4ee616214da714507a6b284f1, type: 2}

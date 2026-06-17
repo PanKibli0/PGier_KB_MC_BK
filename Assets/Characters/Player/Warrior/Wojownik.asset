@@ -13,19 +13,29 @@ MonoBehaviour:
   m_Name: Wojownik
   m_EditorClassIdentifier: Assembly-CSharp::CharacterData
   unitName: Wojownik
-  graphicPrefab: {fileID: -8653719598885068355, guid: 447def24be65b184eba150787c82baec, type: 3}
-  minHealth: 200
-  maxHealth: 200
+  graphicPrefab: {fileID: 9112080428852268331, guid: 4f33c3ce45e16c143b28a64bdda30ec1, type: 3}
+  minHealth: 120
+  maxHealth: 120
   startEffects: []
   startCards:
-  - data: {fileID: 11400000, guid: 28190feabfc2ff647b6681d0c0a73c7d, type: 2}
+  - data: {fileID: 11400000, guid: ab28e2fe7d826ca44a9b53bff63915dd, type: 2}
+    amount: 2
+  - data: {fileID: 11400000, guid: 68e665cabc71bb74f8c406a678369461, type: 2}
+    amount: 2
+  - data: {fileID: 11400000, guid: 7e660334c99df90448162ebb13651830, type: 2}
+    amount: 1
+  - data: {fileID: 11400000, guid: 8e27a4e59189b1044a1c2c1c642ecc25, type: 2}
+    amount: 2
+  - data: {fileID: 11400000, guid: 012f0951fa4c0d74b908ae5c701e4bd1, type: 2}
+    amount: 2
+  - data: {fileID: 11400000, guid: ab3238edff89b424d92caa1965437cd0, type: 2}
     amount: 1
   cardPool: {fileID: 0}
   startGold: 200
   baseDrawCount: 5
   baseMaxEnergy: 3
-  energyIcon: {fileID: 1557174049649518563, guid: 61e9fec5ce1285c4b9e951e347cf4066, type: 3}
-  energySpriteName: 
+  energyIcon: {fileID: 1557174049649518563, guid: 8fb7558204ad24d458b39981ae13babf, type: 3}
+  energySpriteName: energia_w
   references:
     version: 2
     RefIds: []

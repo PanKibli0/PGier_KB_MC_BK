@@ -757,6 +757,72 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 255175815}
   m_CullTransparentMesh: 1
+--- !u!1 &335600064
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 335600066}
+  - component: {fileID: 335600065}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &335600065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 335600064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7f1b5b6080600c4fa713e01b055bd54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  selectedCharacter: {fileID: 0}
+  currentHealth: 0
+  maxHealth: 0
+  currentDeck: []
+  gold: 0
+  enemyPool: {fileID: 11400000, guid: 9b38731bdcd64d542b5d458b2dfbe824, type: 2}
+  pendingBattleEnemies: []
+  pendingBattleDifficulty: 0
+  generalCardPool: {fileID: 0}
+  enemiesKilled: 0
+  floorsCompleted: 0
+  relicPool:
+  - {fileID: 11400000, guid: 3579e65d7b8c90e4b853e090549ade21, type: 2}
+  - {fileID: 11400000, guid: 39ce8a0d016335045a080feb47af0608, type: 2}
+  - {fileID: 11400000, guid: d3ec6bca48174d4439a7215194015c4c, type: 2}
+  eventsPool: {fileID: 11400000, guid: bb01ebccdeee18249964f68ed1e58b7d, type: 2}
+  currentEvent: {fileID: 0}
+  testEvent: {fileID: 0}
+  testItems:
+  - {fileID: 11400000, guid: 4b52d2d01c8f516458b148ff4a26c8c7, type: 2}
+  - {fileID: 11400000, guid: f883f48ccf0fbfc4aab4d3692e15c9e8, type: 2}
+  saveDatabase: {fileID: 11400000, guid: cfb80f0018a5f7843ad3634acc809776, type: 2}
+--- !u!4 &335600066
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 335600064}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.34847, y: -1.05921, z: -4.6016}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &438860711
 GameObject:
   m_ObjectHideFlags: 0
@@ -1111,7 +1177,7 @@ GameObject:
   - component: {fileID: 820407659}
   - component: {fileID: 820407658}
   - component: {fileID: 820407657}
-  - component: {fileID: 820407660}
+  - component: {fileID: 820407661}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1204,7 +1270,7 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!114 &820407660
+--- !u!114 &820407661
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1213,23 +1279,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 820407655}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
+  m_Script: {fileID: 11500000, guid: 89c4526a8bdcc504a904e4d4808a3fcd, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.HorizontalLayoutGroup
-  m_Padding:
-    m_Left: 0
-    m_Right: 0
-    m_Top: -50
-    m_Bottom: 0
-  m_ChildAlignment: 0
-  m_Spacing: 1000
-  m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 1
-  m_ChildControlWidth: 0
-  m_ChildControlHeight: 0
-  m_ChildScaleWidth: 0
-  m_ChildScaleHeight: 0
-  m_ReverseArrangement: 0
+  m_EditorClassIdentifier: Assembly-CSharp::ContinueButton
+  continueButtonObject: {fileID: 1177135304}
 --- !u!1 &1011917786
 GameObject:
   m_ObjectHideFlags: 0
@@ -1490,9 +1543,9 @@ RectTransform:
   - {fileID: 1366634737}
   m_Father: {fileID: 820407656}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 80, y: 35}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1096539213
@@ -1748,9 +1801,9 @@ RectTransform:
   - {fileID: 255175816}
   m_Father: {fileID: 820407656}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 1240, y: 35}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1177135306
@@ -1809,9 +1862,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1177135306}
-        m_TargetAssemblyTypeName: StartButton, Assembly-CSharp
-        m_MethodName: onStartButtonClick
+      - m_Target: {fileID: 820407661}
+        m_TargetAssemblyTypeName: ContinueButton, Assembly-CSharp
+        m_MethodName: onContinueButtonClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2736,9 +2789,9 @@ RectTransform:
   - {fileID: 2013141168}
   m_Father: {fileID: 820407656}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 2400, y: 35}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1634865327
@@ -3372,3 +3425,4 @@ SceneRoots:
   - {fileID: 1060011234}
   - {fileID: 137788848}
   - {fileID: 438860713}
+  - {fileID: 335600066}
