@@ -59,7 +59,6 @@ public class CardUIPlayable : CardUIBase, IBeginDragHandler, IDragHandler, IEndD
         {
             if (action is SummonAction summon)
             {
-                AudioManager.Instance.PlaySFX(AudioManager.Instance.summon);
                 UnitType summonedType = (unitsManager.player.unitType == UnitType.Player) ? UnitType.Ally : UnitType.Enemy;
 
                 if (summonedType == UnitType.Ally && !unitsManager.canSummonAlly()) return false;
@@ -225,6 +224,10 @@ public class CardUIPlayable : CardUIBase, IBeginDragHandler, IDragHandler, IEndD
 
         foreach (var action in card.actions)
         {
+            if (action is SummonAction)
+            {
+                AudioManager.Instance.PlaySFX(AudioManager.Instance.summon);
+            }
             List<Unit> targets = TargetingSystem.getTargets(player, action.targetType, selectedTarget);
 
             foreach (Unit target in targets)

@@ -28,8 +28,6 @@ public class GameManager : MonoBehaviour
     public UnitData[] pendingBattleEnemies;
     public BattleDifficulty pendingBattleDifficulty;
 
-    public CardPool generalCardPool;
-
     [Header("Run Stats")]
     public int enemiesKilled;
     public int floorsCompleted;

@@ -33,13 +33,9 @@ public class ShopUI : MonoBehaviour
     {
         GameManager gm = GameManager.Instance;
         List<CardData> charCards = getUniqueCards(gm.selectedCharacter.cardPool.cards, 5);
-        List<CardData> generalCards = getUniqueCards(gm.generalCardPool.cards, 2);
 
         for (int i = 0; i < charCards.Count; i++)
             createCard(charCards[i], -730 + i * 365, 250);
-
-        for (int i = 0; i < generalCards.Count; i++)
-            createCard(generalCards[i], -730 + i * 365, -175);
     }
 
     private void createCard(CardData card, float x, float y)

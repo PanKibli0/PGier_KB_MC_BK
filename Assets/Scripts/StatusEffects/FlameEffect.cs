@@ -4,35 +4,36 @@ using UnityEngine;
 public class FlameEffect : BaseStatusEffect
 {
     public int duration;
-    public int value;
+    public int damagePerTurn;
 
     public FlameEffect()
     {
         effectName = "P³omieñ";
         isMergeable = true;
-        isDebuff = false;
-    }
-
-    public override void onDealDamage(Unit owner, Unit target, ref int damage)
-    {
-        damage += value * 2;
+        isDebuff = true;
     }
 
     public override void onTurnEnd(Unit owner)
     {
+        if (owner == null) return;
+        owner.takeDamage(damagePerTurn);
         duration--;
-        value /= 2;
 
-        if (duration <= 0 || value <= 0)
+        if (damagePerTurn > 1)
+            damagePerTurn = Mathf.Max(1, damagePerTurn - 1);
+
+        if (duration <= 0 || damagePerTurn <= 0)
             owner.removeEffect(this);
     }
 
     public override bool merge(BaseStatusEffect other)
     {
-        FlameEffect o = (FlameEffect)other;
+        FlameEffect o = other as FlameEffect;
+        if (o == null) return false;
         duration += o.duration;
-        value += o.value;
-        return false;
+        damagePerTurn += o.damagePerTurn;
+        damagePerTurn = Mathf.Min(damagePerTurn, 999);
+        return true;
     }
 
     public override string getMainText() { return $"<color=#ff7a18>{duration}</color>"; }
@@ -40,7 +41,7 @@ public class FlameEffect : BaseStatusEffect
 
     public override string getDescription()
     {
-        return $"Zadaje +{value * 2} obra¿eñ. S³abnie co turê.";
+        return $"Zadaje +{damagePerTurn} obra¿eñ. S³abnie co turê.";
     }
 
     public override string getActionDescription()

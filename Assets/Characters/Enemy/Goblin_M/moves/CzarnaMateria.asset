@@ -10,12 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a47322801de95b348a0db7e09c294398, type: 3}
-  m_Name: BlackBolt
+  m_Name: CzarnaMateria
   m_EditorClassIdentifier: Assembly-CSharp::UnitMove
-  moveName: Czarny oprysk
+  moveName: Czarna materia
   actions:
   - rid: 3376038571514527927
-  - rid: 3376038571514527931
   conditions: []
   weight: 4
   references:
@@ -26,8 +25,3 @@ MonoBehaviour:
       data:
         targetType: 1
         damageAmount: 15
-    - rid: 3376038571514527931
-      type: {class: DamageAction, ns: , asm: Assembly-CSharp}
-      data:
-        targetType: 0
-        damageAmount: 2
