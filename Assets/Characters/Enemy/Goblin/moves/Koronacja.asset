@@ -10,37 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a47322801de95b348a0db7e09c294398, type: 3}
-  m_Name: Zdenerwowanie
+  m_Name: Koronacja
   m_EditorClassIdentifier: Assembly-CSharp::UnitMove
   moveName: Zdenerwowanie
   actions:
-  - rid: 3376038571514527920
-  - rid: 3376038571514527921
+  - rid: 4436523294419058766
+  - rid: 4436523294419058767
   conditions:
   - rid: 3376038571514527923
   - rid: 3376038571514527924
-  weight: 4
+  weight: 2
   references:
     version: 2
     RefIds:
-    - rid: 3376038571514527920
-      type: {class: BlockAction, ns: , asm: Assembly-CSharp}
-      data:
-        targetType: 0
-        blockAmount: 4
-    - rid: 3376038571514527921
-      type: {class: AddEffectAction, ns: , asm: Assembly-CSharp}
-      data:
-        targetType: 0
-        effectToAdd:
-          rid: 3376038571514527922
-    - rid: 3376038571514527922
-      type: {class: StrengthEffect, ns: , asm: Assembly-CSharp}
-      data:
-        effectName: "Si\u0142a"
-        isMergeable: 1
-        isDebuff: 0
-        value: 3
     - rid: 3376038571514527923
       type: {class: TurnCondition, ns: , asm: Assembly-CSharp}
       data:
@@ -51,3 +33,13 @@ MonoBehaviour:
       data:
         mandatory: 0
         maxUses: 1
+    - rid: 4436523294419058766
+      type: {class: SummonAction, ns: , asm: Assembly-CSharp}
+      data:
+        targetType: 0
+        unitData: {fileID: 11400000, guid: f8b411da9aab7454db86af1b1b23f069, type: 2}
+    - rid: 4436523294419058767
+      type: {class: BlockAction, ns: , asm: Assembly-CSharp}
+      data:
+        targetType: 6
+        blockAmount: 5

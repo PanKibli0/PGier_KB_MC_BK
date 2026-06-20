@@ -325,7 +325,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 147.79999}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &129242632
@@ -956,7 +956,7 @@ RectTransform:
   m_GameObject: {fileID: 424065837}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.9, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1439455695}
@@ -1474,15 +1474,15 @@ MonoBehaviour:
   allies: []
   enemies: []
   allySpawnPositions:
-  - {x: 100, y: -50, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
+  - {x: 200, y: 100, z: 0}
+  - {x: 250, y: -200, z: 0}
+  - {x: -100, y: -200, z: 0}
   enemySpawnPositions:
-  - {x: -108, y: 7, z: 0}
-  - {x: 277, y: 82, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  playerSpawnPosition: {x: -212, y: 7, z: 0}
+  - {x: 120, y: 80, z: 0}
+  - {x: -230, y: 50, z: 0}
+  - {x: -150, y: -180, z: 0}
+  - {x: 170, y: -180, z: 0}
+  playerSpawnPosition: {x: -212, y: 100, z: 0}
 --- !u!1 &955116550
 GameObject:
   m_ObjectHideFlags: 0
@@ -2488,7 +2488,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 955116551}
   - {fileID: 331768482}

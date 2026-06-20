@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab0e520ee75d57649b2113a55bc66e80, type: 3}
+  m_Name: BOSSGoblin
+  m_EditorClassIdentifier: Assembly-CSharp::UnitData
+  unitName: "Kr\xF3l Goblin\xF3w"
+  graphicPrefab: {fileID: 7702511377937370319, guid: 67a450b2d48ef2a4f8c3d92b02b151c4, type: 3}
+  minHealth: 72
+  maxHealth: 84
+  startEffects:
+  - rid: 4436523294419058762
+  aiType: 3
+  moves:
+  - {fileID: 11400000, guid: fa5499d110a38fe40a1dcad4bbfb9afc, type: 2}
+  - {fileID: 11400000, guid: 39ce27b4b19eb70489bfce02119429ad, type: 2}
+  - {fileID: 11400000, guid: c1f2746b675b1294a9ec24a86e2727a4, type: 2}
+  references:
+    version: 2
+    RefIds:
+    - rid: 4436523294419058762
+      type: {class: StrengthEffect, ns: , asm: Assembly-CSharp}
+      data:
+        effectName: "Si\u0142a"
+        isMergeable: 1
+        isDebuff: 0
+        value: 2

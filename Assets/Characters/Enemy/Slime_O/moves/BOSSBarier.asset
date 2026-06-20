@@ -10,38 +10,32 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a47322801de95b348a0db7e09c294398, type: 3}
-  m_Name: power
+  m_Name: BOSSBarier
   m_EditorClassIdentifier: Assembly-CSharp::UnitMove
-  moveName: "Si\u0142a"
+  moveName: Bariera ognia
   actions:
-  - rid: 3376038571514527920
-  - rid: 3376038571514527921
-  conditions:
-  - rid: 3376038571514527925
-  weight: 1
+  - rid: 3376038571514527908
+  - rid: 4436523294419058770
+  conditions: []
+  weight: 3
   references:
     version: 2
     RefIds:
-    - rid: 3376038571514527920
+    - rid: 3376038571514527908
       type: {class: BlockAction, ns: , asm: Assembly-CSharp}
       data:
         targetType: 0
-        blockAmount: 5
-    - rid: 3376038571514527921
+        blockAmount: 12
+    - rid: 4436523294419058770
       type: {class: AddEffectAction, ns: , asm: Assembly-CSharp}
       data:
         targetType: 0
         effectToAdd:
-          rid: 3376038571514527922
-    - rid: 3376038571514527922
-      type: {class: StrengthEffect, ns: , asm: Assembly-CSharp}
+          rid: 4436523294419058771
+    - rid: 4436523294419058771
+      type: {class: RegenerationEffect, ns: , asm: Assembly-CSharp}
       data:
-        effectName: "Si\u0142a"
+        effectName: Regeneracja
         isMergeable: 1
         isDebuff: 0
-        value: 1
-    - rid: 3376038571514527925
-      type: {class: CooldownCondition, ns: , asm: Assembly-CSharp}
-      data:
-        mandatory: 0
-        cooldown: 5
+        stacks: 2
