@@ -12,15 +12,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be91687817927d141b5fa4be2f12884b, type: 3}
   m_Name: GrzybyLesnie+
   m_EditorClassIdentifier: Assembly-CSharp::CardData
-  cardName: "Grzyby le\u015Bne"
+  cardName: "Grzyby le\u015Bne+"
   cost: 2
   type: 2
   rarity: 1
   image: {fileID: 2431129243960888385, guid: 79a707f6b91097e439305d0cd0c6a9f9, type: 3}
   shopPrice: 0
   exhaust: 1
-  actions: []
-  upgrade: {fileID: 11400000, guid: 16aec94a1b7731b4fb932c7f69700888, type: 2}
+  actions:
+  - rid: 4436523283636551778
+  upgrade: {fileID: 11400000, guid: 9615c1443fc8f7c44b2a73908ac9b63e, type: 2}
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 4436523283636551778
+      type: {class: AddEffectAction, ns: , asm: Assembly-CSharp}
+      data:
+        targetType: 0
+        effectToAdd:
+          rid: 4436523283636551779
+    - rid: 4436523283636551779
+      type: {class: EnergyRegenEffect, ns: , asm: Assembly-CSharp}
+      data:
+        effectName: Regeneracja energii
+        isMergeable: 1
+        isDebuff: 0
+        turns: 20
+        energyPerTurn: 1

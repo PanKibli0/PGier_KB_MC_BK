@@ -12,11 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb2a3ffb3a2c58640922a7465226e6e6, type: 3}
   m_Name: SwietyGranat
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  itemName: 
-  description: 
-  icon: {fileID: 0}
-  targetType: 0
-  actions: []
+  itemName: "\u015Awi\u0119ty Granat R\u0119czny"
+  icon: {fileID: 4922587930103465297, guid: 4eab632dcc665d742be8730e284047d5, type: 3}
+  actions:
+  - rid: 4436523283636551752
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 4436523283636551752
+      type: {class: DamageAction, ns: , asm: Assembly-CSharp}
+      data:
+        targetType: 6
+        damageAmount: 10

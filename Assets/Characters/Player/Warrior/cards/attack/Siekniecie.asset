@@ -17,11 +17,10 @@ MonoBehaviour:
   type: 0
   rarity: 0
   image: {fileID: 6799871624835543980, guid: 111f54b920e2c2947a199cefcbeabf3a, type: 3}
-  shopPrice: 0
+  shopPrice: 50
   exhaust: 0
   actions:
   - rid: 490815630673969152
-  passiveAbilities: []
   upgrade: {fileID: 11400000, guid: 95986a5337497874fa8c47330e5bc0a5, type: 2}
   references:
     version: 2

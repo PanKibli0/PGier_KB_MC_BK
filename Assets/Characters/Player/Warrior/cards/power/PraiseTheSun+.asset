@@ -19,8 +19,22 @@ MonoBehaviour:
   image: {fileID: 1889365484363608782, guid: 3e0fd88cd6076ae44a13e1c2b9d1fea3, type: 3}
   shopPrice: 0
   exhaust: 1
-  actions: []
+  actions:
+  - rid: 4436523283636551760
   upgrade: {fileID: 0}
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 4436523283636551760
+      type: {class: AddEffectAction, ns: , asm: Assembly-CSharp}
+      data:
+        targetType: 3
+        effectToAdd:
+          rid: 4436523283636551762
+    - rid: 4436523283636551762
+      type: {class: CardPlayedVulnerableEffect, ns: , asm: Assembly-CSharp}
+      data:
+        effectName: Nietykalny
+        isMergeable: 1
+        isDebuff: 0
+        vulnerableDuration: 1

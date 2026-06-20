@@ -22,7 +22,6 @@ MonoBehaviour:
   actions:
   - rid: 490815630673969225
   - rid: 490815630673969227
-  passiveAbilities: []
   upgrade: {fileID: 0}
   references:
     version: 2
@@ -36,4 +35,4 @@ MonoBehaviour:
       type: {class: HealAction, ns: , asm: Assembly-CSharp}
       data:
         targetType: 0
-        healAmount: 3
+        healAmount: 8

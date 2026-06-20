@@ -17,10 +17,24 @@ MonoBehaviour:
   type: 2
   rarity: 1
   image: {fileID: -6371630791810287055, guid: f1bea1cb4bcc6f54484e2b48d632ae9f, type: 3}
-  shopPrice: 0
+  shopPrice: 180
   exhaust: 1
-  actions: []
+  actions:
+  - rid: 4436523283636551767
   upgrade: {fileID: 11400000, guid: 166bb23c85564194981b11f30ceab195, type: 2}
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 4436523283636551767
+      type: {class: AddEffectAction, ns: , asm: Assembly-CSharp}
+      data:
+        targetType: 0
+        effectToAdd:
+          rid: 4436523283636551768
+    - rid: 4436523283636551768
+      type: {class: HealthLostBlockEffect, ns: , asm: Assembly-CSharp}
+      data:
+        effectName: "Tarcza b\xF3lu"
+        isMergeable: 1
+        isDebuff: 0
+        blockAmount: 2

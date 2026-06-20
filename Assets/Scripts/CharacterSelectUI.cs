@@ -37,7 +37,7 @@ public class CharacterSelectUI : MonoBehaviour
 
     public void selectCharacter(int index)
     {
-        AudioManager.Instance.PlaySFX(AudioManager.Instance.buttonClick);
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.characterSelect);
         if (selectedIndex >= 0)
         {
             characterTransforms[selectedIndex].localScale = originalScales[selectedIndex];

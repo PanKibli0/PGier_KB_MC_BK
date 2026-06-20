@@ -19,8 +19,22 @@ MonoBehaviour:
   image: {fileID: 2431129243960888385, guid: 1d61471feb22e71448cc75c8e7dc9c2b, type: 3}
   shopPrice: 0
   exhaust: 1
-  actions: []
+  actions:
+  - rid: 4436523283636551773
   upgrade: {fileID: 11400000, guid: af35e7c83f25bd24da7fa8a42b82d979, type: 2}
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 4436523283636551773
+      type: {class: AddEffectAction, ns: , asm: Assembly-CSharp}
+      data:
+        targetType: 0
+        effectToAdd:
+          rid: 4436523283636551774
+    - rid: 4436523283636551774
+      type: {class: HealthLostStrengthEffect, ns: , asm: Assembly-CSharp}
+      data:
+        effectName: Po trupach do celu
+        isMergeable: 1
+        isDebuff: 0
+        strengthPerHit: 2

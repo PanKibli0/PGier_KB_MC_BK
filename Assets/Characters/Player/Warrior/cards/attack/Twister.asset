@@ -17,11 +17,10 @@ MonoBehaviour:
   type: 0
   rarity: 1
   image: {fileID: -11828822044514671, guid: 4afc688bcc4f3f8468a9e2445ac89251, type: 3}
-  shopPrice: 0
+  shopPrice: 125
   exhaust: 0
   actions:
   - rid: 490815630673969225
-  passiveAbilities: []
   upgrade: {fileID: 11400000, guid: 733fac65657e49d46942252ac2b92af0, type: 2}
   references:
     version: 2
@@ -30,4 +29,4 @@ MonoBehaviour:
       type: {class: DamageAction, ns: , asm: Assembly-CSharp}
       data:
         targetType: 6
-        damageAmount: 6
+        damageAmount: 7

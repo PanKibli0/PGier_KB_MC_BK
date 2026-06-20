@@ -15,10 +15,10 @@ MonoBehaviour:
   cardName: "Deszcz p\u0142omieni"
   cost: 1
   type: 0
-  rarity: 0
+  rarity: 1
   image: {fileID: 6759067997177849183, guid: 4ebcee70a9b7a0d4c99d0927af416f9f, type: 3}
-  shopPrice: 0
-  exhaust: 0
+  shopPrice: 180
+  exhaust: 1
   actions:
   - rid: 490815630673969234
   - rid: 490815768443486279
@@ -34,7 +34,7 @@ MonoBehaviour:
     - rid: 490815768443486279
       type: {class: AddEffectAction, ns: , asm: Assembly-CSharp}
       data:
-        targetType: 7
+        targetType: 6
         effectToAdd:
           rid: 490815768443486280
     - rid: 490815768443486280

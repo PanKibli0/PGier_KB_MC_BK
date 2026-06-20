@@ -23,6 +23,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip attackWoj;
     public AudioClip attackMag;
     public AudioClip attackDruid;
+    public AudioClip shield;
     public AudioClip healing;
     public AudioClip cardPlay;
     public AudioClip victory;
@@ -35,14 +36,15 @@ public class AudioManager : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance != null && Instance != this)
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
         {
             Destroy(gameObject);
-            return;
         }
-
-        Instance = this;
-        DontDestroyOnLoad(gameObject);
     }
 
     public void PlayMusic(AudioClip clip, bool loop = true)
@@ -50,7 +52,7 @@ public class AudioManager : MonoBehaviour
         if (clip == null)
             return;
 
-        if (musicSource.clip == clip)
+        if (musicSource.clip == clip && musicSource.isPlaying)
             return;
 
         musicSource.clip = clip;

@@ -135,7 +135,6 @@ public class Unit : MonoBehaviour
 
     public void die()
     {
-        
         PlayAnimation("Death");
         isDead = true;
         if (unitType == UnitType.Enemy)
@@ -154,6 +153,7 @@ public class Unit : MonoBehaviour
 
     public void addBlock(int amount)
     {
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.shield);
         block += amount;
         statsUI?.updateUI();
     }

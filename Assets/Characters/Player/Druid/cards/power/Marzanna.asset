@@ -17,7 +17,7 @@ MonoBehaviour:
   type: 2
   rarity: 0
   image: {fileID: -3154426634511632138, guid: ce964254d7bae26459a34179672adeb5, type: 3}
-  shopPrice: 0
+  shopPrice: 75
   exhaust: 0
   actions:
   - rid: 490815634552389637
@@ -28,5 +28,5 @@ MonoBehaviour:
     - rid: 490815634552389637
       type: {class: BlockAction, ns: , asm: Assembly-CSharp}
       data:
-        targetType: 0
+        targetType: 2
         blockAmount: 8

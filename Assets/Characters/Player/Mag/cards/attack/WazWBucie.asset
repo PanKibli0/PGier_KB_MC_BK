@@ -17,7 +17,7 @@ MonoBehaviour:
   type: 0
   rarity: 1
   image: {fileID: 6832818906027779938, guid: 883715b1f2da1eb42a67bd8915ce97c3, type: 3}
-  shopPrice: 0
+  shopPrice: 100
   exhaust: 0
   actions:
   - rid: 490815630673969234
@@ -31,7 +31,7 @@ MonoBehaviour:
       type: {class: DamageAction, ns: , asm: Assembly-CSharp}
       data:
         targetType: 1
-        damageAmount: 2
+        damageAmount: 5
     - rid: 490815630673969235
       type: {class: AddEffectAction, ns: , asm: Assembly-CSharp}
       data:
@@ -58,4 +58,4 @@ MonoBehaviour:
         effectName: Trucizna
         isMergeable: 0
         isDebuff: 1
-        stacks: 1
+        stacks: 2

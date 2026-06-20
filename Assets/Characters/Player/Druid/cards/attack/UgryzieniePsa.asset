@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: UgryzieniePsa
   m_EditorClassIdentifier: Assembly-CSharp::CardData
   cardName: Ugryzienie psa
-  cost: 3
+  cost: 2
   type: 0
   rarity: 1
   image: {fileID: -4819408716770501796, guid: 2ff2c82ba392dea46bb79e5ff1bf19d8, type: 3}
-  shopPrice: 0
+  shopPrice: 150
   exhaust: 0
   actions:
   - rid: 490815630673969253

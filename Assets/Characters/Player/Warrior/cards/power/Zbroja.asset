@@ -17,10 +17,24 @@ MonoBehaviour:
   type: 2
   rarity: 0
   image: {fileID: -3154426634511632138, guid: ff0714a991537ae41a6e959ac166b958, type: 3}
-  shopPrice: 0
+  shopPrice: 85
   exhaust: 1
-  actions: []
+  actions:
+  - rid: 4436523283636551747
   upgrade: {fileID: 11400000, guid: 184bc59e7ab36f24180bc01e5a3567da, type: 2}
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 4436523283636551747
+      type: {class: AddEffectAction, ns: , asm: Assembly-CSharp}
+      data:
+        targetType: 0
+        effectToAdd:
+          rid: 4436523283636551748
+    - rid: 4436523283636551748
+      type: {class: ArmorEffect, ns: , asm: Assembly-CSharp}
+      data:
+        effectName: Zbroja
+        isMergeable: 1
+        isDebuff: 0
+        blockPerTurn: 3

@@ -44,7 +44,7 @@ MonoBehaviour:
       type: {class: BlockAction, ns: , asm: Assembly-CSharp}
       data:
         targetType: 0
-        blockAmount: 2
+        blockAmount: 4
     - rid: 4436523213531381860
       type: {class: DrawCardAction, ns: , asm: Assembly-CSharp}
       data:

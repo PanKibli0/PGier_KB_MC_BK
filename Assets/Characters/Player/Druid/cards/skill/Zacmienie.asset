@@ -17,7 +17,7 @@ MonoBehaviour:
   type: 1
   rarity: 1
   image: {fileID: 5523701174298596627, guid: 6cdb0a7430808f8469075b8d3d134873, type: 3}
-  shopPrice: 150
+  shopPrice: 170
   exhaust: 0
   actions:
   - rid: 4436523213531381857
@@ -44,7 +44,7 @@ MonoBehaviour:
       type: {class: BlockAction, ns: , asm: Assembly-CSharp}
       data:
         targetType: 0
-        blockAmount: 2
+        blockAmount: 4
     - rid: 4436523213531381860
       type: {class: DrawCardAction, ns: , asm: Assembly-CSharp}
       data:

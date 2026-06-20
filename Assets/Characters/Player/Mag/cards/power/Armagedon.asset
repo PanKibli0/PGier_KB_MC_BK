@@ -17,10 +17,24 @@ MonoBehaviour:
   type: 2
   rarity: 1
   image: {fileID: -3154426634511632138, guid: 441f3fbfc3f75e34eab5ed61cd68769c, type: 3}
-  shopPrice: 0
+  shopPrice: 180
   exhaust: 1
-  actions: []
+  actions:
+  - rid: 4436523283636551763
   upgrade: {fileID: 11400000, guid: 68cac24c6a1a45f49b466b2c325a7a2a, type: 2}
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 4436523283636551763
+      type: {class: AddEffectAction, ns: , asm: Assembly-CSharp}
+      data:
+        targetType: 6
+        effectToAdd:
+          rid: 4436523283636551764
+    - rid: 4436523283636551764
+      type: {class: CardPlayedDamageEffect, ns: , asm: Assembly-CSharp}
+      data:
+        effectName: Armagedon
+        isMergeable: 1
+        isDebuff: 0
+        damageAmount: 1

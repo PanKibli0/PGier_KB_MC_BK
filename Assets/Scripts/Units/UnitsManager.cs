@@ -282,6 +282,8 @@ public class UnitsManager : MonoBehaviour
         }
         else if (!enemiesAlive)
         {
+            AudioManager.Instance.StopMusic();
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.victory);
             clearAllEffects();
             relics.onBattleEnd(player);
             GameManager.Instance.addFloorCount();

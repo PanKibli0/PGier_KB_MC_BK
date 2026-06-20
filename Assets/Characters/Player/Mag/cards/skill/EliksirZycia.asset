@@ -17,7 +17,7 @@ MonoBehaviour:
   type: 1
   rarity: 0
   image: {fileID: 5548709297612223461, guid: 3bccf5c017ba2d2458dbf57903f33e28, type: 3}
-  shopPrice: 0
+  shopPrice: 75
   exhaust: 0
   actions:
   - rid: 490815630673969247

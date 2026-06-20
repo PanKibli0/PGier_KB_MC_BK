@@ -21,7 +21,6 @@ MonoBehaviour:
   exhaust: 0
   actions:
   - rid: 490815630673969225
-  passiveAbilities: []
   upgrade: {fileID: 0}
   references:
     version: 2
@@ -30,4 +29,4 @@ MonoBehaviour:
       type: {class: DamageAction, ns: , asm: Assembly-CSharp}
       data:
         targetType: 6
-        damageAmount: 7
+        damageAmount: 8

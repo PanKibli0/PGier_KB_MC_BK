@@ -53,7 +53,6 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
-        AudioManager.Instance.PlayMusic(AudioManager.Instance.menuMusic);
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
@@ -71,6 +70,10 @@ public class GameManager : MonoBehaviour
         foreach (var item in testItems)
             playerInventory.addItem(item);
         // END DEBUG
+    }
+    private void Start()
+    {
+        AudioManager.Instance.PlayMusic(AudioManager.Instance.menuMusic);
     }
 
     public void setHealth(int value)

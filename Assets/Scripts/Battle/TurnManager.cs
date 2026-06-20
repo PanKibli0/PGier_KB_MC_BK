@@ -19,6 +19,7 @@ public class TurnManager : MonoBehaviour
     private int baseDrawCount;
     private int drawCountBonus = 0;
 
+    private bool enemyAttackSfxPlayed = false;
     public void init(RelicManager relics, EnergySystem energySystem, CardPileSystem cardPileSystem, HandSystem handSystem, UnitsManager unitsManager)
     {
         this.relics = relics;
@@ -60,6 +61,7 @@ public class TurnManager : MonoBehaviour
 
     public void endTurn()
     {
+        enemyAttackSfxPlayed = false;
         unitsManager.player.onEffectsTurnEnd();
         relics.onTurnEnd(unitsManager.player, turnNumber);
 
@@ -172,6 +174,12 @@ public class TurnManager : MonoBehaviour
                 state.onTurnEnd(unit.unitData.moves);
             unit.onEffectsTurnEnd();
             return;
+        }
+
+        if (unit.unitType == UnitType.Enemy && !enemyAttackSfxPlayed)
+        {
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.attackOther);
+            enemyAttackSfxPlayed = true;
         }
 
         foreach (var action in unit.nextMove.actions)

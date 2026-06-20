@@ -17,10 +17,25 @@ MonoBehaviour:
   type: 2
   rarity: 1
   image: {fileID: 2431129243960888385, guid: 79a707f6b91097e439305d0cd0c6a9f9, type: 3}
-  shopPrice: 0
+  shopPrice: 180
   exhaust: 1
-  actions: []
-  upgrade: {fileID: 11400000, guid: 9615c1443fc8f7c44b2a73908ac9b63e, type: 2}
+  actions:
+  - rid: 4436523283636551778
+  upgrade: {fileID: 11400000, guid: 0ac4b73d27e3aac42baba6d62b296e5a, type: 2}
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 4436523283636551778
+      type: {class: AddEffectAction, ns: , asm: Assembly-CSharp}
+      data:
+        targetType: 0
+        effectToAdd:
+          rid: 4436523283636551779
+    - rid: 4436523283636551779
+      type: {class: EnergyRegenEffect, ns: , asm: Assembly-CSharp}
+      data:
+        effectName: Regeneracja energii
+        isMergeable: 1
+        isDebuff: 0
+        turns: 20
+        energyPerTurn: 1

@@ -36,9 +36,12 @@ public class MapManager : MonoBehaviour
 
     private void Start()
     {
-        AudioManager.Instance.StopMusic();
-        AudioManager.Instance.PlayMusic(AudioManager.Instance.menuMusic);
         displayMap();
+    }
+
+    private void OnEnable()
+    {
+        AudioManager.Instance?.PlayMusic(AudioManager.Instance.menuMusic);
     }
 
     private void displayMap()

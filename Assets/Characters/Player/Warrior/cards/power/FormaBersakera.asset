@@ -17,7 +17,7 @@ MonoBehaviour:
   type: 2
   rarity: 1
   image: {fileID: -5844326165879334303, guid: 4e06c5362db9cf4498db8f3c6887930b, type: 3}
-  shopPrice: 0
+  shopPrice: 175
   exhaust: 1
   actions:
   - rid: 4436523213531381832
@@ -30,7 +30,7 @@ MonoBehaviour:
       type: {class: DamageAction, ns: , asm: Assembly-CSharp}
       data:
         targetType: 0
-        damageAmount: 10
+        damageAmount: 8
     - rid: 4436523213531381833
       type: {class: AddEffectAction, ns: , asm: Assembly-CSharp}
       data:

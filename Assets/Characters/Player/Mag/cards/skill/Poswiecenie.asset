@@ -17,7 +17,7 @@ MonoBehaviour:
   type: 1
   rarity: 1
   image: {fileID: 5523701174298596627, guid: 6a4863462bcf5f547b81bed08d42b6b0, type: 3}
-  shopPrice: 0
+  shopPrice: 150
   exhaust: 0
   actions:
   - rid: 490815751144079362
@@ -43,5 +43,5 @@ MonoBehaviour:
         effectName: "Wra\u017Cliwo\u015B\u0107"
         isMergeable: 1
         isDebuff: 1
-        duration: 1
+        duration: 2
         multiplier: 1.5

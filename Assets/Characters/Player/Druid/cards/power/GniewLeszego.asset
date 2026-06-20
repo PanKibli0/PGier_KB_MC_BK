@@ -17,7 +17,7 @@ MonoBehaviour:
   type: 2
   rarity: 1
   image: {fileID: 1889365484363608782, guid: 4a5d8a0d3cbda0b4db8d09b9fa338228, type: 3}
-  shopPrice: 0
+  shopPrice: 150
   exhaust: 0
   actions:
   - rid: 490815634552389633
@@ -29,7 +29,7 @@ MonoBehaviour:
     - rid: 490815634552389633
       type: {class: AddEffectAction, ns: , asm: Assembly-CSharp}
       data:
-        targetType: 0
+        targetType: 2
         effectToAdd:
           rid: 490815634552389634
     - rid: 490815634552389634
@@ -42,5 +42,5 @@ MonoBehaviour:
     - rid: 490815634552389636
       type: {class: BlockAction, ns: , asm: Assembly-CSharp}
       data:
-        targetType: 0
+        targetType: 2
         blockAmount: 2

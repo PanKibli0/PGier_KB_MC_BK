@@ -954,21 +954,13 @@ MonoBehaviour:
   attackWoj: {fileID: 8300000, guid: 4c8feee2a00c040419b87635b92691c5, type: 3}
   attackMag: {fileID: 8300000, guid: a9d9c2c3a1c31ea4f9f88d3ea1c250de, type: 3}
   attackDruid: {fileID: 8300000, guid: a72da347190a6ed48936993c37f18baf, type: 3}
+  shield: {fileID: 8300000, guid: 8cba4d05302cb854caaddbf09ac4ad29, type: 3}
   healing: {fileID: 8300000, guid: b007a686abc2de544978b4918296d694, type: 3}
   cardPlay: {fileID: 8300000, guid: f3197533788c5fc459bc40b18a2f6bfe, type: 3}
   victory: {fileID: 8300000, guid: d20d98d5009c32142bc0170c2e856050, type: 3}
   death: {fileID: 8300000, guid: 9f529a1ce2496414b9008a83e0605c16, type: 3}
   summon: {fileID: 8300000, guid: 75860363016cc5f489b1a2fc38e466f7, type: 3}
-  deathGob: {fileID: 8300000, guid: 63027f7c53281ab47bc7219cc4271211, type: 3}
-  deathSlime: {fileID: 8300000, guid: 8779fceda6e4e6448bcd0830e243554a, type: 3}
-  deathSpider: {fileID: 8300000, guid: 6253f04f5554e214b8dcc1690d87e732, type: 3}
-  deathSnake: {fileID: 8300000, guid: a845f3fcaf8bcdf47959915e16d745bb, type: 3}
   deathOther: {fileID: 8300000, guid: 02afb8416908d6442a65a2d4de18e836, type: 3}
-  attackGob: {fileID: 8300000, guid: e5a10ac67cf558c4c9983d6370289d05, type: 3}
-  attackSlime: {fileID: 8300000, guid: fbbb7dcf72e04c041ac178a955a99fed, type: 3}
-  attackSpider: {fileID: 8300000, guid: f57f1d4a5d44b3241a514cca5dd297bf, type: 3}
-  attackSnake: {fileID: 8300000, guid: a845f3fcaf8bcdf47959915e16d745bb, type: 3}
-  attackJedza: {fileID: 8300000, guid: 6a60213a94849e840a4b9dcd5441e474, type: 3}
   attackOther: {fileID: 8300000, guid: b95d5f3b06e90c34a91c0703b287f764, type: 3}
 --- !u!82 &609546497
 AudioSource:

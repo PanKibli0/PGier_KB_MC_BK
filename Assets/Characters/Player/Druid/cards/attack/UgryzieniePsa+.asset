@@ -43,4 +43,4 @@ MonoBehaviour:
       type: {class: HealAction, ns: , asm: Assembly-CSharp}
       data:
         targetType: 2
-        healAmount: 6
+        healAmount: 8

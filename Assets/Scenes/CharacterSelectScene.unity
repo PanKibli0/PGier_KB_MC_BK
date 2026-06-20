@@ -858,8 +858,8 @@ MonoBehaviour:
   startButton: {fileID: 2035925759}
   characters:
   - {fileID: 11400000, guid: 0df7b8c4ee616214da714507a6b284f1, type: 2}
-  - {fileID: 11400000, guid: 0df7b8c4ee616214da714507a6b284f1, type: 2}
-  - {fileID: 11400000, guid: 0df7b8c4ee616214da714507a6b284f1, type: 2}
+  - {fileID: 11400000, guid: 6ed3fc58d759a2848a6d36281422c8ed, type: 2}
+  - {fileID: 11400000, guid: 93b19ae6468ac89459ed79b129a149b1, type: 2}
   characterTransforms:
   - {fileID: 1080751916}
   - {fileID: 1531810652}
