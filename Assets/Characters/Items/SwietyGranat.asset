@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemName: "\u015Awi\u0119ty Granat R\u0119czny"
   icon: {fileID: 4922587930103465297, guid: 4eab632dcc665d742be8730e284047d5, type: 3}
+  price: 150
   actions:
   - rid: 4436523283636551752
   references:

@@ -8,10 +8,15 @@ public class ShopUI : MonoBehaviour
 {
     [SerializeField] private GameObject shopCardPrefab;
     [SerializeField] private Transform cardsContainer;
+
     [SerializeField] private Button removeButton;
     [SerializeField] private TMP_Text removeCostText;
     [SerializeField] private GameObject removePanel;
     [SerializeField] private ShopRemovePanel shopRemovePanel;
+
+    [Header("Items")]
+    [SerializeField] private GameObject itemPrefab;
+    [SerializeField] private Transform itemsContainer;
 
     public int removeCost = 50;
 
@@ -19,6 +24,7 @@ public class ShopUI : MonoBehaviour
     {
         updateRemoveButtonState();
         createShopCardsUI();
+        createShopItemsUI();
     }
 
     private void updateRemoveButtonState()
@@ -33,7 +39,6 @@ public class ShopUI : MonoBehaviour
     {
         GameManager gm = GameManager.Instance;
         List<CardData> charCards = getUniqueCards(gm.selectedCharacter.cardPool.cards, 5);
-
         for (int i = 0; i < charCards.Count; i++)
             createCard(charCards[i], -730 + i * 365, 250);
     }
@@ -41,8 +46,31 @@ public class ShopUI : MonoBehaviour
     private void createCard(CardData card, float x, float y)
     {
         GameObject cardObj = Instantiate(shopCardPrefab, cardsContainer);
-        cardObj.GetComponent<RectTransform>().anchoredPosition = new Vector2(x, y);
         cardObj.GetComponent<ShopCardItem>().init(card);
+    }
+
+    private void createShopItemsUI()
+    {
+        GameManager gm = GameManager.Instance;
+
+        List<ItemData> items = new List<ItemData>();
+
+        while (items.Count < 3)
+        {
+            ItemData item = gm.itemPool.GetRandomItem();
+            if (item != null && !items.Contains(item))
+                items.Add(item);
+        }
+
+        for (int i = 0; i < items.Count; i++)
+        {
+            GameObject obj = Instantiate(itemPrefab, itemsContainer, false);
+
+            obj.transform.SetAsLastSibling();
+
+            var ui = obj.GetComponentInChildren<ShopItemUI>();
+            ui.init(items[i]);
+        }
     }
 
     private List<CardData> getUniqueCards(List<CardData> source, int count)

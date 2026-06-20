@@ -13,10 +13,38 @@ MonoBehaviour:
   m_Name: "Mikstura\u015Amierci"
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemName: "Mikstura Rozk\u0142adu"
-  description: 
-  icon: {fileID: 0}
-  targetType: 0
-  actions: []
+  icon: {fileID: 4841811676290313208, guid: 130300043f0527f4a9063730f0a983fa, type: 3}
+  price: 100
+  actions:
+  - rid: 4436523291712684102
+  - rid: 4436523291712684104
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 4436523291712684102
+      type: {class: AddEffectAction, ns: , asm: Assembly-CSharp}
+      data:
+        targetType: 3
+        effectToAdd:
+          rid: 4436523291712684103
+    - rid: 4436523291712684103
+      type: {class: FlameEffect, ns: , asm: Assembly-CSharp}
+      data:
+        effectName: "P\u0142omie\u0144"
+        isMergeable: 1
+        isDebuff: 1
+        duration: 4
+        damagePerTurn: 4
+    - rid: 4436523291712684104
+      type: {class: AddEffectAction, ns: , asm: Assembly-CSharp}
+      data:
+        targetType: 3
+        effectToAdd:
+          rid: 4436523291712684106
+    - rid: 4436523291712684106
+      type: {class: PoisonEffect, ns: , asm: Assembly-CSharp}
+      data:
+        effectName: Trucizna
+        isMergeable: 1
+        isDebuff: 1
+        stacks: 2

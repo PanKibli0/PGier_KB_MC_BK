@@ -13,9 +13,8 @@ MonoBehaviour:
   m_Name: MiksturaZdrowia
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemName: Mikstura zdrowia
-  description: "Ulecz si\u0119 o 10 [Zdrowia]"
   icon: {fileID: -149565003048582342, guid: 293ec68026c1a1f44a3741eaae286e3e, type: 3}
-  targetType: 0
+  price: 90
   actions:
   - rid: 4436522908157739008
   references:

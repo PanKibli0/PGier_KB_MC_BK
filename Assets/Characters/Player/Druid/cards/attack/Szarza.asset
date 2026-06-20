@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be91687817927d141b5fa4be2f12884b, type: 3}
   m_Name: Szarza
   m_EditorClassIdentifier: Assembly-CSharp::CardData
-  cardName: "Szczurza Szar\u017Ca"
+  cardName: "Szar\u017Ca"
   cost: 2
   type: 0
   rarity: 1
@@ -20,21 +20,16 @@ MonoBehaviour:
   shopPrice: 85
   exhaust: 0
   actions:
-  - rid: 4436523213531381867
+  - rid: 4436523283636551782
   - rid: 4436523213531381870
   upgrade: {fileID: 0}
   references:
     version: 2
     RefIds:
-    - rid: 4436523213531381867
-      type: {class: SummonAction, ns: , asm: Assembly-CSharp}
-      data:
-        targetType: 1
-        unitData: {fileID: 11400000, guid: b18ac83350bd3d54e823745f343d7656, type: 2}
     - rid: 4436523213531381870
       type: {class: AddEffectAction, ns: , asm: Assembly-CSharp}
       data:
-        targetType: 7
+        targetType: 2
         effectToAdd:
           rid: 4436523213531381872
     - rid: 4436523213531381872
@@ -44,3 +39,7 @@ MonoBehaviour:
         isMergeable: 1
         isDebuff: 0
         value: 1
+    - rid: 4436523283636551782
+      type: {class: TakeTurnAction, ns: , asm: Assembly-CSharp}
+      data:
+        targetType: 2

@@ -12,10 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb2a3ffb3a2c58640922a7465226e6e6, type: 3}
   m_Name: "MiksturaSi\u0142y"
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  itemName: Mikstura zdrowia
-  description: "Ulecz si\u0119 o 10 [Zdrowia]"
-  icon: {fileID: -149565003048582342, guid: 293ec68026c1a1f44a3741eaae286e3e, type: 3}
-  targetType: 0
+  itemName: "Mikstura si\u0142y"
+  icon: {fileID: -1349999390519637341, guid: c77ff742f6df22d40925f10882167e71, type: 3}
+  price: 80
   actions:
   - rid: 4436522908157739008
   references:

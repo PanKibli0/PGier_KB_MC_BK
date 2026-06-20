@@ -20,25 +20,12 @@ MonoBehaviour:
   shopPrice: 225
   exhaust: 1
   actions:
-  - rid: 4436523213531381864
-  - rid: 4436523213531381865
-  - rid: 4436523213531381866
+  - rid: 4436523283636551787
   upgrade: {fileID: 11400000, guid: cd5cbb9c4fc5efc4c8388c2ab8e79167, type: 2}
   references:
     version: 2
     RefIds:
-    - rid: 4436523213531381864
-      type: {class: SummonAction, ns: , asm: Assembly-CSharp}
+    - rid: 4436523283636551787
+      type: {class: TakeTurnAction, ns: , asm: Assembly-CSharp}
       data:
-        targetType: 1
-        unitData: {fileID: 11400000, guid: 97cabd8d51c38454aab4162b6011442a, type: 2}
-    - rid: 4436523213531381865
-      type: {class: SummonAction, ns: , asm: Assembly-CSharp}
-      data:
-        targetType: 1
-        unitData: {fileID: 11400000, guid: 95c127b718e9de94aac7422f843a8b5d, type: 2}
-    - rid: 4436523213531381866
-      type: {class: SummonAction, ns: , asm: Assembly-CSharp}
-      data:
-        targetType: 1
-        unitData: {fileID: 11400000, guid: b18ac83350bd3d54e823745f343d7656, type: 2}
+        targetType: 0

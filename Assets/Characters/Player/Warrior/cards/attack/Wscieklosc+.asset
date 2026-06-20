@@ -44,4 +44,4 @@ MonoBehaviour:
         isMergeable: 1
         isDebuff: 1
         duration: 2
-        value: 4
+        damagePerTurn: 4

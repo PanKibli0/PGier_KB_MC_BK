@@ -13,9 +13,8 @@ MonoBehaviour:
   m_Name: PrzeterKremowka
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemName: Przeterminowana Kremowka
-  description: "Na\u0142\xF3\u017C 3 [Wra\u017Cliwo\u015B\u0107] na jednego przeciwnika"
   icon: {fileID: -4428620167107357139, guid: d22c0786b8f73004190342859b68c1fd, type: 3}
-  targetType: 0
+  price: 80
   actions:
   - rid: 4436522908157739012
   references:

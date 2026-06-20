@@ -13,9 +13,8 @@ MonoBehaviour:
   m_Name: Widly
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemName: "Wid\u0142y"
-  description: "Zadaj 18 [Obra\u017Ce\u0144] jednemu przeciwnikowi"
   icon: {fileID: 7359401400836566249, guid: 8938bec25c4eaa34583e5583eca16ec3, type: 3}
-  targetType: 1
+  price: 85
   actions:
   - rid: 4436522908578218003
   references:
@@ -25,4 +24,4 @@ MonoBehaviour:
       type: {class: DamageAction, ns: , asm: Assembly-CSharp}
       data:
         targetType: 1
-        damageAmount: 18
+        damageAmount: 15

@@ -17,7 +17,7 @@ MonoBehaviour:
   type: 0
   rarity: 0
   image: {fileID: -11828822044514671, guid: 03d668650f37d194b8201dfe54a66761, type: 3}
-  shopPrice: 80
+  shopPrice: 90
   exhaust: 0
   actions:
   - rid: 490815630673969234
@@ -43,5 +43,5 @@ MonoBehaviour:
         effectName: "P\u0142omie\u0144"
         isMergeable: 1
         isDebuff: 1
-        duration: 2
-        value: 4
+        duration: 4
+        damagePerTurn: 4

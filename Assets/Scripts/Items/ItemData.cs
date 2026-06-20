@@ -6,6 +6,7 @@ public class ItemData : ScriptableObject
 {
     public string itemName;
     public Sprite icon;
+    public int price;
 
     [SerializeReference]
     public List<BaseAction> actions = new List<BaseAction>();

@@ -13,11 +13,30 @@ MonoBehaviour:
   m_Name: Kapec
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemName: "Kape\u0107 Obra\u017Ce\u0144 i B\xF3lu"
-  description: "Zadaj 7 [Obra\u017Ce\u0144] ka\u017Cemu przeciwnikowi i otrzymaj
-    2 [Wra\u017Cliwo\u015B\u0107]"
   icon: {fileID: -7163978685900715137, guid: acaac07ff8803034695acf8d1c11a7eb, type: 3}
-  targetType: 0
-  actions: []
+  price: 60
+  actions:
+  - rid: 4436523291712684099
+  - rid: 4436523291712684100
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 4436523291712684099
+      type: {class: DamageAction, ns: , asm: Assembly-CSharp}
+      data:
+        targetType: 6
+        damageAmount: 7
+    - rid: 4436523291712684100
+      type: {class: AddEffectAction, ns: , asm: Assembly-CSharp}
+      data:
+        targetType: 0
+        effectToAdd:
+          rid: 4436523291712684101
+    - rid: 4436523291712684101
+      type: {class: VulnerableEffect, ns: , asm: Assembly-CSharp}
+      data:
+        effectName: "Wra\u017Cliwo\u015B\u0107"
+        isMergeable: 1
+        isDebuff: 1
+        duration: 2
+        multiplier: 1.5

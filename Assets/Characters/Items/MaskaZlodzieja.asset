@@ -13,9 +13,8 @@ MonoBehaviour:
   m_Name: MaskaZlodzieja
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemName: "Maska Z\u0142odzieja"
-  description: "Oczy\u015B\u0107 siebie i sojusznik\xF3w ze wszystkich efekt\xF3w"
   icon: {fileID: -6894775185251086373, guid: 05f9059ee551bd54a882fb7015ebad79, type: 3}
-  targetType: 7
+  price: 120
   actions:
   - rid: 4436522908578217991
   - rid: 4436522908578217992
@@ -91,5 +90,5 @@ MonoBehaviour:
         effectName: "P\u0142omie\u0144"
         isMergeable: 1
         isDebuff: 1
-        value: 0
-        multiplier: 1
+        duration: 0
+        damagePerTurn: 0

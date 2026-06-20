@@ -8,38 +8,60 @@ public class PlayerInventory
 
     public event Action onInventoryChanged;
 
+    public bool isFull()
+    {
+        return items.Count >= maxItems;
+    }
+
+    public bool canAddItem(ItemData item)
+    {
+        if (item == null) return false;
+        return !isFull();
+    }
+
     public bool addItem(ItemData item)
     {
         if (item == null) return false;
-        if (items.Count >= maxItems) return false;
+        if (isFull()) return false;
 
         items.Add(item);
         onInventoryChanged?.Invoke();
         return true;
     }
 
-    public void removeItem(ItemData item)
+    public bool removeItem(ItemData item)
     {
-        if (item == null) return;
-        items.Remove(item);
-        onInventoryChanged?.Invoke();
+        if (item == null) return false;
+
+        bool removed = items.Remove(item);
+        if (removed)
+            onInventoryChanged?.Invoke();
+
+        return removed;
     }
 
-    public void removeItemAt(int index)
+    public bool removeItemAt(int index)
     {
-        if (index < 0 || index >= items.Count) return;
+        if (index < 0 || index >= items.Count)
+            return false;
+
         items.RemoveAt(index);
         onInventoryChanged?.Invoke();
+        return true;
     }
 
-    public void useItem(int index, Unit player, Unit selectedTarget = null)
+    public bool useItem(int index, Unit player, Unit selectedTarget = null)
     {
-        if (index < 0 || index >= items.Count) return;
+        if (index < 0 || index >= items.Count) return false;
+        if (player == null) return false;
+
         ItemData item = items[index];
-        if (item == null || player == null) return;
+        if (item == null) return false;
 
         item.use(player, selectedTarget);
         items.RemoveAt(index);
         onInventoryChanged?.Invoke();
+
+        return true;
     }
 }

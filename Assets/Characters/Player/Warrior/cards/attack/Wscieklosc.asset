@@ -34,7 +34,7 @@ MonoBehaviour:
     - rid: 490815768443486277
       type: {class: AddEffectAction, ns: , asm: Assembly-CSharp}
       data:
-        targetType: 0
+        targetType: 1
         effectToAdd:
           rid: 490815768443486278
     - rid: 490815768443486278
@@ -44,4 +44,4 @@ MonoBehaviour:
         isMergeable: 1
         isDebuff: 1
         duration: 2
-        value: 4
+        damagePerTurn: 4

@@ -16,7 +16,7 @@ MonoBehaviour:
   actions:
   - rid: 3376038571514527927
   conditions: []
-  weight: 4
+  weight: 1
   references:
     version: 2
     RefIds:

@@ -13,9 +13,8 @@ MonoBehaviour:
   m_Name: Kremowka
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemName: "Krem\xF3wka"
-  description: 'Otrzymaj 5 [Regeneracja]'
   icon: {fileID: -6880031034734521633, guid: 1f6a45cfdfa4c8f4d8d3da3a104a07c6, type: 3}
-  targetType: 0
+  price: 80
   actions:
   - rid: 4436522908578218004
   references:

@@ -13,10 +13,8 @@ MonoBehaviour:
   m_Name: MiksturaPioruna
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemName: Mikstura Pioruna
-  description: "Zadaj 2 [Obra\u017Ce\u0144] ka\u017Cdemu przeciwnikowi i na\u0142o\u017C
-    1 [Wra\u017Cliwo\u015B\u0107]"
   icon: {fileID: 2907061905500948426, guid: 3d9f62d595b07da4987e2628e48a09cd, type: 3}
-  targetType: 6
+  price: 55
   actions:
   - rid: 4436522908578217984
   - rid: 4436522908578217985

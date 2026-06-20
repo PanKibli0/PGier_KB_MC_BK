@@ -13,9 +13,8 @@ MonoBehaviour:
   m_Name: MiksturaSlabosci
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemName: "Mikstura S\u0142abo\u015Bci"
-  description: "Na\u0142\xF3\u017C 2 [Os\u0142abienie] na ka\u017Cdego przeciwnika"
   icon: {fileID: 7242512078571422823, guid: 243f858694390784ba494a6ef56fb72a, type: 3}
-  targetType: 6
+  price: 110
   actions:
   - rid: 4436522908578217989
   references:

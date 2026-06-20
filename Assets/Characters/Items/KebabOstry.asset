@@ -13,9 +13,8 @@ MonoBehaviour:
   m_Name: KebabOstry
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemName: KebabOstry
-  description: "Na\u0142\xF3\u017C 6 [Trucizna] na jednego przeciwnika"
   icon: {fileID: -3183756464830776683, guid: 8b493dd2ad76973429a7bdcbc5bc41d0, type: 3}
-  targetType: 1
+  price: 55
   actions:
   - rid: 4436522908578217987
   references:

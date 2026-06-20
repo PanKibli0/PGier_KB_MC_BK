@@ -31,11 +31,12 @@ MonoBehaviour:
       data:
         targetType: 1
         effectToAdd:
-          rid: 3376038571514527911
-    - rid: 3376038571514527911
-      type: {class: BleedingEffect, ns: , asm: Assembly-CSharp}
+          rid: 4436523283636551791
+    - rid: 4436523283636551791
+      type: {class: FlameEffect, ns: , asm: Assembly-CSharp}
       data:
-        effectName: Krwawienie
+        effectName: "P\u0142omie\u0144"
         isMergeable: 1
-        isDebuff: 1
-        stacks: 2
+        isDebuff: 0
+        duration: 2
+        damagePerTurn: 4

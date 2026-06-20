@@ -13,9 +13,8 @@ MonoBehaviour:
   m_Name: MiksturaTarczy
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemName: Mikstura tarczy
-  description: "Na\u0142\xF3\u017C 7 [Obrona]"
   icon: {fileID: -9076973611813526599, guid: ae5291e0db16a504ca0a72bc9b5d319f, type: 3}
-  targetType: 0
+  price: 80
   actions:
   - rid: 4436522908157739009
   references:

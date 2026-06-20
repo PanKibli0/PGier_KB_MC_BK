@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviour
     public EventData testEvent;
 
     public PlayerInventory playerInventory;
+    public ItemPool itemPool;
 
     // DEBUG
     public List<ItemData> testItems;
