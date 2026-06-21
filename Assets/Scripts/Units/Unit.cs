@@ -74,7 +74,9 @@ public class Unit : MonoBehaviour
 
         animator = GetComponentInChildren<Animator>();
         if (animator != null)
-            animator.Play("Idle"); // domyœlnie idle
+            animator.Play("Idle");
+        else
+            Debug.LogWarning($"[{unitName}] Animator NOT FOUND on {unitType}");
     }
 
     public void setStatsUI(UnitStatsUI ui)

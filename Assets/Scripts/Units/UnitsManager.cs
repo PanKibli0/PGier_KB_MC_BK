@@ -104,10 +104,8 @@ public class UnitsManager : MonoBehaviour
 
         GameObject newUnitObj = Instantiate(unitPrefab);
         newUnitObj.transform.position = spawnPos;
-        Unit newUnit = newUnitObj.GetComponent<Unit>();
-        newUnit.init(data, type, statsUIManager, this);
 
-        // DEBUG SCALE
+        // DEBUG SCALE - graphic musi powstaæ PRZED init(), ¿eby Animator zosta³ znaleziony
         if (data.graphicPrefab != null)
         {
             GameObject graphic = Instantiate(data.graphicPrefab, newUnitObj.transform);
@@ -121,6 +119,9 @@ public class UnitsManager : MonoBehaviour
             graphic.transform.localPosition = new Vector3(0f, offsetY, 0f);
         }
         // END DEBUG
+
+        Unit newUnit = newUnitObj.GetComponent<Unit>();
+        newUnit.init(data, type, statsUIManager, this);
 
         if (type == UnitType.Ally)
         {
