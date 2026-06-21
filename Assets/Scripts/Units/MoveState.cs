@@ -22,6 +22,7 @@ public class MoveState
         {
             foreach (MoveCondition condition in move.conditions)
             {
+                if (condition == null) continue;
                 if (!condition.canUse(this, move))
                     return false;
             }
@@ -32,6 +33,8 @@ public class MoveState
 
     public void recordUse(UnitMove move)
     {
+        if (move == null) return;
+
         lastUsedMove = move;
 
         if (!useCounts.ContainsKey(move))
@@ -42,6 +45,7 @@ public class MoveState
         {
             foreach (MoveCondition condition in move.conditions)
             {
+                if (condition == null) continue;
                 condition.onUse(this, move);
 
                 if (condition is ForceNextMoveCondition force)
@@ -59,6 +63,7 @@ public class MoveState
 
             foreach (MoveCondition condition in move.conditions)
             {
+                if (condition == null) continue;
                 condition.onTurnEnd(this);
             }
         }
@@ -66,6 +71,7 @@ public class MoveState
 
     public int getUseCount(UnitMove move)
     {
+        if (move == null) return 0;
         if (useCounts.ContainsKey(move))
             return useCounts[move];
         return 0;
@@ -73,6 +79,7 @@ public class MoveState
 
     public int getCooldown(MoveCondition condition)
     {
+        if (condition == null) return 0;
         if (cooldowns.ContainsKey(condition))
             return cooldowns[condition];
         return 0;
@@ -80,11 +87,13 @@ public class MoveState
 
     public void setCooldown(MoveCondition condition, int value)
     {
+        if (condition == null) return;
         cooldowns[condition] = value;
     }
 
     public void decrementCooldown(MoveCondition condition)
     {
+        if (condition == null) return;
         if (cooldowns.ContainsKey(condition) && cooldowns[condition] > 0)
             cooldowns[condition]--;
     }

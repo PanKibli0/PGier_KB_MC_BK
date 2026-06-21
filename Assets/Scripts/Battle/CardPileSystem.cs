@@ -42,7 +42,7 @@ public class CardPileSystem
         OnDiscardPileChanged?.Invoke(discardPile.Count);
         OnExhaustPileChanged?.Invoke(exhaustPile.Count);
 
-        int end = Random.Range(3, 6);
+        int end = GameManager.Instance.selectedCharacter.baseDrawCount;
         drawCards(end);
     }
 

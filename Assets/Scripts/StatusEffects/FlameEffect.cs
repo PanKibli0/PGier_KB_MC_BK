@@ -33,7 +33,7 @@ public class FlameEffect : BaseStatusEffect
         duration += o.duration;
         damagePerTurn += o.damagePerTurn;
         damagePerTurn = Mathf.Min(damagePerTurn, 999);
-        return true;
+        return false;
     }
 
     public override string getMainText() { return $"<color=#ff7a18>{duration}</color>"; }

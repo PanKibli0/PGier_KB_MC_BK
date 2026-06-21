@@ -63,10 +63,15 @@ public class TurnManager : MonoBehaviour
     {
         enemyAttackSfxPlayed = false;
         unitsManager.player.onEffectsTurnEnd();
+        if (unitsManager.player == null) return;
+
         relics.onTurnEnd(unitsManager.player, turnNumber);
 
         foreach (Unit enemy in unitsManager.getEnemies())
+        {
             executeUnitTurn(enemy);
+            if (unitsManager.player == null) return;
+        }
 
         foreach (Unit ally in unitsManager.getAllies())
             executeUnitTurn(ally);
@@ -87,7 +92,6 @@ public class TurnManager : MonoBehaviour
         unitsManager.player?.onEffectsTurnStart();
 
         updateTurnLabel();
-
         OnTurnEnded?.Invoke();
     }
 
@@ -115,6 +119,7 @@ public class TurnManager : MonoBehaviour
             {
                 foreach (MoveCondition condition in move.conditions)
                 {
+                    if (condition == null) continue;
                     if (condition.mandatory)
                     {
                         isMandatory = true;

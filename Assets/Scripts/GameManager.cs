@@ -85,11 +85,18 @@ public class GameManager : MonoBehaviour
         setHealth(character.maxHealth);
 
         gold = character.startGold;
-        currentDeck = new List<CardData>();
+        OnGoldChanged?.Invoke(gold);
 
+        currentDeck = new List<CardData>();
         foreach (StartCardEntry entry in character.startCards)
             for (int i = 0; i < entry.amount; i++)
                 currentDeck.Add(entry.data);
+
+        relicManager = new RelicManager(new List<RelicData>());
+        playerInventory = new PlayerInventory();
+        pendingBattleEnemies = null;
+        currentMapNode = null;
+        currentEvent = null;
 
         MapData mapData = new MapData();
         mapData.nodes = new MapGenerator().generateMap(enemyPool);
@@ -110,6 +117,7 @@ public class GameManager : MonoBehaviour
     public void spendGold(int amount)
     {
         gold -= amount;
+        if (gold < 0) gold = 0;
         OnGoldChanged?.Invoke(gold);
     }
 
@@ -130,8 +138,12 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
-            SceneManager.LoadScene("MenuScene");
+        {
+            if (MainBar.Instance != null)
+                Destroy(MainBar.Instance.gameObject);
 
+            SceneManager.LoadScene("MenuScene");
+        }
         #region BUILD TESTER 
         bool ctrlAlt = (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl))
                      && (Input.GetKey(KeyCode.LeftAlt) || Input.GetKey(KeyCode.RightAlt));
