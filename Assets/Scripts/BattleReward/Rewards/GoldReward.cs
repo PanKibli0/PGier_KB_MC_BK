@@ -17,6 +17,6 @@ public class GoldReward : BaseReward
 
     public override Sprite getIcon()
     {
-        return null;
+        return Resources.Load<Sprite>("moneta");
     }
 }
