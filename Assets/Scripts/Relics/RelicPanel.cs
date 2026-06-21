@@ -27,6 +27,7 @@ public class RelicPanel : MonoBehaviour
 
     private void refresh()
     {
+
         foreach (Transform child in relicContainer)
             Destroy(child.gameObject);
 

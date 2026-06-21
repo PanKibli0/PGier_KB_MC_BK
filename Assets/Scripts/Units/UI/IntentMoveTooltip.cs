@@ -12,8 +12,19 @@ public class IntentMoveTooltip : MonoBehaviour, IPointerEnterHandler, IPointerEx
         UnitMove move = unit.nextMove;
 
         if (move == null || tooltip == null) return;
+        if (move.actions == null || move.actions.Count == 0) return;
 
-        BaseAction firstAction = move.actions[0];
+        BaseAction firstAction = null;
+        foreach (BaseAction action in move.actions)
+        {
+            if (action != null)
+            {
+                firstAction = action;
+                break;
+            }
+        }
+
+        if (firstAction == null) return;
 
         string iconPath = firstAction.getIconPath();
         Sprite icon = null;
@@ -23,6 +34,7 @@ public class IntentMoveTooltip : MonoBehaviour, IPointerEnterHandler, IPointerEx
         string description = "";
         foreach (BaseAction action in move.actions)
         {
+            if (action == null) continue;
             description += action.getCardDescription(unit, null) + "\n";
         }
 
