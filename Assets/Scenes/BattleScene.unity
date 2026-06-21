@@ -1474,15 +1474,15 @@ MonoBehaviour:
   allies: []
   enemies: []
   allySpawnPositions:
-  - {x: 200, y: 100, z: 0}
+  - {x: 200, y: 150, z: 0}
   - {x: 250, y: -200, z: 0}
   - {x: -100, y: -200, z: 0}
   enemySpawnPositions:
-  - {x: 120, y: 80, z: 0}
-  - {x: -230, y: 50, z: 0}
-  - {x: -150, y: -180, z: 0}
-  - {x: 170, y: -180, z: 0}
-  playerSpawnPosition: {x: -212, y: 100, z: 0}
+  - {x: 100, y: 150, z: 0}
+  - {x: -220, y: 150, z: 0}
+  - {x: -170, y: -180, z: 0}
+  - {x: 150, y: -180, z: 0}
+  playerSpawnPosition: {x: -212, y: 150, z: 0}
 --- !u!1 &955116550
 GameObject:
   m_ObjectHideFlags: 0

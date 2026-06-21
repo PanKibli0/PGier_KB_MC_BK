@@ -17,9 +17,10 @@ MonoBehaviour:
   trigger: 4
   actions:
   - rid: 4436522896542138380
+  - rid: 4436523304425095235
   turnsBetweenTriggers: 0
   requiredCardType: 1
-  anyCardType: 0
+  anyCardType: 1
   references:
     version: 2
     RefIds:
@@ -27,4 +28,17 @@ MonoBehaviour:
       type: {class: BlockAction, ns: , asm: Assembly-CSharp}
       data:
         targetType: 0
-        blockAmount: 3
+        blockAmount: 2
+    - rid: 4436523304425095235
+      type: {class: AddEffectAction, ns: , asm: Assembly-CSharp}
+      data:
+        targetType: 0
+        effectToAdd:
+          rid: 4436523304425095236
+    - rid: 4436523304425095236
+      type: {class: ThornsEffect, ns: , asm: Assembly-CSharp}
+      data:
+        effectName: Ciernie
+        isMergeable: 1
+        isDebuff: 0
+        value: 2

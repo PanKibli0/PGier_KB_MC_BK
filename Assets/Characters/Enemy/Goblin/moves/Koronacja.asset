@@ -12,27 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a47322801de95b348a0db7e09c294398, type: 3}
   m_Name: Koronacja
   m_EditorClassIdentifier: Assembly-CSharp::UnitMove
-  moveName: Zdenerwowanie
+  moveName: Koronacja
   actions:
   - rid: 4436523294419058766
   - rid: 4436523294419058767
   conditions:
-  - rid: 3376038571514527923
-  - rid: 3376038571514527924
+  - rid: 4436523304425095240
   weight: 2
   references:
     version: 2
     RefIds:
-    - rid: 3376038571514527923
-      type: {class: TurnCondition, ns: , asm: Assembly-CSharp}
-      data:
-        mandatory: 1
-        requiredTurn: 1
-    - rid: 3376038571514527924
-      type: {class: MaxUsesCondition, ns: , asm: Assembly-CSharp}
-      data:
-        mandatory: 0
-        maxUses: 1
     - rid: 4436523294419058766
       type: {class: SummonAction, ns: , asm: Assembly-CSharp}
       data:
@@ -43,3 +32,8 @@ MonoBehaviour:
       data:
         targetType: 6
         blockAmount: 5
+    - rid: 4436523304425095240
+      type: {class: CooldownCondition, ns: , asm: Assembly-CSharp}
+      data:
+        mandatory: 1
+        cooldown: 2
