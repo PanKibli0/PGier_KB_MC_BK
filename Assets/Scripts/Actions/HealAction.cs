@@ -15,7 +15,6 @@ public class HealAction : BaseAction
         return $"Ulecz {healAmount} punktów <sprite name=\"zdrowie\"> zdrowia.";
     }
 
-    // public override Sprite getIcon() { return Resources.Load<Sprite>("Icons/heal"); }
-    public override string getIconPath() { return "Icons/regeneracja"; }
+    public override string getIconPath() { return "Icons/zdrowie"; }
     public override string getValue() { return $"{healAmount}"; }
 }

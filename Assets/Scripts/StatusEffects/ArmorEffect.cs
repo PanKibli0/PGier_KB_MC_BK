@@ -25,7 +25,7 @@ public class ArmorEffect : BaseStatusEffect
 
     public override string getMainText() { return blockPerTurn.ToString(); }
     public override string getSecondaryText() { return ""; }
-    public override string getIconPath() { return "Icons/zrecznosc"; }
+    public override string getIconPath() { return "Icons/barykada"; }
 
     public override string getDescription()
     {
@@ -34,6 +34,6 @@ public class ArmorEffect : BaseStatusEffect
 
     public override string getActionDescription()
     {
-        return $"Nałóż Zbroję ({blockPerTurn}) <sprite name=\"zrecznosc\">";
+        return $"Nałóż Zbroję ({blockPerTurn}) <sprite name=\"barykada\">";
     }
 }

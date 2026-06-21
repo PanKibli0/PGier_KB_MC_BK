@@ -22,5 +22,5 @@ public class SummonAction : BaseAction
         return $"Przywołaj <sprite name=\"SummonAction\"> {unitData.unitName}";
     }
 
-    public override string getIconPath() { return "Icons/summonAction"; }
+    public override string getIconPath() { return "Icons/SummonAction"; }
 }

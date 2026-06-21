@@ -30,7 +30,6 @@ public class RemoveEffectAction : BaseAction
         return $"Usuń {effectToRemove.effectName}.";
     }
 
-    // public override Sprite getIcon() { return effectToRemove?.icon; }
-    public override string getIconPath() { return "Icons/obrona"; }
+    public override string getIconPath() { return effectToRemove != null ? effectToRemove.getIconPath() : ""; }
     public override string getValue() { return "<color=red>X</color>"; }
 }
