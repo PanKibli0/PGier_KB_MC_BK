@@ -11,7 +11,6 @@ public class AudioManager : MonoBehaviour
     [Header("Music")]
     public AudioClip menuMusic;
     public AudioClip battleMusic;
-    public AudioClip bossMusic;
     public AudioClip campfire;
 
     [Header("UI")]
