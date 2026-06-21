@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: FireFragment
   m_EditorClassIdentifier: Assembly-CSharp::UnitData
   unitName: "Kawa\u0142ek ognia"
-  graphicPrefab: {fileID: 1166939093955541677, guid: 3d81d8f39d2d2df4fb5e49175a13a770, type: 3}
+  graphicPrefab: {fileID: 7702511377937370319, guid: 5f532a4b941bfe640825b51f8851e3a9, type: 3}
   minHealth: 3
   maxHealth: 5
   startEffects: []

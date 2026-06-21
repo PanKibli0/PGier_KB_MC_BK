@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Wiewior
   m_EditorClassIdentifier: Assembly-CSharp::UnitData
   unitName: "Wiewi\xF3r"
-  graphicPrefab: {fileID: -8653719598885068355, guid: db3dc1ec67b341d44b2bf0b806a389c1, type: 3}
+  graphicPrefab: {fileID: 1166939093955541677, guid: f357e21b48013484898f937b3444d1e4, type: 3}
   minHealth: 11
   maxHealth: 16
   startEffects:

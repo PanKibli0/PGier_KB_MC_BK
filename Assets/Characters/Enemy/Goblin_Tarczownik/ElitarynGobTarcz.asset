@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ElitarynGobTarcz
   m_EditorClassIdentifier: Assembly-CSharp::UnitData
   unitName: Elitarny Goblin Tarczownik
-  graphicPrefab: {fileID: 962038764683568564, guid: 7010fdafd4eb3104b825b18e6c282fd9, type: 3}
+  graphicPrefab: {fileID: 7702511377937370319, guid: c6bbaf1ac196b1246b3056b9a99b0cb5, type: 3}
   minHealth: 22
   maxHealth: 30
   startEffects: []

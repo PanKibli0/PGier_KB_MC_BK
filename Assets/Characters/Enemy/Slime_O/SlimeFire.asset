@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SlimeFire
   m_EditorClassIdentifier: Assembly-CSharp::UnitData
   unitName: "P\u0142omienny Slime"
-  graphicPrefab: {fileID: -8653719598885068355, guid: 218540777c0695b47b36b529f8e9540f, type: 3}
+  graphicPrefab: {fileID: 7702511377937370319, guid: 5f532a4b941bfe640825b51f8851e3a9, type: 3}
   minHealth: 26
   maxHealth: 40
   startEffects: []

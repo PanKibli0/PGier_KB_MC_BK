@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Jedza
   m_EditorClassIdentifier: Assembly-CSharp::UnitData
   unitName: "J\u0119dza od matmy"
-  graphicPrefab: {fileID: -8653719598885068355, guid: 20fc7283febd31d4c9009c0443ee81e0, type: 3}
+  graphicPrefab: {fileID: 7702511377937370319, guid: 4f0b15126fd17c94a8d9c1b7118da2cf, type: 3}
   minHealth: 40
   maxHealth: 45
   startEffects: []

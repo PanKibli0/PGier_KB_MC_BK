@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SlimeIce
   m_EditorClassIdentifier: Assembly-CSharp::UnitData
   unitName: Lodowy Slime
-  graphicPrefab: {fileID: -8653719598885068355, guid: 3a8156553d0e31a42b40ee3a24ba6b17, type: 3}
+  graphicPrefab: {fileID: 7702511377937370319, guid: 9352c4a067dce2f49b3f7a58d7251198, type: 3}
   minHealth: 32
   maxHealth: 41
   startEffects: []

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PajakMaly
   m_EditorClassIdentifier: Assembly-CSharp::UnitData
   unitName: "Ma\u0142y Paj\u0105k"
-  graphicPrefab: {fileID: -8653719598885068355, guid: a5e0df452a8e69648b5b62cbb3c3b478, type: 3}
+  graphicPrefab: {fileID: 7702511377937370319, guid: 32c93757dca889d4788bb4b45f038263, type: 3}
   minHealth: 30
   maxHealth: 35
   startEffects: []

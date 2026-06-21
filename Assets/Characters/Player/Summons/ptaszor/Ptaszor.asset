@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Ptaszor
   m_EditorClassIdentifier: Assembly-CSharp::UnitData
   unitName: Ptaszor
-  graphicPrefab: {fileID: -8653719598885068355, guid: f5bd4da15ddfcc944acfa5e337975c85, type: 3}
+  graphicPrefab: {fileID: 1166939093955541677, guid: 1fc4b440b6453fa4ba4d0db67e2b5d07, type: 3}
   minHealth: 9
   maxHealth: 14
   startEffects:

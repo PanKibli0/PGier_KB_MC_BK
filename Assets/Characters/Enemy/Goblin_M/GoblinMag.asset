@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GoblinMag
   m_EditorClassIdentifier: Assembly-CSharp::UnitData
   unitName: Goblin Mag
-  graphicPrefab: {fileID: -8653719598885068355, guid: 42defa2f22d9eb546b373afdedd64784, type: 3}
+  graphicPrefab: {fileID: 7702511377937370319, guid: 4d5dec7bdb5cce146b84700691413420, type: 3}
   minHealth: 28
   maxHealth: 34
   startEffects: []

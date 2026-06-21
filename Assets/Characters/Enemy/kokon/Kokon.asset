@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Kokon
   m_EditorClassIdentifier: Assembly-CSharp::UnitData
   unitName: Kokon
-  graphicPrefab: {fileID: -8653719598885068355, guid: cd46c7165ac61f944aedc4d71ded9bf3, type: 3}
+  graphicPrefab: {fileID: 7702511377937370319, guid: abbfa4c7befa0a64ab041c2207134280, type: 3}
   minHealth: 25
   maxHealth: 30
   startEffects: []

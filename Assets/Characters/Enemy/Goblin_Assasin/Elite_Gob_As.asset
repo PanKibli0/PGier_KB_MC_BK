@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Elite_Gob_As
   m_EditorClassIdentifier: Assembly-CSharp::UnitData
   unitName: "Elitarny Goblin Zab\xF3jca"
-  graphicPrefab: {fileID: 962038764683568564, guid: 7010fdafd4eb3104b825b18e6c282fd9, type: 3}
+  graphicPrefab: {fileID: 7702511377937370319, guid: ba4b873c0ad86c14db4b38b182c66723, type: 3}
   minHealth: 30
   maxHealth: 36
   startEffects:

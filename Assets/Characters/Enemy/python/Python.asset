@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Python
   m_EditorClassIdentifier: Assembly-CSharp::UnitData
   unitName: Python
-  graphicPrefab: {fileID: 0}
+  graphicPrefab: {fileID: 7702511377937370319, guid: 4a12ea4901345ae4aa41e4fc47775332, type: 3}
   minHealth: 38
   maxHealth: 46
   startEffects: []

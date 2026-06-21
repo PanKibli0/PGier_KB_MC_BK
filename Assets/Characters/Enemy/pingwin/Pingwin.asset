@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Pingwin
   m_EditorClassIdentifier: Assembly-CSharp::UnitData
   unitName: Pingwin
-  graphicPrefab: {fileID: 0}
+  graphicPrefab: {fileID: 7702511377937370319, guid: ff05433e03120634bbeae2011132805e, type: 3}
   minHealth: 30
   maxHealth: 36
   startEffects:

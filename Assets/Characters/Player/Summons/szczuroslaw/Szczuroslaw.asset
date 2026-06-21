@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Szczuroslaw
   m_EditorClassIdentifier: Assembly-CSharp::UnitData
   unitName: "Szczuros\u0142aw"
-  graphicPrefab: {fileID: -8653719598885068355, guid: 5e5bcefa59223bc4a8e7518e591f69fe, type: 3}
+  graphicPrefab: {fileID: 1166939093955541677, guid: 5f3ba4a13e70108488697bac4cdff8c0, type: 3}
   minHealth: 14
   maxHealth: 18
   startEffects: []

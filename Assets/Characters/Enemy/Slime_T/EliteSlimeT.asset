@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: EliteSlimeT
   m_EditorClassIdentifier: Assembly-CSharp::UnitData
   unitName: Slime
-  graphicPrefab: {fileID: 4200463514604636877, guid: a2324800a30964343bd88756314a9bd7, type: 3}
+  graphicPrefab: {fileID: 7702511377937370319, guid: b9fd359956fff9f47a5f77d70e791256, type: 3}
   minHealth: 36
   maxHealth: 42
   startEffects:

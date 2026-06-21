@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BOSSGoblin
   m_EditorClassIdentifier: Assembly-CSharp::UnitData
   unitName: "Kr\xF3l Goblin\xF3w"
-  graphicPrefab: {fileID: 7702511377937370319, guid: 67a450b2d48ef2a4f8c3d92b02b151c4, type: 3}
+  graphicPrefab: {fileID: 7702511377937370319, guid: 985a364fb8f84494da408ce2458b445f, type: 3}
   minHealth: 72
   maxHealth: 84
   startEffects:
