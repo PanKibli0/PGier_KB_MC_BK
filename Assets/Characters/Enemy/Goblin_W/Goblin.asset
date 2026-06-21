@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Goblin
   m_EditorClassIdentifier: Assembly-CSharp::UnitData
   unitName: Goblin Wojownik
-  graphicPrefab: {fileID: 962038764683568564, guid: 7010fdafd4eb3104b825b18e6c282fd9, type: 3}
+  graphicPrefab: {fileID: 7702511377937370319, guid: 67a450b2d48ef2a4f8c3d92b02b151c4, type: 3}
   minHealth: 34
   maxHealth: 40
   startEffects: []

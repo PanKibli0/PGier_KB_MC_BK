@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8951359111193155686
 Transform:
   m_ObjectHideFlags: 0
@@ -130,7 +130,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8685700940101410498
 Transform:
   m_ObjectHideFlags: 0
@@ -271,12 +271,24 @@ PrefabInstance:
       value: szlam_ogien
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: 218540777c0695b47b36b529f8e9540f, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5657
+      objectReference: {fileID: 0}
+    - target: {fileID: -7552582706839291426, guid: 218540777c0695b47b36b529f8e9540f, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5657
+      objectReference: {fileID: 0}
+    - target: {fileID: -7552582706839291426, guid: 218540777c0695b47b36b529f8e9540f, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5657
+      objectReference: {fileID: 0}
+    - target: {fileID: -7552582706839291426, guid: 218540777c0695b47b36b529f8e9540f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.62437
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: 218540777c0695b47b36b529f8e9540f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -17.14
+      value: -22.03
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: 218540777c0695b47b36b529f8e9540f, type: 3}
       propertyPath: m_LocalPosition.z
