@@ -32,6 +32,8 @@ public class UnitsManager : MonoBehaviour
     private CardPileSystem cardPileSystem;
     private HandSystem handSystem;
 
+    private UnitAIType battleType;
+
     public void init(EnergySystem energySystem, CardPileSystem cardPileSystem, HandSystem handSystem, RelicManager relics)
     {
         this.energySystem = energySystem;
@@ -91,6 +93,11 @@ public class UnitsManager : MonoBehaviour
 
     public bool spawn(UnitData data, UnitType type)
     {
+        if (type == UnitType.Enemy && data != null)
+        {
+            battleType = (UnitAIType)Mathf.Max((int)battleType, (int)data.aiType);
+        }
+
         if (data == null || unitPrefab == null) return false;
 
         int slot = -1;
@@ -248,6 +255,10 @@ public class UnitsManager : MonoBehaviour
         unregisterMoveState(unit);
         checkCombatEnd();
     }
+    public void startBattle()
+    {
+        battleType = UnitAIType.Normal;
+    }
 
     public void clearAllEffects()
     {
@@ -269,6 +280,7 @@ public class UnitsManager : MonoBehaviour
         Debug.Log("All effects cleared from all units");
     }
 
+
     private void checkCombatEnd()
     {
         bool playerAlive = player != null && player.currentHealth > 0;
@@ -286,10 +298,21 @@ public class UnitsManager : MonoBehaviour
         {
             AudioManager.Instance.StopMusic();
             AudioManager.Instance.PlaySFX(AudioManager.Instance.victory);
+
             clearAllEffects();
             relics.onBattleEnd(player);
             GameManager.Instance.addFloorCount();
-            SceneManager.LoadScene("BattleRewardScene", LoadSceneMode.Additive);
+
+            UnitAIType result = battleType;
+
+            if (result == UnitAIType.Boss)
+            {
+                SceneManager.LoadScene("VictoryScene", LoadSceneMode.Additive);
+            }
+            else
+            {
+                SceneManager.LoadScene("BattleRewardScene", LoadSceneMode.Additive);
+            }
         }
     }
 }
