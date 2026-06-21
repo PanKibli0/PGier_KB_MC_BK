@@ -84,6 +84,11 @@ public class Unit : MonoBehaviour
         statsUI = ui;
     }
 
+    public void refreshStatsUI()
+    {
+        statsUI?.updateUI();
+    }   
+
     public void showIntent(UnitMove move)
     {
         nextMove = move;
@@ -122,7 +127,7 @@ public class Unit : MonoBehaviour
 
         currentHealth -= damage;
 
-        statsUI?.updateUI();
+        refreshStatsUI();
 
         PlayAnimation("Hurt");
 
@@ -157,7 +162,7 @@ public class Unit : MonoBehaviour
     {
         AudioManager.Instance.PlaySFX(AudioManager.Instance.shield);
         block += amount;
-        statsUI?.updateUI();
+        refreshStatsUI();
     }
 
     public void heal(int amount)
@@ -170,7 +175,7 @@ public class Unit : MonoBehaviour
         if (currentHealth > currentMaxHealth)
             currentHealth = currentMaxHealth;
 
-        statsUI?.updateUI();
+        refreshStatsUI();
 
         if (unitType == UnitType.Player && GameManager.Instance != null)
             GameManager.Instance.setHealth(currentHealth);
@@ -179,7 +184,7 @@ public class Unit : MonoBehaviour
     public void resetBlock()
     {
         block = 0;
-        statsUI?.updateUI();
+        refreshStatsUI();
     }
 
     public void addEffect(BaseStatusEffect newEffect)

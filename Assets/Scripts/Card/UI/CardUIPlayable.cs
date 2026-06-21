@@ -169,6 +169,11 @@ public class CardUIPlayable : CardUIBase, IBeginDragHandler, IDragHandler, IEndD
                     valid = false;
                     break;
                 }
+                if (action is TakeTurnAction && targetUnit == unitsManager.player)
+                {
+                    valid = false;
+                    break;
+                }
             }
 
             if (valid)

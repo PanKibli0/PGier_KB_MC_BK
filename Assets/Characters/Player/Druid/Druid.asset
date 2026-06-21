@@ -29,7 +29,9 @@ MonoBehaviour:
   - data: {fileID: 11400000, guid: 078a9330166d87a4c9f3b2ddff3827b9, type: 2}
     amount: 1
   - data: {fileID: 11400000, guid: f40a4e3c3ef9c7a48b855462b54af139, type: 2}
-    amount: 100
+    amount: 3
+  - data: {fileID: 11400000, guid: b69cec36d8dfc9f4e90f400c198b1afb, type: 2}
+    amount: 3
   cardPool: {fileID: 11400000, guid: 19cc8960a16019b4c9ccdd986dd2ff0f, type: 2}
   startGold: 200
   baseDrawCount: 5

@@ -105,7 +105,7 @@ public class UnitsManager : MonoBehaviour
         GameObject newUnitObj = Instantiate(unitPrefab);
         newUnitObj.transform.position = spawnPos;
 
-        // DEBUG SCALE - graphic musi powstaæ PRZED init(), ¿eby Animator zosta³ znaleziony
+        
         if (data.graphicPrefab != null)
         {
             GameObject graphic = Instantiate(data.graphicPrefab, newUnitObj.transform);
@@ -118,7 +118,7 @@ public class UnitsManager : MonoBehaviour
             graphic.transform.localScale = new Vector3(scale, scale, scale);
             graphic.transform.localPosition = new Vector3(0f, offsetY, 0f);
         }
-        // END DEBUG
+        
 
         Unit newUnit = newUnitObj.GetComponent<Unit>();
         newUnit.init(data, type, statsUIManager, this);
@@ -163,6 +163,7 @@ public class UnitsManager : MonoBehaviour
             newUnit.currentHealth = GameManager.Instance.currentHealth;
             newUnit.maxHealth = GameManager.Instance.maxHealth;
             newUnit.currentMaxHealth = GameManager.Instance.maxHealth;
+            newUnit.refreshStatsUI();
         }
 
         player = newUnit;

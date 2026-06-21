@@ -36,18 +36,15 @@ public class GameManager : MonoBehaviour
     public RelicManager relicManager;
     public RelicPool relicPool;
 
+    [Header("Events")]
     public EventsPool eventsPool;
-
     [HideInInspector] public EventData currentEvent;
-    public EventData testEvent;
 
+    [Header("Items")]
     public PlayerInventory playerInventory;
     public ItemPool itemPool;
 
-    // DEBUG
-    public List<ItemData> testItems;
-    // END DEBUG
-
+    [Header("Save")]
     public SaveDatabase saveDatabase;
 
     void Awake()
@@ -64,12 +61,8 @@ public class GameManager : MonoBehaviour
 
         relicManager = new RelicManager(new List<RelicData>());
         playerInventory = new PlayerInventory();
-
-        // DEBUG
-        foreach (var item in testItems)
-            playerInventory.addItem(item);
-        // END DEBUG
     }
+
     private void Start()
     {
         AudioManager.Instance.PlayMusic(AudioManager.Instance.menuMusic);
@@ -131,33 +124,54 @@ public class GameManager : MonoBehaviour
         return relicPool.GetRandomRelic();
     }
 
-    // DEBUG
+    
+    private bool buildTesterEnabled = false;
+
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
-            SceneManager.LoadScene("BattleRewardScene", LoadSceneMode.Additive);
+        if (Input.GetKeyDown(KeyCode.Escape))
+            SceneManager.LoadScene("MenuScene");
 
-        if (Input.GetKeyDown(KeyCode.S))
-            SceneManager.LoadScene("EndScreenScene", LoadSceneMode.Additive);
+        #region BUILD TESTER 
+        bool ctrlAlt = (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl))
+                     && (Input.GetKey(KeyCode.LeftAlt) || Input.GetKey(KeyCode.RightAlt));
 
-        if (Input.GetKeyDown(KeyCode.P))
-            setHealth(currentHealth / 2);
-
-        if (Input.GetKeyDown(KeyCode.E))
-            SceneManager.LoadScene("EventScene");
-
-
-        if (Input.GetKeyDown(KeyCode.N) || Input.GetKeyDown(KeyCode.Escape))
-            SaveSystem.save(this);
-
-        if (Input.GetKeyDown(KeyCode.M))
+        if (ctrlAlt && Input.GetKeyDown(KeyCode.Space))
         {
-            if (SaveSystem.load(this))
-                UnityEngine.SceneManagement.SceneManager.LoadScene("MapScene");
+            buildTesterEnabled = !buildTesterEnabled;
+            Debug.Log($"Build Tester {(buildTesterEnabled ? "Enabled" : "Disabled")}");
         }
 
-        if (Input.GetKeyDown(KeyCode.B))
+        if (!buildTesterEnabled)
+            return;
+
+        bool ctrlShift = (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl))
+                       && (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift));
+
+        if (ctrlShift && Input.GetKeyDown(KeyCode.R))
+            SceneManager.LoadScene("BattleRewardScene", LoadSceneMode.Additive);
+
+        if (ctrlShift && Input.GetKeyDown(KeyCode.S))
+            SceneManager.LoadScene("EndScreenScene", LoadSceneMode.Additive);
+
+        if (ctrlShift && Input.GetKeyDown(KeyCode.P))
+            setHealth(currentHealth / 2);
+
+        if (ctrlShift && Input.GetKeyDown(KeyCode.E))
+            SceneManager.LoadScene("EventScene");
+
+        if (ctrlShift && Input.GetKeyDown(KeyCode.N))
+            SaveSystem.save(this);
+
+        if (ctrlShift && Input.GetKeyDown(KeyCode.M))
+        {
+            if (SaveSystem.load(this))
+                SceneManager.LoadScene("MapScene");
+        }
+
+        if (ctrlShift && Input.GetKeyDown(KeyCode.B))
             SaveSystem.deleteSave();
+        #endregion
     }
-    // END DEBUG
+
 }

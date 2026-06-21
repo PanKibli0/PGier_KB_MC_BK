@@ -278,7 +278,7 @@ public static class TargetingSystem
 
     #endregion
 
-    #region Text
+    #region TEXT
     public static string getTargetText(TargetType targetType)
     {
         switch (targetType)

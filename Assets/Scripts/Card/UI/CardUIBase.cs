@@ -54,7 +54,8 @@ public class CardUIBase : MonoBehaviour
 
         foreach (var action in card.actions)
         {
-            description += action.getCardDescription(player, target, applyEffects) + "\n";
+            description += action.getCardDescription(player, target, applyEffects);
+            description += $" {TargetingSystem.getTargetText(action.targetType)}\n";
         }
         if (card.data.exhaust)
             description += $"Wyczerpanie <sprite name=\"wyczerpanie\">";
