@@ -5,6 +5,9 @@ public class RestartGame : MonoBehaviour
 {
     public void RestartGameScene()
     {
+        if (MainBar.Instance != null)
+            Destroy(MainBar.Instance.gameObject);
+
         SceneManager.LoadScene("CharacterSelectScene");
     }
 
