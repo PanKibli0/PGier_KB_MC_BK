@@ -18,14 +18,18 @@ public class BattleSetup : MonoBehaviour
     {
         GameManager gm = GameManager.Instance;
         CharacterData character = gm.selectedCharacter;
+
         AudioManager.Instance.StopMusic();
         AudioManager.Instance.PlayMusic(AudioManager.Instance.battleMusic);
+
         relics = gm.relicManager;
         energySystem = new EnergySystem(character.baseMaxEnergy);
         cardPileSystem = new CardPileSystem();
 
         handSystem.init(cardPileSystem);
         unitsManager.init(energySystem, cardPileSystem, handSystem, relics);
+        unitsManager.startBattle();
+
         turnManager.init(relics, energySystem, cardPileSystem, handSystem, unitsManager);
 
         if (character != null)
@@ -47,6 +51,7 @@ public class BattleSetup : MonoBehaviour
         cardPileView?.setCardPileSystem(cardPileSystem);
 
         cardPileSystem.setupDeck();
+
         turnManager.calculateAllIntents();
 
         MainBar.Instance?.setPlayerUnit(unitsManager.player);
